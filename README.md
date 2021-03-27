@@ -17,3 +17,6 @@ https://youtu.be/MYYXLw8jRD0
 최근에 기타 비싼거 선물 받았는데 후.. 기분이 너무 좋습니다.
 
 테스트완료!!!
+=======
+강추오예!! 
+>>>>>>> Stashed changes
