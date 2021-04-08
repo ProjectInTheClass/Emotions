@@ -8,38 +8,79 @@
 import UIKit
 
 class PostTableViewController: UITableViewController {
-
+    
+    let emotionsTitle: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "homeNaviTitle")
+        return imageView
+    }()
+    
+    lazy var addPostButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "addPost"), for: .normal)
+        button.addTarget(self, action: #selector(addPostButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var searchPostButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "searchPost"), for: .normal)
+        button.addTarget(self, action: #selector(searchPostButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationConfigureUI()
     }
+    
+    // MARK: - Functions
 
+    func navigationConfigureUI() {
+        navigationItem.title = ""
+        let addButton = UIBarButtonItem(customView: addPostButton)
+        let searchButton = UIBarButtonItem(customView: searchPostButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: emotionsTitle)
+        navigationItem.rightBarButtonItems = [addButton, searchButton]
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    @objc func searchPostButtonTapped() {
+        print("PostTableViewController - searchPostButtonTapped()")
+    }
+    
+    @objc func addPostButtonTapped() {
+        print("PostTableViewController - addPostButtonTapped()")
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        if section == 0 {
+            return 1
+        } else {
+            return 0
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

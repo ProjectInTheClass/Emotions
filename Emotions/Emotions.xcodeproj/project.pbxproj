@@ -113,6 +113,7 @@
 		0321F1AD26169E41000A3F90 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0337C673261EE3FC00E1F765 /* CustomView */,
 				0337C652261EAC1300E1F765 /* CustomCell */,
 				0337C647261EAA2000E1F765 /* Storyboard */,
 			);
@@ -181,6 +182,13 @@
 				0337C664261EAF4C00E1F765 /* StaticViewController.swift */,
 			);
 			path = Static;
+			sourceTree = "<group>";
+		};
+		0337C673261EE3FC00E1F765 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
