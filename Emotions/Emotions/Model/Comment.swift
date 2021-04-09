@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Comment {
     var postID: String
     var userNickName: String

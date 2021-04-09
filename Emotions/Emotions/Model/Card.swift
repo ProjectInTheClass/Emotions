@@ -40,4 +40,6 @@ enum CARDTYPE {
         case .fear: return "두려움"
         }
     }
+    
+    
 }

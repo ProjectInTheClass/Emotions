@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PostCellDelegate {
-    func heartButtonTappedInCell(_ cell: PostTableViewCell, isSelected: Bool)
-    func starButtonTappedInCell(_ cell: PostTableViewCell, isSelected: Bool)
-    func commentButtonTappedInCell(_ cell: PostTableViewCell)
+    func heartButtonTappedInCell(_ sender: UIButton, isSelected: Bool)
+    func starButtonTappedInCell(_ sender: UIButton, isSelected: Bool)
+    func commentButtonTappedInCell(_ sender: UIButton)
 }

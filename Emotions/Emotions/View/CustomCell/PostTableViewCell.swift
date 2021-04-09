@@ -10,7 +10,6 @@ import UIKit
 class PostTableViewCell: UITableViewCell {
     
     var delegate: PostCellDelegate?
-    var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var postContentLabel: UILabel!
@@ -54,19 +53,16 @@ class PostTableViewCell: UITableViewCell {
 
     @IBAction func heartButtonTapped(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.heartButtonTappedInCell(self, isSelected: sender.isSelected)
-        print(indexPath)
+        delegate?.heartButtonTappedInCell(sender, isSelected: sender.isSelected)
     }
     
     @IBAction func starButtonTapped(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.starButtonTappedInCell(self, isSelected: sender.isSelected)
-        print(indexPath)
+        delegate?.starButtonTappedInCell(sender, isSelected: sender.isSelected)
+        
     }
     
     @IBAction func commentButtonTapped(_ sender: UIButton) {
-        delegate?.commentButtonTappedInCell(self)
+        delegate?.commentButtonTappedInCell(sender)
     }
-    
-    
 }

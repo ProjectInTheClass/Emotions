@@ -89,7 +89,6 @@ class PostViewController: UIViewController {
             
         }
     }
-
 }
 
 extension PostViewController: UITableViewDelegate, UITableViewDataSource {
@@ -102,7 +101,8 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.posts[indexPath.row]
         let comments = CommentManager.shared.comments
-        cell.indexPath = indexPath
+        cell.heartButton.tag = indexPath.row
+        cell.starButton.tag = indexPath.row
         cell.updateUI(post: post, comments: comments)
         cell.delegate = self
         return cell
@@ -110,25 +110,23 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension PostViewController: PostCellDelegate {
-    func heartButtonTappedInCell(_ cell: PostTableViewCell, isSelected: Bool) {
-//        guard let indexPath = cell.indexPath else { return }
-//        let selectedPost = PostManager.shared.posts[indexPath.row]
-//        selectedPost.isHeart = isSelected
-//        print(selectedPost.isHeart)
+    func heartButtonTappedInCell(_ sender: UIButton, isSelected: Bool) {
+        let selectedPost = PostManager.shared.posts[sender.tag]
+        selectedPost.isHeart = isSelected
+        print(selectedPost.isHeart)
     }
     
-    func starButtonTappedInCell(_ cell: PostTableViewCell, isSelected: Bool) {
-//        guard let indexPath = cell.indexPath else { return }
-//        let selectedPost = PostManager.shared.posts[indexPath.row]
-//        if isSelected {
-//            selectedPost.isGood += 1
-//        } else {
-//            selectedPost.isGood -= 1
-//        }
-//        print(selectedPost.isGood)
+    func starButtonTappedInCell(_ sender: UIButton, isSelected: Bool) {
+        let selectedPost = PostManager.shared.posts[sender.tag]
+        if isSelected {
+            selectedPost.isGood += 1
+        } else {
+            selectedPost.isGood -= 1
+        }
+        print(selectedPost.isGood)
     }
     
-    func commentButtonTappedInCell(_ cell: PostTableViewCell) {
+    func commentButtonTappedInCell(_ sender: UIButton) {
         print("commentButton Tapped")
     }
 }
