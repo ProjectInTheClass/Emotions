@@ -8,16 +8,44 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var postContentLabel: UILabel!
+    @IBOutlet weak var firstCardLabel: UILabel!
+    @IBOutlet weak var secondCardLabel: UILabel!
+    @IBOutlet weak var thirdCardLabel: UILabel!
+    @IBOutlet weak var leftDateLabel: UILabel!
+    @IBOutlet weak var heartButton: UIButton!
+    @IBOutlet weak var starButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        makeRoundedAndShadowed(view: cellBackgroundView)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateUI(post: Post, comments: [Comment]) {
+        let attributedString = NSMutableAttributedString(string: post.content)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        postContentLabel.attributedText = attributedString
+        firstCardLabel.text = "#\(post.firstCard.title)"
+        firstCardLabel.textColor = post.firstCard.cardType.typeColor
+        secondCardLabel.text = "#\(post.secondCard.title)"
+        secondCardLabel.textColor = post.secondCard.cardType.typeColor
+        thirdCardLabel.text = "#\(post.thirdCard.title)"
+        thirdCardLabel.textColor = post.thirdCard.cardType.typeColor
+    }
+    
+    func makeRoundedAndShadowed(view: UIView) {
+        view.layer.cornerRadius = 8
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).cgPath
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowRadius = 8
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
 
 }
