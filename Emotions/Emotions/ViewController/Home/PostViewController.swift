@@ -30,13 +30,13 @@ class PostViewController: UIViewController {
         return button
     }()
     
-    
-    @IBOutlet weak var tableVIew: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationConfigureUI()
         segmentedControlConfigureUI()
     }
@@ -76,11 +76,17 @@ class PostViewController: UIViewController {
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
         if sender.index == 0 {
-            print("최신 글")
+            // 쿼리로 정렬된 데이터가 들어올 예정
+            
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            
         } else if sender.index == 1 {
             print("공감 글")
         } else {
-            print("나의 글")
+            // 쿼리로 정렬된 데이터가 들어올 예정
+            
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            
         }
     }
 
@@ -96,7 +102,33 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.posts[indexPath.row]
         let comments = CommentManager.shared.comments
+        cell.indexPath = indexPath
         cell.updateUI(post: post, comments: comments)
+        cell.delegate = self
         return cell
+    }
+}
+
+extension PostViewController: PostCellDelegate {
+    func heartButtonTappedInCell(_ cell: PostTableViewCell, isSelected: Bool) {
+//        guard let indexPath = cell.indexPath else { return }
+//        let selectedPost = PostManager.shared.posts[indexPath.row]
+//        selectedPost.isHeart = isSelected
+//        print(selectedPost.isHeart)
+    }
+    
+    func starButtonTappedInCell(_ cell: PostTableViewCell, isSelected: Bool) {
+//        guard let indexPath = cell.indexPath else { return }
+//        let selectedPost = PostManager.shared.posts[indexPath.row]
+//        if isSelected {
+//            selectedPost.isGood += 1
+//        } else {
+//            selectedPost.isGood -= 1
+//        }
+//        print(selectedPost.isGood)
+    }
+    
+    func commentButtonTappedInCell(_ cell: PostTableViewCell) {
+        print("commentButton Tapped")
     }
 }

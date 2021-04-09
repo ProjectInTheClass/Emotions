@@ -35,6 +35,9 @@
 		03FDA949262022C1009E02F9 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA948262022C1009E02F9 /* extension.swift */; };
 		03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03FDA94D26204B94009E02F9 /* RIDIBatang.otf */; };
 		03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03FDA9502620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf */; };
+		03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03FDA95326205A49009E02F9 /* Sora-VariableFont_wght.ttf */; };
+		03FDA96026205B0B009E02F9 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA95F26205B0B009E02F9 /* Protocol.swift */; };
+		03FDA96326206B75009E02F9 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA96226206B75009E02F9 /* NotificationCenter.swift */; };
 		CB1A5D033CB9B0767CAC850E /* Pods_Emotions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		03FDA948262022C1009E02F9 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		03FDA94D26204B94009E02F9 /* RIDIBatang.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RIDIBatang.otf; sourceTree = "<group>"; };
 		03FDA9502620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 가람연꽃.ttf"; sourceTree = "<group>"; };
+		03FDA95326205A49009E02F9 /* Sora-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		03FDA95F26205B0B009E02F9 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		03FDA96226206B75009E02F9 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		6312319D396F6CE6E8F07A44 /* Pods-Emotions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.release.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.release.xcconfig"; sourceTree = "<group>"; };
 		AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emotions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07BECAE4496C711C9FDA77D /* Pods-Emotions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.debug.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				0321F1B726169ED7000A3F90 /* Resource */,
+				03FDA95A26205AE9009E02F9 /* API */,
 				0321F1AD26169E41000A3F90 /* View */,
 				0321F1AC26169E3B000A3F90 /* ViewController */,
 				0321F1AB26169E35000A3F90 /* Model */,
@@ -156,7 +163,6 @@
 				0321F19F26169E26000A3F90 /* Assets.xcassets */,
 				0321F19626169E25000A3F90 /* AppDelegate.swift */,
 				0321F19826169E25000A3F90 /* SceneDelegate.swift */,
-				03FDA948262022C1009E02F9 /* extension.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -247,9 +253,20 @@
 			isa = PBXGroup;
 			children = (
 				03FDA94D26204B94009E02F9 /* RIDIBatang.otf */,
+				03FDA95326205A49009E02F9 /* Sora-VariableFont_wght.ttf */,
 				03FDA9502620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		03FDA95A26205AE9009E02F9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				03FDA948262022C1009E02F9 /* extension.swift */,
+				03FDA95F26205B0B009E02F9 /* Protocol.swift */,
+				03FDA96226206B75009E02F9 /* NotificationCenter.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		4E95AF5F196BF0310D025A06 /* Pods */ = {
@@ -332,6 +349,7 @@
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
 				03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */,
 				03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */,
+				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,
 				0337C64B261EAAC700E1F765 /* Home.storyboard in Resources */,
 				0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */,
@@ -406,8 +424,10 @@
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
 				0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */,
 				0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */,
+				03FDA96326206B75009E02F9 /* NotificationCenter.swift in Sources */,
 				0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */,
 				0321F1AF26169E61000A3F90 /* Post.swift in Sources */,
+				03FDA96026205B0B009E02F9 /* Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
