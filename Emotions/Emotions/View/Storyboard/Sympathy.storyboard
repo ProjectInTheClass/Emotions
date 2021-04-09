@@ -53,11 +53,11 @@
             </objects>
             <point key="canvasLocation" x="681" y="212"/>
         </scene>
-        <!--공감글-->
+        <!--내 글-->
         <scene sceneID="j3r-YQ-YW4">
             <objects>
                 <navigationController id="ppw-bU-My6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="공감글" image="heart" catalog="system" selectedImage="heart.fill" id="U3i-p2-iur"/>
+                    <tabBarItem key="tabBarItem" title="내 글" image="heart" catalog="system" selectedImage="heart.fill" id="U3i-p2-iur"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gqF-1a-P4n">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

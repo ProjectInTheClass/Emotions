@@ -33,7 +33,6 @@ class PostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,32 +100,23 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.posts[indexPath.row]
         let comments = CommentManager.shared.comments
-        cell.heartButton.tag = indexPath.row
-        cell.starButton.tag = indexPath.row
         cell.updateUI(post: post, comments: comments)
-        cell.delegate = self
-        return cell
-    }
-}
-
-extension PostViewController: PostCellDelegate {
-    func heartButtonTappedInCell(_ sender: UIButton, isSelected: Bool) {
-        let selectedPost = PostManager.shared.posts[sender.tag]
-        selectedPost.isHeart = isSelected
-        print(selectedPost.isHeart)
-    }
-    
-    func starButtonTappedInCell(_ sender: UIButton, isSelected: Bool) {
-        let selectedPost = PostManager.shared.posts[sender.tag]
-        if isSelected {
-            selectedPost.isGood += 1
-        } else {
-            selectedPost.isGood -= 1
+        
+        // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록 
+        cell.heartButtonCompletion = { currentHearState in
+            post.isHeart = !currentHearState
+//            self.tableView.reloadRows(at: [indexPath], with: .none)
         }
-        print(selectedPost.isGood)
-    }
-    
-    func commentButtonTappedInCell(_ sender: UIButton) {
-        print("commentButton Tapped")
+        
+        cell.starButtonCompletion = { currentStarState in
+            post.isGood = !currentStarState
+//            self.tableView.reloadRows(at: [indexPath], with: .none)
+        }
+        
+        cell.commentButtonCompletion = {
+            print("실행!")
+        }
+        
+        return cell
     }
 }

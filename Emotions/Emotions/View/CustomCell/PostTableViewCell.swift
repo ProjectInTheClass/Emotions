@@ -9,21 +9,27 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    var delegate: PostCellDelegate?
-    
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var postContentLabel: UILabel!
     @IBOutlet weak var firstCardLabel: UILabel!
     @IBOutlet weak var secondCardLabel: UILabel!
     @IBOutlet weak var thirdCardLabel: UILabel!
     @IBOutlet weak var leftDateLabel: UILabel!
-    @IBOutlet weak var heartButton: UIButton!
-    @IBOutlet weak var starButton: UIButton!
-    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var heartButton: HeartButton!
+    @IBOutlet weak var starButton: StarButton!
+    @IBOutlet weak var commentButton: CommentButton!
+    @IBOutlet var buttons: [UIButton]!
+    
+    var heartButtonCompletion: ((Bool)->Void)?
+    var starButtonCompletion: ((Bool)->Void)?
+    var commentButtonCompletion: (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         makeRoundedAndShadowed(view: cellBackgroundView)
+        buttons.forEach { button in
+            button.addTarget(self, action: #selector(buttonsTapped(_:)), for: .touchUpInside)
+        }
     }
     
     func updateUI(post: Post, comments: [Comment]) {
@@ -38,6 +44,8 @@ class PostTableViewCell: UITableViewCell {
         secondCardLabel.textColor = post.secondCard.cardType.typeColor
         thirdCardLabel.text = "#\(post.thirdCard.title)"
         thirdCardLabel.textColor = post.thirdCard.cardType.typeColor
+        heartButton.setState(post.isHeart)
+        starButton.setState(post.isGood)
     }
     
     func makeRoundedAndShadowed(view: UIView) {
@@ -49,20 +57,23 @@ class PostTableViewCell: UITableViewCell {
         view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
     
-    // MARK: - IBAction
-
-    @IBAction func heartButtonTapped(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        delegate?.heartButtonTappedInCell(sender, isSelected: sender.isSelected)
+    @objc func buttonsTapped(_ sender: UIButton) {
+        switch sender {
+        case heartButton:
+            if let heartButtonCompletion = heartButtonCompletion {
+                heartButtonCompletion(heartButton.isActivated)
+            }
+        case starButton:
+            if let starButtonCompletion = starButtonCompletion {
+                starButtonCompletion(starButton.isActivated)
+            }
+        case commentButton:
+            if let commentButtonCompletion = commentButtonCompletion {
+                commentButtonCompletion()
+            }
+        default:
+            break
+        }
     }
     
-    @IBAction func starButtonTapped(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        delegate?.starButtonTappedInCell(sender, isSelected: sender.isSelected)
-        
-    }
-    
-    @IBAction func commentButtonTapped(_ sender: UIButton) {
-        delegate?.commentButtonTappedInCell(sender)
-    }
 }

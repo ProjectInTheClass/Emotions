@@ -16,7 +16,10 @@ class Post {
     var secondCard: Card
     var thirdCard: Card
     var isHeart: Bool = false
-    var isGood: Int = 0
+    var isGood: Bool = false
+    
+    // 좋아요 포인트 제도 어떻게 할까?
+    var point: Int = 0
 
     init(postID: String, userEmail: String, content: String, firstCard: Card, secondCard: Card, thirdCard: Card, date: Int) {
         self.postID = postID
