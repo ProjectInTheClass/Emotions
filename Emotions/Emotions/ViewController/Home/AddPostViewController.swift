@@ -20,9 +20,30 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         configureUI()
         navigationConfigureUI()
         registerForNotifications()
+        
+    }
+    // MARK: - Ability Functions
+    
+    
+    
+    // MARK: - UI and UserInteraction Functions
+    func configureUI() {
         contentTextView.delegate = self
         contentTextView.text = "고른 감정에 대해 이야기해주세요:)"
         contentTextView.textColor = UIColor.lightGray
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        dateLabel.text = formatter.string(from: Date())
+        selectCardButton.layer.masksToBounds = true
+        selectCardButton.layer.cornerRadius = 8
+        backgroundView.layer.masksToBounds = true
+        backgroundView.layer.cornerRadius = 8
+    }
+
+    func navigationConfigureUI() {
+        title = "Post"
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "AppleColorEmoji", size: 21)!]
     }
     
     func registerForNotifications() {
@@ -50,22 +71,6 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             scrollView.scrollIndicatorInsets = contentInset
     }
     
-    func configureUI() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        dateLabel.text = formatter.string(from: Date())
-        selectCardButton.layer.masksToBounds = true
-        selectCardButton.layer.cornerRadius = 8
-        backgroundView.layer.masksToBounds = true
-        backgroundView.layer.cornerRadius = 8
-    }
-
-    func navigationConfigureUI() {
-        title = "Post"
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "AppleColorEmoji", size: 21)!]
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray { textView.text = nil
             textView.textColor = UIColor.black
@@ -78,5 +83,4 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             textView.textColor = UIColor.lightGray
         }
     }
-
 }
