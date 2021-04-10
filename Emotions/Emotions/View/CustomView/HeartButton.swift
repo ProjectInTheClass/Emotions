@@ -22,7 +22,7 @@ class HeartButton: UIButton {
     
     func setState(_ newValue: Bool) {
         self.isActivated = newValue
-        
+        self.setImage(self.isActivated ? activeButtonImage : inActiveButtonImage, for: .normal)
     }
     
     @objc func heartButtonTapped() {

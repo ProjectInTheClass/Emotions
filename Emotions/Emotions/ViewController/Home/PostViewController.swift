@@ -70,7 +70,9 @@ class PostViewController: UIViewController {
     }
     
     @objc func addPostButtonTapped() {
-        print("PostTableViewController - addPostButtonTapped()")
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let addPostViewController = storyboard.instantiateViewController(withIdentifier: "addPostVC") as? AddPostViewController else { return }
+        navigationController?.pushViewController(addPostViewController, animated: true)
     }
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
