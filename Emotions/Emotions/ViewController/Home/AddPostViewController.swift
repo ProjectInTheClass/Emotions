@@ -9,22 +9,42 @@ import UIKit
 
 class AddPostViewController: UIViewController, UITextViewDelegate {
     
+    var selectedCards: [Card]?
+    
     @IBOutlet weak var selectCardButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var uploadButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        addTargetButton()
         navigationConfigureUI()
         registerForNotifications()
         
     }
     // MARK: - Ability Functions
     
+    func addTargetButton() {
+        selectCardButton.addTarget(self, action: #selector(selectCardButtonTapped), for: .touchUpInside)
+        uploadButton.target = self
+        uploadButton.action = #selector(uploadButtonTapped)
+    }
     
+    @objc func selectCardButtonTapped() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let cardCollectionVC = storyboard.instantiateViewController(withIdentifier: "cardCollectionVC") as? CardCollectionViewController else { return }
+        cardCollectionVC.modalPresentationStyle = .automatic
+        self.present(cardCollectionVC, animated: true, completion: nil)
+    }
+    
+    @objc func uploadButtonTapped() {
+        print("uploade Button Tapped")
+        
+    }
     
     // MARK: - UI and UserInteraction Functions
     func configureUI() {
