@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class AddPostViewController: UIViewController, UITextViewDelegate {
     
@@ -38,11 +39,17 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let cardCollectionVC = storyboard.instantiateViewController(withIdentifier: "cardCollectionVC") as? CardCollectionViewController else { return }
         cardCollectionVC.modalPresentationStyle = .automatic
-        self.present(cardCollectionVC, animated: true, completion: nil)
+        presentPanModal(cardCollectionVC)
+        cardCollectionVC.completionHandler = { selectedCards in
+            self.selectedCards = selectedCards
+        }
     }
     
     @objc func uploadButtonTapped() {
         print("uploade Button Tapped")
+        
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -62,7 +69,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
 
     func navigationConfigureUI() {
         title = "Post"
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .darkGray
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "AppleColorEmoji", size: 21)!]
     }
     

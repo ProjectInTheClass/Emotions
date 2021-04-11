@@ -7,4 +7,5 @@ target 'Emotions' do
 
   # Pods for Emotions
 pod 'BetterSegmentedControl', '~> 2.0'
+pod 'PanModal'
 end

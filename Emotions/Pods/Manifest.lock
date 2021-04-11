@@ -1,16 +1,20 @@
 PODS:
   - BetterSegmentedControl (2.0.1)
+  - PanModal (1.2.7)
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0)
+  - PanModal
 
 SPEC REPOS:
   trunk:
     - BetterSegmentedControl
+    - PanModal
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
 
-PODFILE CHECKSUM: 3d40866cc46f7e56a4cea57094f31afd9c42981c
+PODFILE CHECKSUM: 5d4d2e2529f65ec14c9950f1c0f8284fcb0b59b7
 
 COCOAPODS: 1.10.1

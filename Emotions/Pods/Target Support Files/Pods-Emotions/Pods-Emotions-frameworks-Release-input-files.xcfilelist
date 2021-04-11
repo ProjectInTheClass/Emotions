@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Emotions/Pods-Emotions-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework
+${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework

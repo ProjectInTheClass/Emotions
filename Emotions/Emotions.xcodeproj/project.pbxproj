@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031E9A2826230BD70054C840 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E9A2726230BD70054C840 /* CardsCollectionViewController.swift */; };
 		0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F19626169E25000A3F90 /* AppDelegate.swift */; };
 		0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F19826169E25000A3F90 /* SceneDelegate.swift */; };
 		0321F19E26169E25000A3F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0321F19C26169E25000A3F90 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		031E9A2726230BD70054C840 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
 		0321F19326169E25000A3F90 /* Emotions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emotions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0321F19626169E25000A3F90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0321F19826169E25000A3F90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				03FDA91D261FE5F6009E02F9 /* PostViewController.swift */,
 				03DFA5002621D769009139A9 /* AddPostViewController.swift */,
 				03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */,
+				031E9A2726230BD70054C840 /* CardsCollectionViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
 				03FDA931261FF468009E02F9 /* SignUpViewController.swift in Sources */,
+				031E9A2826230BD70054C840 /* CardsCollectionViewController.swift in Sources */,
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
 				0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */,
 				0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */,
