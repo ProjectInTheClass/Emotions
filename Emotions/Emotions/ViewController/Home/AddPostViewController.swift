@@ -10,17 +10,22 @@ import PanModal
 
 class AddPostViewController: UIViewController, UITextViewDelegate {
     
-    var selectedCards: [Card]?
-    
     @IBOutlet weak var selectCardButton: UIButton!
     @IBOutlet weak var secondCardImage: UIImageView!
     @IBOutlet weak var thirdCardImage: UIImageView!
-    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var uploadButton: UIBarButtonItem!
+    
+    var selectedCards: [Card]? {
+        didSet {
+            if let selectedCards = selectedCards {
+                backgroundView.backgroundColor = selectedCards[0].cardType.typeColor
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +48,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         guard let cardCollectionVC = storyboard.instantiateViewController(withIdentifier: "cardCollectionVC") as? CardCollectionViewController else { return }
         cardCollectionVC.modalPresentationStyle = .automatic
         presentPanModal(cardCollectionVC)
+        
         cardCollectionVC.completionHandler = { [weak self]
             selectedCards in
             guard let self = self else { return }
@@ -56,11 +62,14 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             case 2:
                 self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
                 self.secondCardImage.image = selectedCards[1].image
+                self.secondCardImage.isHidden = false
                 self.thirdCardImage.isHidden = true
             case 3:
                 self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
                 self.secondCardImage.image = selectedCards[1].image
                 self.thirdCardImage?.image = selectedCards[2].image
+                self.secondCardImage.isHidden = false
+                self.thirdCardImage.isHidden = false
             default:
                 break
             }
@@ -70,7 +79,6 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     @objc func uploadButtonTapped() {
         print("uploade Button Tapped")
         
-        
         self.navigationController?.popViewController(animated: true)
         
     }
@@ -79,7 +87,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     func configureUI() {
         contentTextView.delegate = self
         contentTextView.text = "고른 감정에 대해 이야기해주세요:)"
-        contentTextView.textColor = UIColor.lightGray
+        contentTextView.textColor = UIColor.darkGray
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
         dateLabel.text = formatter.string(from: Date())
@@ -125,15 +133,15 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray { textView.text = nil
+        if textView.textColor == UIColor.darkGray { textView.text = nil
             textView.textColor = UIColor.black
         }
     }
-    
     func textViewDidEndEditing(_ textView: UITextView) {
+        
         if textView.text == "" {
             textView.text = "고른 감정에 대해 이야기해주세요:)"
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.darkGray
         }
     }
 }

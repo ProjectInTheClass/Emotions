@@ -135,16 +135,22 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     @objc func cardSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
         switch sender.index {
         case 0:
+            cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
             print("전체")
         case 1:
+            cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "joy")
             print("기쁨")
         case 2:
+            cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "sadness")
             print("슬픔")
         case 3:
+            cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "anger")
             print("분노")
         case 4:
+            cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "disgust")
             print("불쾌")
         case 5:
+            cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "fear")
             print("두려움")
         default:
             break
@@ -176,7 +182,7 @@ extension CardCollectionViewController: PanModalPresentable {
         return collectionView
     }
     var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(150)
+        return .maxHeightWithTopInset(130)
     }
     var anchorModalToLongForm: Bool {
         return true
