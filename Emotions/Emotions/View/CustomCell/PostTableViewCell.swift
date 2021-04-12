@@ -33,25 +33,39 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func updateUI(post: Post, comments: [Comment]) {
+        if let firstCard = post.firstCard {
+            firstCardLabel.text = "#\(firstCard.title)"
+            firstCardLabel.textColor = firstCard.cardType.typeColor
+        } else {
+            firstCardLabel.isHidden = true
+        }
+        
+        if let secondCard = post.secondCard {
+            secondCardLabel.text = "#\(secondCard.title)"
+            secondCardLabel.textColor = secondCard.cardType.typeColor
+        } else {
+            secondCardLabel.isHidden = true
+        }
+        
+        if let thirdCard = post.thirdCard {
+            thirdCardLabel.text = "#\(thirdCard.title)"
+            thirdCardLabel.textColor = thirdCard.cardType.typeColor
+        } else {
+            thirdCardLabel.isHidden = true
+        }
+      
         let attributedString = NSMutableAttributedString(string: post.content)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 6
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         postContentLabel.attributedText = attributedString
-        firstCardLabel.text = "#\(post.firstCard.title)"
-        firstCardLabel.textColor = post.firstCard.cardType.typeColor
-        secondCardLabel.text = "#\(post.secondCard.title)"
-        secondCardLabel.textColor = post.secondCard.cardType.typeColor
-        thirdCardLabel.text = "#\(post.thirdCard.title)"
-        thirdCardLabel.textColor = post.thirdCard.cardType.typeColor
         heartButton.setState(post.isHeart)
         starButton.setState(post.isGood)
     }
     
     func makeRoundedAndShadowed(view: UIView) {
-        view.layer.cornerRadius = 8
-        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).cgPath
-        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.cornerRadius = 6
+        view.layer.shadowColor = UIColor.opaqueSeparator.cgColor
         view.layer.shadowOpacity = 0.2
         view.layer.shadowRadius = 8
         view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)

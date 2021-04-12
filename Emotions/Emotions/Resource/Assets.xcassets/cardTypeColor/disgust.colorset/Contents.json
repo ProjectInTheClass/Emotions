@@ -5,9 +5,9 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0xCE",
+          "blue" : "0xA7",
           "green" : "0xDE",
-          "red" : "0xC3"
+          "red" : "0x89"
         }
       },
       "idiom" : "universal"
@@ -16,5 +16,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }

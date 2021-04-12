@@ -53,14 +53,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQY-6o-PTh" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                <rect key="frame" x="10" y="88" width="394" height="44"/>
+                                <rect key="frame" x="10" y="91" width="394" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="bNK-sb-HBG"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aek-h2-dmi">
-                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="0VJ-d6-deX" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="294"/>
@@ -192,7 +192,7 @@
                             <constraint firstItem="e5i-cK-IAS" firstAttribute="trailing" secondItem="HQY-6o-PTh" secondAttribute="trailing" constant="10" id="71d-vg-zHZ"/>
                             <constraint firstItem="aek-h2-dmi" firstAttribute="top" secondItem="HQY-6o-PTh" secondAttribute="bottom" constant="5" id="8z1-f3-7h2"/>
                             <constraint firstItem="e5i-cK-IAS" firstAttribute="trailing" secondItem="aek-h2-dmi" secondAttribute="trailing" id="edQ-De-Uqo"/>
-                            <constraint firstItem="HQY-6o-PTh" firstAttribute="top" secondItem="e5i-cK-IAS" secondAttribute="top" id="fWE-dU-i1Q"/>
+                            <constraint firstItem="HQY-6o-PTh" firstAttribute="top" secondItem="e5i-cK-IAS" secondAttribute="top" constant="3" id="fWE-dU-i1Q"/>
                             <constraint firstItem="HQY-6o-PTh" firstAttribute="leading" secondItem="e5i-cK-IAS" secondAttribute="leading" constant="10" id="kgg-xS-Gc6"/>
                             <constraint firstItem="e5i-cK-IAS" firstAttribute="bottom" secondItem="aek-h2-dmi" secondAttribute="bottom" id="v7q-oQ-Zw5"/>
                         </constraints>
@@ -201,7 +201,7 @@
                     <connections>
                         <outlet property="homeSegmenttedControl" destination="HQY-6o-PTh" id="NLi-Hn-wW0"/>
                         <outlet property="tableView" destination="aek-h2-dmi" id="t9v-gr-Lug"/>
-                        <segue destination="fLh-ue-K7B" kind="show" id="VSJ-FE-klz"/>
+                        <segue destination="fLh-ue-K7B" kind="show" identifier="postSegue" id="VSJ-FE-klz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Vn-Op-Z5O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -220,22 +220,22 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csD-d6-h1m">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="475"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="505.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eff-VD-3yb">
-                                                <rect key="frame" x="25" y="5" width="105" height="20"/>
+                                                <rect key="frame" x="25" y="5" width="110.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="ShareTechMono-Regular" family="Share Tech Mono" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1~3가지 카드를 선택해 주세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rL-dg-Acy">
-                                                <rect key="frame" x="25" y="32" width="165.5" height="16"/>
+                                                <rect key="frame" x="25" y="31.5" width="165.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qfL-zX-pO0">
-                                                <rect key="frame" x="25" y="61.5" width="320" height="100"/>
+                                                <rect key="frame" x="25" y="61" width="320" height="100"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gt9-vm-FnT">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -267,20 +267,20 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuy-GS-SeE">
-                                                <rect key="frame" x="25" y="237.5" width="364" height="212.5"/>
+                                                <rect key="frame" x="25" y="236.5" width="364" height="244"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fes-0V-CmE">
-                                                        <rect key="frame" x="20" y="42.5" width="324" height="150"/>
+                                                        <rect key="frame" x="20" y="44" width="324" height="180"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="dGe-7A-uSQ"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="dGe-7A-uSQ"/>
                                                         </constraints>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsK-uI-P9V">
-                                                        <rect key="frame" x="25" y="20" width="37" height="17.5"/>
+                                                        <rect key="frame" x="25" y="20" width="41" height="19"/>
                                                         <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -297,19 +297,19 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7N-f5-Xkv">
-                                                <rect key="frame" x="25" y="181.5" width="105" height="20"/>
+                                                <rect key="frame" x="25" y="181" width="110.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="ShareTechMono-Regular" family="Share Tech Mono" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정카드에 대한 이야기를 남겨주세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDn-8q-UiI">
-                                                <rect key="frame" x="25" y="208.5" width="199.5" height="16"/>
+                                                <rect key="frame" x="25" y="207.5" width="199.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Eff-VD-3yb" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="2Gm-bS-xyB"/>
                                             <constraint firstItem="qfL-zX-pO0" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="BCp-CY-qu4"/>
@@ -350,7 +350,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Q0-ZK-ez4">
-                        <barButtonItem key="rightBarButtonItem" image="paperplane.circle" catalog="system" id="IW4-7y-aMe">
+                        <barButtonItem key="rightBarButtonItem" image="pencil.circle" catalog="system" id="IW4-7y-aMe">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
@@ -385,17 +385,17 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ISh-rl-Pwf">
-                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="772"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="hzN-uo-fmK">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="80"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="cardCell" id="lxf-nI-1X3" customClass="CardCollectionViewCell" customModule="Emotions" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="107" y="20" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="JcE-nQ-lKC">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -448,7 +448,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ISh-rl-Pwf" secondAttribute="bottom" id="5rw-Gx-6EH"/>
-                            <constraint firstItem="ISh-rl-Pwf" firstAttribute="top" secondItem="HFa-Xx-U78" secondAttribute="bottom" constant="20" id="8Hg-r6-csk"/>
+                            <constraint firstItem="ISh-rl-Pwf" firstAttribute="top" secondItem="HFa-Xx-U78" secondAttribute="bottom" id="8Hg-r6-csk"/>
                             <constraint firstItem="HFa-Xx-U78" firstAttribute="top" secondItem="TXt-2k-yIy" secondAttribute="bottom" constant="9" id="8WE-9X-tmR"/>
                             <constraint firstItem="TXt-2k-yIy" firstAttribute="leading" secondItem="dss-PH-alj" secondAttribute="leading" constant="20" id="FDG-dH-3TC"/>
                             <constraint firstItem="ISh-rl-Pwf" firstAttribute="leading" secondItem="dss-PH-alj" secondAttribute="leading" id="Iwx-6E-XNK"/>
@@ -475,7 +475,7 @@
         <image name="heart" width="24" height="24"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="paperplane.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star" width="24" height="24"/>
         <namedColor name="emotionDeepPink">

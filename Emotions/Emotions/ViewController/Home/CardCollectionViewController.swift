@@ -9,16 +9,14 @@ import UIKit
 import PanModal
 import BetterSegmentedControl
 
-private let reuseIdentifier = "cardCell"
-
 class CardCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    let cards = CardManager.shared.cards
-    var selectedCards:[Card] = []
+    var cards = CardManager.shared.cards
     var completionHandler: (([Card])->Void)?
+    
     let completeButton: UIButton = {
        let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        button.backgroundColor = UIColor(named: "emotionLightGreen")
         button.layer.cornerRadius = 8
         let configTitle = NSAttributedString(text: "완료", aligment: .center, color: .white)
         button.setAttributedTitle(configTitle, for: .normal)
@@ -39,9 +37,11 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return view
     }()
     
-    var dictionarySelectedIndexPath: [IndexPath:Bool] = [:] {
+    var selectedCards:[Card] = []
+    
+    var selectedCardsDic: [Int:Card] = [:] {
         didSet {
-            if !dictionarySelectedIndexPath.isEmpty {
+            if !selectedCardsDic.isEmpty {
                 completeButton.isHidden = false
                 backgroundView.isHidden = false
             } else {
@@ -51,6 +51,8 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
     }
     
+    var bottomPadding: CGFloat?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cardTypeSegmentControl: BetterSegmentedControl!
     
@@ -58,6 +60,11 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         super.viewDidLoad()
         segmentedControlConfigureUI()
         buttonUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cards.map { $0.isSelected = false }
     }
 
     // MARK: - UICollectionViewDataSource
@@ -85,35 +92,50 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return cellSize
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if dictionarySelectedIndexPath.count == 3 {
-            print(dictionarySelectedIndexPath.count)
-            print("카드는 3개 까지만 선택할 수 있습니다.")
-            return
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let item = collectionView.cellForItem(at: indexPath)
+        if item?.isSelected ?? false {
+            collectionView.deselectItem(at: indexPath, animated: true)
         } else {
-            dictionarySelectedIndexPath[indexPath] = true
-            print(dictionarySelectedIndexPath.count)
+            if selectedCardsDic.count < 3 {
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+                let selectedCard = cards[indexPath.item]
+                selectedCard.isSelected = true
+                selectedCardsDic[selectedCard.id] = selectedCard
+                collectionView.reloadItems(at: [indexPath])
+                return true
+            } else {
+                print("3장의 카드만 선택해 주세요.")
+                return false
+            }
         }
+        return false
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        dictionarySelectedIndexPath[indexPath] = nil
-        print(dictionarySelectedIndexPath.count)
+        let selectedCard = cards[indexPath.item]
+        selectedCard.isSelected = false
+        selectedCardsDic[selectedCard.id] = nil
+        collectionView.reloadItems(at: [indexPath])
     }
     
     // MARK: - UI Fucntions
     
     func buttonUI(){
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+        
         view.addSubview(backgroundView)
         view.addSubview(completeButton)
         completeButton.translatesAutoresizingMaskIntoConstraints = false
         completeButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
         completeButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         completeButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
-        completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true
+        completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20 - bottomPadding!).isActive = true
         
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        backgroundView.topAnchor.constraint(equalTo: completeButton.bottomAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
@@ -133,46 +155,48 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     @objc func cardSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
+        let wholeCards = CardManager.shared.cards
         switch sender.index {
         case 0:
+            completeButton.backgroundColor = UIColor(named: "emotionLightGreen")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-            print("전체")
+            self.cards = wholeCards
         case 1:
+            completeButton.backgroundColor = UIColor(named: "joy")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "joy")
-            print("기쁨")
+            self.cards = CardManager.shared.fetchJoyCards(cards: wholeCards)
         case 2:
+            completeButton.backgroundColor = UIColor(named: "sadness")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "sadness")
-            print("슬픔")
+            self.cards = CardManager.shared.fetchSadnessCards(cards: wholeCards)
         case 3:
+            completeButton.backgroundColor = UIColor(named: "anger")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "anger")
-            print("분노")
+            self.cards = CardManager.shared.fetchAngerCards(cards: wholeCards)
         case 4:
+            completeButton.backgroundColor = UIColor(named: "disgust")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "disgust")
-            print("불쾌")
+            self.cards = CardManager.shared.fetchDisgustCards(cards: wholeCards)
         case 5:
+            completeButton.backgroundColor = UIColor(named: "fear")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "fear")
-            print("두려움")
+            self.cards = CardManager.shared.fetchFearCards(cards: wholeCards)
         default:
             break
         }
+        collectionView.reloadData()
     }
     
     @objc func selectCardButtonTapped() {
-        var selectedIndexPath: [IndexPath] = []
-        for (key, value) in dictionarySelectedIndexPath {
-            if value {
-                selectedIndexPath.append(key)
-            }
-        }
         
-        for i in selectedIndexPath.sorted(by: <) {
-            selectedCards.append(cards[i.item])
+        for (key, value) in selectedCardsDic {
+            selectedCards.append(value)
         }
         
         if let completionhandler = completionHandler {
             completionhandler(selectedCards)
         }
-        
+
         self.dismiss(animated: true, completion: nil)
     }
 }

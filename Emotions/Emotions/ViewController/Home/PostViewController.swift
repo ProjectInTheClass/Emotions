@@ -35,7 +35,7 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(tableView, selector: #selector(UITableView.reloadData), name: Notification.Name("postsValueChanged"), object: nil)
         navigationConfigureUI()
         segmentedControlConfigureUI()
     }
@@ -77,16 +77,16 @@ class PostViewController: UIViewController {
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
         if sender.index == 0 {
-            // 쿼리로 정렬된 데이터가 들어올 예정
-            
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            
+            print("최신 글")
         } else if sender.index == 1 {
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionDeepPink")
             print("공감 글")
         } else {
-            // 쿼리로 정렬된 데이터가 들어올 예정
-            
+            homeSegmenttedControl.indicatorViewBackgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            print("좋은 글")
             
         }
     }

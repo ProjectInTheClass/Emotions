@@ -8,17 +8,9 @@
 import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
-    
-    var deselectCard: (()->Void)?
-    
+   
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var selectIndicator: UIImageView!
-    
-    override var isSelected: Bool {
-        didSet {
-            selectIndicator.isHidden = !isSelected
-        }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,5 +21,6 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     func updateUI(card: Card) {
         cardImage.image = card.image
+        selectIndicator.isHidden = !card.isSelected
     }
 }

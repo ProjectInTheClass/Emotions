@@ -22,7 +22,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     var selectedCards: [Card]? {
         didSet {
             if let selectedCards = selectedCards {
-                backgroundView.backgroundColor = selectedCards[0].cardType.typeColor
+                backgroundView.backgroundColor = selectedCards[0].cardType.typeBackground
             }
         }
     }
@@ -77,10 +77,55 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func uploadButtonTapped() {
-        print("uploade Button Tapped")
         
-        self.navigationController?.popViewController(animated: true)
+        //        guard let userEmail = AuthManager.shared.currentUser?.email else { return }
+        //        guard let userNickName = AuthManager.shared.currentUser?.displayName else { return }
         
+        var firstCard: Card?
+        var secondCard: Card?
+        var thirdCard: Card?
+        
+        if let selectedCards = selectedCards, !selectedCards.isEmpty {
+            if selectedCards.count == 1 {
+                firstCard = selectedCards[0]
+            } else if selectedCards.count == 2 {
+                firstCard = selectedCards[0]
+                secondCard = selectedCards[1]
+            } else {
+                firstCard = selectedCards[0]
+                secondCard = selectedCards[1]
+                thirdCard = selectedCards[2]
+            }
+        } else {
+            print("카드를 선택해주세요.")
+            return
+        }
+        
+        guard let content = contentTextView.text,
+              content != "고른 감정에 대해 이야기해주세요:)" else {
+            print("내용을 적어주세요.")
+            return
+        }
+        
+        let date = Int(Date().timeIntervalSince1970)
+        
+        let post = Post(postID: "1", userEmail: "phs880623@gmail.com", content: content, firstCard: firstCard, secondCard: secondCard, thirdCard: thirdCard, date: date)
+        PostManager.shared.posts.append(post)
+        
+        //        let postRef = database.child("posts").childByAutoId()
+        //        postRef.child("userEmail").setValue(userEmail)
+        //        postRef.child("userNickName").setValue(userNickName)
+        //        postRef.child("title").setValue(title)
+        //        postRef.child("content").setValue(content)
+        //        postRef.child("date").setValue(date)
+        //        postRef.child("firstCardTitle").setValue(firstCardTitle)
+        //        postRef.child("secondCardTitle").setValue(secondCardTitle)
+        //        postRef.child("thirdCardTitle").setValue(thirdCardTitle)
+        //        postRef.child("heart").setValue(false)
+        //        postRef.child("drop").setValue(false)
+        //        postRef.child("leaf").setValue(false)
+
+        self.navigationController?.popViewController(animated: true)        
     }
     
     // MARK: - UI and UserInteraction Functions
@@ -100,7 +145,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         backgroundView.layer.masksToBounds = true
         backgroundView.layer.cornerRadius = 8
     }
-
+    
     func navigationConfigureUI() {
         title = "Post"
         navigationController?.navigationBar.tintColor = .darkGray
@@ -117,19 +162,19 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         if let keyboardRect = info?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             let keyboardSize = keyboardRect.size
             let contentInset = UIEdgeInsets(
-                   top: 0.0,
-                   left: 0.0,
+                top: 0.0,
+                left: 0.0,
                 bottom: keyboardSize.height,
-                   right: 0.0)
-               scrollView.contentInset = contentInset
-               scrollView.scrollIndicatorInsets = contentInset
+                right: 0.0)
+            scrollView.contentInset = contentInset
+            scrollView.scrollIndicatorInsets = contentInset
         }
     }
     
     @objc func keyboardWillBeHidden(notification: NSNotification) {
         let contentInset = UIEdgeInsets.zero
-            scrollView.contentInset = contentInset
-            scrollView.scrollIndicatorInsets = contentInset
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
