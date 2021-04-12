@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		031E9A2826230BD70054C840 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E9A2726230BD70054C840 /* CardsCollectionViewController.swift */; };
+		031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */ = {isa = PBXBuildFile; fileRef = 031E9A622623D5AA0054C840 /* 21930-selectdavid.json */; };
 		0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F19626169E25000A3F90 /* AppDelegate.swift */; };
 		0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F19826169E25000A3F90 /* SceneDelegate.swift */; };
 		0321F19E26169E25000A3F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0321F19C26169E25000A3F90 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		031E9A2726230BD70054C840 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
+		031E9A622623D5AA0054C840 /* 21930-selectdavid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "21930-selectdavid.json"; sourceTree = "<group>"; };
 		0321F19326169E25000A3F90 /* Emotions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emotions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0321F19626169E25000A3F90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0321F19826169E25000A3F90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		031E9A5B2623D3DD0054C840 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				031E9A622623D5AA0054C840 /* 21930-selectdavid.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		0321F18A26169E25000A3F90 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 		0321F1B726169ED7000A3F90 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				031E9A5B2623D3DD0054C840 /* Lottie */,
 				03FDA94C26204B42009E02F9 /* Font */,
 				0321F19F26169E26000A3F90 /* Assets.xcassets */,
 				0321F19626169E25000A3F90 /* AppDelegate.swift */,
@@ -218,6 +229,7 @@
 			children = (
 				0337C653261EAC2F00E1F765 /* PostTableViewCell.swift */,
 				0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */,
+				03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -244,7 +256,6 @@
 				03FDA9752620B571009E02F9 /* HeartButton.swift */,
 				03FDA9782620B577009E02F9 /* StarButton.swift */,
 				03FDA97B2620B702009E02F9 /* CommentButton.swift */,
-				03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -368,6 +379,7 @@
 			files = (
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
+				031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */,
 				03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */,
 				03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */,
 				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,

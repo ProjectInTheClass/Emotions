@@ -1,20 +1,24 @@
 PODS:
   - BetterSegmentedControl (2.0.1)
+  - lottie-ios (3.2.1)
   - PanModal (1.2.7)
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0)
+  - lottie-ios
   - PanModal
 
 SPEC REPOS:
   trunk:
     - BetterSegmentedControl
+    - lottie-ios
     - PanModal
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
+  lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
 
-PODFILE CHECKSUM: 5d4d2e2529f65ec14c9950f1c0f8284fcb0b59b7
+PODFILE CHECKSUM: 9ce4d82f872dffd8dc5a25d2c20845084e9f109a
 
 COCOAPODS: 1.10.1

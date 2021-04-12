@@ -15,25 +15,41 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     let cards = CardManager.shared.cards
     var selectedCards:[Card] = []
-    var dictionarySelectedIndexPath: [IndexPath:Bool] = [:]
     var completionHandler: (([Card])->Void)?
     let completeButton: UIButton = {
        let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        button.layer.masksToBounds = true
         button.layer.cornerRadius = 8
         let configTitle = NSAttributedString(text: "완료", aligment: .center, color: .white)
         button.setAttributedTitle(configTitle, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight:.black)
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowOffset = CGSize.zero
+        button.layer.shadowRadius = 10
+        button.isHidden = true
         return button
     }()
     
-    let buttonBackgroundView: UIView = {
+    let backgroundView: UIView = {
        let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.9
+        view.alpha = 0.8
+        view.isHidden = true
         return view
     }()
+    
+    var dictionarySelectedIndexPath: [IndexPath:Bool] = [:] {
+        didSet {
+            if !dictionarySelectedIndexPath.isEmpty {
+                completeButton.isHidden = false
+                backgroundView.isHidden = false
+            } else {
+                completeButton.isHidden = true
+                backgroundView.isHidden = true
+            }
+        }
+    }
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cardTypeSegmentControl: BetterSegmentedControl!
@@ -41,21 +57,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControlConfigureUI()
-        collectionView.allowsMultipleSelection = true
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    
-        buttonBackgroundView.frame = CGRect(x: 20, y: view.bounds.height - 52 - view.safeAreaInsets.bottom - 10, width: view.bounds.width - 40, height: 52 + view.safeAreaInsets.bottom + 34)
-        buttonBackgroundView.layer.cornerRadius = CornerRadius.myValue
-        completeButton.frame = CGRect(x: 20, y: view.bounds.height - 52 - view.safeAreaInsets.bottom - 10, width: view.bounds.width - 40, height: 52)
-        
-        view.addSubview(buttonBackgroundView)
-        view.addSubview(completeButton)
-     
-        completeButton.addTarget(self, action: #selector(selectCardButtonTapped), for: .touchUpInside)
-        completeButton.startAnimatingPressActions()
+        buttonUI()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -77,7 +79,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.bounds.width) / 3 - 20
+        let width: CGFloat = view.frame.width / 2 - 30
         let height: CGFloat = width
         let cellSize = CGSize(width: width, height: height)
         return cellSize
@@ -97,6 +99,28 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         dictionarySelectedIndexPath[indexPath] = nil
         print(dictionarySelectedIndexPath.count)
+    }
+    
+    // MARK: - UI Fucntions
+    
+    func buttonUI(){
+        view.addSubview(backgroundView)
+        view.addSubview(completeButton)
+        completeButton.translatesAutoresizingMaskIntoConstraints = false
+        completeButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        completeButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
+        completeButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
+        completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true
+        
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
+        backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        
+        completeButton.startAnimatingPressActions()
+        collectionView.allowsMultipleSelection = true
+        completeButton.addTarget(self, action: #selector(selectCardButtonTapped), for: .touchUpInside)
     }
     
     func segmentedControlConfigureUI() {
@@ -152,7 +176,7 @@ extension CardCollectionViewController: PanModalPresentable {
         return collectionView
     }
     var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(200)
+        return .maxHeightWithTopInset(150)
     }
     var anchorModalToLongForm: Bool {
         return true

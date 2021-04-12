@@ -13,6 +13,9 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     var selectedCards: [Card]?
     
     @IBOutlet weak var selectCardButton: UIButton!
+    @IBOutlet weak var secondCardImage: UIImageView!
+    @IBOutlet weak var thirdCardImage: UIImageView!
+    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -40,8 +43,27 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         guard let cardCollectionVC = storyboard.instantiateViewController(withIdentifier: "cardCollectionVC") as? CardCollectionViewController else { return }
         cardCollectionVC.modalPresentationStyle = .automatic
         presentPanModal(cardCollectionVC)
-        cardCollectionVC.completionHandler = { selectedCards in
+        cardCollectionVC.completionHandler = { [weak self]
+            selectedCards in
+            guard let self = self else { return }
             self.selectedCards = selectedCards
+            
+            switch selectedCards.count {
+            case 1:
+                self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
+                self.secondCardImage.isHidden = true
+                self.thirdCardImage.isHidden = true
+            case 2:
+                self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
+                self.secondCardImage.image = selectedCards[1].image
+                self.thirdCardImage.isHidden = true
+            case 3:
+                self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
+                self.secondCardImage.image = selectedCards[1].image
+                self.thirdCardImage?.image = selectedCards[2].image
+            default:
+                break
+            }
         }
     }
     
@@ -63,6 +85,10 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         dateLabel.text = formatter.string(from: Date())
         selectCardButton.layer.masksToBounds = true
         selectCardButton.layer.cornerRadius = 8
+        secondCardImage?.layer.masksToBounds = true
+        secondCardImage?.layer.cornerRadius = 8
+        thirdCardImage?.layer.masksToBounds = true
+        thirdCardImage?.layer.cornerRadius = 8
         backgroundView.layer.masksToBounds = true
         backgroundView.layer.cornerRadius = 8
     }
