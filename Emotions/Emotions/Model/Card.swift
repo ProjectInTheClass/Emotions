@@ -8,10 +8,20 @@
 import Foundation
 import UIKit
 
-struct Card {
+class Card {
+    var id: Int
     var title: String
     var image: UIImage
     var cardType: CARDTYPE
+    var isSelected: Bool
+    
+    init(id: Int, title: String, image: UIImage, cardType: CARDTYPE, isSelected: Bool) {
+        self.id = id
+        self.title = title
+        self.cardType = cardType
+        self.isSelected = isSelected
+        self.image = image
+    }
 }
 
 enum CARDTYPE {
@@ -38,6 +48,16 @@ enum CARDTYPE {
         case .anger: return "분노"
         case .disgust: return "불쾌"
         case .fear: return "두려움"
+        }
+    }
+    
+    var typeBackground: UIColor {
+        switch self {
+        case .joy: return UIColor(named: "joyBG")!
+        case .sadness: return UIColor(named: "sadnessBG")!
+        case .anger: return UIColor(named: "angerBG")!
+        case .disgust: return UIColor(named: "disgustBG")!
+        case .fear: return UIColor(named: "fearBG")!
         }
     }
     

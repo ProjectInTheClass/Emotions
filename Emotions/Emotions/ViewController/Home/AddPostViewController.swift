@@ -10,17 +10,22 @@ import PanModal
 
 class AddPostViewController: UIViewController, UITextViewDelegate {
     
-    var selectedCards: [Card]?
-    
     @IBOutlet weak var selectCardButton: UIButton!
     @IBOutlet weak var secondCardImage: UIImageView!
     @IBOutlet weak var thirdCardImage: UIImageView!
-    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var uploadButton: UIBarButtonItem!
+    
+    var selectedCards: [Card]? {
+        didSet {
+            if let selectedCards = selectedCards {
+                backgroundView.backgroundColor = selectedCards[0].cardType.typeBackground
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +48,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         guard let cardCollectionVC = storyboard.instantiateViewController(withIdentifier: "cardCollectionVC") as? CardCollectionViewController else { return }
         cardCollectionVC.modalPresentationStyle = .automatic
         presentPanModal(cardCollectionVC)
+        
         cardCollectionVC.completionHandler = { [weak self]
             selectedCards in
             guard let self = self else { return }
@@ -56,11 +62,14 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             case 2:
                 self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
                 self.secondCardImage.image = selectedCards[1].image
+                self.secondCardImage.isHidden = false
                 self.thirdCardImage.isHidden = true
             case 3:
                 self.selectCardButton.setImage(selectedCards[0].image, for: .normal)
                 self.secondCardImage.image = selectedCards[1].image
                 self.thirdCardImage?.image = selectedCards[2].image
+                self.secondCardImage.isHidden = false
+                self.thirdCardImage.isHidden = false
             default:
                 break
             }
@@ -68,18 +77,62 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func uploadButtonTapped() {
-        print("uploade Button Tapped")
         
+        //        guard let userEmail = AuthManager.shared.currentUser?.email else { return }
+        //        guard let userNickName = AuthManager.shared.currentUser?.displayName else { return }
         
-        self.navigationController?.popViewController(animated: true)
+        var firstCard: Card?
+        var secondCard: Card?
+        var thirdCard: Card?
         
+        if let selectedCards = selectedCards, !selectedCards.isEmpty {
+            if selectedCards.count == 1 {
+                firstCard = selectedCards[0]
+            } else if selectedCards.count == 2 {
+                firstCard = selectedCards[0]
+                secondCard = selectedCards[1]
+            } else {
+                firstCard = selectedCards[0]
+                secondCard = selectedCards[1]
+                thirdCard = selectedCards[2]
+            }
+        } else {
+            print("카드를 선택해주세요.")
+            return
+        }
+        
+        guard let content = contentTextView.text,
+              content != "고른 감정에 대해 이야기해주세요:)" else {
+            print("내용을 적어주세요.")
+            return
+        }
+        
+        let date = Int(Date().timeIntervalSince1970)
+        
+        let post = Post(postID: "1", userEmail: "phs880623@gmail.com", content: content, firstCard: firstCard, secondCard: secondCard, thirdCard: thirdCard, date: date)
+        PostManager.shared.posts.append(post)
+        
+        //        let postRef = database.child("posts").childByAutoId()
+        //        postRef.child("userEmail").setValue(userEmail)
+        //        postRef.child("userNickName").setValue(userNickName)
+        //        postRef.child("title").setValue(title)
+        //        postRef.child("content").setValue(content)
+        //        postRef.child("date").setValue(date)
+        //        postRef.child("firstCardTitle").setValue(firstCardTitle)
+        //        postRef.child("secondCardTitle").setValue(secondCardTitle)
+        //        postRef.child("thirdCardTitle").setValue(thirdCardTitle)
+        //        postRef.child("heart").setValue(false)
+        //        postRef.child("drop").setValue(false)
+        //        postRef.child("leaf").setValue(false)
+
+        self.navigationController?.popViewController(animated: true)        
     }
     
     // MARK: - UI and UserInteraction Functions
     func configureUI() {
         contentTextView.delegate = self
         contentTextView.text = "고른 감정에 대해 이야기해주세요:)"
-        contentTextView.textColor = UIColor.lightGray
+        contentTextView.textColor = UIColor.darkGray
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
         dateLabel.text = formatter.string(from: Date())
@@ -92,7 +145,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         backgroundView.layer.masksToBounds = true
         backgroundView.layer.cornerRadius = 8
     }
-
+    
     func navigationConfigureUI() {
         title = "Post"
         navigationController?.navigationBar.tintColor = .darkGray
@@ -109,31 +162,31 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         if let keyboardRect = info?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             let keyboardSize = keyboardRect.size
             let contentInset = UIEdgeInsets(
-                   top: 0.0,
-                   left: 0.0,
+                top: 0.0,
+                left: 0.0,
                 bottom: keyboardSize.height,
-                   right: 0.0)
-               scrollView.contentInset = contentInset
-               scrollView.scrollIndicatorInsets = contentInset
+                right: 0.0)
+            scrollView.contentInset = contentInset
+            scrollView.scrollIndicatorInsets = contentInset
         }
     }
     
     @objc func keyboardWillBeHidden(notification: NSNotification) {
         let contentInset = UIEdgeInsets.zero
-            scrollView.contentInset = contentInset
-            scrollView.scrollIndicatorInsets = contentInset
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray { textView.text = nil
+        if textView.textColor == UIColor.darkGray { textView.text = nil
             textView.textColor = UIColor.black
         }
     }
-    
     func textViewDidEndEditing(_ textView: UITextView) {
+        
         if textView.text == "" {
             textView.text = "고른 감정에 대해 이야기해주세요:)"
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.darkGray
         }
     }
 }

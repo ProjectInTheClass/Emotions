@@ -12,22 +12,28 @@ class Post {
     var userEmail: String
     var content: String
     var date: Int
-    var firstCard: Card
-    var secondCard: Card
-    var thirdCard: Card
+    var firstCard: Card?
+    var secondCard: Card?
+    var thirdCard: Card?
     var isHeart: Bool = false
     var isGood: Bool = false
     
     // 좋아요 포인트 제도 어떻게 할까?
     var point: Int = 0
 
-    init(postID: String, userEmail: String, content: String, firstCard: Card, secondCard: Card, thirdCard: Card, date: Int) {
+    init(postID: String, userEmail: String, content: String, firstCard: Card?, secondCard: Card?, thirdCard: Card?, date: Int) {
         self.postID = postID
         self.userEmail = userEmail
         self.date = date
         self.content = content
-        self.firstCard = firstCard
-        self.secondCard = secondCard
-        self.thirdCard = thirdCard
+        if let firstCard = firstCard {
+            self.firstCard = firstCard
+        }
+        if let secondCard = secondCard {
+            self.secondCard = secondCard
+        }
+        if let thirdCard = thirdCard {
+            self.thirdCard = thirdCard
+        }
     }
 }
