@@ -61,6 +61,9 @@ class PostTableViewCell: UITableViewCell {
         postContentLabel.attributedText = attributedString
         heartButton.setState(post.isHeart)
         starButton.setState(post.isGood)
+        let endDate = Date(timeIntervalSince1970: Double(post.date))
+        let dateToInt = Int(endDate.timeIntervalSinceNow / 24 / 60 / 60)
+        leftDateLabel.text = "D-\(dateToInt)"
     }
     
     func makeRoundedAndShadowed(view: UIView) {

@@ -35,7 +35,7 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(tableView, selector: #selector(UITableView.reloadData), name: Notification.Name("postsValueChanged"), object: nil)
+        NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: Notification.Name("postsValueChanged"), object: nil)
         navigationConfigureUI()
         segmentedControlConfigureUI()
     }
