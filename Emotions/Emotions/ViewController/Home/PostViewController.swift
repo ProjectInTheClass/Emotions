@@ -30,12 +30,19 @@ class PostViewController: UIViewController {
         return button
     }()
     
+    var tmpPosts = [Post]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: Notification.Name("postsValueChanged"), object: nil)
+        tmpPosts = PostManager.shared.posts
         navigationConfigureUI()
         segmentedControlConfigureUI()
     }
@@ -78,14 +85,15 @@ class PostViewController: UIViewController {
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
         if sender.index == 0 {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            print("최신 글")
+//            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            tmpPosts = PostManager.shared.fetchLatestPosts(posts: PostManager.shared.posts)
         } else if sender.index == 1 {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionDeepPink")
-            print("공감 글")
+//            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            tmpPosts = PostManager.shared.fetchSympathyPosts(posts: PostManager.shared.posts)
         } else {
             homeSegmenttedControl.indicatorViewBackgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             print("좋은 글")
             
         }
@@ -95,7 +103,7 @@ class PostViewController: UIViewController {
 extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostManager.shared.posts.count
+        return tmpPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,18 +115,29 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록 
         cell.heartButtonCompletion = { currentHearState in
             post.isHeart = !currentHearState
-//            self.tableView.reloadRows(at: [indexPath], with: .none)
         }
-        
         cell.starButtonCompletion = { currentStarState in
             post.isGood = !currentStarState
-//            self.tableView.reloadRows(at: [indexPath], with: .none)
         }
-        
-        cell.commentButtonCompletion = {
-            print("실행!")
+        cell.commentButtonCompletion = { [weak self] in
+            guard let self = self else { return }
+            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            guard let postDetailViewController = homeStoryboard.instantiateViewController(withIdentifier: "postDetailVC") as? PostDetailViewController else { return }
+            postDetailViewController.post = post
+            self.navigationController?.pushViewController(postDetailViewController, animated: true)
         }
-        
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postDetailSegue" {
+            print("postDetailSegue")
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                print("indexPathForSelectedRow")
+                return }
+            let post = tmpPosts[indexPath.row]
+            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
+            postDetailViewController.post = post
+        }
     }
 }

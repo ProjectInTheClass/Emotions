@@ -10,5 +10,9 @@ import Foundation
 class CommentManager {
     static let shared = CommentManager()
     
-    let comments: [Comment] = []
+    let comments: [Comment] = [
+        Comment(postID: "1", userNickName: "user", userEmail: "email", content: "Nono!", date: 14124),
+        Comment(postID: "1", userNickName: "user", userEmail: "email", content: "Nono!", date: 14124),
+        Comment(postID: "1", userNickName: "user", userEmail: "email", content: "Nono!", date: 14124)
+    ]
 }

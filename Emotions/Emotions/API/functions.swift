@@ -17,3 +17,10 @@ func deletePostAtEndDate(post: Post) {
         
     }
 }
+
+func dateToDday(post: Post) -> String {
+    let endDate = Date(timeIntervalSince1970: Double(post.date))
+    let dateToInt = Int(endDate.timeIntervalSinceNow / 24 / 60 / 60)
+    let dateToDday = "D-\(dateToInt)"
+    return dateToDday
+}
