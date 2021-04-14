@@ -107,10 +107,20 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             return
         }
         
+        
         guard let afterAMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date()) else { return }
         let endDate = Int(afterAMonth.timeIntervalSince1970)
         
-        let post = Post(postID: "1", userEmail: "phs880623@gmail.com", content: content, firstCard: firstCard, secondCard: secondCard, thirdCard: thirdCard, date: endDate)
+        let dataDictionary: [String:Any] = [
+            "content":content,
+            "endDate":endDate,
+            "firstCardID":firstCard?.id ?? "0",
+            "secondCardID":secondCard?.id ?? "0",
+            "thirdCardID":thirdCard?.id ?? "0",
+            "starPoint": 0
+        ]
+        
+        let post = Post(postID: "aergarg", userEmail: "phs@ivf.or.or", dictionary: dataDictionary)
         PostManager.shared.posts.append(post)
         
         //        let postRef = database.child("posts").childByAutoId()

@@ -30,11 +30,6 @@ class PostViewController: UIViewController {
         return button
     }()
     
-    var tmpPosts = [Post]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
@@ -42,7 +37,6 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: Notification.Name("postsValueChanged"), object: nil)
-        tmpPosts = PostManager.shared.posts
         navigationConfigureUI()
         segmentedControlConfigureUI()
     }
@@ -84,18 +78,14 @@ class PostViewController: UIViewController {
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
         if sender.index == 0 {
+            print("최신 글")
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-//            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            tmpPosts = PostManager.shared.fetchLatestPosts(posts: PostManager.shared.posts)
         } else if sender.index == 1 {
+            print("공감 글")
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionDeepPink")
-//            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            tmpPosts = PostManager.shared.fetchSympathyPosts(posts: PostManager.shared.posts)
         } else {
-            homeSegmenttedControl.indicatorViewBackgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-//            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             print("좋은 글")
-            
+            homeSegmenttedControl.indicatorViewBackgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         }
     }
 }
@@ -103,7 +93,7 @@ class PostViewController: UIViewController {
 extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tmpPosts.count
+        return PostManager.shared.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -117,7 +107,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             post.isHeart = !currentHearState
         }
         cell.starButtonCompletion = { currentStarState in
-            post.isGood = !currentStarState
+            post.isStar = !currentStarState
         }
         cell.commentButtonCompletion = { [weak self] in
             guard let self = self else { return }
@@ -135,7 +125,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             guard let indexPath = tableView.indexPathForSelectedRow else {
                 print("indexPathForSelectedRow")
                 return }
-            let post = tmpPosts[indexPath.row]
+            let post = PostManager.shared.posts[indexPath.row]
             guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
             postDetailViewController.post = post
         }

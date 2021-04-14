@@ -11,29 +11,35 @@ class Post {
     var postID: String
     var userEmail: String
     var content: String
-    var date: Int
+    var endDate: Int
     var firstCard: Card?
     var secondCard: Card?
     var thirdCard: Card?
-    var isHeart: Bool = false
-    var isGood: Bool = false
+    var starPoint: Int
     
-    // 좋아요 포인트 제도 어떻게 할까?
-    var point: Int = 0
+    // 먼저, isHeart & isGood
+    // firebase에서 받아올 때는 두 프로퍼티 모두 checkHeartAndStar() 후에 bool값을 조정
+    // 이미 내가 좋아요를 누른 경우, 내가 스타를 누른 경우(스타를 누른 경우에는 스타포인트도 감소되도록)
+    var isHeart: Bool = false
+    var isStar: Bool = false
 
-    init(postID: String, userEmail: String, content: String, firstCard: Card?, secondCard: Card?, thirdCard: Card?, date: Int) {
+    init(postID: String, userEmail: String, dictionary: [String:Any]) {
         self.postID = postID
         self.userEmail = userEmail
-        self.date = date
-        self.content = content
-        if let firstCard = firstCard {
-            self.firstCard = firstCard
+        self.content = dictionary["content"] as? String ?? ""
+        self.endDate = dictionary["endDate"] as? Int ?? 0
+        self.starPoint = dictionary["starPoint"] as? Int ?? 0
+        
+        // 카드의 id로 카드가져오기
+        if let firstCardID = dictionary["firstCardID"] as? String {
+            self.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
         }
-        if let secondCard = secondCard {
-            self.secondCard = secondCard
+        if let secondCardID = dictionary["secondCardID"] as? String {
+            self.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
         }
-        if let thirdCard = thirdCard {
-            self.thirdCard = thirdCard
+        
+        if let thirdCardID = dictionary["thirdCardID"] as? String {
+            self.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
         }
     }
 }
