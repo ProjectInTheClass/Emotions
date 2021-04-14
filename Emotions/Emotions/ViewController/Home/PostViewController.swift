@@ -30,7 +30,7 @@ class PostViewController: UIViewController {
         return button
     }()
     
-    
+    @IBOutlet weak var loadingLabel: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     
@@ -39,6 +39,62 @@ class PostViewController: UIViewController {
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: Notification.Name("postsValueChanged"), object: nil)
         navigationConfigureUI()
         segmentedControlConfigureUI()
+        initRefresh()
+        
+        DataManager.shared.loadPosts { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AuthManager.shared.checkLogin { success in
+            if success {
+                DispatchQueue.main.async {
+                    let sb = UIStoryboard(name: "Home", bundle: nil)
+                    guard let vc = sb.instantiateViewController(withIdentifier: "loginVC") as? LoginViewController else { return }
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false)
+                }
+            } else {
+                print("유저 자동 로그인")
+            }
+        }
+    }
+    
+    // MARK: - Functions
+    
+    func initRefresh() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        DataManager.shared.loadFreshPosts { success in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
+        tableView.refreshControl?.endRefreshing()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let  height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height + self.loadingLabel.frame.height - contentYoffset
+        if distanceFromBottom < height {
+            print(" you reached end of the table")
+            DataManager.shared.loadPastPosts { success in
+                if success {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     // MARK: - UI Functions

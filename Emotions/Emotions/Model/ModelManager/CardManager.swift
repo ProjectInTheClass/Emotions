@@ -45,7 +45,7 @@ class CardManager {
     }
     
     func searchCardByID(cardID: String) -> Card? {
-        guard let card = cards.filter { $0.id  == cardID }.first else { return nil }
+        guard let card = cards.filter({ $0.id  == cardID }).first else { return nil }
         
         return card
     }

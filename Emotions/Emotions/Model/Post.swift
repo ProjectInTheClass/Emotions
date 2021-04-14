@@ -23,21 +23,20 @@ class Post {
     var isHeart: Bool = false
     var isStar: Bool = false
 
-    init(postID: String, userEmail: String, dictionary: [String:Any]) {
-        self.postID = postID
-        self.userEmail = userEmail
+    init(dictionary: [String:Any]) {
+        self.postID = dictionary["postID"] as? String ?? ""
+        self.userEmail = dictionary["userEmail"] as? String ?? ""
         self.content = dictionary["content"] as? String ?? ""
         self.endDate = dictionary["endDate"] as? Int ?? 0
         self.starPoint = dictionary["starPoint"] as? Int ?? 0
         
-        // 카드의 id로 카드가져오기
+        // 카드id로 카드가져오기
         if let firstCardID = dictionary["firstCardID"] as? String {
             self.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
         }
         if let secondCardID = dictionary["secondCardID"] as? String {
             self.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
         }
-        
         if let thirdCardID = dictionary["thirdCardID"] as? String {
             self.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
         }
