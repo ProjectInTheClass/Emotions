@@ -6,19 +6,28 @@
 //
 
 import Foundation
-
+import UIKit
 class PostManager {
     static let shared = PostManager()
     
-    var posts: [Post] = [
-        Post(postID: "1", userEmail: "phs880623@gmail.com", content: "만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며", firstCard: CardManager.shared.cards[0], secondCard: CardManager.shared.cards[1], thirdCard: CardManager.shared.cards[2], date: 1),
-        Post(postID: "2", userEmail: "phs880623@gmail.com",  content: "만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며", firstCard: CardManager.shared.cards[2], secondCard: CardManager.shared.cards[0], thirdCard: CardManager.shared.cards[1], date: 2),
-        Post(postID: "3", userEmail: "phs880623@gmail.com", content: "만물은 인간이 뭇기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며", firstCard: CardManager.shared.cards[2], secondCard: CardManager.shared.cards[2], thirdCard: CardManager.shared.cards[2], date: 3),
-        Post(postID: "4", userEmail: "phs880623@gmail.com", content: "만을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며", firstCard: CardManager.shared.cards[0], secondCard: CardManager.shared.cards[1], thirdCard: CardManager.shared.cards[2], date: 4),
-        Post(postID: "5", userEmail: "phs880623@gmail.com", content: "만물은 인간이 뭇 풀이 가치를 불러 끓는다 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며", firstCard: CardManager.shared.cards[0], secondCard: CardManager.shared.cards[0], thirdCard: CardManager.shared.cards[0], date: 5),
-    ] {
+    var posts: [Post] = [] {
         didSet {
             NotificationCenter.default.post(name: Notification.Name("postsValueChanged"), object: nil)
         }
     }
+    
+    // 우리가 필요한 데이터 목록
+    // 1. 최신순으로 정렬된 posts
+    // 2. 최근 한 달의 감정카드 타입 목록
+    // 3. 그 타입으로 정렬된 posts
+    // 4. starPoint순으로 정렬된 posts
+    // 5. 나의 글만 보여주는 posts
+    // 6. 내가 좋아요를 누른 글만 보여주는 posts
+    
+    // 1. firebase형식의 모델로 전환 - 완료
+    // 2. 모델의 각 프로퍼티별 서버와 인터렉션 방식 설정
+    // 3. 필요한 database ref 정리
+    // 4. CRUD 설정
+    // 5. 프로젝트에 적용
+
 }

@@ -23,6 +23,9 @@
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
 		0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */; };
+		03C610DC262518E000284FD5 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DB262518E000284FD5 /* functions.swift */; };
+		03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */; };
+		03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */; };
 		03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA5002621D769009139A9 /* AddPostViewController.swift */; };
 		03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */; };
 		03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */; };
@@ -67,6 +70,9 @@
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympathyTableViewCell.swift; sourceTree = "<group>"; };
+		03C610DB262518E000284FD5 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
+		03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		03DFA5002621D769009139A9 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShareTechMono.ttf; sourceTree = "<group>"; };
 		03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 				03FDA91D261FE5F6009E02F9 /* PostViewController.swift */,
 				03DFA5002621D769009139A9 /* AddPostViewController.swift */,
 				03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */,
+				03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -227,6 +234,7 @@
 				0337C653261EAC2F00E1F765 /* PostTableViewCell.swift */,
 				0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */,
 				03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */,
+				03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -294,6 +302,7 @@
 			children = (
 				03FDA948262022C1009E02F9 /* extension.swift */,
 				03FDA96226206B75009E02F9 /* NotificationCenter.swift */,
+				03C610DB262518E000284FD5 /* functions.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -439,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FDA91E261FE5F6009E02F9 /* PostViewController.swift in Sources */,
+				03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */,
 				03FDA937261FF647009E02F9 /* CardManager.swift in Sources */,
 				0337C654261EAC2F00E1F765 /* PostTableViewCell.swift in Sources */,
 				0337C662261EAF3D00E1F765 /* SympathyTableViewController.swift in Sources */,
@@ -452,10 +462,12 @@
 				03FDA934261FF5BB009E02F9 /* Card.swift in Sources */,
 				03FDA949262022C1009E02F9 /* extension.swift in Sources */,
 				03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */,
+				03C610DC262518E000284FD5 /* functions.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
 				03FDA931261FF468009E02F9 /* SignUpViewController.swift in Sources */,
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
 				0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */,
+				03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */,
 				0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */,
 				03FDA9792620B577009E02F9 /* StarButton.swift in Sources */,
 				03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */,

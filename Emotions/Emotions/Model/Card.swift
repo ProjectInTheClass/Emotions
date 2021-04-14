@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 class Card {
-    var id: Int
+    var id: String
     var title: String
     var image: UIImage
     var cardType: CARDTYPE
     var isSelected: Bool
     
-    init(id: Int, title: String, image: UIImage, cardType: CARDTYPE, isSelected: Bool) {
+    init(id: String, title: String, image: UIImage, cardType: CARDTYPE, isSelected: Bool) {
         self.id = id
         self.title = title
         self.cardType = cardType
@@ -24,12 +24,12 @@ class Card {
     }
 }
 
-enum CARDTYPE {
-    case joy
-    case sadness
-    case anger
-    case disgust
-    case fear
+enum CARDTYPE : String {
+    case joy = "joy"
+    case sadness = "sadness"
+    case anger = "anger"
+    case disgust = "disgust"
+    case fear = "fear"
     
     var typeColor: UIColor {
         switch self {

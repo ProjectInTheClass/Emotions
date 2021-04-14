@@ -39,7 +39,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     var selectedCards:[Card] = []
     
-    var selectedCardsDic: [Int:Card] = [:] {
+    var selectedCardsDic: [String:Card] = [:] {
         didSet {
             if !selectedCardsDic.isEmpty {
                 completeButton.isHidden = false
@@ -92,6 +92,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return cellSize
     }
     
+    // 선택 후에 다시 복귀했을 때, 바로 취소할 수가 없음. 한번 더 누르거나, 4장 선택으로 인식해서 deselect로 가지 않음. 예상으로는 처음 CardVC에 들어갔을 때, 선택된게 없기 때문에 당연히 deselect가 안먹을 듯. 그럼... else 구문에도 deselect 넣어주면 안되나? 그럼 3이하에서는 더블클릭, 3이상에서는 실행될듯함. 준비하고 실행
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let item = collectionView.cellForItem(at: indexPath)
         if item?.isSelected ?? false {

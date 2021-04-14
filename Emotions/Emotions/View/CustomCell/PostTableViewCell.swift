@@ -60,7 +60,8 @@ class PostTableViewCell: UITableViewCell {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         postContentLabel.attributedText = attributedString
         heartButton.setState(post.isHeart)
-        starButton.setState(post.isGood)
+        starButton.setState(post.isStar)
+        leftDateLabel.text = dateToDday(post: post)
     }
     
     func makeRoundedAndShadowed(view: UIView) {
