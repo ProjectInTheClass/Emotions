@@ -23,6 +23,12 @@
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
 		0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */; };
+		03612E792626C63300CD68B7 /* Firebase Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03612E782626C63300CD68B7 /* Firebase Reference.swift */; };
+		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
+		0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398781E2626CC4500ED9EB8 /* AuthManager.swift */; };
+		039878222626CCE900ED9EB8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878212626CCE900ED9EB8 /* DataManager.swift */; };
+		0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398783A2626DA7800ED9EB8 /* LoginViewController.swift */; };
+		0398783E2626DA8200ED9EB8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398783D2626DA8200ED9EB8 /* RegistrationViewController.swift */; };
 		03C610DC262518E000284FD5 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DB262518E000284FD5 /* functions.swift */; };
 		03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */; };
 		03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */; };
@@ -32,12 +38,9 @@
 		03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */; };
 		03FDA91E261FE5F6009E02F9 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA91D261FE5F6009E02F9 /* PostViewController.swift */; };
 		03FDA92A261FEEA3009E02F9 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA929261FEEA3009E02F9 /* PostManager.swift */; };
-		03FDA92E261FF45F009E02F9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA92D261FF45F009E02F9 /* SignInViewController.swift */; };
-		03FDA931261FF468009E02F9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA930261FF468009E02F9 /* SignUpViewController.swift */; };
 		03FDA934261FF5BB009E02F9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA933261FF5BB009E02F9 /* Card.swift */; };
 		03FDA937261FF647009E02F9 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA936261FF647009E02F9 /* CardManager.swift */; };
 		03FDA93B26200A2F009E02F9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA93A26200A2F009E02F9 /* UserManager.swift */; };
-		03FDA93E26200BCF009E02F9 /* NetworkRefConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA93D26200BCF009E02F9 /* NetworkRefConstant.swift */; };
 		03FDA943262020B9009E02F9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA942262020B9009E02F9 /* Comment.swift */; };
 		03FDA94626202185009E02F9 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA94526202185009E02F9 /* CommentManager.swift */; };
 		03FDA949262022C1009E02F9 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA948262022C1009E02F9 /* extension.swift */; };
@@ -70,6 +73,12 @@
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympathyTableViewCell.swift; sourceTree = "<group>"; };
+		03612E782626C63300CD68B7 /* Firebase Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase Reference.swift"; sourceTree = "<group>"; };
+		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0398781E2626CC4500ED9EB8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		039878212626CCE900ED9EB8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0398783A2626DA7800ED9EB8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0398783D2626DA8200ED9EB8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		03C610DB262518E000284FD5 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,12 +88,9 @@
 		03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		03FDA91D261FE5F6009E02F9 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		03FDA929261FEEA3009E02F9 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
-		03FDA92D261FF45F009E02F9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		03FDA930261FF468009E02F9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03FDA933261FF5BB009E02F9 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		03FDA936261FF647009E02F9 /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		03FDA93A26200A2F009E02F9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		03FDA93D26200BCF009E02F9 /* NetworkRefConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRefConstant.swift; sourceTree = "<group>"; };
 		03FDA942262020B9009E02F9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		03FDA94526202185009E02F9 /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		03FDA948262022C1009E02F9 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 				0321F1AC26169E3B000A3F90 /* ViewController */,
 				0321F1AB26169E35000A3F90 /* Model */,
 				0321F1A426169E26000A3F90 /* Info.plist */,
+				03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */,
 			);
 			path = Emotions;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 		0321F1AB26169E35000A3F90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0398781C2626CC2700ED9EB8 /* NetworkManager */,
 				03FDA928261FEE8F009E02F9 /* ModelManager */,
 				0321F1AE26169E61000A3F90 /* Post.swift */,
 				03FDA942262020B9009E02F9 /* Comment.swift */,
@@ -265,10 +273,19 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		0398781C2626CC2700ED9EB8 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				03612E782626C63300CD68B7 /* Firebase Reference.swift */,
+				0398781E2626CC4500ED9EB8 /* AuthManager.swift */,
+				039878212626CCE900ED9EB8 /* DataManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		03FDA928261FEE8F009E02F9 /* ModelManager */ = {
 			isa = PBXGroup;
 			children = (
-				03FDA93D26200BCF009E02F9 /* NetworkRefConstant.swift */,
 				03FDA929261FEEA3009E02F9 /* PostManager.swift */,
 				03FDA936261FF647009E02F9 /* CardManager.swift */,
 				03FDA93A26200A2F009E02F9 /* UserManager.swift */,
@@ -280,8 +297,8 @@
 		03FDA92C261FF43C009E02F9 /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				03FDA92D261FF45F009E02F9 /* SignInViewController.swift */,
-				03FDA930261FF468009E02F9 /* SignUpViewController.swift */,
+				0398783A2626DA7800ED9EB8 /* LoginViewController.swift */,
+				0398783D2626DA8200ED9EB8 /* RegistrationViewController.swift */,
 			);
 			path = onboarding;
 			sourceTree = "<group>";
@@ -383,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */,
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
 				031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */,
@@ -453,24 +471,26 @@
 				0337C654261EAC2F00E1F765 /* PostTableViewCell.swift in Sources */,
 				0337C662261EAF3D00E1F765 /* SympathyTableViewController.swift in Sources */,
 				03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */,
-				03FDA92E261FF45F009E02F9 /* SignInViewController.swift in Sources */,
 				03FDA943262020B9009E02F9 /* Comment.swift in Sources */,
 				03FDA93B26200A2F009E02F9 /* UserManager.swift in Sources */,
+				0398783E2626DA8200ED9EB8 /* RegistrationViewController.swift in Sources */,
 				03FDA92A261FEEA3009E02F9 /* PostManager.swift in Sources */,
-				03FDA93E26200BCF009E02F9 /* NetworkRefConstant.swift in Sources */,
 				03FDA94626202185009E02F9 /* CommentManager.swift in Sources */,
 				03FDA934261FF5BB009E02F9 /* Card.swift in Sources */,
 				03FDA949262022C1009E02F9 /* extension.swift in Sources */,
 				03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */,
 				03C610DC262518E000284FD5 /* functions.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
-				03FDA931261FF468009E02F9 /* SignUpViewController.swift in Sources */,
+				039878222626CCE900ED9EB8 /* DataManager.swift in Sources */,
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
 				0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */,
+				0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */,
+				0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */,
 				03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */,
 				0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */,
 				03FDA9792620B577009E02F9 /* StarButton.swift in Sources */,
 				03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */,
+				03612E792626C63300CD68B7 /* Firebase Reference.swift in Sources */,
 				03FDA96326206B75009E02F9 /* NotificationCenter.swift in Sources */,
 				03FDA9762620B571009E02F9 /* HeartButton.swift in Sources */,
 				0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */,

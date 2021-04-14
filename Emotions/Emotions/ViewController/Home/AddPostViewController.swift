@@ -78,8 +78,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     
     @objc func uploadButtonTapped() {
         
-        //        guard let userEmail = AuthManager.shared.currentUser?.email else { return }
-        //        guard let userNickName = AuthManager.shared.currentUser?.displayName else { return }
+        guard let userEmail = AuthManager.shared.currentUser?.email else { return }
         
         var firstCard: Card?
         var secondCard: Card?
@@ -107,11 +106,14 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        
         guard let afterAMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date()) else { return }
         let endDate = Int(afterAMonth.timeIntervalSince1970)
         
+        guard let postkey = database.child("posts").childByAutoId().key else { return }
+        
         let dataDictionary: [String:Any] = [
+            "postID":postkey,
+            "userEmail":userEmail,
             "content":content,
             "endDate":endDate,
             "firstCardID":firstCard?.id ?? "0",
@@ -120,21 +122,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             "starPoint": 0
         ]
         
-        let post = Post(postID: "aergarg", userEmail: "phs@ivf.or.or", dictionary: dataDictionary)
-        PostManager.shared.posts.append(post)
-        
-        //        let postRef = database.child("posts").childByAutoId()
-        //        postRef.child("userEmail").setValue(userEmail)
-        //        postRef.child("userNickName").setValue(userNickName)
-        //        postRef.child("title").setValue(title)
-        //        postRef.child("content").setValue(content)
-        //        postRef.child("date").setValue(date)
-        //        postRef.child("firstCardTitle").setValue(firstCardTitle)
-        //        postRef.child("secondCardTitle").setValue(secondCardTitle)
-        //        postRef.child("thirdCardTitle").setValue(thirdCardTitle)
-        //        postRef.child("heart").setValue(false)
-        //        postRef.child("drop").setValue(false)
-        //        postRef.child("leaf").setValue(false)
+        postsRef.childByAutoId().setValue(dataDictionary)
 
         self.navigationController?.popViewController(animated: true)        
     }
