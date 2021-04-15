@@ -177,24 +177,23 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             post.isStar = !currentStarState
         }
         cell.commentButtonCompletion = { [weak self] in
-            guard let self = self else { return }
-            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            guard let postDetailViewController = homeStoryboard.instantiateViewController(withIdentifier: "postDetailVC") as? PostDetailViewController else { return }
-            postDetailViewController.post = post
-            self.navigationController?.pushViewController(postDetailViewController, animated: true)
+//            guard let self = self else { return }
+//            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+//            guard let postDetailViewController = homeStoryboard.instantiateViewController(withIdentifier: "postDetailVC") as? PostDetailViewController else { return }
+//            postDetailViewController.post = post
+//            self.navigationController?.pushViewController(postDetailViewController, animated: true)
         }
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetailSegue" {
-            print("postDetailSegue")
-            guard let indexPath = tableView.indexPathForSelectedRow else {
-                print("indexPathForSelectedRow")
-                return }
-            let post = DataManager.shared.latestposts[indexPath.row]
-            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
-            postDetailViewController.post = post
+//            guard let indexPath = tableView.indexPathForSelectedRow else {
+//                print("indexPathForSelectedRow")
+//                return }
+//            let post = DataManager.shared.latestposts[indexPath.row]
+//            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
+//            postDetailViewController.post = post
         }
     }
 }
