@@ -31,10 +31,11 @@ class Post {
         self.starPoint = dictionary["starPoint"] as? Int ?? 0
         self.heartUser = dictionary["heartUser"] as? [String:Bool] ?? [:]
         self.starUser = dictionary["starUser"] as? [String:Bool] ?? [:]
-        let heartDic = heartUser.filter { $0.key == userID }
-        let startDic = starUser.filter { $0.key == userID }
-        self.isHeart = heartDic[userID] ?? false
-        self.isStar = startDic[userID] ?? false
+        guard let currentUser = AuthManager.shared.currentUser?.uid else { return }
+        let heartDic = heartUser.filter { $0.key == currentUser }
+        let startDic = starUser.filter { $0.key == currentUser }
+        self.isHeart = heartDic[currentUser] ?? false
+        self.isStar = startDic[currentUser] ?? false
         if let firstCardID = dictionary["firstCardID"] as? String {
             self.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
         }

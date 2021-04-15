@@ -106,7 +106,7 @@ class PostViewController: CustomTransitionViewController {
         homeSegmenttedControl.cornerRadius = 8
         homeSegmenttedControl.backgroundColor = .white
         homeSegmenttedControl.alwaysAnnouncesValue = true
-        homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["최신 글", "공감 글", "좋은 글"],
+        homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["최신 글", "좋은 글"],
                                                                normalTextColor: UIColor(red: 0.48, green: 0.48, blue: 0.51, alpha: 1.00))
         homeSegmenttedControl.addTarget(self, action: #selector(homeSegmenttedControlValueChanged(_:)), for: .valueChanged)
     }
@@ -139,9 +139,6 @@ class PostViewController: CustomTransitionViewController {
         if sender.index == 0 {
             print("최신 글")
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-        } else if sender.index == 1 {
-            print("공감 글")
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightPink")
         } else {
             print("좋은 글")
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "joyBG")
