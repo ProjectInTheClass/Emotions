@@ -17,7 +17,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     let completeButton: UIButton = {
        let button = UIButton()
         button.backgroundColor = UIColor(named: "emotionLightGreen")
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 20
         let configTitle = NSAttributedString(text: "완료", aligment: .center, color: .white)
         button.setAttributedTitle(configTitle, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight:.black)
@@ -93,6 +93,8 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     // 선택 후에 다시 복귀했을 때, 바로 취소할 수가 없음. 한번 더 누르거나, 4장 선택으로 인식해서 deselect로 가지 않음. 예상으로는 처음 CardVC에 들어갔을 때, 선택된게 없기 때문에 당연히 deselect가 안먹을 듯. 그럼... else 구문에도 deselect 넣어주면 안되나? 그럼 3이하에서는 더블클릭, 3이상에서는 실행될듯함. 준비하고 실행
+    // => 관련해서 수정은 해놨는데, 다시 해보니 일단은 문제가 없다... 혹시 문제 생기면 다시 수정
+    
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let item = collectionView.cellForItem(at: indexPath)
         if item?.isSelected ?? false {
@@ -106,6 +108,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
                 collectionView.reloadItems(at: [indexPath])
                 return true
             } else {
+                collectionView.deselectItem(at: indexPath, animated: true)
                 print("3장의 카드만 선택해 주세요.")
                 return false
             }
@@ -136,7 +139,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.heightAnchor.constraint(equalToConstant: 52).isActive = true
-        backgroundView.topAnchor.constraint(equalTo: completeButton.bottomAnchor).isActive = true
+        backgroundView.topAnchor.constraint(equalTo: completeButton.centerYAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true

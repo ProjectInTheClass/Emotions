@@ -126,6 +126,8 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         ]
         
         postsRef.child(postkey).setValue(dataDictionary)
+        
+        // 추후에는 다양한 레포에 저장할 수 있도록 함. 어떤 레포를 쓸건지 고민해봐야 한다.
 
         self.navigationController?.popViewController(animated: true)        
     }

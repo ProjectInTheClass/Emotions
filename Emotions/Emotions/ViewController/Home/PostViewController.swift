@@ -135,6 +135,7 @@ class PostViewController: CustomTransitionViewController {
     }
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
+        // 다양한 레포에 따른 반응을 구현하도록 임시저장소를 만들어야 한다. 단순히 array를 바꿔가며 사용하는게 좋은가? 아니면 다른 방법이 있을가 고민해봐야 한다.
         if sender.index == 0 {
             print("최신 글")
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
