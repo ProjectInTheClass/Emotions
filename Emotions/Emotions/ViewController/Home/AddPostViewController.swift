@@ -109,7 +109,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         guard let afterAMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date()) else { return }
         let endDate = Int(afterAMonth.timeIntervalSince1970)
         
-        guard let postkey = database.child("posts").childByAutoId().key else { return }
+        let postkey = UUID().uuidString
         
         let dataDictionary: [String:Any] = [
             "postID":postkey,
@@ -119,10 +119,12 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             "firstCardID":firstCard?.id ?? "0",
             "secondCardID":secondCard?.id ?? "0",
             "thirdCardID":thirdCard?.id ?? "0",
-            "starPoint": 0
+            "starPoint": 0,
+            "heartUser": [],
+            "starUser": []
         ]
         
-        postsRef.childByAutoId().setValue(dataDictionary)
+        postsRef.child(postkey).setValue(dataDictionary)
 
         self.navigationController?.popViewController(animated: true)        
     }

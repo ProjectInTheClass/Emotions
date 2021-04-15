@@ -149,18 +149,29 @@ class PostViewController: UIViewController {
 extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostManager.shared.posts.count
+        return DataManager.shared.latestposts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        let post = PostManager.shared.posts[indexPath.row]
+        let post = DataManager.shared.latestposts[indexPath.row]
         let comments = CommentManager.shared.comments
         cell.updateUI(post: post, comments: comments)
         
         // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록 
-        cell.heartButtonCompletion = { currentHearState in
-            post.isHeart = !currentHearState
+        cell.heartButtonCompletion = { currentHeartState in
+            post.isHeart = !currentHeartState
+            let postKey = post.postID
+            if !currentHeartState {
+                let updateValue = ["heartUser":[post.userEmail]]
+                database.child("posts").child(postKey).updateChildValues(updateValue)
+            } else {
+                let updateValue = ["heartUser":[post.userEmail]]
+                database.child("posts").child(postKey).updateChildValues(updateValue)
+                
+            }
+           
+            
         }
         cell.starButtonCompletion = { currentStarState in
             post.isStar = !currentStarState
@@ -181,7 +192,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             guard let indexPath = tableView.indexPathForSelectedRow else {
                 print("indexPathForSelectedRow")
                 return }
-            let post = PostManager.shared.posts[indexPath.row]
+            let post = DataManager.shared.latestposts[indexPath.row]
             guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
             postDetailViewController.post = post
         }

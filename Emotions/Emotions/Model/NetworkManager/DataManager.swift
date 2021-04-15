@@ -17,6 +17,7 @@ class DataManager {
     
     var latestposts = [Post]()
     var loadedPosts = [Post]()
+    var sympathyPosts = [Post]()
     
     let numberOfOneLoad = 5
     
@@ -61,7 +62,7 @@ class DataManager {
             
             for anyDatum in snapshotData {
                 let snapshotDatum = anyDatum as! DataSnapshot
-                let postkey = snapshotDatum.key
+//                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let post = Post(dictionary: dicDatum)
                 
@@ -70,6 +71,13 @@ class DataManager {
                 self.loadedPosts += [post]
             }
             self.latestposts += self.loadedPosts.prefix(self.numberOfOneLoad)
+            
+            // loadedPosts에서 포스트의 카드마다 내 현재 감정(내 글의 카드 타입 평균치 -> cardType)과 비슷한 감정의 글을 모아서 넣어주기
+            // 이건 다 가져와서, 내부적으로 쿼리를 해야겠다.
+            // self.sympathyPosts
+            
+            // loadedPosts에서 UserCount가 가장 많은 
+            
             completion(true)
         })
     }
@@ -78,9 +86,9 @@ class DataManager {
         var filterQuery: DatabaseQuery?
         
         if let latestDate = self.latestposts.first?.endDate {
-            filterQuery = database.child("posts").queryOrdered(byChild: "endDate").queryStarting(atValue: nil, childKey: "\(latestDate + 1)")
+            filterQuery = database.child("posts").queryOrdered(byChild: "endDate").queryStarting(afterValue: latestDate)
         } else {
-            filterQuery = database.child("posts").queryOrdered(byChild: "endDate").queryStarting(atValue: nil, childKey: "\(0)")
+            filterQuery = database.child("posts").queryOrdered(byChild: "endDate").queryStarting(atValue: 0)
         }
         
         filterQuery?.observeSingleEvent(of: .value, with: { snapshot in
@@ -91,7 +99,7 @@ class DataManager {
             
             for anyDatum in snapshotData {
                 let snapshotDatum = anyDatum as! DataSnapshot
-                let postkey = snapshotDatum.key
+//                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let post = Post(dictionary: dicDatum)
                 
