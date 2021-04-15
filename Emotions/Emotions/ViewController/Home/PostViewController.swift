@@ -7,8 +7,10 @@
 
 import UIKit
 import BetterSegmentedControl
+import TransitionButton
+import FirebaseDatabase
 
-class PostViewController: UIViewController {
+class PostViewController: CustomTransitionViewController {
     
     let emotionsTitle: UIImageView = {
         let imageView = UIImageView()
@@ -138,10 +140,10 @@ class PostViewController: UIViewController {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
         } else if sender.index == 1 {
             print("공감 글")
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionDeepPink")
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightPink")
         } else {
             print("좋은 글")
-            homeSegmenttedControl.indicatorViewBackgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "joyBG")
         }
     }
 }
@@ -162,20 +164,48 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         cell.heartButtonCompletion = { currentHeartState in
             post.isHeart = !currentHeartState
             let postKey = post.postID
-            if !currentHeartState {
-                let updateValue = ["heartUser":[post.userEmail]]
-                database.child("posts").child(postKey).updateChildValues(updateValue)
-            } else {
-                let updateValue = ["heartUser":[post.userEmail]]
-                database.child("posts").child(postKey).updateChildValues(updateValue)
-                
+            database.child("posts").child(postKey).runTransactionBlock { currentData  in
+                if var post = currentData.value as? [String:Any],
+                   let uid = AuthManager.shared.currentUser?.uid {
+                    var heart = post["heartUser"] as? [String:Bool] ?? [:]
+                    if !currentHeartState {
+                        heart[uid] = true
+                    } else {
+                        heart.removeValue(forKey: uid)
+                    }
+                    post["heartUser"] = heart
+                    currentData.value = post
+                    return TransactionResult.success(withValue: currentData)
+                }
+                return TransactionResult.success(withValue: currentData)
             }
-           
-            
         }
+    
         cell.starButtonCompletion = { currentStarState in
             post.isStar = !currentStarState
+            let postKey = post.postID
+            database.child("posts").child(postKey).runTransactionBlock { currentData -> TransactionResult in
+                if var post = currentData.value as? [String:Any],
+                   let uid = AuthManager.shared.currentUser?.uid {
+                    var star = post["starUser"] as? [String:Bool] ?? [:]
+                    var starPoint = post["starPoint"] as? Int ?? 0
+                    if !currentStarState {
+                        star[uid] = true
+                        starPoint += 1
+                    } else {
+                        star[uid] = false
+                        star.removeValue(forKey: uid)
+                        starPoint -= 1
+                    }
+                    post["starUser"] = star
+                    post["starPoint"] = starPoint
+                    currentData.value = post
+                    return TransactionResult.success(withValue: currentData)
+                }
+                return TransactionResult.success(withValue: currentData)
+            }
         }
+        
         cell.commentButtonCompletion = { [weak self] in
 //            guard let self = self else { return }
 //            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
