@@ -10,11 +10,7 @@ import UIKit
 class PostManager {
     static let shared = PostManager()
     
-    var posts: [Post] = [] {
-        didSet {
-            NotificationCenter.default.post(name: Notification.Name("postsValueChanged"), object: nil)
-        }
-    }
+    var posts: [Post] = []
     
     // 우리가 필요한 데이터 목록
     // 1. 최신순으로 정렬된 posts
