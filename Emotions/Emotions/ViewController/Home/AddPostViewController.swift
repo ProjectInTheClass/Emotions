@@ -77,7 +77,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func uploadButtonTapped() {
-        
+        guard let uid = AuthManager.shared.currentUser?.uid else { return }
         guard let userEmail = AuthManager.shared.currentUser?.email else { return }
         
         var firstCard: Card?
@@ -119,9 +119,10 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             "firstCardID":firstCard?.id ?? "0",
             "secondCardID":secondCard?.id ?? "0",
             "thirdCardID":thirdCard?.id ?? "0",
-            "starPoint": 0,
-            "heartUser": [],
-            "starUser": []
+            "starPoint":0,
+            "heartUser":[:],
+            "starUser":[:],
+            "userID":uid
         ]
         
         postsRef.child(postkey).setValue(dataDictionary)
