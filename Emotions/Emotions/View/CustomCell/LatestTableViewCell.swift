@@ -1,5 +1,5 @@
 //
-//  PostTableViewCell.swift
+//  LatestTableViewCell.swift
 //  Emotions
 //
 //  Created by 박형석 on 2021/04/08.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostTableViewCell: UITableViewCell {
+class LatestTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var postContentLabel: UILabel!

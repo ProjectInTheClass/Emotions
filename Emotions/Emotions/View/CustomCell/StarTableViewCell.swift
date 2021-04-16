@@ -1,13 +1,13 @@
 //
-//  SympathyTableViewCell.swift
+//  StarTableViewCell.swift
 //  Emotions
 //
-//  Created by 박형석 on 2021/04/08.
+//  Created by 박형석 on 2021/04/16.
 //
 
 import UIKit
 
-class SympathyTableViewCell: UITableViewCell {
+class StarTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var postContentLabel: UILabel!
