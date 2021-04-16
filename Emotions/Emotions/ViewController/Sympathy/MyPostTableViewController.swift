@@ -1,13 +1,13 @@
 //
-//  SympathyTableViewController.swift
+//  MyPostTableViewController.swift
 //  Emotions
 //
-//  Created by 박형석 on 2021/04/08.
+//  Created by 박형석 on 2021/04/16.
 //
 
 import UIKit
 
-class SympathyTableViewController: UITableViewController {
+class MyPostTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

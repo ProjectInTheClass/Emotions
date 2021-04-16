@@ -17,9 +17,9 @@ class DataManager {
     
     var latestposts = [Post]()
     var loadedPosts = [Post]()
-    var sympathyPosts = [Post]()
+   
     
-    let numberOfOneLoad = 5
+    private let numberOfOneLoad = 5
     
     public func uploadUserImage(userImage: UIImage, email: String, completion: @escaping (Bool)->Void) {
         let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
