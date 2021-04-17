@@ -9,8 +9,9 @@ import UIKit
 import FirebaseDatabase
 
 class LatestPostsTableViewController: UITableViewController {
-    
+   
     @IBOutlet weak var loadingLabel: UIActivityIndicatorView!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

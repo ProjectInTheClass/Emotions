@@ -184,7 +184,7 @@
 				03FDA92C261FF43C009E02F9 /* onboarding */,
 				0321F1C02616A024000A3F90 /* Home */,
 				0398786E262814F300ED9EB8 /* Detail */,
-				0337C65F261EAF0100E1F765 /* Sympathy */,
+				0337C65F261EAF0100E1F765 /* MyPost */,
 				0337C660261EAF1300E1F765 /* Static */,
 				0321F1C12616A02F000A3F90 /* Profile */,
 			);
@@ -258,12 +258,12 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
-		0337C65F261EAF0100E1F765 /* Sympathy */ = {
+		0337C65F261EAF0100E1F765 /* MyPost */ = {
 			isa = PBXGroup;
 			children = (
 				0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */,
 			);
-			path = Sympathy;
+			path = MyPost;
 			sourceTree = "<group>";
 		};
 		0337C660261EAF1300E1F765 /* Static */ = {
