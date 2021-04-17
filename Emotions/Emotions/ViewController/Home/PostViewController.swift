@@ -9,6 +9,7 @@ import UIKit
 import BetterSegmentedControl
 import TransitionButton
 import FirebaseDatabase
+import BLTNBoard
 
 class PostViewController: CustomTransitionViewController {
     
@@ -32,14 +33,46 @@ class PostViewController: CustomTransitionViewController {
         return button
     }()
     
+    lazy var bulletinManager: BLTNItemManager = {
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.lightGray
+        shadow.shadowBlurRadius = 2
+        let attribute : [NSAttributedString.Key: Any] = [
+            .font : UIFont.systemFont(ofSize: 14, weight: .light),
+            .foregroundColor : UIColor.black,
+            .shadow : shadow
+        ]
+        let attributeString = NSAttributedString(string: "'감정들'과 함께 숨은 감정을 발견하고 이웃들과 공유하세요!\n 감정을 건강하게 관리할 수 있습니다:)", attributes: attribute)
+        let page = BLTNPageItem(title: "감정들 가입하기")
+        page.appearance.titleTextColor = .black
+        page.attributedDescriptionText = attributeString
+        page.actionButtonTitle = "애플 아이디로 간편 가입하기"
+        page.alternativeButtonTitle = "조금 더 둘러볼래요"
+        page.appearance.alternativeButtonTitleColor = UIColor(named: emotionDeepGreen)!
+        page.image = UIImage(named: "invitation")
+        page.requiresCloseButton = false
+        page.appearance.actionButtonColor = UIColor(named: emotionDeepGreen)!
+        page.appearance.actionButtonTitleColor = .white
+        page.actionHandler = { (item: BLTNActionItem) in
+            AuthManager.shared.appleLogin { (success) in
+                if success {
+                    
+                } else {
+                    
+                }
+            }
+        }
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        return BLTNItemManager(rootItem: page)
+    }()
+    
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     
     @IBOutlet weak var latestContainerView: UIView!
     @IBOutlet weak var sympathyContainerView: UIView!
     @IBOutlet weak var starContainerView: UIView!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +88,7 @@ class PostViewController: CustomTransitionViewController {
         AuthManager.shared.checkLogin { success in
             if success {
                 DispatchQueue.main.async {
-                    let sb = UIStoryboard(name: "Home", bundle: nil)
-                    guard let vc = sb.instantiateViewController(withIdentifier: "loginVC") as? LoginViewController else { return }
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: false)
+                    self.bulletinManager.showBulletin(above: self)
                 }
             } else {
                 print("유저 자동 로그인")
@@ -77,7 +107,7 @@ class PostViewController: CustomTransitionViewController {
                                                                normalTextColor: UIColor(red: 0.48, green: 0.48, blue: 0.51, alpha: 1.00))
         homeSegmenttedControl.addTarget(self, action: #selector(homeSegmenttedControlValueChanged(_:)), for: .valueChanged)
     }
-
+    
     func navigationConfigureUI() {
         navigationItem.title = ""
         let addButton = UIBarButtonItem(customView: addPostButton)
@@ -93,7 +123,13 @@ class PostViewController: CustomTransitionViewController {
     
     // 아직 구현안함 + 나중에 추가하거나 제거
     @objc func searchPostButtonTapped() {
-        print("PostTableViewController - searchPostButtonTapped()")
+        AuthManager.shared.logoutUser { success in
+            if success {
+                print("성공")
+            } else {
+                print("실패")
+            }
+        }
     }
     
     @objc func addPostButtonTapped() {

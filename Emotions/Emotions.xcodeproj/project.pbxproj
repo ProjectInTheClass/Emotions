@@ -15,13 +15,12 @@
 		0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0321F1A126169E26000A3F90 /* LaunchScreen.storyboard */; };
 		0321F1AF26169E61000A3F90 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F1AE26169E61000A3F90 /* Post.swift */; };
 		0337C64B261EAAC700E1F765 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C64A261EAAC700E1F765 /* Home.storyboard */; };
-		0337C654261EAC2F00E1F765 /* LatestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C653261EAC2F00E1F765 /* LatestTableViewCell.swift */; };
+		0337C654261EAC2F00E1F765 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C653261EAC2F00E1F765 /* PostTableViewCell.swift */; };
 		0337C657261EADAD00E1F765 /* Sympathy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C656261EADAD00E1F765 /* Sympathy.storyboard */; };
 		0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C659261EADBC00E1F765 /* Static.storyboard */; };
 		0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C65C261EADC700E1F765 /* Profile.storyboard */; };
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
-		0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */; };
 		03612E792626C63300CD68B7 /* Firebase Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03612E782626C63300CD68B7 /* Firebase Reference.swift */; };
 		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
 		0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398781E2626CC4500ED9EB8 /* AuthManager.swift */; };
@@ -33,7 +32,6 @@
 		039878742628930000ED9EB8 /* SympathyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878732628930000ED9EB8 /* SympathyTableViewController.swift */; };
 		039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878772628932700ED9EB8 /* StarTableViewController.swift */; };
 		0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */; };
-		03987896262904CD00ED9EB8 /* StarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03987895262904CD00ED9EB8 /* StarTableViewCell.swift */; };
 		03C610DC262518E000284FD5 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DB262518E000284FD5 /* functions.swift */; };
 		03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */; };
 		03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */; };
@@ -41,6 +39,7 @@
 		03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */; };
 		03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */; };
 		03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */; };
+		03E250E9262B1EBD00D5DEAA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E250E8262B1EBD00D5DEAA /* Constants.swift */; };
 		03FDA91E261FE5F6009E02F9 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA91D261FE5F6009E02F9 /* PostViewController.swift */; };
 		03FDA92A261FEEA3009E02F9 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA929261FEEA3009E02F9 /* PostManager.swift */; };
 		03FDA934261FF5BB009E02F9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA933261FF5BB009E02F9 /* Card.swift */; };
@@ -70,13 +69,12 @@
 		0321F1A426169E26000A3F90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0321F1AE26169E61000A3F90 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0337C64A261EAAC700E1F765 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		0337C653261EAC2F00E1F765 /* LatestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTableViewCell.swift; sourceTree = "<group>"; };
+		0337C653261EAC2F00E1F765 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		0337C656261EADAD00E1F765 /* Sympathy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sympathy.storyboard; sourceTree = "<group>"; };
 		0337C659261EADBC00E1F765 /* Static.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Static.storyboard; sourceTree = "<group>"; };
 		0337C65C261EADC700E1F765 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympathyTableViewCell.swift; sourceTree = "<group>"; };
 		03612E782626C63300CD68B7 /* Firebase Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase Reference.swift"; sourceTree = "<group>"; };
 		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0398781E2626CC4500ED9EB8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 		039878732628930000ED9EB8 /* SympathyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympathyTableViewController.swift; sourceTree = "<group>"; };
 		039878772628932700ED9EB8 /* StarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTableViewController.swift; sourceTree = "<group>"; };
 		0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewController.swift; sourceTree = "<group>"; };
-		03987895262904CD00ED9EB8 /* StarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTableViewCell.swift; sourceTree = "<group>"; };
 		03C610DB262518E000284FD5 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +93,7 @@
 		03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShareTechMono.ttf; sourceTree = "<group>"; };
 		03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
 		03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		03E250E8262B1EBD00D5DEAA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		03FDA91D261FE5F6009E02F9 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		03FDA929261FEEA3009E02F9 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		03FDA933261FF5BB009E02F9 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -253,9 +251,7 @@
 		0337C652261EAC1300E1F765 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				0337C653261EAC2F00E1F765 /* LatestTableViewCell.swift */,
-				0337C66A261EAF7B00E1F765 /* SympathyTableViewCell.swift */,
-				03987895262904CD00ED9EB8 /* StarTableViewCell.swift */,
+				0337C653261EAC2F00E1F765 /* PostTableViewCell.swift */,
 				03DFA51226220DE5009139A9 /* CardCollectionViewCell.swift */,
 				03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */,
 			);
@@ -343,6 +339,7 @@
 				03FDA948262022C1009E02F9 /* extension.swift */,
 				03FDA96226206B75009E02F9 /* NotificationCenter.swift */,
 				03C610DB262518E000284FD5 /* functions.swift */,
+				03E250E8262B1EBD00D5DEAA /* Constants.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -494,7 +491,7 @@
 				03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */,
 				0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */,
 				03FDA937261FF647009E02F9 /* CardManager.swift in Sources */,
-				0337C654261EAC2F00E1F765 /* LatestTableViewCell.swift in Sources */,
+				0337C654261EAC2F00E1F765 /* PostTableViewCell.swift in Sources */,
 				03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */,
 				03FDA943262020B9009E02F9 /* Comment.swift in Sources */,
 				039878742628930000ED9EB8 /* SympathyTableViewController.swift in Sources */,
@@ -510,7 +507,6 @@
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
 				039878222626CCE900ED9EB8 /* DataManager.swift in Sources */,
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
-				0337C66B261EAF7B00E1F765 /* SympathyTableViewCell.swift in Sources */,
 				0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */,
 				0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */,
 				03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */,
@@ -518,12 +514,12 @@
 				03FDA9792620B577009E02F9 /* StarButton.swift in Sources */,
 				03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */,
 				03612E792626C63300CD68B7 /* Firebase Reference.swift in Sources */,
-				03987896262904CD00ED9EB8 /* StarTableViewCell.swift in Sources */,
 				03FDA96326206B75009E02F9 /* NotificationCenter.swift in Sources */,
 				03FDA9762620B571009E02F9 /* HeartButton.swift in Sources */,
 				0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */,
 				03FDA97C2620B702009E02F9 /* CommentButton.swift in Sources */,
 				0321F1AF26169E61000A3F90 /* Post.swift in Sources */,
+				03E250E9262B1EBD00D5DEAA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

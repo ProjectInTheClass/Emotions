@@ -193,7 +193,7 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     @objc func selectCardButtonTapped() {
         
-        for (key, value) in selectedCardsDic {
+        for (_, value) in selectedCardsDic {
             selectedCards.append(value)
         }
         

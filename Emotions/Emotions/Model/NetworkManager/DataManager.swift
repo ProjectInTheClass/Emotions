@@ -55,7 +55,7 @@ class DataManager {
     
     public func loadPosts(completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
-        orderedQuery = database.child("posts").queryOrdered(byChild: "date")
+        orderedQuery = database.child("posts").queryOrdered(byChild: "endDate")
         orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
             var snapshotData = snapshot.children.allObjects
             snapshotData.reverse()
@@ -66,7 +66,15 @@ class DataManager {
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let post = Post(dictionary: dicDatum)
                 
-                // post의 isHeart와 isStar의 Bool여부를 결정할 함수 필요.
+                if let firstCardID = dicDatum["firstCardID"] as? String {
+                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                }
+                if let secondCardID = dicDatum["secondCardID"] as? String {
+                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                }
+                if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                }
                 
                 self.loadedPosts += [post]
             }
@@ -103,7 +111,15 @@ class DataManager {
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let post = Post(dictionary: dicDatum)
                 
-                // post의 isHeart와 isStar의 Bool여부를 결정할 함수 필요.
+                if let firstCardID = dicDatum["firstCardID"] as? String {
+                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                }
+                if let secondCardID = dicDatum["secondCardID"] as? String {
+                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                }
+                if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                }
                 
                 freshPostsChunk += [post]
             }
