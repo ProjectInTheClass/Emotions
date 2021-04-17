@@ -15,11 +15,7 @@ class SympathyTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("SympathyTableViewController - viewDidLoad")
-
         initRefresh()
-        
         PostManager.shared.loadPostsBySympathy { success in
             if success {
                 DispatchQueue.main.async {
@@ -70,7 +66,7 @@ class SympathyTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "sympathyCell", for: indexPath) as? SympathyTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.sympathyPosts[indexPath.row]
         let comments = CommentManager.shared.comments
         cell.updateUI(post: post, comments: comments)

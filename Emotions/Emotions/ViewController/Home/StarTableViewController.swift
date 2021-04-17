@@ -12,8 +12,6 @@ class StarTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("StarTableViewController - viewDidLoad")
-        
         initRefresh()
         PostManager.shared.loadPostsByStarPoint { success in
             if success {
@@ -45,7 +43,7 @@ class StarTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "starCell", for: indexPath) as? StarTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.starPosts[indexPath.row]
         let comments = CommentManager.shared.comments
         cell.updateUI(post: post, comments: comments)

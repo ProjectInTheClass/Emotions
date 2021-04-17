@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LatestTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var postContentLabel: UILabel!
@@ -36,6 +36,7 @@ class LatestTableViewCell: UITableViewCell {
         if let firstCard = post.firstCard {
             firstCardLabel.text = "#\(firstCard.title)"
             firstCardLabel.textColor = firstCard.cardType.typeColor
+            firstCardLabel.isHidden = false
         } else {
             firstCardLabel.isHidden = true
         }
@@ -43,6 +44,7 @@ class LatestTableViewCell: UITableViewCell {
         if let secondCard = post.secondCard {
             secondCardLabel.text = "#\(secondCard.title)"
             secondCardLabel.textColor = secondCard.cardType.typeColor
+            secondCardLabel.isHidden = false
         } else {
             secondCardLabel.isHidden = true
         }
@@ -50,6 +52,7 @@ class LatestTableViewCell: UITableViewCell {
         if let thirdCard = post.thirdCard {
             thirdCardLabel.text = "#\(thirdCard.title)"
             thirdCardLabel.textColor = thirdCard.cardType.typeColor
+            thirdCardLabel.isHidden = false
         } else {
             thirdCardLabel.isHidden = true
         }

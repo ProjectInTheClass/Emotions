@@ -36,14 +36,5 @@ class Post {
         let startDic = starUser.filter { $0.key == currentUser }
         self.isHeart = heartDic[currentUser] ?? false
         self.isStar = startDic[currentUser] ?? false
-        if let firstCardID = dictionary["firstCardID"] as? String {
-            self.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-        }
-        if let secondCardID = dictionary["secondCardID"] as? String {
-            self.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-        }
-        if let thirdCardID = dictionary["thirdCardID"] as? String {
-            self.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-        }
     }
 }

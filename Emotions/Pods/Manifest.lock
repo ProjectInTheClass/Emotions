@@ -1,5 +1,6 @@
 PODS:
   - BetterSegmentedControl (2.0.1)
+  - BulletinBoard (5.0.0)
   - Firebase/Analytics (7.6.0):
     - Firebase/Core
   - Firebase/Auth (7.6.0):
@@ -91,6 +92,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0)
+  - BulletinBoard
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
@@ -102,6 +104,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - BetterSegmentedControl
+    - BulletinBoard
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -123,6 +126,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
+  BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   Firebase: e1e089d9aac215a52442583f818ab61de3c4581b
   FirebaseAnalytics: 9f8f4feab1f3fddf4e4515f8f022fe6aa9e51043
   FirebaseAuth: 0a1df88dc32569db509e6269c3e4bf2a168e8ae8
@@ -142,6 +146,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 60a49fe1c5f180893768af7b19d5956acbfa9baf
+PODFILE CHECKSUM: 0087c6b2e4706ef92536180d87ed2d72e437f297
 
 COCOAPODS: 1.10.1

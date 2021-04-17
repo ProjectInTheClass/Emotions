@@ -28,6 +28,16 @@ class PostManager {
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let post = Post(dictionary: dicDatum)
                 
+                if let firstCardID = dicDatum["firstCardID"] as? String {
+                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                }
+                if let secondCardID = dicDatum["secondCardID"] as? String {
+                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                }
+                if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                }
+                
                 self.starPosts += [post]
             }
             completion(true)
