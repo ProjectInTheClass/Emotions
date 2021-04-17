@@ -11,7 +11,7 @@ import UIKit
 struct CornerRadius {
     static let myValue: CGFloat = 8.0
 }
-
+// 문단 단락 스타일
 extension NSAttributedString {
     convenience init(text: String, aligment: NSTextAlignment, color: UIColor) {
         let paragraphStyle = NSMutableParagraphStyle()
