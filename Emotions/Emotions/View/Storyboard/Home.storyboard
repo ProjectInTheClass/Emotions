@@ -193,7 +193,7 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x76-vi-70X">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x76-vi-70X">
                                                     <rect key="frame" x="86.5" y="35" width="221.5" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#기뻐하는" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAc-2G-fs3">
@@ -216,13 +216,26 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwH-0Q-EXr">
+                                                    <rect key="frame" x="340" y="23" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="D41-Yc-Vyn"/>
+                                                        <constraint firstAttribute="height" constant="40" id="QQo-cw-lR5"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="text.alignright" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Cn0-bU-a1X" secondAttribute="trailing" constant="25" id="5B8-hC-YoT"/>
                                                 <constraint firstItem="Cn0-bU-a1X" firstAttribute="centerX" secondItem="peQ-Sm-Rqr" secondAttribute="centerX" id="Ait-XA-zbm"/>
                                                 <constraint firstItem="x76-vi-70X" firstAttribute="centerX" secondItem="peQ-Sm-Rqr" secondAttribute="centerX" id="CPW-qa-WUJ"/>
+                                                <constraint firstItem="FwH-0Q-EXr" firstAttribute="trailing" secondItem="Cn0-bU-a1X" secondAttribute="trailing" constant="11" id="EGl-ni-PKm"/>
                                                 <constraint firstItem="x76-vi-70X" firstAttribute="top" secondItem="peQ-Sm-Rqr" secondAttribute="top" constant="35" id="Gz9-36-b58"/>
+                                                <constraint firstItem="FwH-0Q-EXr" firstAttribute="centerY" secondItem="x76-vi-70X" secondAttribute="centerY" id="HRR-d9-FhM"/>
                                                 <constraint firstItem="WaA-tX-OkV" firstAttribute="centerX" secondItem="peQ-Sm-Rqr" secondAttribute="centerX" id="HxU-7Q-Rtm"/>
                                                 <constraint firstItem="Dmh-WM-gPJ" firstAttribute="leading" secondItem="Cn0-bU-a1X" secondAttribute="leading" constant="-10" id="OF4-qw-AOm"/>
                                                 <constraint firstItem="Cn0-bU-a1X" firstAttribute="leading" secondItem="peQ-Sm-Rqr" secondAttribute="leading" constant="25" id="Q21-nS-OlS"/>
@@ -248,12 +261,14 @@
                                     <outlet property="heartButton" destination="989-ea-G6p" id="aOq-mf-rh5"/>
                                     <outlet property="leftDateLabel" destination="WaA-tX-OkV" id="Rkj-Pb-SwB"/>
                                     <outlet property="postContentLabel" destination="Cn0-bU-a1X" id="LxL-9d-EV3"/>
+                                    <outlet property="reportButton" destination="FwH-0Q-EXr" id="pR8-zb-xJJ"/>
                                     <outlet property="secondCardLabel" destination="bC3-4f-eEV" id="zMd-VB-RDA"/>
                                     <outlet property="starButton" destination="FVT-vx-2qD" id="3pq-p5-W6w"/>
                                     <outlet property="thirdCardLabel" destination="n3g-Tv-FAL" id="Qwp-tQ-YIR"/>
                                     <outletCollection property="buttons" destination="989-ea-G6p" collectionClass="NSMutableArray" id="dLc-0E-T5g"/>
                                     <outletCollection property="buttons" destination="FVT-vx-2qD" collectionClass="NSMutableArray" id="pbU-lf-pkP"/>
                                     <outletCollection property="buttons" destination="gce-89-U1P" collectionClass="NSMutableArray" id="0wc-oK-Utp"/>
+                                    <outletCollection property="buttons" destination="FwH-0Q-EXr" collectionClass="NSMutableArray" id="1S9-9Y-OlD"/>
                                     <segue destination="bWr-Fm-GQx" kind="show" id="D6Y-A6-Fdo"/>
                                 </connections>
                             </tableViewCell>
@@ -1065,6 +1080,7 @@
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star" width="24" height="24"/>
+        <image name="text.alignright" catalog="system" width="128" height="100"/>
         <namedColor name="emotionDeepPink">
             <color red="1" green="0.71372549019607845" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

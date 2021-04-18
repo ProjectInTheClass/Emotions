@@ -64,19 +64,39 @@ class DataManager {
                 let snapshotDatum = anyDatum as! DataSnapshot
 //                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
-                let post = Post(dictionary: dicDatum)
+                if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
+                    for isReportUser in isReportedDic {
+                        let user = isReportUser.key
+                        if AuthManager.shared.currentUser?.uid == user {
+                            print("신고한 유저 : \(user)")
+                        } else {
+                            let post = Post(dictionary: dicDatum)
+                            if let firstCardID = dicDatum["firstCardID"] as? String {
+                                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                            }
+                            if let secondCardID = dicDatum["secondCardID"] as? String {
+                                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                            }
+                            if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                            }
+                            self.loadedPosts += [post]
+                        }
+                    }
+                } else {
+                    let post = Post(dictionary: dicDatum)
+                    if let firstCardID = dicDatum["firstCardID"] as? String {
+                        post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                    }
+                    if let secondCardID = dicDatum["secondCardID"] as? String {
+                        post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                    }
+                    if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                        post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                    }
+                    self.loadedPosts += [post]
+                }
                 
-                if let firstCardID = dicDatum["firstCardID"] as? String {
-                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-                }
-                if let secondCardID = dicDatum["secondCardID"] as? String {
-                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                }
-                if let thirdCardID = dicDatum["thirdCardID"] as? String {
-                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                }
-                
-                self.loadedPosts += [post]
             }
             self.latestposts += self.loadedPosts.prefix(self.numberOfOneLoad)
             

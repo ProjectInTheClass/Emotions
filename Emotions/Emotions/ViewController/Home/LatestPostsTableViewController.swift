@@ -122,6 +122,38 @@ class LatestPostsTableViewController: UITableViewController {
 //            postDetailViewController.post = post
 //            self.navigationController?.pushViewController(postDetailViewController, animated: true)
         }
+        
+        cell.reportButtonCompletion = { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(title: "신고하기", message: "\n이 게시물을 신고하고 삭제합니다.\n 신고가 누적된 사용자는 사용이 제한됩니다. 좋은 커뮤니티 문화를 함께 만들어 주세요:)", preferredStyle: .alert)
+            let okAciton = UIAlertAction(title: "신고하기", style: .destructive) { (alert) in
+                DataManager.shared.latestposts.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.reloadData()
+                database.child("posts").child(post.postID).runTransactionBlock { currentData  in
+                    if var currentPost = currentData.value as? [String:Any],
+                       let uid = AuthManager.shared.currentUser?.uid {
+                        var report = currentPost["reportedUser"] as? [String:Bool] ?? [:]
+                        report[uid] = true
+                        currentPost["reportedUser"] = report
+                        if report.count >= 10 {
+                            blackList.child(post.userID).setValue(post.postID)
+                        }
+                        currentData.value = post
+                        return TransactionResult.success(withValue: currentData)
+                    }
+                    return TransactionResult.success(withValue: currentData)
+                }
+                
+            
+                // post reportedUser에 [현재유저:true]로 데이터 변경, 10개 넘을 시 post.uid 블랙리스트 추가 -> 관리자가 사용 중지 혹은 제거
+                // 다시 load시 관련한 포스트 제외
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alert.addAction(okAciton)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
         return cell
     }
     

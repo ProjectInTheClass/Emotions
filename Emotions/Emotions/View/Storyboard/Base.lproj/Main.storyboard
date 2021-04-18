@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="81" y="-287"/>
         </scene>
-        <!--Sympathy-->
+        <!--MyPost-->
         <scene sceneID="VkD-5l-AJQ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Sympathy" id="aGF-CK-bUW" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MyPost" id="aGF-CK-bUW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="0qL-KA-aUI"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLp-TJ-Z9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
