@@ -19,6 +19,7 @@ class Post {
     var userID: String
     var heartUser = [String:Bool]()
     var starUser = [String:Bool]()
+    var reportedUser = [String:Bool]()
     var isStar = false
     var isHeart = false
 
@@ -31,6 +32,7 @@ class Post {
         self.starPoint = dictionary["starPoint"] as? Int ?? 0
         self.heartUser = dictionary["heartUser"] as? [String:Bool] ?? [:]
         self.starUser = dictionary["starUser"] as? [String:Bool] ?? [:]
+        self.reportedUser = dictionary["reportedUser"] as? [String:Bool] ?? [:]
         guard let currentUser = AuthManager.shared.currentUser?.uid else { return }
         let heartDic = heartUser.filter { $0.key == currentUser }
         let startDic = starUser.filter { $0.key == currentUser }

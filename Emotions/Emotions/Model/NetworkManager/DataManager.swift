@@ -15,42 +15,10 @@ class DataManager {
     let database = Database.database().reference()
     let storage = Storage.storage().reference()
     
-    var latestposts = [Post]()
-    var loadedPosts = [Post]()
-   
-    
     private let numberOfOneLoad = 5
     
-    public func uploadUserImage(userImage: UIImage, email: String, completion: @escaping (Bool)->Void) {
-        let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
-        guard let uploadData = userImage.jpegData(compressionQuality: 0.9) else {
-            print("ConvertImageToData Error")
-            return
-        }
-        let metaData = StorageMetadata()
-        metaData.contentType = "jpeg"
-        imageRef.putData(uploadData, metadata: metaData) {
-            metadata, error in
-            if let error = error {
-                print("Upload Error : \(error.localizedDescription)")
-            } else {
-                completion(true)
-            }
-        }
-    }
-    
-    public func downloadUserImage(email: String, completion: @escaping (URL?)->Void) {
-        let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
-        imageRef.downloadURL { (url, error) in
-            if let error = error {
-                print("Download Error : \(error.localizedDescription)")
-            } else {
-                print("다운로드 성공")
-                completion(url)
-            }
-        }
-    }
-    
+    var latestposts = [Post]()
+    var loadedPosts = [Post]()
     //MARK: - download & upload Posts
     
     public func loadPosts(completion: @escaping (Bool)->Void) {
@@ -64,19 +32,39 @@ class DataManager {
                 let snapshotDatum = anyDatum as! DataSnapshot
 //                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
-                let post = Post(dictionary: dicDatum)
+                if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
+                    for isReportUser in isReportedDic {
+                        let user = isReportUser.key
+                        if AuthManager.shared.currentUser?.uid == user {
+                            print("신고한 유저 : \(user)")
+                        } else {
+                            let post = Post(dictionary: dicDatum)
+                            if let firstCardID = dicDatum["firstCardID"] as? String {
+                                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                            }
+                            if let secondCardID = dicDatum["secondCardID"] as? String {
+                                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                            }
+                            if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                            }
+                            self.loadedPosts += [post]
+                        }
+                    }
+                } else {
+                    let post = Post(dictionary: dicDatum)
+                    if let firstCardID = dicDatum["firstCardID"] as? String {
+                        post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                    }
+                    if let secondCardID = dicDatum["secondCardID"] as? String {
+                        post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                    }
+                    if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                        post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                    }
+                    self.loadedPosts += [post]
+                }
                 
-                if let firstCardID = dicDatum["firstCardID"] as? String {
-                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-                }
-                if let secondCardID = dicDatum["secondCardID"] as? String {
-                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                }
-                if let thirdCardID = dicDatum["thirdCardID"] as? String {
-                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                }
-                
-                self.loadedPosts += [post]
             }
             self.latestposts += self.loadedPosts.prefix(self.numberOfOneLoad)
             

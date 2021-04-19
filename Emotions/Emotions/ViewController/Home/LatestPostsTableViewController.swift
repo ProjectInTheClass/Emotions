@@ -122,6 +122,34 @@ class LatestPostsTableViewController: UITableViewController {
 //            postDetailViewController.post = post
 //            self.navigationController?.pushViewController(postDetailViewController, animated: true)
         }
+        
+        cell.reportButtonCompletion = { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(title: "신고하기", message: "\n이 게시물을 신고하고 삭제합니다.\n 신고가 누적된 사용자는 사용이 제한됩니다. 좋은 커뮤니티 문화를 함께 만들어 주세요:)", preferredStyle: .alert)
+            let okAciton = UIAlertAction(title: "신고하기", style: .destructive) { (alert) in
+                DataManager.shared.latestposts.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.reloadData()
+                database.child("posts").child(post.postID).runTransactionBlock { currentData -> TransactionResult in
+                    if var currentPost = currentData.value as? [String:Any],
+                       let uid = AuthManager.shared.currentUser?.uid {
+                        var report = currentPost["reportedUser"] as? [String:Bool] ?? [:]
+                        report[uid] = true
+                        currentPost["reportedUser"] = report
+                        if report.count >= 10 {
+                            blackList.child(post.userID).setValue(post.postID)
+                        }
+                        currentData.value = currentPost
+                        return TransactionResult.success(withValue: currentData)
+                    }
+                    return TransactionResult.success(withValue: currentData)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alert.addAction(okAciton)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
         return cell
     }
     

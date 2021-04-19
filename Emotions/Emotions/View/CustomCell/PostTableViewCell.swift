@@ -18,11 +18,13 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var heartButton: HeartButton!
     @IBOutlet weak var starButton: StarButton!
     @IBOutlet weak var commentButton: CommentButton!
+    @IBOutlet weak var reportButton: UIButton!
     @IBOutlet var buttons: [UIButton]!
     
     var heartButtonCompletion: ((Bool)->Void)?
     var starButtonCompletion: ((Bool)->Void)?
     var commentButtonCompletion: (()->Void)?
+    var reportButtonCompletion: (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -88,6 +90,10 @@ class PostTableViewCell: UITableViewCell {
         case commentButton:
             if let commentButtonCompletion = commentButtonCompletion {
                 commentButtonCompletion()
+            }
+        case reportButton:
+            if let reportButtonCompletion = reportButtonCompletion {
+                reportButtonCompletion()
             }
         default:
             break
