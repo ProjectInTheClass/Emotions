@@ -130,7 +130,7 @@ class LatestPostsTableViewController: UITableViewController {
                 DataManager.shared.latestposts.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.tableView.reloadData()
-                database.child("posts").child(post.postID).runTransactionBlock { currentData  in
+                database.child("posts").child(post.postID).runTransactionBlock { currentData -> TransactionResult in
                     if var currentPost = currentData.value as? [String:Any],
                        let uid = AuthManager.shared.currentUser?.uid {
                         var report = currentPost["reportedUser"] as? [String:Bool] ?? [:]
@@ -139,15 +139,11 @@ class LatestPostsTableViewController: UITableViewController {
                         if report.count >= 10 {
                             blackList.child(post.userID).setValue(post.postID)
                         }
-                        currentData.value = post
+                        currentData.value = currentPost
                         return TransactionResult.success(withValue: currentData)
                     }
                     return TransactionResult.success(withValue: currentData)
                 }
-                
-            
-                // post reportedUser에 [현재유저:true]로 데이터 변경, 10개 넘을 시 post.uid 블랙리스트 추가 -> 관리자가 사용 중지 혹은 제거
-                // 다시 load시 관련한 포스트 제외
             }
             let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
             alert.addAction(okAciton)

@@ -62,8 +62,7 @@ class PostManager {
             for postData in dictionary.values {
                 let dicDatum = postData as! [String:AnyObject]
                 for heartUser in dicDatum["heartUser"] as! [String:Bool] {
-                    let user = heartUser.key
-                    if "OQTEn22ytOetxsmRuDx7jQeXMbu2" == user {
+                    if AuthManager.shared.currentUser?.uid == heartUser.key {
                         let post = Post(dictionary: dicDatum)
                         if let firstCardID = dicDatum["firstCardID"] as? String {
                             post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)

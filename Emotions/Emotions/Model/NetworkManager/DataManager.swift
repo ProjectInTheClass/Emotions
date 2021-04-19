@@ -15,42 +15,10 @@ class DataManager {
     let database = Database.database().reference()
     let storage = Storage.storage().reference()
     
-    var latestposts = [Post]()
-    var loadedPosts = [Post]()
-   
-    
     private let numberOfOneLoad = 5
     
-    public func uploadUserImage(userImage: UIImage, email: String, completion: @escaping (Bool)->Void) {
-        let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
-        guard let uploadData = userImage.jpegData(compressionQuality: 0.9) else {
-            print("ConvertImageToData Error")
-            return
-        }
-        let metaData = StorageMetadata()
-        metaData.contentType = "jpeg"
-        imageRef.putData(uploadData, metadata: metaData) {
-            metadata, error in
-            if let error = error {
-                print("Upload Error : \(error.localizedDescription)")
-            } else {
-                completion(true)
-            }
-        }
-    }
-    
-    public func downloadUserImage(email: String, completion: @escaping (URL?)->Void) {
-        let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
-        imageRef.downloadURL { (url, error) in
-            if let error = error {
-                print("Download Error : \(error.localizedDescription)")
-            } else {
-                print("다운로드 성공")
-                completion(url)
-            }
-        }
-    }
-    
+    var latestposts = [Post]()
+    var loadedPosts = [Post]()
     //MARK: - download & upload Posts
     
     public func loadPosts(completion: @escaping (Bool)->Void) {

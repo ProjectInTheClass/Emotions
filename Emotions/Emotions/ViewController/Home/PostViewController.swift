@@ -40,13 +40,15 @@ class PostViewController: CustomTransitionViewController {
         let attribute : [NSAttributedString.Key: Any] = [
             .font : UIFont.systemFont(ofSize: 14, weight: .light),
             .foregroundColor : UIColor.black,
-            .shadow : shadow
+            .shadow : shadow,
         ]
         let attributeString = NSAttributedString(string: "'감정들'과 함께 숨은 감정을 발견하고 이웃들과 공유하세요!\n 감정을 건강하게 관리할 수 있습니다:)", attributes: attribute)
         let page = BLTNPageItem(title: "감정들 가입하기")
         page.appearance.titleTextColor = .black
+        page.appearance.titleFontSize = 22.0
+        page.appearance.titleFontDescriptor = UIFontDescriptor(name: "ridibatang", size: 24.0)
         page.attributedDescriptionText = attributeString
-        page.actionButtonTitle = "애플 아이디로 간편 가입하기"
+        page.actionButtonTitle = "감정들 가입하기"
         page.alternativeButtonTitle = "조금 더 둘러볼래요"
         page.appearance.alternativeButtonTitleColor = UIColor(named: emotionDeepGreen)!
         page.image = UIImage(named: "invitation")
@@ -54,12 +56,11 @@ class PostViewController: CustomTransitionViewController {
         page.appearance.actionButtonColor = UIColor(named: emotionDeepGreen)!
         page.appearance.actionButtonTitleColor = .white
         page.actionHandler = { (item: BLTNActionItem) in
-            AuthManager.shared.appleLogin { (success) in
-                if success {
-                    
-                } else {
-                    
-                }
+            
+            self.dismiss(animated: true) {
+                let sb = UIStoryboard(name: "Home", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+                self.present(vc, animated: true, completion: nil)
             }
         }
         page.alternativeHandler = { (item: BLTNActionItem) in
@@ -155,7 +156,6 @@ class PostViewController: CustomTransitionViewController {
             AuthManager.shared.checkLogin { success in
                 if success {
                     DispatchQueue.main.async {
-                        self.bulletinManager.showBulletin(above: self)
                         self.latestContainerView.isHidden = true
                         self.sympathyContainerView.isHidden = true
                         self.starContainerView.isHidden = true

@@ -12,6 +12,12 @@ class MyPostTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        PostManager.shared.myHeartPosts = []
         PostManager.shared.loadPostsByHeart { success in
             if success {
                 DispatchQueue.main.async {

@@ -7,8 +7,11 @@
 
 import Foundation
 import FirebaseAuth
+import AuthenticationServices
+import CryptoKit
 
 class AuthManager {
+    
     static let shared = AuthManager()
     
     var currentUser = Auth.auth().currentUser
@@ -42,4 +45,8 @@ class AuthManager {
             return
         }
     }
+    
 }
+
+
+

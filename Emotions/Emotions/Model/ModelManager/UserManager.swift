@@ -9,11 +9,15 @@ import Foundation
 import UIKit
 import BLTNBoard
 import FirebaseAuth
+import FirebaseStorage
 
 class UserManager {
     static let shared = UserManager()
     
-    // 이메일 & 패스워드 로그인 구현
+    let storage = Storage.storage().reference()
+    
+    // 이메일 & 패스워드 로그인 구현 - 사용안함
+    
     public func loginUser(email: String?, password: String?, completion: @escaping (Bool)->Void) {
         if let email = email,
            let password = password {
@@ -54,7 +58,7 @@ class UserManager {
                 }
                 
                 guard let image = UIImage(systemName: "person.circle") else { return }
-                DataManager.shared.uploadUserImage(userImage: image, email: email) { (success) in
+                UserManager.shared.uploadUserImage(userImage: image, email: email) { (success) in
                     if success {
                         self.userImageUpdate()
                     } else {
@@ -69,7 +73,7 @@ class UserManager {
         guard let user = Auth.auth().currentUser else { print("AuthManager - registrationUser() - currentUser")
             return }
         let changeRequest = user.createProfileChangeRequest()
-        DataManager.shared.downloadUserImage(email: user.email!) { (url) in
+        UserManager.shared.downloadUserImage(email: user.email!) { (url) in
             if let url = url {
                 changeRequest.photoURL = url
                 changeRequest.commitChanges { error in
@@ -82,6 +86,37 @@ class UserManager {
             }
         }
     }
+    
+    public func uploadUserImage(userImage: UIImage, email: String, completion: @escaping (Bool)->Void) {
+        let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
+        guard let uploadData = userImage.jpegData(compressionQuality: 0.9) else {
+            print("ConvertImageToData Error")
+            return
+        }
+        let metaData = StorageMetadata()
+        metaData.contentType = "jpeg"
+        imageRef.putData(uploadData, metadata: metaData) {
+            metadata, error in
+            if let error = error {
+                print("Upload Error : \(error.localizedDescription)")
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    public func downloadUserImage(email: String, completion: @escaping (URL?)->Void) {
+        let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
+        imageRef.downloadURL { (url, error) in
+            if let error = error {
+                print("Download Error : \(error.localizedDescription)")
+            } else {
+                print("다운로드 성공")
+                completion(url)
+            }
+        }
+    }
+    
     
     public func userImageDelete() {
         guard let currentUserEmail = AuthManager.shared.currentUser?.email else {
