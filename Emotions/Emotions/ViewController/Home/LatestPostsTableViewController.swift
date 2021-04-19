@@ -125,7 +125,7 @@ class LatestPostsTableViewController: UITableViewController {
         
         cell.reportButtonCompletion = { [weak self] in
             guard let self = self else { return }
-            let alert = UIAlertController(title: "신고하기", message: "\n이 게시물을 신고하고 삭제합니다.\n 신고가 누적된 사용자는 사용이 제한됩니다. 좋은 커뮤니티 문화를 함께 만들어 주세요:)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "신고하기", message: "\n이 게시물을 신고하고 삭제합니다.\n 신고가 누적된 사용자는 사용이 제한됩니다. 좋은 커뮤니티 문화를 함께 만들어 주세요.", preferredStyle: .alert)
             let okAciton = UIAlertAction(title: "신고하기", style: .destructive) { (alert) in
                 DataManager.shared.latestposts.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -136,7 +136,7 @@ class LatestPostsTableViewController: UITableViewController {
                         var report = currentPost["reportedUser"] as? [String:Bool] ?? [:]
                         report[uid] = true
                         currentPost["reportedUser"] = report
-                        if report.count >= 10 {
+                        if report.count >= 5 {
                             blackList.child(post.userID).setValue(post.postID)
                         }
                         currentData.value = currentPost

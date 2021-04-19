@@ -9,32 +9,29 @@ import UIKit
 import FirebaseDatabase
 
 class SympathyTableViewController: UITableViewController {
-    
-    @IBOutlet weak var loadingLabel: UIActivityIndicatorView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initRefresh()
-        PostManager.shared.loadPostsBySympathy { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } else {
-                
-            }
-        }
+//        PostManager.shared.loadPostsBySympathy { (posts:[Post], success) in
+//            if success {
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            } else {
+//
+//            }
+//        }
     }
-    
+
     // MARK: - Functions
-    
+
     private func initRefresh() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
-    
+
     @objc func handleRefreshControl() {
 //        DataManager.shared.loadFreshPosts { success in
 //            if success {
@@ -43,11 +40,11 @@ class SympathyTableViewController: UITableViewController {
 //        }
         tableView.refreshControl?.endRefreshing()
     }
-    
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let  height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
-        let distanceFromBottom = scrollView.contentSize.height + self.loadingLabel.frame.height - contentYoffset
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if distanceFromBottom < height {
             print(" you reached end of the table")
 //            DataManager.shared.loadPastPosts { success in
@@ -57,20 +54,20 @@ class SympathyTableViewController: UITableViewController {
 //            }
         }
     }
-    
+
 
     // MARK: - Table view data source
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PostManager.shared.sympathyPosts.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.sympathyPosts[indexPath.row]
         let comments = CommentManager.shared.comments
         cell.updateUI(post: post, comments: comments)
-        
+
         // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록
         cell.heartButtonCompletion = { currentHeartState in
             post.isHeart = !currentHeartState
@@ -91,7 +88,7 @@ class SympathyTableViewController: UITableViewController {
                 return TransactionResult.success(withValue: currentData)
             }
         }
-    
+
         cell.starButtonCompletion = { currentStarState in
             post.isStar = !currentStarState
             let postKey = post.postID
@@ -116,7 +113,7 @@ class SympathyTableViewController: UITableViewController {
                 return TransactionResult.success(withValue: currentData)
             }
         }
-        
+
         cell.commentButtonCompletion = {
 //            guard let self = self else { return }
 //            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
@@ -126,7 +123,7 @@ class SympathyTableViewController: UITableViewController {
         }
         return cell
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetailSegue" {
 //            guard let indexPath = tableView.indexPathForSelectedRow else {
