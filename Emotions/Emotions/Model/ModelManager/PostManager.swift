@@ -47,13 +47,26 @@ class PostManager {
     var sympathyPosts = [Post]()
     
     // 공감페이지 로드할 때도 신고된 게시물 나오지 않도록 로직 추가 (로드 포스트에 있음)
-    func loadPostsBySympathy(completion: @escaping (Bool)->Void) {
-        sympathyPosts = []
-        completion(true)
+    func loadPostsBySympathy(posts: [Post], completion: @escaping ([Post])->Void) {
+        
+//        posts.filter { $0.firstCard?.cardType == CARDTYPE. }
+        
+        let sympathyPosts = [Post]()
+        
+        completion(sympathyPosts)
+    }
+    
+    var userPosts = [Post]()
+    
+    func laodUserPosts(completion: (Bool)->Void) {
+        myPostRef.observeSingleEvent(of: .value) { snapshot in
+            let snapshotValue = snapshot.value as! [String:Any]
+            print("snapshotValue --------> \(snapshot)")
+        }
     }
     
     var myHeartPosts = [Post]()
-    
+
     func loadPostsByHeart(completion: @escaping (Bool)->Void){
         var myPostQuery: DatabaseQuery?
         myPostQuery = postsRef.queryOrdered(byChild: "heartUser").queryStarting(atValue: true)

@@ -43,12 +43,12 @@ class PostViewController: CustomTransitionViewController {
             .shadow : shadow,
         ]
         let attributeString = NSAttributedString(string: "'감정들'과 함께 숨은 감정을 발견하고 이웃들과 공유하세요!\n 감정을 건강하게 관리할 수 있습니다:)", attributes: attribute)
-        let page = BLTNPageItem(title: "감정들 가입하기")
+        let page = BLTNPageItem(title: "감정들 함께하기")
         page.appearance.titleTextColor = .black
         page.appearance.titleFontSize = 22.0
         page.appearance.titleFontDescriptor = UIFontDescriptor(name: "ridibatang", size: 24.0)
         page.attributedDescriptionText = attributeString
-        page.actionButtonTitle = "감정들 가입하기"
+        page.actionButtonTitle = "감정들 로그인 & 회원가입"
         page.alternativeButtonTitle = "조금 더 둘러볼래요"
         page.appearance.alternativeButtonTitleColor = UIColor(named: emotionDeepGreen)!
         page.image = UIImage(named: "invitation")

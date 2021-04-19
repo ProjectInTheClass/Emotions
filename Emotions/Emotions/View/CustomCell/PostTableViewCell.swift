@@ -32,6 +32,12 @@ class PostTableViewCell: UITableViewCell {
         buttons.forEach { button in
             button.addTarget(self, action: #selector(buttonsTapped(_:)), for: .touchUpInside)
         }
+//        firstCardLabel.layer.masksToBounds = true
+//        firstCardLabel.layer.cornerRadius = 15
+//        secondCardLabel.layer.masksToBounds = true
+//        secondCardLabel.layer.cornerRadius = 15
+//        thirdCardLabel.layer.masksToBounds = true
+//        thirdCardLabel.layer.cornerRadius = 15
     }
     
     func updateUI(post: Post, comments: [Comment]) {
