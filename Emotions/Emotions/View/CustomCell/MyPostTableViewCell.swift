@@ -8,16 +8,30 @@
 import UIKit
 
 class MyPostTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var firstCardImage: UIImageView!
+    @IBOutlet weak var secondCardImage: UIImageView!
+    @IBOutlet weak var thirdCardImage: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var containView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateUI(post: Post) {
+        firstCardImage.layer.masksToBounds = true
+        firstCardImage.layer.cornerRadius = firstCardImage.frame.height / 2
+        secondCardImage.layer.masksToBounds = true
+        secondCardImage.layer.cornerRadius = secondCardImage.frame.height / 2
+        thirdCardImage.layer.masksToBounds = true
+        thirdCardImage.layer.cornerRadius = thirdCardImage.frame.height / 2
+        firstCardImage.image = post.firstCard?.image
+        secondCardImage.image = post.secondCard?.image
+        thirdCardImage.image = post.thirdCard?.image
+        dateLabel.text = "\(dateToDday(post: post))일 남은 감정"
     }
 
 }

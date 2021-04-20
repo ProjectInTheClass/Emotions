@@ -23,6 +23,7 @@ class LatestPostsTableViewController: UITableViewController {
                 }
             }
         }
+        
     }
     
     // MARK: - Functions
