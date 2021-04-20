@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordFindingButton: UIButton!
     @IBOutlet weak var browseButton: UIButton!
     
+    var afterLoginCompletion: (()->Void)?
+    
     //MARK: - ViewLife Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +40,10 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         emailTextField.layer.masksToBounds = true
         emailTextField.layer.cornerRadius = CornerRadius.myValue
-        emailTextField.attributedPlaceholder = NSAttributedString(text: "이메일", aligment: .left, color: .white)
+        emailTextField.attributedPlaceholder = NSAttributedString(text: "이메일", aligment: .left, color: .lightGray)
         passwordTextField.layer.masksToBounds = true
         passwordTextField.layer.cornerRadius = CornerRadius.myValue
-        passwordTextField.attributedPlaceholder = NSAttributedString(text: "비밀번호", aligment: .left, color: .white)
+        passwordTextField.attributedPlaceholder = NSAttributedString(text: "비밀번호", aligment: .left, color: .lightGray)
         loginButton.spinnerColor = .white
         loginButton.cornerRadius = CornerRadius.myValue
     }
@@ -73,14 +75,15 @@ class LoginViewController: UIViewController {
         
         loginButton.startAnimation()
         UserManager.shared.loginUser(email: email, password: password) { success in
-            DispatchQueue.main.async {
-                if success {
+            if success {
+                DispatchQueue.main.async {
                     self.loginButton.stopAnimation()
                     self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.2)
                 }
+            } else {
+                self.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.2)
             }
+            
         }
     }
     
@@ -91,12 +94,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func browseButtonTapped() {
-        
-        // 일단은 디스미스
         self.dismiss(animated: true, completion: nil)
-        
-        // 바로 로그인뷰가 다시 올라온다. 둘러보기를 어떻게 할건지 고민 추가
-        
     }
 }
 

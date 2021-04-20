@@ -13,58 +13,48 @@ class SympathyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initRefresh()
-//        PostManager.shared.loadPostsBySympathy { (posts:[Post], success) in
-//            if success {
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            } else {
-//
-//            }
-//        }
+        PostManager.shared.loadPostsByHeart { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("failure")
+            }
+        }
     }
 
     // MARK: - Functions
-
+    
     private func initRefresh() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
-
+    
     @objc func handleRefreshControl() {
-//        DataManager.shared.loadFreshPosts { success in
-//            if success {
-                self.tableView.reloadData()
-//            }
-//        }
+        PostManager.shared.myHeartPosts = []
+        PostManager.shared.loadPostsByHeart { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("failure")
+            }
+        }
         tableView.refreshControl?.endRefreshing()
     }
-
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let  height = scrollView.frame.size.height
-        let contentYoffset = scrollView.contentOffset.y
-        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom < height {
-            print(" you reached end of the table")
-//            DataManager.shared.loadPastPosts { success in
-//                if success {
-//                    self.tableView.reloadData()
-//                }
-//            }
-        }
-    }
-
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostManager.shared.sympathyPosts.count
+        return PostManager.shared.myHeartPosts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        let post = PostManager.shared.sympathyPosts[indexPath.row]
+        let post = PostManager.shared.myHeartPosts[indexPath.row]
         let comments = CommentManager.shared.comments
         cell.updateUI(post: post, comments: comments)
 

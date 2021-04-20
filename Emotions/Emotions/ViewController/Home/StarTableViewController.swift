@@ -12,7 +12,6 @@ class StarTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRefresh()
         PostManager.shared.loadPostsByStarPoint { success in
             if success {
                 DispatchQueue.main.async {
@@ -24,16 +23,6 @@ class StarTableViewController: UITableViewController {
     
     // MARK: - Functions
     
-    private func initRefresh() {
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
-    }
-    
-    @objc func handleRefreshControl() {
-        self.tableView.reloadData()
-        tableView.refreshControl?.endRefreshing()
-    }
     
 
     // MARK: - Table view data source

@@ -20,3 +20,5 @@ let postsRef = database.child("posts")
 let myPostRef = database.child("myPost")
 let myPostCell = "myPostCell"
 let blackList = database.child("blackList")
+let afterLogin = "afterLogin"
+let afterRegistration = "afterRegistration"

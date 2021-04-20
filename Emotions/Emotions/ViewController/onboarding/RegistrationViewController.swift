@@ -30,25 +30,25 @@ class RegistrationViewController: UIViewController {
     private func updateUI() {
         registrationEmailTextField.layer.masksToBounds = true
         registrationEmailTextField.layer.cornerRadius = CornerRadius.myValue
-        registrationEmailTextField.attributedPlaceholder = NSAttributedString(text: "이메일", aligment: .left, color: .white)
+        registrationEmailTextField.attributedPlaceholder = NSAttributedString(text: "이메일", aligment: .left, color: .lightGray)
         
         registrationNickNameTextField.layer.masksToBounds = true
         registrationNickNameTextField.layer.cornerRadius = CornerRadius.myValue
-        registrationNickNameTextField.attributedPlaceholder = NSAttributedString(text: "닉네임", aligment: .left, color: .white)
+        registrationNickNameTextField.attributedPlaceholder = NSAttributedString(text: "닉네임", aligment: .left, color: .lightGray)
         
         registrationPasswordTextField.layer.masksToBounds = true
         registrationPasswordTextField.layer.cornerRadius = CornerRadius.myValue
-        registrationPasswordTextField.attributedPlaceholder = NSAttributedString(text: "비밀번호", aligment: .left, color: .white)
+        registrationPasswordTextField.attributedPlaceholder = NSAttributedString(text: "비밀번호", aligment: .left, color: .lightGray)
         
         registrationPasswordCheckTextField.layer.masksToBounds = true
         registrationPasswordCheckTextField.layer.cornerRadius = CornerRadius.myValue
-        registrationPasswordCheckTextField.attributedPlaceholder = NSAttributedString(text: "비밀번호 확인", aligment: .left, color: .white)
+        registrationPasswordCheckTextField.attributedPlaceholder = NSAttributedString(text: "비밀번호 확인", aligment: .left, color: .lightGray)
     }
     
     //MARK: - Transition Button
     
     private func updateTransitionUI(){
-        signUpButton.backgroundColor = #colorLiteral(red: 0.1934123039, green: 0.1686745882, blue: 0.4157863557, alpha: 1)
+        signUpButton.backgroundColor = #colorLiteral(red: 0.8779806495, green: 0.9357933402, blue: 1, alpha: 1)
         signUpButton.cornerRadius = CornerRadius.myValue
         signUpButton.spinnerColor = .white
         signUpButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
@@ -84,7 +84,7 @@ class RegistrationViewController: UIViewController {
             DispatchQueue.main.async {
                 if success {
                     DispatchQueue.main.async {
-                        button.stopAnimation(animationStyle: .expand) {
+                        button.stopAnimation(animationStyle: .normal) {
                             // 버튼 컴플리션 핸들러
                             self.view.window?.rootViewController?.dismiss(animated: false, completion: {
                                 let sb = UIStoryboard(name: "Home", bundle: nil)

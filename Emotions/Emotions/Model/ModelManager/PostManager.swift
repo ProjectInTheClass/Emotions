@@ -44,25 +44,29 @@ class PostManager {
         })
     }
     
-    var sympathyPosts = [Post]()
-    
-    // 공감페이지 로드할 때도 신고된 게시물 나오지 않도록 로직 추가 (로드 포스트에 있음)
-    func loadPostsBySympathy(posts: [Post], completion: @escaping ([Post])->Void) {
-        
-//        posts.filter { $0.firstCard?.cardType == CARDTYPE. }
-        
-        let sympathyPosts = [Post]()
-        
-        completion(sympathyPosts)
-    }
-    
     var userPosts = [Post]()
     
-    func laodUserPosts(completion: (Bool)->Void) {
-        myPostRef.observeSingleEvent(of: .value) { snapshot in
+    func laodUserPosts(completion: @escaping (Bool)->Void) {
+        var orderedQuery: DatabaseQuery?
+        orderedQuery = postsRef.queryOrdered(byChild: "userID").queryEqual(toValue: AuthManager.shared.currentUser?.uid)
+        orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
             let snapshotValue = snapshot.value as! [String:Any]
-            print("snapshotValue --------> \(snapshot)")
-        }
+            for snapshotData in snapshotValue {
+                let postDic = snapshotData.value as! [String:Any]
+                let post = Post(dictionary: postDic)
+                if let firstCardID = postDic["firstCardID"] as? String {
+                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                }
+                if let secondCardID = postDic["secondCardID"] as? String {
+                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                }
+                if let thirdCardID = postDic["thirdCardID"] as? String {
+                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                }
+                self.userPosts += [post]
+            }
+            completion(true)
+        })
     }
     
     var myHeartPosts = [Post]()
