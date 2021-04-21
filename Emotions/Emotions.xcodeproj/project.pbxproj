@@ -22,6 +22,11 @@
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
 		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
+		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
+		0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */; };
+		0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */; };
+		0389E130262ED6D00077C20F /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12C262ED6D00077C20F /* NanumSquareExtraBold.ttf */; };
+		0389E131262ED6D00077C20F /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12D262ED6D00077C20F /* NanumSquareRegular.ttf */; };
 		0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398781E2626CC4500ED9EB8 /* AuthManager.swift */; };
 		039878222626CCE900ED9EB8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878212626CCE900ED9EB8 /* DataManager.swift */; };
 		0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398783A2626DA7800ED9EB8 /* LoginViewController.swift */; };
@@ -76,6 +81,11 @@
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
+		0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
+		0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
+		0389E12C262ED6D00077C20F /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareExtraBold.ttf; sourceTree = "<group>"; };
+		0389E12D262ED6D00077C20F /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
 		0398781E2626CC4500ED9EB8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		039878212626CCE900ED9EB8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0398783A2626DA7800ED9EB8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -325,10 +335,15 @@
 		03FDA94C26204B42009E02F9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */,
+				0389E12C262ED6D00077C20F /* NanumSquareExtraBold.ttf */,
+				0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */,
+				0389E12D262ED6D00077C20F /* NanumSquareRegular.ttf */,
 				03FDA94D26204B94009E02F9 /* RIDIBatang.otf */,
 				03FDA95326205A49009E02F9 /* Sora-VariableFont_wght.ttf */,
 				03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */,
 				03FDA9502620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf */,
+				0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -420,11 +435,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */,
 				03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */,
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
+				0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */,
 				031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */,
 				03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */,
+				0389E130262ED6D00077C20F /* NanumSquareExtraBold.ttf in Resources */,
 				03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */,
 				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,
@@ -433,7 +451,9 @@
 				0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */,
 				0398786A2628140000ED9EB8 /* Detail.storyboard in Resources */,
 				0337C657261EADAD00E1F765 /* MyPost.storyboard in Resources */,
+				0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */,
 				03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */,
+				0389E131262ED6D00077C20F /* NanumSquareRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

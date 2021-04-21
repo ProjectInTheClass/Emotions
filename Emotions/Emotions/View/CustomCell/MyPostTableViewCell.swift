@@ -14,11 +14,11 @@ class MyPostTableViewCell: UITableViewCell {
     @IBOutlet weak var thirdCardImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
-    @IBOutlet weak var containView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func updateUI(post: Post) {
@@ -31,7 +31,7 @@ class MyPostTableViewCell: UITableViewCell {
         firstCardImage.image = post.firstCard?.image
         secondCardImage.image = post.secondCard?.image
         thirdCardImage.image = post.thirdCard?.image
-        dateLabel.text = "\(dateToDday(post: post))일 남은 감정"
+        dateLabel.text = dateToDdayForMyPost(post: post)
     }
 
 }

@@ -1,36 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q1v-E7-Swj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4bK-xW-5Qk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--내 감정-->
+        <!--Static View Controller-->
         <scene sceneID="2xB-HD-Hqk">
             <objects>
-                <viewController id="Q1v-E7-Swj" sceneMemberID="viewController">
+                <viewController id="Q1v-E7-Swj" customClass="StaticViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iUn-Lo-sKM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-SR-VaE">
+                                <rect key="frame" x="20" y="308" width="374" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQU-jv-ULQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geQ-2y-gxV">
+                                        <rect key="frame" x="76" y="0.0" width="70.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VQ-gn-f4b">
+                                        <rect key="frame" x="151.5" y="0.0" width="71" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtM-P1-82p">
+                                        <rect key="frame" x="227.5" y="0.0" width="70.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFt-wi-lB2">
+                                        <rect key="frame" x="303" y="0.0" width="71" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZrN-Xs-BGi">
+                                <rect key="frame" x="20" y="108" width="374" height="200"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vr8-DN-yxe">
+                                        <rect key="frame" x="0.0" y="100" width="71" height="100"/>
+                                        <color key="backgroundColor" name="joy"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="HPF-Pk-GW7"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94F-aD-CoC">
+                                        <rect key="frame" x="76" y="100" width="70.5" height="100"/>
+                                        <color key="backgroundColor" name="sadness"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="VS2-Gm-DQX"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26C-kY-QAG">
+                                        <rect key="frame" x="151.5" y="100" width="71" height="100"/>
+                                        <color key="backgroundColor" name="anger"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Bd3-fs-gcl"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1p-iY-A69">
+                                        <rect key="frame" x="227.5" y="100" width="70.5" height="100"/>
+                                        <color key="backgroundColor" name="disgust"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="jbL-Qm-XbT"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uF-4g-jgx">
+                                        <rect key="frame" x="303" y="100" width="71" height="100"/>
+                                        <color key="backgroundColor" name="fear"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="O3b-gq-vSU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="WV1-TF-d6r"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Xsg-IN-yg8"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZrN-Xs-BGi" firstAttribute="top" secondItem="Xsg-IN-yg8" secondAttribute="top" constant="20" id="0O9-n4-NHf"/>
+                            <constraint firstItem="ZrN-Xs-BGi" firstAttribute="leading" secondItem="mC8-SR-VaE" secondAttribute="leading" id="GR4-If-7zN"/>
+                            <constraint firstItem="mC8-SR-VaE" firstAttribute="leading" secondItem="Xsg-IN-yg8" secondAttribute="leading" constant="20" id="Zsh-MX-RBU"/>
+                            <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="mC8-SR-VaE" secondAttribute="trailing" constant="20" id="cSn-5A-Kpc"/>
+                            <constraint firstItem="mC8-SR-VaE" firstAttribute="top" secondItem="ZrN-Xs-BGi" secondAttribute="bottom" id="nMu-yK-re6"/>
+                            <constraint firstItem="ZrN-Xs-BGi" firstAttribute="trailing" secondItem="mC8-SR-VaE" secondAttribute="trailing" id="oTo-6X-HgA"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="내 감정" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="Vzf-kh-hZx"/>
+                    <navigationItem key="navigationItem" id="P3k-Xv-SNP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="angerLabel" destination="9VQ-gn-f4b" id="dm2-UB-xfl"/>
+                        <outlet property="angerViewHeight" destination="Bd3-fs-gcl" id="stQ-jN-Y7L"/>
+                        <outlet property="disgustLabel" destination="BtM-P1-82p" id="pSI-Ny-DaD"/>
+                        <outlet property="disgustViewLabel" destination="jbL-Qm-XbT" id="d5Z-mo-Jps"/>
+                        <outlet property="fearLabel" destination="zFt-wi-lB2" id="ES3-U3-PuK"/>
+                        <outlet property="fearViewLabel" destination="O3b-gq-vSU" id="jKq-6s-FgC"/>
+                        <outlet property="joyLabel" destination="dQU-jv-ULQ" id="mXz-g9-rBw"/>
+                        <outlet property="joyViewHeight" destination="HPF-Pk-GW7" id="DGI-xf-os4"/>
+                        <outlet property="sadnessLabel" destination="geQ-2y-gxV" id="CyA-Y2-Kgo"/>
+                        <outlet property="sadnessViewHeight" destination="VS2-Gm-DQX" id="YID-9g-maw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbl-8W-MvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="203" y="117"/>
+            <point key="canvasLocation" x="1113.0434782608697" y="116.51785714285714"/>
+        </scene>
+        <!--내 감정-->
+        <scene sceneID="zaj-Wb-cAO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4bK-xW-5Qk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="내 감정" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="Vzf-kh-hZx"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qr0-xp-2tL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q1v-E7-Swj" kind="relationship" relationship="rootViewController" id="HA9-gu-mu3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mvG-4i-nEN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="202.89855072463769" y="116.51785714285714"/>
         </scene>
     </scenes>
     <resources>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="anger">
+            <color red="1" green="0.60392156862745094" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="disgust">
+            <color red="0.47962557563139374" green="0.81864106753812638" blue="0.59320799965503768" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="fear">
+            <color red="0.71770825253434301" green="0.56563054574542637" blue="0.90584697420634919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="joy">
+            <color red="1" green="0.76322954092527806" blue="0.35053149987684207" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="sadness">
+            <color red="0.50980392156862742" green="0.5607843137254902" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

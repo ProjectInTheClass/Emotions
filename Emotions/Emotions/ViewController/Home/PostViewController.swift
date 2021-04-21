@@ -15,7 +15,7 @@ class PostViewController: CustomTransitionViewController {
     
     let emotionsTitle: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "homeNaviTitle")
+        imageView.image = UIImage(named: "mainLogo")
         return imageView
     }()
     
@@ -28,7 +28,7 @@ class PostViewController: CustomTransitionViewController {
     
     lazy var searchPostButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "searchPost"), for: .normal)
+        button.setImage(UIImage(named: "user"), for: .normal)
         button.addTarget(self, action: #selector(searchPostButtonTapped), for: .touchUpInside)
         return button
     }()
