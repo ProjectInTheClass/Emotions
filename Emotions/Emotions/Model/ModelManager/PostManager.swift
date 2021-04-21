@@ -11,10 +11,10 @@ import UIKit
 
 class PostManager {
     static let shared = PostManager()
-    
-    var starPosts = [Post]()
     private let numberOfOneLoad = 5
     
+    var starPosts = [Post]()
+
     func loadPostsByStarPoint(completion: @escaping (Bool)->Void){
         var orderedQuery: DatabaseQuery?
         orderedQuery = postsRef.queryOrdered(byChild: "starPoint").queryLimited(toLast: 10)
@@ -48,23 +48,21 @@ class PostManager {
     
     func laodUserPosts(completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
+        PostManager.shared.userPosts = []
         orderedQuery = postsRef.queryOrdered(byChild: "userID").queryEqual(toValue: AuthManager.shared.currentUser?.uid)
-        orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
-            let snapshotValue = snapshot.value as! [String:Any]
-            for snapshotData in snapshotValue {
-                let postDic = snapshotData.value as! [String:Any]
-                let post = Post(dictionary: postDic)
-                if let firstCardID = postDic["firstCardID"] as? String {
-                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-                }
-                if let secondCardID = postDic["secondCardID"] as? String {
-                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                }
-                if let thirdCardID = postDic["thirdCardID"] as? String {
-                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                }
-                self.userPosts += [post]
+        orderedQuery?.observe(.childAdded, with: { snapshot in
+            let postDic = snapshot.value as! [String:Any]
+            let post = Post(dictionary: postDic)
+            if let firstCardID = postDic["firstCardID"] as? String {
+                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
             }
+            if let secondCardID = postDic["secondCardID"] as? String {
+                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+            }
+            if let thirdCardID = postDic["thirdCardID"] as? String {
+                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+            }
+            self.userPosts += [post]
             completion(true)
         })
     }
@@ -74,7 +72,8 @@ class PostManager {
     func loadPostsByHeart(completion: @escaping (Bool)->Void){
         var myPostQuery: DatabaseQuery?
         myPostQuery = postsRef.queryOrdered(byChild: "heartUser").queryStarting(atValue: true)
-        myPostQuery?.observeSingleEvent(of: .value, with: { (snapshot) in
+        myPostQuery?.observe(.value, with: { (snapshot) in
+            PostManager.shared.myHeartPosts = []
             let dictionary = snapshot.value as! [String:AnyObject]
             for postData in dictionary.values {
                 let dicDatum = postData as! [String:AnyObject]
