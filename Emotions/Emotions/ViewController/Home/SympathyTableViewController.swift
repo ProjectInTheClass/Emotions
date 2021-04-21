@@ -12,7 +12,6 @@ class SympathyTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRefresh()
         PostManager.shared.loadPostsByHeart { success in
             if success {
                 DispatchQueue.main.async {

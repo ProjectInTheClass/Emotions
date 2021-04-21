@@ -18,17 +18,9 @@ class MyPostTableViewController: UITableViewController {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var userPostCount: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
-       
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        PostManager.shared.userPosts = []
         PostManager.shared.laodUserPosts { (success) in
             if success {
                 DispatchQueue.main.async {
@@ -43,6 +35,21 @@ class MyPostTableViewController: UITableViewController {
                 }
             } else {
                 
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AuthManager.shared.checkLogin { success in
+            if success {
+                DispatchQueue.main.async {
+                    PostManager.shared.userPosts = []
+                    self.nicknameLabel.text = "비회원님,"
+                    self.userPostCount.text = "0가지"
+                }
+            } else {
+                print("유저 자동 로그인")
             }
         }
     }

@@ -5,6 +5,8 @@
 //  Created by 박형석 on 2021/04/09.
 //
 
+// 4월 21일 리팩토링 체크
+
 import UIKit
 import BetterSegmentedControl
 import TransitionButton
@@ -95,11 +97,11 @@ class PostViewController: CustomTransitionViewController {
     // MARK: - UI Functions
     
     func segmentedControlConfigureUI() {
-        homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-        homeSegmenttedControl.cornerRadius = 8
+        homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
+        homeSegmenttedControl.cornerRadius = 20
         homeSegmenttedControl.backgroundColor = .white
         homeSegmenttedControl.alwaysAnnouncesValue = true
-        homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["느린 편지", "공감 편지", "좋은 편지"],
+        homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["최신 글", "공감 글", "별점 글"],
                                                                normalTextColor: UIColor(red: 0.48, green: 0.48, blue: 0.51, alpha: 1.00))
         homeSegmenttedControl.addTarget(self, action: #selector(homeSegmenttedControlValueChanged(_:)), for: .valueChanged)
     }
@@ -143,16 +145,13 @@ class PostViewController: CustomTransitionViewController {
     }
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
-        // 다양한 레포에 따른 반응을 구현하도록 임시저장소를 만들어야 한다. 단순히 array를 바꿔가며 사용하는게 좋은가? 아니면 다른 방법이 있을가 고민해봐야 한다.
         if sender.index == 0 {
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
             latestContainerView.isHidden = false
             sympathyContainerView.isHidden = true
             starContainerView.isHidden = true
         } else if sender.index == 1 {
-            
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightPink")
-            
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightPink)
             AuthManager.shared.checkLogin { success in
                 if success {
                     DispatchQueue.main.async {
