@@ -26,6 +26,13 @@ func dateToDday(post: Post) -> String {
     return dateToDday
 }
 
+func dateToDdayForMyPost(post: Post) -> String {
+    let endDate = Date(timeIntervalSince1970: Double(post.endDate))
+    let dateToInt = Int(endDate.timeIntervalSinceNow / 24 / 60 / 60)
+    let dateToDday = "\(dateToInt)일 남은 감정"
+    return dateToDday
+}
+
 // 코멘트의 dateLabel 용
 func dateToMakeDay(comment: Comment) -> String {
     let today = Int(Date().timeIntervalSince1970)
