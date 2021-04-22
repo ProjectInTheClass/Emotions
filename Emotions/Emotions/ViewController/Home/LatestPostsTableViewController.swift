@@ -156,12 +156,12 @@ class LatestPostsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetailSegue" {
-//            guard let indexPath = tableView.indexPathForSelectedRow else {
-//                print("indexPathForSelectedRow")
-//                return }
-//            let post = DataManager.shared.latestposts[indexPath.row]
-//            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
-//            postDetailViewController.post = post
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                print("indexPathForSelectedRow")
+                return }
+            let post = DataManager.shared.latestposts[indexPath.row]
+            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
+            postDetailTableViewController.post = post
         }
     }
    

@@ -14,6 +14,7 @@ class PostDetailTableViewController: UITableViewController {
     var comment: Comment?
     
     
+    
     @IBOutlet weak var detailView: UIView!
     
     @IBOutlet weak var firstCardLabel: UILabel!
@@ -22,13 +23,41 @@ class PostDetailTableViewController: UITableViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    
+    
+    // footerView 추가해보기
+    
+//    let footerView = UIView(frame: CGRect(x: 400, y: 200, width: 100, height: 100))
+    
+//    let headerView = UIView(frame: CGRect(x: XXX, y: YYY, width: XXX, height: YYY))
+//    let imageView = UIImageView(frame: CGRect(x: XXX, y: YYY, width: XXX, height: YYY))
+//    headerView.addSubview(imageView)
+//    let labelView = UILabel(frame: CGRect(x: XXX, y: YYY, width: XXX, height: YYY))
+//    headerView.addSubview(labelView)
+//    self.tableView.tableHeaderView = headerView
+//
+    
+    // 뷰 추가해보기 (성공)
+    /*
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let vw = UIView()
+        vw.backgroundColor = UIColor.clear
+        let titleLabel = UILabel(frame: CGRect(x:100,y: 50 ,width:350,height:150))
+        titleLabel.numberOfLines = 0;
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.backgroundColor = UIColor.cyan
+        titleLabel.font = UIFont(name: "Montserrat-Regular", size: 12)
+        titleLabel.text  = "Footer text here"
+        vw.addSubview(titleLabel)
+        return vw
+    }
+     */
 
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+ 
         // 옵셔널 해제 : if let shadowing, forced unwrapping, guard let
         // 예외상황 적기 ?? 뒤에다가 "" 또는 다른 것
         
@@ -51,7 +80,33 @@ class PostDetailTableViewController: UITableViewController {
     
     // MARK: - functions
     
-    func updateUI() {
+    private func updateUI() {
+        guard let post = post else { return }
+        
+        //1번 감정카드
+        if let firstCard = post.firstCard {
+            firstCardLabel.text = "#\(firstCard.title)" //해시태그 대입
+            firstCardLabel.textColor = firstCard.cardType.typeColor //해시태그 레이블 고유 컬러 대입
+        } else {
+            firstCardLabel.isHidden = true
+        }
+        
+        //2번 감정카드
+        if let secondCard = post.secondCard {
+            secondCardLabel.text = "#\(secondCard.title)"
+            secondCardLabel.textColor = secondCard.cardType.typeColor
+        } else {
+            secondCardLabel.isHidden = true
+        }
+        
+        //3번 감정카드
+        if let thirdCard = post.thirdCard {
+            thirdCardLabel.text = "#\(thirdCard.title)"
+            thirdCardLabel.textColor = thirdCard.cardType.typeColor
+        } else {
+            thirdCardLabel.isHidden = true
+        }
+        
         
     }
 
@@ -70,7 +125,7 @@ class PostDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         // 여기서 어떻게 대입해야 해당 글의 코멘트의 개수만큼 읽어와서 대입할 수 있을까?
-        return 0
+        return comment?.postID.count ?? 0
     }
 
     
@@ -78,8 +133,8 @@ class PostDetailTableViewController: UITableViewController {
         // 코멘트의 데이터 소스를 무엇을 읽어와야 할까?
         // let row = ???
         
-        // reuseID 대입, 커스텀셀 파일 캐스팅
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        // reuseID 대입, 커스텀셀 캐스팅
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
 
         // 유저네임, 날짜, 댓글내용 대입
         //cell.commentUserNameLabel.text = row.userName
