@@ -7,6 +7,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Sora-VariableFont_wght.ttf">
+            <string>Sora-Regular</string>
+        </array>
+        <array key="나눔손글씨 가람연꽃.ttf">
+            <string>NanumGaRamYeonGgoc</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Table View Controller-->
         <scene sceneID="pCM-BI-JOY">
@@ -16,9 +24,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="H5L-V0-qJP">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ADf-Yn-K4c">
+                                    <rect key="frame" x="20" y="20" width="174" height="30"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6z-0T-DfV">
+                                            <rect key="frame" x="0.0" y="0.0" width="53" height="30"/>
+                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43F-YN-YlY">
+                                            <rect key="frame" x="61" y="0.0" width="52.5" height="30"/>
+                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKo-vJ-1fX">
+                                            <rect key="frame" x="121.5" y="0.0" width="52.5" height="30"/>
+                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="DjT-1m-tYD"/>
+                                    </constraints>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xX-kv-Ou1">
+                                    <rect key="frame" x="25" y="110" width="364" height="175"/>
+                                    <mutableString key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END</mutableString>
+                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-dQ-ZkK">
+                                    <rect key="frame" x="339.5" y="60" width="54.5" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="6Xm-r4-YuV"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemTealColor"/>
+                            <constraints>
+                                <constraint firstItem="ADf-Yn-K4c" firstAttribute="top" secondItem="H5L-V0-qJP" secondAttribute="top" constant="20" id="7n4-wE-6h8"/>
+                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="centerX" secondItem="H5L-V0-qJP" secondAttribute="centerX" id="BpR-9R-vca"/>
+                                <constraint firstItem="aM6-dQ-ZkK" firstAttribute="top" secondItem="ADf-Yn-K4c" secondAttribute="bottom" constant="10" id="Di8-Wz-jB6"/>
+                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" constant="25" id="HZ3-ly-x5C"/>
+                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="top" secondItem="aM6-dQ-ZkK" secondAttribute="bottom" constant="25" id="Hyk-Qw-NRu"/>
+                                <constraint firstAttribute="bottom" secondItem="8xX-kv-Ou1" secondAttribute="bottom" constant="20" id="gBq-6S-T3T"/>
+                                <constraint firstAttribute="trailing" secondItem="aM6-dQ-ZkK" secondAttribute="trailing" constant="20" id="qf9-0b-Apg"/>
+                                <constraint firstAttribute="trailing" secondItem="8xX-kv-Ou1" secondAttribute="trailing" constant="25" id="rBd-Sb-Dkv"/>
+                                <constraint firstItem="ADf-Yn-K4c" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" constant="20" id="tlk-X0-6pr"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="K2a-e9-sAG">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="333" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K2a-e9-sAG" id="cNp-vW-fF7">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -34,12 +102,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UL6-DQ-7cE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="-359"/>
+            <point key="canvasLocation" x="618.84057971014499" y="-359.59821428571428"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
