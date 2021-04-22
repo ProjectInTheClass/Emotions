@@ -21,6 +21,7 @@
 		0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C65C261EADC700E1F765 /* Profile.storyboard */; };
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
+		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
 		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
 		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
 		0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */; };
@@ -80,6 +81,7 @@
 		0337C65C261EADC700E1F765 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
 		0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				0337C667261EAF5C00E1F765 /* ProfileViewController.swift */,
+				035B931F2632406F001D4F39 /* ProfileTableViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				03C610DC262518E000284FD5 /* functions.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
 				039878222626CCE900ED9EB8 /* DataManager.swift in Sources */,
+				035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */,
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
 				0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */,
 				0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */,
