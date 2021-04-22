@@ -17,6 +17,8 @@ class PostDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var detailView: UIView!
     
+    @IBOutlet weak var firstCardBgColorView: UIView!
+    
     @IBOutlet weak var firstCardLabel: UILabel!
     @IBOutlet weak var secondCardLabel: UILabel!
     @IBOutlet weak var thirdCardLabel: UILabel!
@@ -64,12 +66,11 @@ class PostDetailTableViewController: UITableViewController {
         // 넘겨 받은 포스트 풀기, 풀었는데 데이터가 있으면 아래를 수행하라
         if let post = post {
 
-            firstCardLabel.text = post.firstCard?.title
-            secondCardLabel.text = post.secondCard?.title
-            thirdCardLabel.text = post.thirdCard?.title
+//            firstCardLabel.text = post.firstCard?.title
+//            secondCardLabel.text = post.secondCard?.title
+//            thirdCardLabel.text = post.thirdCard?.title
             dateLabel.text = dateToDday(post: post)
             contentLabel.text = post.content
-            
             
             updateUI()
             navigationConfigureUI()
@@ -83,10 +84,14 @@ class PostDetailTableViewController: UITableViewController {
     private func updateUI() {
         guard let post = post else { return }
         
+        //1번 카드의 백그라운드 컬러만 뷰에 반영
+        //해시태그는 검정색 글씨
+        
         //1번 감정카드
         if let firstCard = post.firstCard {
             firstCardLabel.text = "#\(firstCard.title)" //해시태그 대입
-            firstCardLabel.textColor = firstCard.cardType.typeColor //해시태그 레이블 고유 컬러 대입
+            //firstCardLabel.textColor = firstCard.cardType.typeColor //해시태그 레이블 고유 컬러 대입
+            firstCardBgColorView.backgroundColor = firstCard.cardType.typeColor // 해시태그 고유 백그라운드 컬러 대입
         } else {
             firstCardLabel.isHidden = true
         }
@@ -94,7 +99,7 @@ class PostDetailTableViewController: UITableViewController {
         //2번 감정카드
         if let secondCard = post.secondCard {
             secondCardLabel.text = "#\(secondCard.title)"
-            secondCardLabel.textColor = secondCard.cardType.typeColor
+            //secondCardLabel.textColor = secondCard.cardType.typeColor
         } else {
             secondCardLabel.isHidden = true
         }
@@ -102,7 +107,7 @@ class PostDetailTableViewController: UITableViewController {
         //3번 감정카드
         if let thirdCard = post.thirdCard {
             thirdCardLabel.text = "#\(thirdCard.title)"
-            thirdCardLabel.textColor = thirdCard.cardType.typeColor
+            //thirdCardLabel.textColor = thirdCard.cardType.typeColor
         } else {
             thirdCardLabel.isHidden = true
         }

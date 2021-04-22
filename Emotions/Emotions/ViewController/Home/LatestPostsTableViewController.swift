@@ -154,6 +154,7 @@ class LatestPostsTableViewController: UITableViewController {
         return cell
     }
     
+    // '최근글' 탭으로 데이터 전달 -> 셀 선택시 Detail로 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetailSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else {
