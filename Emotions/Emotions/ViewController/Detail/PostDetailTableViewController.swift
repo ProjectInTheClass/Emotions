@@ -26,20 +26,8 @@ class PostDetailTableViewController: UITableViewController {
     @IBOutlet weak var contentLabel: UILabel!
     
     
-    
-    // footerView 추가해보기
-    
-//    let footerView = UIView(frame: CGRect(x: 400, y: 200, width: 100, height: 100))
-    
-//    let headerView = UIView(frame: CGRect(x: XXX, y: YYY, width: XXX, height: YYY))
-//    let imageView = UIImageView(frame: CGRect(x: XXX, y: YYY, width: XXX, height: YYY))
-//    headerView.addSubview(imageView)
-//    let labelView = UILabel(frame: CGRect(x: XXX, y: YYY, width: XXX, height: YYY))
-//    headerView.addSubview(labelView)
-//    self.tableView.tableHeaderView = headerView
-//
-    
-    // 뷰 추가해보기 (성공)
+
+    // sub뷰 추가해보기 (성공)
     /*
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let vw = UIView()
@@ -54,6 +42,7 @@ class PostDetailTableViewController: UITableViewController {
         return vw
     }
      */
+    
 
 
     override func viewDidLoad() {
@@ -149,7 +138,7 @@ class PostDetailTableViewController: UITableViewController {
 
         return cell
     }
-    
+
 
     /*
     // Override to support conditional editing of the table view.

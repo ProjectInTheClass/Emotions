@@ -28,68 +28,70 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xX-kv-Ou1">
-                                    <rect key="frame" x="25" y="119" width="364" height="166"/>
-                                    <mutableString key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END</mutableString>
-                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3F-Cz-aj3" userLabel="bgColorView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0Pj-HF-nEP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ADf-Yn-K4c" userLabel="CardStackView">
-                                            <rect key="frame" x="20" y="20" width="174" height="25.5"/>
+                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3F-Cz-aj3" userLabel="bgColorView">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6z-0T-DfV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="25.5"/>
-                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43F-YN-YlY">
-                                                    <rect key="frame" x="61" y="0.0" width="52.5" height="25.5"/>
-                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKo-vJ-1fX">
-                                                    <rect key="frame" x="121.5" y="0.0" width="52.5" height="25.5"/>
-                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ADf-Yn-K4c" userLabel="CardStackView">
+                                                    <rect key="frame" x="20" y="20" width="174" height="25.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6z-0T-DfV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="53" height="25.5"/>
+                                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43F-YN-YlY">
+                                                            <rect key="frame" x="61" y="0.0" width="52.5" height="25.5"/>
+                                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKo-vJ-1fX">
+                                                            <rect key="frame" x="121.5" y="0.0" width="52.5" height="25.5"/>
+                                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25.5" id="2pi-6O-sXG"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-dQ-ZkK">
+                                                    <rect key="frame" x="345.5" y="50" width="48.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="25.5" id="2pi-6O-sXG"/>
+                                                <constraint firstAttribute="height" constant="100" id="Izv-eu-6rY"/>
+                                                <constraint firstItem="ADf-Yn-K4c" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="top" constant="20" id="J1a-Ee-ial"/>
+                                                <constraint firstAttribute="trailing" secondItem="aM6-dQ-ZkK" secondAttribute="trailing" constant="20" id="XJ6-9b-278"/>
+                                                <constraint firstItem="ADf-Yn-K4c" firstAttribute="leading" secondItem="C3F-Cz-aj3" secondAttribute="leading" constant="20" id="qaW-t0-ssb"/>
+                                                <constraint firstItem="aM6-dQ-ZkK" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="top" constant="50" id="y3g-bD-uB8"/>
                                             </constraints>
-                                        </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-dQ-ZkK">
-                                            <rect key="frame" x="345.5" y="50" width="48.5" height="19"/>
-                                            <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="15"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xX-kv-Ou1">
+                                            <rect key="frame" x="0.0" y="119" width="414" height="186"/>
+                                            <mutableString key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END</mutableString>
+                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="Izv-eu-6rY"/>
-                                        <constraint firstItem="ADf-Yn-K4c" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="top" constant="20" id="J1a-Ee-ial"/>
-                                        <constraint firstAttribute="trailing" secondItem="aM6-dQ-ZkK" secondAttribute="trailing" constant="20" id="XJ6-9b-278"/>
-                                        <constraint firstItem="ADf-Yn-K4c" firstAttribute="leading" secondItem="C3F-Cz-aj3" secondAttribute="leading" constant="20" id="qaW-t0-ssb"/>
-                                        <constraint firstItem="aM6-dQ-ZkK" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="top" constant="50" id="y3g-bD-uB8"/>
-                                    </constraints>
-                                </view>
+                                </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="bottom" constant="19" id="0M5-5F-fo7"/>
-                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="centerX" secondItem="H5L-V0-qJP" secondAttribute="centerX" id="BpR-9R-vca"/>
-                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" constant="25" id="HZ3-ly-x5C"/>
-                                <constraint firstItem="C3F-Cz-aj3" firstAttribute="top" secondItem="H5L-V0-qJP" secondAttribute="top" id="Q3w-r6-L4n"/>
-                                <constraint firstItem="C3F-Cz-aj3" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" id="bFV-xu-lXR"/>
-                                <constraint firstAttribute="bottom" secondItem="8xX-kv-Ou1" secondAttribute="bottom" constant="20" id="gBq-6S-T3T"/>
-                                <constraint firstAttribute="trailing" secondItem="8xX-kv-Ou1" secondAttribute="trailing" constant="25" id="rBd-Sb-Dkv"/>
-                                <constraint firstAttribute="trailing" secondItem="C3F-Cz-aj3" secondAttribute="trailing" id="tuU-cE-XID"/>
+                                <constraint firstItem="0Pj-HF-nEP" firstAttribute="top" secondItem="H5L-V0-qJP" secondAttribute="top" id="Ngy-dn-xb7"/>
+                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="width" secondItem="H5L-V0-qJP" secondAttribute="width" id="Spt-ft-ji4"/>
+                                <constraint firstAttribute="trailing" secondItem="0Pj-HF-nEP" secondAttribute="trailing" id="exz-cG-mQ0"/>
+                                <constraint firstItem="0Pj-HF-nEP" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" id="lkh-8d-uay"/>
+                                <constraint firstAttribute="bottom" secondItem="0Pj-HF-nEP" secondAttribute="bottom" id="n7J-Iu-flH"/>
                             </constraints>
                         </view>
                         <prototypes>
