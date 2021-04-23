@@ -41,10 +41,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
             }
         }
-        
-        
-      
-        
     }
     
     @IBAction func profileUpdateButton(_ sender: UIBarButtonItem) {

@@ -158,7 +158,7 @@ class PostDetailTableViewController: UITableViewController {
         // 유저네임, 날짜, 댓글내용 대입
         let comment = CommentManager.shared.comments[indexPath.row]
         cell.commentUserNameLabel.text = comment.userName
-        cell.commentDateLabel.text = "\(comment.date)"
+        cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
         cell.commentContentLabel.text = comment.content
 
         return cell
