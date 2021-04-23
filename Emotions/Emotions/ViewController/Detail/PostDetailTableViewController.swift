@@ -13,6 +13,8 @@ class PostDetailTableViewController: UITableViewController {
     var post: Post?
     var comment: Comment?
     
+    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentPushButton: UIButton!
     
     
     @IBOutlet weak var detailView: UIView!
