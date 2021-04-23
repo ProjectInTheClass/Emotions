@@ -34,7 +34,7 @@ class StarTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.starPosts[indexPath.row]
-        let comments = CommentManager.shared.comments
+        let comments = CommentManager.downloadComment(post: post)
         cell.updateUI(post: post, comments: comments)
         
         // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록

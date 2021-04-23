@@ -10,11 +10,11 @@ import FirebaseDatabase
 
 struct CommentManager {
     
-    func downloadComment(post: Post) -> [Comment] {
+    static func downloadComment(post: Post) -> [Comment] {
         var queriedComments = [Comment]()
         var commentsDataQuery: DatabaseQuery?
         commentsDataQuery?.queryOrdered(byChild: "postID").queryEqual(toValue: post.postID)
-        commentsDataQuery?.observe(.childAdded, with: { (snapshot) in
+        commentsDataQuery?.observeSingleEvent(of: .value, with: { (snapshot) in
             let snapshotValue = snapshot.value as? [String:Any] ?? [:]
             let newComment = Comment(dictionary: snapshotValue)
             queriedComments.append(newComment)

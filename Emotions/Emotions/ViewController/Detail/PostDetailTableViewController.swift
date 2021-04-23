@@ -11,7 +11,11 @@ class PostDetailTableViewController: UITableViewController {
     
     // 넘겨 받은 데이터
     var post: Post?
-    var comment: Comment?
+    var comments: [Comment]? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentPushButton: UIButton!
@@ -56,6 +60,7 @@ class PostDetailTableViewController: UITableViewController {
         
         // 넘겨 받은 포스트 풀기, 풀었는데 데이터가 있으면 아래를 수행하라
         if let post = post {
+            comments = CommentManager.downloadComment(post: post)
 
 //            firstCardLabel.text = post.firstCard?.title
 //            secondCardLabel.text = post.secondCard?.title
@@ -66,8 +71,6 @@ class PostDetailTableViewController: UITableViewController {
             updateUI()
             navigationConfigureUI()
         }
-
-
     }
     
     // MARK: - functions
@@ -109,6 +112,11 @@ class PostDetailTableViewController: UITableViewController {
     func navigationConfigureUI() {
         title = "Post Detail"
     }
+    
+    @IBAction func commentUpload(_ sender: UIButton) {
+        print("commentUpload")
+    }
+    
 
     // MARK: - Table view data source
 
@@ -121,7 +129,8 @@ class PostDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         // 여기서 어떻게 대입해야 해당 글의 코멘트의 개수만큼 읽어와서 대입할 수 있을까?
-        return comment?.postID.count ?? 0
+        
+        return comments?.count ?? 0
     }
 
     
