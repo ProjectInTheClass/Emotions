@@ -38,7 +38,7 @@
 		039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878772628932700ED9EB8 /* StarTableViewController.swift */; };
 		0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */; };
 		03C610DC262518E000284FD5 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DB262518E000284FD5 /* functions.swift */; };
-		03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */; };
+		03C610DF26255D9B00284FD5 /* (exit)PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DE26255D9B00284FD5 /* (exit)PostDetailViewController.swift */; };
 		03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */; };
 		03C7740B262BA50F00D075B5 /* MyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7740A262BA50F00D075B5 /* MyPostTableViewCell.swift */; };
 		03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA5002621D769009139A9 /* AddPostViewController.swift */; };
@@ -62,6 +62,7 @@
 		03FDA9792620B577009E02F9 /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA9782620B577009E02F9 /* StarButton.swift */; };
 		03FDA97C2620B702009E02F9 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA97B2620B702009E02F9 /* CommentButton.swift */; };
 		CB1A5D033CB9B0767CAC850E /* Pods_Emotions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */; };
+		D4568140263146EE00490A8B /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D456813F263146EE00490A8B /* PostDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +99,7 @@
 		039878772628932700ED9EB8 /* StarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTableViewController.swift; sourceTree = "<group>"; };
 		0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewController.swift; sourceTree = "<group>"; };
 		03C610DB262518E000284FD5 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
-		03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		03C610DE26255D9B00284FD5 /* (exit)PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "(exit)PostDetailViewController.swift"; sourceTree = "<group>"; };
 		03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		03C7740A262BA50F00D075B5 /* MyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewCell.swift; sourceTree = "<group>"; };
 		03DFA5002621D769009139A9 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		03FDA97B2620B702009E02F9 /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButton.swift; sourceTree = "<group>"; };
 		6312319D396F6CE6E8F07A44 /* Pods-Emotions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.release.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.release.xcconfig"; sourceTree = "<group>"; };
 		AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emotions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D456813F263146EE00490A8B /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
 		E07BECAE4496C711C9FDA77D /* Pods-Emotions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.debug.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,7 +312,8 @@
 		0398786E262814F300ED9EB8 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				03C610DE26255D9B00284FD5 /* PostDetailViewController.swift */,
+				D456813F263146EE00490A8B /* PostDetailTableViewController.swift */,
+				03C610DE26255D9B00284FD5 /* (exit)PostDetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -512,7 +515,7 @@
 				03FDA91E261FE5F6009E02F9 /* PostViewController.swift in Sources */,
 				03C7740B262BA50F00D075B5 /* MyPostTableViewCell.swift in Sources */,
 				039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */,
-				03C610DF26255D9B00284FD5 /* PostDetailViewController.swift in Sources */,
+				03C610DF26255D9B00284FD5 /* (exit)PostDetailViewController.swift in Sources */,
 				0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */,
 				03FDA937261FF647009E02F9 /* CardManager.swift in Sources */,
 				0337C654261EAC2F00E1F765 /* PostTableViewCell.swift in Sources */,
@@ -529,6 +532,7 @@
 				03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */,
 				03C610DC262518E000284FD5 /* functions.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
+				D4568140263146EE00490A8B /* PostDetailTableViewController.swift in Sources */,
 				039878222626CCE900ED9EB8 /* DataManager.swift in Sources */,
 				035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */,
 				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,

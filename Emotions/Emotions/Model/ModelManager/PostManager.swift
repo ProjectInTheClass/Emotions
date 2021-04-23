@@ -13,7 +13,7 @@ class PostManager {
     static let shared = PostManager()
     private let numberOfOneLoad = 5
     
-    var starPosts = [Post]()
+    var starPosts = [Post]() // 별 (추천) 많은 순 = 랭킹 10위까지 (2번째 세그먼티드는 없앴음 = 비슷한 감정)
 
     func loadPostsByStarPoint(completion: @escaping (Bool)->Void){
         var orderedQuery: DatabaseQuery?
@@ -44,7 +44,7 @@ class PostManager {
         })
     }
     
-    var userPosts = [Post]()
+    var userPosts = [Post]() //나의 글 (2번째 탭)
     
     func laodUserPosts(completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
@@ -67,7 +67,7 @@ class PostManager {
         })
     }
     
-    var myHeartPosts = [Post]()
+    var myHeartPosts = [Post]() // 하트 좋아요 누른거 (공감)
 
     func loadPostsByHeart(completion: @escaping (Bool)->Void){
         var myPostQuery: DatabaseQuery?

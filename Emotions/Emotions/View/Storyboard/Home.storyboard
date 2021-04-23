@@ -276,7 +276,7 @@
                                     <outletCollection property="buttons" destination="FVT-vx-2qD" collectionClass="NSMutableArray" id="pbU-lf-pkP"/>
                                     <outletCollection property="buttons" destination="gce-89-U1P" collectionClass="NSMutableArray" id="0wc-oK-Utp"/>
                                     <outletCollection property="buttons" destination="FwH-0Q-EXr" collectionClass="NSMutableArray" id="1S9-9Y-OlD"/>
-                                    <segue destination="bWr-Fm-GQx" kind="show" id="D6Y-A6-Fdo"/>
+                                    <segue destination="bWr-Fm-GQx" kind="show" identifier="postDetailSegue" id="D6Y-A6-Fdo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -418,7 +418,7 @@
                                     <outletCollection property="buttons" destination="noM-LH-CaA" collectionClass="NSMutableArray" id="0vk-rs-elx"/>
                                     <outletCollection property="buttons" destination="q7K-73-Woy" collectionClass="NSMutableArray" id="1R4-i6-IoH"/>
                                     <outletCollection property="buttons" destination="iTF-lk-exE" collectionClass="NSMutableArray" id="SJx-IQ-e8s"/>
-                                    <segue destination="bWr-Fm-GQx" kind="show" id="DUt-q7-x17"/>
+                                    <segue destination="bWr-Fm-GQx" kind="show" identifier="sympathyDetailSegue" id="DUt-q7-x17"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -557,7 +557,7 @@
                                     <outletCollection property="buttons" destination="tkK-ay-9Mn" collectionClass="NSMutableArray" id="Xre-Tr-tuS"/>
                                     <outletCollection property="buttons" destination="Isj-du-db2" collectionClass="NSMutableArray" id="7Jb-3D-obJ"/>
                                     <outletCollection property="buttons" destination="WTP-00-vv6" collectionClass="NSMutableArray" id="Frh-lV-VSO"/>
-                                    <segue destination="bWr-Fm-GQx" kind="show" id="vQI-po-121"/>
+                                    <segue destination="bWr-Fm-GQx" kind="show" identifier="starDetailSegue" id="vQI-po-121"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1067,7 +1067,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="D6Y-A6-Fdo"/>
+        <segue reference="DUt-q7-x17"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Info Circle" width="24" height="24"/>
