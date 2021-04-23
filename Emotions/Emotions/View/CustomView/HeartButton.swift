@@ -37,10 +37,6 @@ class HeartButton: UIButton {
             UIView.animate(withDuration: 0.1) {
                 self.transform = .identity
             }
-            
         }
-        
-        
     }
-    
 }
