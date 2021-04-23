@@ -8,21 +8,25 @@
 import Foundation
 import FirebaseDatabase
 
-struct CommentManager {
+class CommentManager {
+    static let shared = CommentManager()
     
-    static func downloadComment(post: Post) -> [Comment] {
-        var queriedComments = [Comment]()
+    var comments = [Comment]()
+    
+    func downloadComment(post: Post, completion: @escaping (Bool)->Void){
+        self.comments = []
         var commentsDataQuery: DatabaseQuery?
-        commentsDataQuery?.queryOrdered(byChild: "postID").queryEqual(toValue: post.postID)
-        commentsDataQuery?.observeSingleEvent(of: .value, with: { (snapshot) in
+        commentsDataQuery = commentRef.queryOrdered(byChild: "postID").queryEqual(toValue: post.postID)
+        print(post.postID)
+        commentsDataQuery?.observe(.childAdded, with: { (snapshot) in
             let snapshotValue = snapshot.value as? [String:Any] ?? [:]
             let newComment = Comment(dictionary: snapshotValue)
-            queriedComments.append(newComment)
+            self.comments.append(newComment)
+            completion(true)
         })
-        return queriedComments
     }
     
-    func uploadComment(dictionary: [String:Any]) {
+    static func uploadComment(dictionary: [String:Any]) {
         commentRef.childByAutoId().setValue(dictionary)
     }
 }

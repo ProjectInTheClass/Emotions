@@ -11,12 +11,7 @@ class PostDetailTableViewController: UITableViewController {
     
     // 넘겨 받은 데이터
     var post: Post?
-    var comments: [Comment]? {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-    
+  
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentPushButton: UIButton!
     
@@ -49,8 +44,6 @@ class PostDetailTableViewController: UITableViewController {
     }
      */
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +53,6 @@ class PostDetailTableViewController: UITableViewController {
         
         // 넘겨 받은 포스트 풀기, 풀었는데 데이터가 있으면 아래를 수행하라
         if let post = post {
-            comments = CommentManager.downloadComment(post: post)
 
 //            firstCardLabel.text = post.firstCard?.title
 //            secondCardLabel.text = post.secondCard?.title
@@ -70,6 +62,18 @@ class PostDetailTableViewController: UITableViewController {
             
             updateUI()
             navigationConfigureUI()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let post = post else { return }
+        CommentManager.shared.downloadComment(post: post) { success in
+            if success {
+                self.tableView.reloadData()
+            } else {
+                
+            }
         }
     }
     
@@ -115,6 +119,16 @@ class PostDetailTableViewController: UITableViewController {
     
     @IBAction func commentUpload(_ sender: UIButton) {
         print("commentUpload")
+        
+        let reviewDictionary:[String:Any] = [
+            "postID": post?.postID,
+            "userName": AuthManager.shared.currentUser?.displayName,
+            "userEmail": post?.userEmail,
+            "content": commentTextField.text,
+            "date": Int(Date().timeIntervalSince1970)
+        ]
+        
+        CommentManager.uploadComment(dictionary: reviewDictionary)
     }
     
 
@@ -130,7 +144,7 @@ class PostDetailTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         // 여기서 어떻게 대입해야 해당 글의 코멘트의 개수만큼 읽어와서 대입할 수 있을까?
         
-        return comments?.count ?? 0
+        return CommentManager.shared.comments.count
     }
 
     
@@ -142,10 +156,10 @@ class PostDetailTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
 
         // 유저네임, 날짜, 댓글내용 대입
-        //cell.commentUserNameLabel.text = row.userName
-        //cell.commentDateLabel.text = "\(row.date)"
-        //cell.commentContentLabel.text = row.content
-
+        let comment = CommentManager.shared.comments[indexPath.row]
+        cell.commentUserNameLabel.text = comment.userName
+        cell.commentDateLabel.text = "\(comment.date)"
+        cell.commentContentLabel.text = comment.content
 
         return cell
     }

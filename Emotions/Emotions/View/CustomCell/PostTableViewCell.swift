@@ -40,7 +40,7 @@ class PostTableViewCell: UITableViewCell {
 //        thirdCardLabel.layer.cornerRadius = 15
     }
     
-    func updateUI(post: Post, comments: [Comment]) {
+    func updateUI(post: Post) {
         if let firstCard = post.firstCard {
             firstCardLabel.text = "#\(firstCard.title)"
             firstCardLabel.textColor = firstCard.cardType.typeColor
