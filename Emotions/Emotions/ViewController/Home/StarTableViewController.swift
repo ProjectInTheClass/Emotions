@@ -15,20 +15,32 @@ class StarTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
-        PostManager.shared.loadPostsByStarPoint(currentUserUID: currentUserUID) { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
-            self.tableView.reloadData()
+            if auth.currentUser == nil {
+                PostManager.shared.starPosts = []
+                PostManager.shared.loadPostsByStarPoint(currentUserUID: "") { success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            } else {
+                guard let currentUserUID = auth.currentUser?.uid else { return }
+                PostManager.shared.starPosts = []
+                PostManager.shared.loadPostsByStarPoint(currentUserUID: currentUserUID) { success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -50,10 +62,7 @@ class StarTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.starPosts[indexPath.row]
-//        let comments = CommentManager.downloadComment(post: post)
         cell.updateUI(post: post)
-        
-        // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록
         cell.heartButtonCompletion = { currentHeartState in
             post.isHeart = !currentHeartState
             let postKey = post.postID

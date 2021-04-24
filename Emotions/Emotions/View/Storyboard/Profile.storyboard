@@ -19,8 +19,8 @@
                 <navigationController id="CVW-5E-jHF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="프로필" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="WYQ-kH-fHO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Cy2-uT-Z1F">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cy2-uT-Z1F">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -60,7 +60,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s7u-a2-mcF">
-                                <rect key="frame" x="20" y="160.5" width="65" height="64"/>
+                                <rect key="frame" x="20" y="108.5" width="65" height="64"/>
                                 <color key="tintColor" red="0.41214803779999998" green="0.43890493000000003" blue="0.55441881609999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="Cih-Aj-Lez"/>
@@ -68,7 +68,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ti2-5R-g72">
-                                <rect key="frame" x="95" y="168" width="138.5" height="49.5"/>
+                                <rect key="frame" x="95" y="116" width="138.5" height="49.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@some.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyc-On-oXb">
                                         <rect key="frame" x="0.0" y="0.0" width="138.5" height="18"/>
@@ -85,7 +85,7 @@
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeY-tQ-y4W">
-                                <rect key="frame" x="0.0" y="235" width="414" height="578"/>
+                                <rect key="frame" x="0.0" y="183" width="414" height="630"/>
                                 <connections>
                                     <segue destination="npO-Tk-LSy" kind="embed" id="Z2D-N1-Hcf"/>
                                 </connections>
@@ -106,13 +106,7 @@
                             <constraint firstItem="dTx-pd-AA3" firstAttribute="centerX" secondItem="Lej-Vd-jF9" secondAttribute="centerX" id="xXt-H5-lBa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="ZaB-sg-9DD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3dm-cs-34F">
-                            <connections>
-                                <action selector="profileUpdateButton:" destination="l1G-1P-A24" id="r26-Ea-XlO"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="ZaB-sg-9DD"/>
                     <connections>
                         <outlet property="logoutview" destination="dTx-pd-AA3" id="iTC-q6-efn"/>
                         <outlet property="profileContainerView" destination="qeY-tQ-y4W" id="LOU-US-ouc"/>
@@ -130,9 +124,10 @@
             <objects>
                 <tableViewController id="npO-Tk-LSy" customClass="ProfileTableViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hqP-Yr-r8W">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="578"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="630"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection headerTitle="기본 정보" id="wAR-5T-YaJ">
                                 <cells>

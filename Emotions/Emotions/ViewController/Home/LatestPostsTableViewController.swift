@@ -57,15 +57,14 @@ class LatestPostsTableViewController: UITableViewController {
         initRefresh()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if auth.currentUser == nil {
                 DataManager.shared.latestposts = []
                 DataManager.shared.loadedPosts = []
                 DataManager.shared.loadPosts(currentUserUID: ""){ success in
                     if success {
-                        print("유저없음 로드포스트")
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -78,7 +77,6 @@ class LatestPostsTableViewController: UITableViewController {
                 DataManager.shared.loadedPosts = []
                 DataManager.shared.loadPosts(currentUserUID: currentUserUID) { success in
                     if success {
-                        print("유저있음 로드포스트")
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -124,7 +122,6 @@ class LatestPostsTableViewController: UITableViewController {
         }
     }
     
-
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -134,14 +131,11 @@ class LatestPostsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = DataManager.shared.latestposts[indexPath.row]
-//        let comments = CommentManager.downloadComment(post: post)
         cell.updateUI(post: post)
-        
-        // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록
         cell.heartButtonCompletion = { currentHeartState in
             post.isHeart = !currentHeartState
             let postKey = post.postID
-            database.child("posts").child(postKey).runTransactionBlock { currentData  in
+            postsRef.child(postKey).runTransactionBlock { currentData  in
                 if var post = currentData.value as? [String:Any],
                    let uid = AuthManager.shared.currentUser?.uid {
                     var heart = post["heartUser"] as? [String:Bool] ?? [:]
@@ -161,7 +155,7 @@ class LatestPostsTableViewController: UITableViewController {
         cell.starButtonCompletion = { currentStarState in
             post.isStar = !currentStarState
             let postKey = post.postID
-            database.child("posts").child(postKey).runTransactionBlock { currentData -> TransactionResult in
+            postsRef.child(postKey).runTransactionBlock { currentData -> TransactionResult in
                 if var post = currentData.value as? [String:Any],
                    let uid = AuthManager.shared.currentUser?.uid {
                     var star = post["starUser"] as? [String:Bool] ?? [:]
@@ -198,7 +192,7 @@ class LatestPostsTableViewController: UITableViewController {
                 DataManager.shared.latestposts.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.tableView.reloadData()
-                database.child("posts").child(post.postID).runTransactionBlock { currentData -> TransactionResult in
+                postsRef.child(post.postID).runTransactionBlock { currentData -> TransactionResult in
                     if var currentPost = currentData.value as? [String:Any],
                        let uid = AuthManager.shared.currentUser?.uid {
                         var report = currentPost["reportedUser"] as? [String:Bool] ?? [:]

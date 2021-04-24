@@ -13,6 +13,7 @@ let postsRef = database.child("posts")
 let commentRef = database.child("comments")
 let blackList = database.child("blackList")
 
+let joyBGColor = "joyBG"
 let logoImage = "logoImage"
 let InfoCircle = "Info Circle"
 let emotionDeepGreen = "emotionDeepGreen"
