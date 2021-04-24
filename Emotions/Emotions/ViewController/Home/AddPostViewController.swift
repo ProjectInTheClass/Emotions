@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import FirebaseAuth
 
 class AddPostViewController: UIViewController, UITextViewDelegate {
     
@@ -27,6 +28,9 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    var handle: AuthStateDidChangeListenerHandle?
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -35,6 +39,23 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         registerForNotifications()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
+            if auth.currentUser == nil {
+                print("AddPostViewController - viewWillAppear - 현재 유저 없음")
+            } else {
+                self.user = auth.currentUser
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
     // MARK: - Ability Functions
     
     func addTargetButton() {
@@ -77,14 +98,14 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func uploadButtonTapped() {
-        guard let uid = AuthManager.shared.currentUser?.uid else { return }
-        guard let userEmail = AuthManager.shared.currentUser?.email else { return }
+        guard let user = user else { print("유저없음")
+            return }
         
         var firstCard: Card?
         var secondCard: Card?
         var thirdCard: Card?
         
-        if let selectedCards = selectedCards, !selectedCards.isEmpty {
+        if let selectedCards = self.selectedCards, !selectedCards.isEmpty {
             if selectedCards.count == 1 {
                 firstCard = selectedCards[0]
             } else if selectedCards.count == 2 {
@@ -100,7 +121,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        guard let content = contentTextView.text,
+        guard let content = self.contentTextView.text,
               content != "고른 감정에 대해 이야기해주세요:)" else {
             print("내용을 적어주세요.")
             return
@@ -113,7 +134,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         
         let dataDictionary: [String:Any] = [
             "postID":postkey,
-            "userEmail":userEmail,
+            "userEmail":user.email!,
             "content":content,
             "endDate":endDate,
             "firstCardID":firstCard?.id ?? "0",
@@ -122,14 +143,11 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             "starPoint":0,
             "heartUser":[:],
             "starUser":[:],
-            "userID":uid
+            "userID":user.uid
         ]
         
         postsRef.child(postkey).setValue(dataDictionary)
-        
-        // 추후에는 다양한 레포에 저장할 수 있도록 함. 어떤 레포를 쓸건지 고민해봐야 한다.
-
-        self.navigationController?.popViewController(animated: true)        
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - UI and UserInteraction Functions

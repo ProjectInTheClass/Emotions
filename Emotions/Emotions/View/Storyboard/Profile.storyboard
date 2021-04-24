@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="RIDIBatang.otf">
+            <string>RIDIBatang</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--프로필-->
         <scene sceneID="Wh0-4O-jbb">
@@ -34,6 +39,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dTx-pd-AA3">
+                                <rect key="frame" x="84" y="366" width="246" height="104"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.icloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3PC-Ym-NfG">
+                                        <rect key="frame" x="73" y="1" width="100" height="76.5"/>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="DpO-FO-2ni"/>
+                                            <constraint firstAttribute="height" constant="80" id="H5L-x3-QXZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인이 필요한 페이지 입니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCB-fA-5cf">
+                                        <rect key="frame" x="0.0" y="85" width="246" height="19"/>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="RIDIBatang" family="RIDIBatang" pointSize="19"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s7u-a2-mcF">
                                 <rect key="frame" x="20" y="160.5" width="65" height="64"/>
                                 <color key="tintColor" red="0.41214803779999998" green="0.43890493000000003" blue="0.55441881609999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,6 +95,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="s7u-a2-mcF" firstAttribute="top" secondItem="5fv-Q2-rGy" secondAttribute="top" constant="20" id="4I0-fG-vz5"/>
+                            <constraint firstItem="dTx-pd-AA3" firstAttribute="centerY" secondItem="Lej-Vd-jF9" secondAttribute="centerY" constant="-30" id="5SN-l0-AQQ"/>
                             <constraint firstItem="ti2-5R-g72" firstAttribute="leading" secondItem="s7u-a2-mcF" secondAttribute="trailing" constant="10" id="9OG-4b-ZnI"/>
                             <constraint firstItem="5fv-Q2-rGy" firstAttribute="bottom" secondItem="qeY-tQ-y4W" secondAttribute="bottom" id="9yu-ZX-8fs"/>
                             <constraint firstItem="5fv-Q2-rGy" firstAttribute="trailing" secondItem="qeY-tQ-y4W" secondAttribute="trailing" id="GZM-u7-rub"/>
@@ -77,6 +103,7 @@
                             <constraint firstItem="ti2-5R-g72" firstAttribute="centerY" secondItem="s7u-a2-mcF" secondAttribute="centerY" id="Kf5-1y-mwg"/>
                             <constraint firstItem="qeY-tQ-y4W" firstAttribute="leading" secondItem="5fv-Q2-rGy" secondAttribute="leading" id="P4j-CZ-QGF"/>
                             <constraint firstItem="qeY-tQ-y4W" firstAttribute="top" secondItem="s7u-a2-mcF" secondAttribute="bottom" constant="10" id="dW6-YJ-wtV"/>
+                            <constraint firstItem="dTx-pd-AA3" firstAttribute="centerX" secondItem="Lej-Vd-jF9" secondAttribute="centerX" id="xXt-H5-lBa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="ZaB-sg-9DD">
@@ -87,6 +114,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutview" destination="dTx-pd-AA3" id="iTC-q6-efn"/>
+                        <outlet property="profileContainerView" destination="qeY-tQ-y4W" id="LOU-US-ouc"/>
                         <outlet property="userEmailLabel" destination="Uyc-On-oXb" id="Dtw-hH-h5w"/>
                         <outlet property="userImageView" destination="s7u-a2-mcF" id="LPs-ek-utU"/>
                         <outlet property="userNickNameLabel" destination="6U3-27-tAO" id="FtR-nN-8Mr"/>
@@ -264,5 +293,6 @@
     <resources>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="xmark.icloud.fill" catalog="system" width="128" height="88"/>
     </resources>
 </document>
