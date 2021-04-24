@@ -15,7 +15,7 @@ class PostManager {
     
     var starPosts = [Post]() // 별 (추천) 많은 순 = 랭킹 10위까지 (2번째 세그먼티드는 없앴음 = 비슷한 감정)
 
-    func loadPostsByStarPoint(completion: @escaping (Bool)->Void){
+    func loadPostsByStarPoint(currentUserUID: String, completion: @escaping (Bool)->Void){
         var orderedQuery: DatabaseQuery?
         orderedQuery = postsRef.queryOrdered(byChild: "starPoint").queryLimited(toLast: 10)
         orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
@@ -26,7 +26,7 @@ class PostManager {
                 let snapshotDatum = anyDatum as! DataSnapshot
                 //                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
-                let post = Post(dictionary: dicDatum)
+                let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                 
                 if let firstCardID = dicDatum["firstCardID"] as? String {
                     post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
@@ -46,13 +46,13 @@ class PostManager {
     
     var userPosts = [Post]() //나의 글 (2번째 탭)
     
-    func laodUserPosts(completion: @escaping (Bool)->Void) {
+    func laodUserPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
         PostManager.shared.userPosts = []
         orderedQuery = postsRef.queryOrdered(byChild: "userID").queryEqual(toValue: AuthManager.shared.currentUser?.uid)
         orderedQuery?.observe(.childAdded, with: { snapshot in
             let postDic = snapshot.value as! [String:Any]
-            let post = Post(dictionary: postDic)
+            let post = Post(currentUserUID: currentUserUID, dictionary: postDic)
             if let firstCardID = postDic["firstCardID"] as? String {
                 post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
             }
@@ -69,7 +69,7 @@ class PostManager {
     
     var myHeartPosts = [Post]() // 하트 좋아요 누른거 (공감)
 
-    func loadPostsByHeart(completion: @escaping (Bool)->Void){
+    func loadPostsByHeart(currentUserUID: String, completion: @escaping (Bool)->Void){
         var myPostQuery: DatabaseQuery?
         myPostQuery = postsRef.queryOrdered(byChild: "heartUser").queryStarting(atValue: true)
         myPostQuery?.observe(.value, with: { (snapshot) in
@@ -79,7 +79,7 @@ class PostManager {
                 let dicDatum = postData as! [String:AnyObject]
                 for heartUser in dicDatum["heartUser"] as! [String:Bool] {
                     if AuthManager.shared.currentUser?.uid == heartUser.key {
-                        let post = Post(dictionary: dicDatum)
+                        let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                         if let firstCardID = dicDatum["firstCardID"] as? String {
                             post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
                         }

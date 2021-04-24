@@ -63,7 +63,7 @@ class LatestPostsTableViewController: UITableViewController {
             if auth.currentUser == nil {
                 DataManager.shared.latestposts = []
                 DataManager.shared.loadedPosts = []
-                DataManager.shared.loadPosts { success in
+                DataManager.shared.loadPosts(currentUserUID: ""){ success in
                     if success {
                         print("유저없음 로드포스트")
                         DispatchQueue.main.async {
@@ -73,9 +73,10 @@ class LatestPostsTableViewController: UITableViewController {
                 }
                 self.bulletinManager.showBulletin(above: self)
             } else {
+                guard let currentUserUID = auth.currentUser?.uid else { return }
                 DataManager.shared.latestposts = []
                 DataManager.shared.loadedPosts = []
-                DataManager.shared.loadPosts { success in
+                DataManager.shared.loadPosts(currentUserUID: currentUserUID) { success in
                     if success {
                         print("유저있음 로드포스트")
                         DispatchQueue.main.async {
@@ -100,7 +101,8 @@ class LatestPostsTableViewController: UITableViewController {
     }
     
     @objc func handleRefreshControl() {
-        DataManager.shared.loadFreshPosts { success in
+        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+        DataManager.shared.loadFreshPosts(currentUserUID: currentUserUID) { success in
             if success {
                 self.tableView.reloadData()
             }

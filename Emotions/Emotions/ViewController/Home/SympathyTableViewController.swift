@@ -7,12 +7,17 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class SympathyTableViewController: UITableViewController {
+    
+    var handle: AuthStateDidChangeListenerHandle?
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        PostManager.shared.loadPostsByHeart { success in
+        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+        PostManager.shared.loadPostsByHeart(currentUserUID: currentUserUID) { success in
             if success {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -21,6 +26,22 @@ class SympathyTableViewController: UITableViewController {
                 print("failure")
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
+            if auth.currentUser == nil {
+                print("SympathyTableViewController - viewWillAppear - 현재 유저 없음")
+            } else {
+                self.user = auth.currentUser
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
 
     // MARK: - Functions
@@ -32,8 +53,9 @@ class SympathyTableViewController: UITableViewController {
     }
     
     @objc func handleRefreshControl() {
+        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
         PostManager.shared.myHeartPosts = []
-        PostManager.shared.loadPostsByHeart { success in
+        PostManager.shared.loadPostsByHeart(currentUserUID: currentUserUID) { success in
             if success {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -60,10 +82,11 @@ class SympathyTableViewController: UITableViewController {
         // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록
         cell.heartButtonCompletion = { currentHeartState in
             post.isHeart = !currentHeartState
+            guard let user = self.user else { return }
+            let uid = user.uid
             let postKey = post.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData  in
-                if var post = currentData.value as? [String:Any],
-                   let uid = AuthManager.shared.currentUser?.uid {
+                if var post = currentData.value as? [String:Any] {
                     var heart = post["heartUser"] as? [String:Bool] ?? [:]
                     if !currentHeartState {
                         heart[uid] = true
@@ -80,10 +103,11 @@ class SympathyTableViewController: UITableViewController {
 
         cell.starButtonCompletion = { currentStarState in
             post.isStar = !currentStarState
+            guard let user = self.user else { return }
+            let uid = user.uid
             let postKey = post.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData -> TransactionResult in
-                if var post = currentData.value as? [String:Any],
-                   let uid = AuthManager.shared.currentUser?.uid {
+                if var post = currentData.value as? [String:Any] {
                     var star = post["starUser"] as? [String:Bool] ?? [:]
                     var starPoint = post["starPoint"] as? Int ?? 0
                     if !currentStarState {
