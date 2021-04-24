@@ -25,9 +25,10 @@ class AuthManager {
     public func checkLogin(completion: @escaping (Bool)->Void) {
         Auth.auth().addStateDidChangeListener { auth, user in
             if auth.currentUser == nil {
-                completion(true)
-            } else {
                 completion(false)
+            } else {
+                completion(true)
+                
             }
         }
     }

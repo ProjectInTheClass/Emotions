@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class StarTableViewController: UITableViewController {
+    
+    var handle: AuthStateDidChangeListenerHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,18 @@ class StarTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     // MARK: - Functions

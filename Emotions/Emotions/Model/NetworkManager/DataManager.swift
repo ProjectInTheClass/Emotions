@@ -36,7 +36,6 @@ class DataManager {
                     for isReportUser in isReportedDic {
                         let user = isReportUser.key
                         if AuthManager.shared.currentUser?.uid == user {
-                            print("신고한 유저 : \(user)")
                         } else {
                             let post = Post(dictionary: dicDatum)
                             if let firstCardID = dicDatum["firstCardID"] as? String {
@@ -62,6 +61,7 @@ class DataManager {
                     if let thirdCardID = dicDatum["thirdCardID"] as? String {
                         post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
                     }
+                    print("post heart and star state -----> \(post.isHeart) and \(post.isStar)")
                     self.loadedPosts += [post]
                 }
                 

@@ -11,7 +11,6 @@ import UIKit
 import BetterSegmentedControl
 import TransitionButton
 import FirebaseDatabase
-import BLTNBoard
 
 class PostViewController: CustomTransitionViewController {
     
@@ -35,42 +34,6 @@ class PostViewController: CustomTransitionViewController {
         return button
     }()
     
-    lazy var bulletinManager: BLTNItemManager = {
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.lightGray
-        shadow.shadowBlurRadius = 2
-        let attribute : [NSAttributedString.Key: Any] = [
-            .font : UIFont.systemFont(ofSize: 14, weight: .light),
-            .foregroundColor : UIColor.black,
-            .shadow : shadow,
-        ]
-        let attributeString = NSAttributedString(string: "'감정들'과 함께 숨은 감정을 발견하고 이웃들과 공유하세요!\n 감정을 건강하게 관리할 수 있습니다:)", attributes: attribute)
-        let page = BLTNPageItem(title: "감정들 함께하기")
-        page.appearance.titleTextColor = .black
-        page.appearance.titleFontSize = 22.0
-        page.appearance.titleFontDescriptor = UIFontDescriptor(name: "ridibatang", size: 24.0)
-        page.attributedDescriptionText = attributeString
-        page.actionButtonTitle = "감정들 로그인 & 회원가입"
-        page.alternativeButtonTitle = "조금 더 둘러볼래요"
-        page.appearance.alternativeButtonTitleColor = UIColor(named: emotionDeepGreen)!
-        page.image = UIImage(named: "invitation")
-        page.requiresCloseButton = false
-        page.appearance.actionButtonColor = UIColor(named: emotionDeepGreen)!
-        page.appearance.actionButtonTitleColor = .white
-        page.actionHandler = { (item: BLTNActionItem) in
-            
-            self.dismiss(animated: true) {
-                let sb = UIStoryboard(name: "Home", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-                self.present(vc, animated: true, completion: nil)
-            }
-        }
-        page.alternativeHandler = { (item: BLTNActionItem) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        return BLTNItemManager(rootItem: page)
-    }()
-    
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     @IBOutlet weak var latestContainerView: UIView!
     @IBOutlet weak var sympathyContainerView: UIView!
@@ -83,15 +46,6 @@ class PostViewController: CustomTransitionViewController {
         latestContainerView.isHidden = false
         sympathyContainerView.isHidden = true
         starContainerView.isHidden = true
-        AuthManager.shared.checkLogin { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.bulletinManager.showBulletin(above: self)
-                }
-            } else {
-                print("유저 자동 로그인")
-            }
-        }
     }
     
     // MARK: - UI Functions
@@ -131,17 +85,9 @@ class PostViewController: CustomTransitionViewController {
     }
     
     @objc func addPostButtonTapped() {
-        AuthManager.shared.checkLogin { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.bulletinManager.showBulletin(above: self)
-                }
-            } else {
-                let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                guard let addPostViewController = storyboard.instantiateViewController(withIdentifier: "addPostVC") as? AddPostViewController else { return }
-                self.navigationController?.pushViewController(addPostViewController, animated: true)
-            }
-        }
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let addPostViewController = storyboard.instantiateViewController(withIdentifier: "addPostVC") as? AddPostViewController else { return }
+        self.navigationController?.pushViewController(addPostViewController, animated: true)
     }
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {

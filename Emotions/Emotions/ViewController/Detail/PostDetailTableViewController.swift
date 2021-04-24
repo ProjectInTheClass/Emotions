@@ -120,11 +120,17 @@ class PostDetailTableViewController: UITableViewController {
     @IBAction func commentUpload(_ sender: UIButton) {
         print("commentUpload")
         
+        guard let post = post,
+              let userName = AuthManager.shared.currentUser?.displayName,
+              let content = commentTextField.text else {
+            print("내용을 입력해 주세요.")
+            return }
+        
         let reviewDictionary:[String:Any] = [
-            "postID": post?.postID,
-            "userName": AuthManager.shared.currentUser?.displayName,
-            "userEmail": post?.userEmail,
-            "content": commentTextField.text,
+            "postID": post.postID,
+            "userName": userName,
+            "userEmail": post.userEmail,
+            "content": content,
             "date": Int(Date().timeIntervalSince1970)
         ]
         
@@ -158,7 +164,7 @@ class PostDetailTableViewController: UITableViewController {
         // 유저네임, 날짜, 댓글내용 대입
         let comment = CommentManager.shared.comments[indexPath.row]
         cell.commentUserNameLabel.text = comment.userName
-        cell.commentDateLabel.text = "\(comment.date)"
+        cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
         cell.commentContentLabel.text = comment.content
 
         return cell

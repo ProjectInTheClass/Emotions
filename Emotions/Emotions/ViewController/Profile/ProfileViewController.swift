@@ -10,9 +10,13 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var handle: AuthStateDidChangeListenerHandle?
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userNickNameLabel: UILabel!
+    @IBOutlet weak var profileContainerView: UIView!
+    @IBOutlet weak var logoutview: UIStackView!
     
     // 포토갤러리에서 선택한 이미지가 들어있음.
     
@@ -26,9 +30,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Auth.auth().addStateDidChangeListener { auth, user in
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = auth.currentUser {
                 DispatchQueue.main.async {
+                    self.logoutview.isHidden = true
+                    self.profileContainerView.isHidden = false
                     self.userEmailLabel.text = user.email
                     self.userNickNameLabel.text = user.displayName
                     if let photoURL = user.photoURL,
@@ -39,12 +45,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                         print("Error convert URL to Data")
                     }
                 }
+            } else {
+                self.logoutview.isHidden = false
+                self.userEmailLabel.text = "user@email.com"
+                self.userNickNameLabel.text = "user nickname"
+                self.userImageView.image = UIImage(systemName: "person.circle")!
+                self.profileContainerView.isHidden = true
             }
         }
-        
-        
-      
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     @IBAction func profileUpdateButton(_ sender: UIBarButtonItem) {
@@ -77,7 +90,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         print("imagePickerController")
         guard let selectedImage = info[.originalImage] as? UIImage else { print("사진 없어")
             return }
-        if let currentUser = AuthManager.shared.currentUser {
+        if let currentUser = Auth.auth().currentUser {
             print("imagePickerController - currentUserEmail")
             UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUser.email!) { success in
                 if success {

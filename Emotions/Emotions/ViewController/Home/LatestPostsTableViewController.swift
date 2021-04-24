@@ -7,25 +7,90 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+import BLTNBoard
 
 class LatestPostsTableViewController: UITableViewController {
-   
+    
+    var handle: AuthStateDidChangeListenerHandle?
+    
     @IBOutlet weak var loadingLabel: UIActivityIndicatorView!
-   
+    
+    lazy var bulletinManager: BLTNItemManager = {
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.lightGray
+        shadow.shadowBlurRadius = 2
+        let attribute : [NSAttributedString.Key: Any] = [
+            .font : UIFont.systemFont(ofSize: 14, weight: .light),
+            .foregroundColor : UIColor.black,
+            .shadow : shadow,
+        ]
+        let attributeString = NSAttributedString(string: "'감정들'과 함께 숨은 감정을 발견하고 이웃들과 공유하세요!\n 감정을 건강하게 관리할 수 있습니다:)", attributes: attribute)
+        let page = BLTNPageItem(title: "감정들 함께하기")
+        page.appearance.titleTextColor = .black
+        page.appearance.titleFontSize = 22.0
+        page.appearance.titleFontDescriptor = UIFontDescriptor(name: "ridibatang", size: 24.0)
+        page.attributedDescriptionText = attributeString
+        page.actionButtonTitle = "감정들 로그인 & 회원가입"
+        page.alternativeButtonTitle = "조금 더 둘러볼래요"
+        page.appearance.alternativeButtonTitleColor = UIColor(named: emotionDeepGreen)!
+        page.image = UIImage(named: "invitation")
+        page.requiresCloseButton = false
+        page.appearance.actionButtonColor = UIColor(named: emotionDeepGreen)!
+        page.appearance.actionButtonTitleColor = .white
+        page.actionHandler = { (item: BLTNActionItem) in
+            
+            self.dismiss(animated: true) {
+                let sb = UIStoryboard(name: "Home", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        return BLTNItemManager(rootItem: page)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initRefresh()
-        DataManager.shared.loadPosts { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if auth.currentUser == nil {
+                DataManager.shared.latestposts = []
+                DataManager.shared.loadedPosts = []
+                DataManager.shared.loadPosts { success in
+                    if success {
+                        print("유저없음 로드포스트")
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                self.bulletinManager.showBulletin(above: self)
+            } else {
+                DataManager.shared.latestposts = []
+                DataManager.shared.loadedPosts = []
+                DataManager.shared.loadPosts { success in
+                    if success {
+                        print("유저있음 로드포스트")
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
                 }
             }
         }
-        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
     // MARK: - Functions
     
     private func initRefresh() {
