@@ -160,7 +160,7 @@ class LatestPostsTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else {
                 print("indexPathForSelectedRow")
                 return }
-            let post = DataManager.shared.latestposts[indexPath.row]
+            let post = DataManager.shared.latestposts[indexPath.row] // DataManager 참고
             guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
             postDetailTableViewController.post = post
         }

@@ -115,12 +115,12 @@ class SympathyTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sympathyDetailSegue" {
-//            guard let indexPath = tableView.indexPathForSelectedRow else {
-//                print("indexPathForSelectedRow")
-//                return }
-//            let post = DataManager.shared.latestposts[indexPath.row]
-//            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
-//            postDetailTableViewController.post = post
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                print("indexPathForSelectedRow")
+                return }
+            let post = PostManager.shared.myHeartPosts[indexPath.row] // myHeartsPosts = PostManager 참고
+            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
+            postDetailTableViewController.post = post
         }
     }
 

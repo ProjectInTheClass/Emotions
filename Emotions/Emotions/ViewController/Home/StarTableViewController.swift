@@ -95,12 +95,12 @@ class StarTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "starDetailSegue" {
-//            guard let indexPath = tableView.indexPathForSelectedRow else {
-//                print("indexPathForSelectedRow")
-//                return }
-//            let post = DataManager.shared.latestposts[indexPath.row]
-//            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
-//            postDetailTableViewController.post = post
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                print("indexPathForSelectedRow")
+                return }
+            let post = PostManager.shared.starPosts[indexPath.row] //starPosts = PostManager 참고
+            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
+            postDetailTableViewController.post = post
         }
     }
 
