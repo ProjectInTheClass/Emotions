@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asL-yq-g1F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W7z-CG-sRV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,9 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Sora-VariableFont_wght.ttf">
-            <string>Sora-Regular</string>
-        </array>
         <array key="나눔손글씨 가람연꽃.ttf">
             <string>NanumGaRamYeonGgoc</string>
         </array>
@@ -22,71 +19,21 @@
         <scene sceneID="pCM-BI-JOY">
             <objects>
                 <tableViewController id="W7z-CG-sRV" customClass="PostDetailTableViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7bF-D1-BWu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" id="7bF-D1-BWu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="H5L-V0-qJP" userLabel="ContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0Pj-HF-nEP">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
-                                    <subviews>
-                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3F-Cz-aj3" userLabel="bgColorView">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ADf-Yn-K4c" userLabel="CardStackView">
-                                                    <rect key="frame" x="20" y="20" width="174" height="25.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6z-0T-DfV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="53" height="25.5"/>
-                                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43F-YN-YlY">
-                                                            <rect key="frame" x="61" y="0.0" width="52.5" height="25.5"/>
-                                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#카드3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKo-vJ-1fX">
-                                                            <rect key="frame" x="121.5" y="0.0" width="52.5" height="25.5"/>
-                                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25.5" id="2pi-6O-sXG"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-dQ-ZkK">
-                                                    <rect key="frame" x="345.5" y="50" width="48.5" height="19"/>
-                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="Izv-eu-6rY"/>
-                                                <constraint firstItem="ADf-Yn-K4c" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="top" constant="20" id="J1a-Ee-ial"/>
-                                                <constraint firstAttribute="trailing" secondItem="aM6-dQ-ZkK" secondAttribute="trailing" constant="20" id="XJ6-9b-278"/>
-                                                <constraint firstItem="ADf-Yn-K4c" firstAttribute="leading" secondItem="C3F-Cz-aj3" secondAttribute="leading" constant="20" id="qaW-t0-ssb"/>
-                                                <constraint firstItem="aM6-dQ-ZkK" firstAttribute="top" secondItem="C3F-Cz-aj3" secondAttribute="top" constant="50" id="y3g-bD-uB8"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xX-kv-Ou1">
-                                            <rect key="frame" x="0.0" y="119" width="414" height="186"/>
-                                            <string key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END</string>
-                                            <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xX-kv-Ou1">
+                                    <rect key="frame" x="10" y="50" width="394" height="40"/>
+                                    <string key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며. END</string>
+                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-vM-Hzp">
                                     <rect key="frame" x="181" y="10" width="52" height="30"/>
                                     <constraints>
@@ -104,23 +51,22 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="Nvg-vM-Hzp" firstAttribute="top" secondItem="H5L-V0-qJP" secondAttribute="top" constant="10" id="5vT-wu-HjL"/>
-                                <constraint firstItem="0Pj-HF-nEP" firstAttribute="top" secondItem="H5L-V0-qJP" secondAttribute="top" id="Ngy-dn-xb7"/>
+                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="top" secondItem="Nvg-vM-Hzp" secondAttribute="bottom" constant="10" id="GCQ-df-xLD"/>
+                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" constant="10" id="I6i-Uk-J4W"/>
+                                <constraint firstAttribute="trailing" secondItem="8xX-kv-Ou1" secondAttribute="trailing" constant="10" id="LyZ-Z9-aFa"/>
                                 <constraint firstItem="Nvg-vM-Hzp" firstAttribute="centerX" secondItem="H5L-V0-qJP" secondAttribute="centerX" id="Nzg-hZ-bgS"/>
-                                <constraint firstItem="8xX-kv-Ou1" firstAttribute="width" secondItem="H5L-V0-qJP" secondAttribute="width" id="Spt-ft-ji4"/>
-                                <constraint firstAttribute="trailing" secondItem="0Pj-HF-nEP" secondAttribute="trailing" id="exz-cG-mQ0"/>
-                                <constraint firstItem="0Pj-HF-nEP" firstAttribute="leading" secondItem="H5L-V0-qJP" secondAttribute="leading" id="lkh-8d-uay"/>
-                                <constraint firstAttribute="bottom" secondItem="0Pj-HF-nEP" secondAttribute="bottom" id="n7J-Iu-flH"/>
+                                <constraint firstAttribute="bottom" secondItem="8xX-kv-Ou1" secondAttribute="bottom" constant="10" id="zSJ-AQ-qb4"/>
                             </constraints>
                         </view>
                         <textField key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="textfield" textAlignment="natural" minimumFontSize="17" id="RkJ-Mi-fTJ">
-                            <rect key="frame" x="0.0" y="465.5" width="414" height="34"/>
+                            <rect key="frame" x="0.0" y="260.5" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="K2a-e9-sAG" userLabel="CommentCell" customClass="CommentTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="333" width="414" height="104.5"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="104.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K2a-e9-sAG" id="cNp-vW-fF7">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="104.5"/>
@@ -178,12 +124,7 @@
                         <outlet property="commentPushButton" destination="Nvg-vM-Hzp" id="YLf-lP-Zdh"/>
                         <outlet property="commentTextField" destination="RkJ-Mi-fTJ" id="dWj-pa-Pwi"/>
                         <outlet property="contentLabel" destination="8xX-kv-Ou1" id="lsV-mT-j5c"/>
-                        <outlet property="dateLabel" destination="aM6-dQ-ZkK" id="f3h-7x-5zY"/>
                         <outlet property="detailView" destination="H5L-V0-qJP" id="2yB-qw-ca5"/>
-                        <outlet property="firstCardBgColorView" destination="C3F-Cz-aj3" id="AIZ-8a-brb"/>
-                        <outlet property="firstCardLabel" destination="j6z-0T-DfV" id="dk7-Xi-hFR"/>
-                        <outlet property="secondCardLabel" destination="43F-YN-YlY" id="ysY-Ua-CjO"/>
-                        <outlet property="thirdCardLabel" destination="iKo-vJ-1fX" id="x3Z-KL-tsm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UL6-DQ-7cE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -212,7 +153,7 @@
                                 <rect key="frame" x="0.0" y="721" width="414" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="sadness"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

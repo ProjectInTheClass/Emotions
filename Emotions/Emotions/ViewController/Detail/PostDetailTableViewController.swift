@@ -18,12 +18,12 @@ class PostDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var detailView: UIView!
     
-    @IBOutlet weak var firstCardBgColorView: UIView!
+    @IBOutlet weak var firstCardBgColorView: UIView?
     
-    @IBOutlet weak var firstCardLabel: UILabel!
-    @IBOutlet weak var secondCardLabel: UILabel!
-    @IBOutlet weak var thirdCardLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var firstCardLabel: UILabel?
+    @IBOutlet weak var secondCardLabel: UILabel?
+    @IBOutlet weak var thirdCardLabel: UILabel?
+    @IBOutlet weak var dateLabel: UILabel?
     @IBOutlet weak var contentLabel: UILabel!
     
     
@@ -47,6 +47,26 @@ class PostDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        contentLabel.sizeToFit()
+        
+        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: .greatestFiniteMagnitude))
+        
+            label.numberOfLines = 0
+        label.text = contentLabel.text
+//            label.font = font
+            label.sizeToFit()
+
+        let labelHeight = label.frame.size.height + 100
+        
+        var f = detailView.frame
+        
+        f.size.height = labelHeight + 20.0
+        
+        detailView.frame = f
+        
+//        let temp = "stringdddd"
+//
+//        temp.bounding
  
         // 옵셔널 해제 : if let shadowing, forced unwrapping, guard let
         // 예외상황 적기 ?? 뒤에다가 "" 또는 다른 것
@@ -57,8 +77,8 @@ class PostDetailTableViewController: UITableViewController {
 //            firstCardLabel.text = post.firstCard?.title
 //            secondCardLabel.text = post.secondCard?.title
 //            thirdCardLabel.text = post.thirdCard?.title
-            dateLabel.text = dateToDday(post: post)
-            contentLabel.text = post.content
+//            dateLabel.text = dateToDday(post: post)
+//            contentLabel.text = post.content
             
             updateUI()
             navigationConfigureUI()
@@ -87,27 +107,27 @@ class PostDetailTableViewController: UITableViewController {
         
         //1번 감정카드
         if let firstCard = post.firstCard {
-            firstCardLabel.text = "#\(firstCard.title)" //해시태그 대입
+            firstCardLabel?.text = "#\(firstCard.title)" //해시태그 대입
             //firstCardLabel.textColor = firstCard.cardType.typeColor //해시태그 레이블 고유 컬러 대입
-            firstCardBgColorView.backgroundColor = firstCard.cardType.typeColor // 해시태그 고유 백그라운드 컬러 대입
+            firstCardBgColorView?.backgroundColor = firstCard.cardType.typeColor // 해시태그 고유 백그라운드 컬러 대입
         } else {
-            firstCardLabel.isHidden = true
+            firstCardLabel?.isHidden = true
         }
         
         //2번 감정카드
         if let secondCard = post.secondCard {
-            secondCardLabel.text = "#\(secondCard.title)"
+            secondCardLabel?.text = "#\(secondCard.title)"
             //secondCardLabel.textColor = secondCard.cardType.typeColor
         } else {
-            secondCardLabel.isHidden = true
+            secondCardLabel?.isHidden = true
         }
         
         //3번 감정카드
         if let thirdCard = post.thirdCard {
-            thirdCardLabel.text = "#\(thirdCard.title)"
+            thirdCardLabel?.text = "#\(thirdCard.title)"
             //thirdCardLabel.textColor = thirdCard.cardType.typeColor
         } else {
-            thirdCardLabel.isHidden = true
+            thirdCardLabel?.isHidden = true
         }
         
         
