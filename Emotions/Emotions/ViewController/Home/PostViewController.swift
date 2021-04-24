@@ -11,6 +11,7 @@ import UIKit
 import BetterSegmentedControl
 import TransitionButton
 import FirebaseDatabase
+import FirebaseAuth
 
 class PostViewController: CustomTransitionViewController {
     
@@ -34,6 +35,9 @@ class PostViewController: CustomTransitionViewController {
         return button
     }()
     
+    var handle: AuthStateDidChangeListenerHandle?
+    var user: User?
+    
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     @IBOutlet weak var latestContainerView: UIView!
     @IBOutlet weak var sympathyContainerView: UIView!
@@ -47,6 +51,24 @@ class PostViewController: CustomTransitionViewController {
         sympathyContainerView.isHidden = true
         starContainerView.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
+            if auth.currentUser == nil {
+                print("SympathyTableViewController - viewWillAppear - 현재 유저 없음")
+                self.user = nil
+            } else {
+                self.user = auth.currentUser
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
     
     // MARK: - UI Functions
     
@@ -98,18 +120,17 @@ class PostViewController: CustomTransitionViewController {
             starContainerView.isHidden = true
         } else if sender.index == 1 {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightPink)
-            AuthManager.shared.checkLogin { success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.latestContainerView.isHidden = true
-                        self.sympathyContainerView.isHidden = true
-                        self.starContainerView.isHidden = true
-                    }
-                } else {
-                    self.latestContainerView.isHidden = true
-                    self.sympathyContainerView.isHidden = false
-                    self.starContainerView.isHidden = true
-                }
+            print("user------------> \(user)")
+            if user == nil {
+                print("next1")
+                self.latestContainerView.isHidden = true
+                self.sympathyContainerView.isHidden = true
+                self.starContainerView.isHidden = true
+            } else {
+                print("next2")
+                self.latestContainerView.isHidden = true
+                self.sympathyContainerView.isHidden = false
+                self.starContainerView.isHidden = true
             }
         } else {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "joyBG")

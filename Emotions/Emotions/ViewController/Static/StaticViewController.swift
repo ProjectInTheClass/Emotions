@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class StaticViewController: UIViewController {
    
@@ -37,8 +38,9 @@ class StaticViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
+        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
         PostManager.shared.userPosts = []
-        PostManager.shared.laodUserPosts { (success) in
+        PostManager.shared.laodUserPosts(currentUserUID: currentUserUID) { (success) in
             if success {
                 self.myPostToCardtype()
                 self.updateUI()

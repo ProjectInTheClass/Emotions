@@ -37,17 +37,23 @@ class MyPostTableViewController: UITableViewController {
                     self.userPostCount.text = "0가지"
                 }
             } else {
+                guard let currentUserUID = auth.currentUser?.uid else { return }
                 PostManager.shared.userPosts = []
-                PostManager.shared.laodUserPosts { (success) in }
-                DispatchQueue.main.async {
-                    if let name = auth.currentUser?.displayName {
-                        self.nicknameLabel.text = "\(name)님,"
-                        self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
+                PostManager.shared.laodUserPosts(currentUserUID: currentUserUID) { (success) in
+                    if success {
+                        DispatchQueue.main.async {
+                            if let name = auth.currentUser?.displayName {
+                                self.nicknameLabel.text = "\(name)님,"
+                                self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
+                            } else {
+                                self.nicknameLabel.text = "회원님,"
+                                self.userPostCount.text = "0가지"
+                            }
+                            self.tableView.reloadData()
+                        }
                     } else {
-                        self.nicknameLabel.text = "회원님,"
-                        self.userPostCount.text = "0가지"
+                        print("viewWillAppear - laodUserPosts failed")
                     }
-                    self.tableView.reloadData()
                 }
             }
         }

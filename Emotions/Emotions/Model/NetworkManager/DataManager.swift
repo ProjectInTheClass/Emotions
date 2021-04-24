@@ -12,7 +12,6 @@ import FirebaseStorage
 class DataManager {
     static let shared = DataManager()
     
-    let database = Database.database().reference()
     let storage = Storage.storage().reference()
     
     private let numberOfOneLoad = 5
@@ -21,9 +20,9 @@ class DataManager {
     var loadedPosts = [Post]()
     //MARK: - download & upload Posts
     
-    public func loadPosts(completion: @escaping (Bool)->Void) {
+    public func loadPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
-        orderedQuery = database.child("posts").queryOrdered(byChild: "endDate")
+        orderedQuery = postsRef.queryOrdered(byChild: "endDate")
         orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
             var snapshotData = snapshot.children.allObjects
             snapshotData.reverse()
@@ -32,12 +31,13 @@ class DataManager {
                 let snapshotDatum = anyDatum as! DataSnapshot
 //                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
+                
                 if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
                     for isReportUser in isReportedDic {
                         let user = isReportUser.key
                         if AuthManager.shared.currentUser?.uid == user {
                         } else {
-                            let post = Post(dictionary: dicDatum)
+                            let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                             if let firstCardID = dicDatum["firstCardID"] as? String {
                                 post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
                             }
@@ -51,7 +51,7 @@ class DataManager {
                         }
                     }
                 } else {
-                    let post = Post(dictionary: dicDatum)
+                    let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                     if let firstCardID = dicDatum["firstCardID"] as? String {
                         post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
                     }
@@ -71,13 +71,13 @@ class DataManager {
         })
     }
     
-    public func loadFreshPosts(completion: @escaping (Bool)->Void) {
+    public func loadFreshPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var filterQuery: DatabaseQuery?
         
         if let latestDate = self.latestposts.first?.endDate {
-            filterQuery = database.child("posts").queryOrdered(byChild: "endDate").queryStarting(afterValue: latestDate)
+            filterQuery = postsRef.queryOrdered(byChild: "endDate").queryStarting(afterValue: latestDate)
         } else {
-            filterQuery = database.child("posts").queryOrdered(byChild: "endDate").queryStarting(atValue: 0)
+            filterQuery = postsRef.queryOrdered(byChild: "endDate").queryStarting(atValue: 0)
         }
         
         filterQuery?.observeSingleEvent(of: .value, with: { snapshot in
@@ -90,7 +90,7 @@ class DataManager {
                 let snapshotDatum = anyDatum as! DataSnapshot
 //                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
-                let post = Post(dictionary: dicDatum)
+                let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                 
                 if let firstCardID = dicDatum["firstCardID"] as? String {
                     post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)

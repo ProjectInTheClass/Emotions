@@ -15,7 +15,8 @@ class StarTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        PostManager.shared.loadPostsByStarPoint { success in
+        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+        PostManager.shared.loadPostsByStarPoint(currentUserUID: currentUserUID) { success in
             if success {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

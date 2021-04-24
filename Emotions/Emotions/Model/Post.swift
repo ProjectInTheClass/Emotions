@@ -23,7 +23,7 @@ class Post {
     var isStar = false
     var isHeart = false
 
-    init(dictionary: [String:Any]) {
+    init(currentUserUID: String, dictionary: [String:Any]) {
         self.userID = dictionary["userID"] as? String ?? ""
         self.postID = dictionary["postID"] as? String ?? ""
         self.userEmail = dictionary["userEmail"] as? String ?? ""
@@ -33,10 +33,9 @@ class Post {
         self.heartUser = dictionary["heartUser"] as? [String:Bool] ?? [:]
         self.starUser = dictionary["starUser"] as? [String:Bool] ?? [:]
         self.reportedUser = dictionary["reportedUser"] as? [String:Bool] ?? [:]
-        guard let currentUser = AuthManager.shared.currentUser?.uid else { return }
-        let heartDic = heartUser.filter { $0.key == currentUser }
-        let startDic = starUser.filter { $0.key == currentUser }
-        self.isHeart = heartDic[currentUser] ?? false
-        self.isStar = startDic[currentUser] ?? false
+        let heartDic = heartUser.filter { $0.key == currentUserUID }
+        let startDic = starUser.filter { $0.key == currentUserUID }
+        self.isHeart = heartDic[currentUserUID] ?? false
+        self.isStar = startDic[currentUserUID] ?? false
     }
 }

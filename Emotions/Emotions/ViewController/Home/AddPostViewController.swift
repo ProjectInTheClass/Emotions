@@ -45,6 +45,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
             if auth.currentUser == nil {
                 print("AddPostViewController - viewWillAppear - 현재 유저 없음")
+                self.user = nil
             } else {
                 self.user = auth.currentUser
             }
