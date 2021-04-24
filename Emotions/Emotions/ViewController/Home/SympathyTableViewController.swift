@@ -12,20 +12,10 @@ import FirebaseAuth
 class SympathyTableViewController: UITableViewController {
     
     var handle: AuthStateDidChangeListenerHandle?
-    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
-        PostManager.shared.loadPostsByHeart(currentUserUID: currentUserUID) { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } else {
-                print("failure")
-            }
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +24,14 @@ class SympathyTableViewController: UITableViewController {
             if auth.currentUser == nil {
                 print("SympathyTableViewController - viewWillAppear - 현재 유저 없음")
             } else {
-                self.user = auth.currentUser
+                guard let currentUserUID = auth.currentUser?.uid else { return }
+                PostManager.shared.loadPostsByHeart(currentUserUID: currentUserUID) { success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
             }
         })
     }
@@ -42,29 +39,6 @@ class SympathyTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Auth.auth().removeStateDidChangeListener(handle!)
-    }
-
-    // MARK: - Functions
-    
-    private func initRefresh() {
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
-    }
-    
-    @objc func handleRefreshControl() {
-        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
-        PostManager.shared.myHeartPosts = []
-        PostManager.shared.loadPostsByHeart(currentUserUID: currentUserUID) { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } else {
-                print("failure")
-            }
-        }
-        tableView.refreshControl?.endRefreshing()
     }
 
     // MARK: - Table view data source
@@ -76,13 +50,10 @@ class SympathyTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         let post = PostManager.shared.myHeartPosts[indexPath.row]
-//        let comments = CommentManager.downloadComment(post: post)
         cell.updateUI(post: post)
-
-        // 네트워크 호출시에 이곳에서 데이터 변경하도록 호출 그게 완료되면 보여지는게 바뀌도록
         cell.heartButtonCompletion = { currentHeartState in
             post.isHeart = !currentHeartState
-            guard let user = self.user else { return }
+            guard let user = Auth.auth().currentUser else { return }
             let uid = user.uid
             let postKey = post.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData  in
@@ -103,7 +74,7 @@ class SympathyTableViewController: UITableViewController {
 
         cell.starButtonCompletion = { currentStarState in
             post.isStar = !currentStarState
-            guard let user = self.user else { return }
+            guard let user = Auth.auth().currentUser else { return }
             let uid = user.uid
             let postKey = post.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData -> TransactionResult in

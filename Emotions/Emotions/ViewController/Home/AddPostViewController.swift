@@ -99,8 +99,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func uploadButtonTapped() {
-        guard let user = user else { print("유저없음")
-            return }
+        guard let user = user else { return }
         
         var firstCard: Card?
         var secondCard: Card?
@@ -130,9 +129,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         
         guard let afterAMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date()) else { return }
         let endDate = Int(afterAMonth.timeIntervalSince1970)
-        
         let postkey = UUID().uuidString
-        
         let dataDictionary: [String:Any] = [
             "postID":postkey,
             "userEmail":user.email!,

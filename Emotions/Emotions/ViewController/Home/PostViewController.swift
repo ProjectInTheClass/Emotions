@@ -28,13 +28,6 @@ class PostViewController: CustomTransitionViewController {
         return button
     }()
     
-    lazy var searchPostButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "user"), for: .normal)
-        button.addTarget(self, action: #selector(searchPostButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
     var handle: AuthStateDidChangeListenerHandle?
     var user: User?
     
@@ -47,16 +40,13 @@ class PostViewController: CustomTransitionViewController {
         super.viewDidLoad()
         navigationConfigureUI()
         segmentedControlConfigureUI()
-        latestContainerView.isHidden = false
-        sympathyContainerView.isHidden = true
-        starContainerView.isHidden = true
+        initialSegmentControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
             if auth.currentUser == nil {
-                print("SympathyTableViewController - viewWillAppear - 현재 유저 없음")
                 self.user = nil
             } else {
                 self.user = auth.currentUser
@@ -85,26 +75,20 @@ class PostViewController: CustomTransitionViewController {
     func navigationConfigureUI() {
         navigationItem.title = ""
         let addButton = UIBarButtonItem(customView: addPostButton)
-        let searchButton = UIBarButtonItem(customView: searchPostButton)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: emotionsTitle)
-        navigationItem.rightBarButtonItems = [addButton, searchButton]
+        navigationItem.rightBarButtonItems = [addButton]
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    //MARK: - OBJC Functions
-    
-    // 아직 구현안함 + 나중에 추가하거나 제거
-    @objc func searchPostButtonTapped() {
-        AuthManager.shared.logoutUser { success in
-            if success {
-                print("성공")
-            } else {
-                print("실패")
-            }
-        }
+    func initialSegmentControl(){
+        latestContainerView.isHidden = false
+        sympathyContainerView.isHidden = true
+        starContainerView.isHidden = true
     }
+    
+    //MARK: - OBJC Functions
     
     @objc func addPostButtonTapped() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
@@ -120,7 +104,6 @@ class PostViewController: CustomTransitionViewController {
             starContainerView.isHidden = true
         } else if sender.index == 1 {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightPink)
-            print("user------------> \(user)")
             if user == nil {
                 print("next1")
                 self.latestContainerView.isHidden = true
@@ -133,7 +116,7 @@ class PostViewController: CustomTransitionViewController {
                 self.starContainerView.isHidden = true
             }
         } else {
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: "joyBG")
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: joyBGColor)
             latestContainerView.isHidden = true
             sympathyContainerView.isHidden = true
             starContainerView.isHidden = false
