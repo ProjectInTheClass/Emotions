@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostDetailViewController: UIViewController {
+class PostDetailViewController: UIViewController, UITextFieldDelegate {
 
     var post: Post?
     var comment: Comment?
@@ -26,14 +26,9 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var commentBackgroundColorView: UIView!
     @IBOutlet weak var commentTextField: UITextField?
     @IBOutlet weak var commentPostButton: UIButton!
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         
         if let post = post {
             postContentTextView.text = post.content
@@ -47,11 +42,45 @@ class PostDetailViewController: UIViewController {
             firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
         
-        
-        
-        
         updateUI()
         navigationConfigureUI()
+        
+        commentTextField?.returnKeyType = .done
+        
+        commentTextField?.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        
+        
+        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+        
+      
+            
+            
+        }
+        
+        //commentBackgroundColorView.delegate = self
+        
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            commentBackgroundColorView.frame.origin.y -= keyboardHeight
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            commentBackgroundColorView.frame.origin.y += keyboardHeight
+        }
+    }
+        
+
+    func endEditing() {
     }
     
     
@@ -64,6 +93,20 @@ class PostDetailViewController: UIViewController {
         } else {
             firstCardTitleLabel.isHidden = true
             firstCardBackgroundColorView.isHidden = true
+        }
+        
+        //2번 카드
+        if let secondCard = post.secondCard {
+            secondCardTitleLabel?.text = "#\(secondCard.title)"
+        } else {
+            secondCardTitleLabel?.isHidden = true
+        }
+        
+        //3번 카드
+        if let thirdCard = post.thirdCard {
+            thirdCardTitleLabel?.text = "#\(thirdCard.title)"
+        } else {
+            thirdCardTitleLabel?.isHidden = true
         }
         
     }
@@ -96,28 +139,17 @@ class PostDetailViewController: UIViewController {
     }
     
     // 텍스트필드 키보드 제어 함수 (작동 안함)
+    /*
     private func addKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            commentBackgroundColorView.frame.origin.y -= keyboardHeight
-        }
-    }
+
     
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            commentBackgroundColorView.frame.origin.y += keyboardHeight
-        }
-    }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { self.view.endEditing(true) }
+    */
     
     
 //    func reloadRows(at indexPaths: [IndexPath],
@@ -134,17 +166,18 @@ class PostDetailViewController: UIViewController {
         guard let post = post else { return }
         CommentManager.shared.downloadComment(post: post) { success in
             if success {
-                print("코멘트 리로드 성공")
+                print("코멘트 다운로드 성공")
                 
                 // 리로드 방법?
                 // self.tableview.reloadData() 와 같은 메소드를 넣을 수 없음
+                //print("코멘트 리로드 성공")
             } else {
-                print("코멘트 리로드 실패")
-            }
+                print("코멘트 다운로드 실패")
         }
     }
-    
 }
+}
+
 
 
 // 코멘트 테이블뷰 익스텐션
@@ -155,6 +188,8 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return CommentManager.shared.comments.count
     }
     
+
+    
     // 셀 재활용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // reuseID 대입, 커스텀셀 캐스팅
@@ -164,16 +199,15 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
         // update custom cell UI
         
-        cell.comment?.content = comments.content
-        cell.comment?.date = comments.date
-        cell.comment?.userName = comments.userName
+        cell.commentUserNameLabel.text = comments.userName
+        cell.commentDateLabel.text = "\(dateToMakeDay(comment: comments))"
+        cell.commentContentLabel.text = comments.content
+
     
 //        let comment = CommentManager.shared.comments[indexPath.row]
 //        cell.updateUI(comment: comment)
     
         return cell
     }
-    
-    
 }
- 
+
