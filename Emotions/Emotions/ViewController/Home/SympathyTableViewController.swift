@@ -114,8 +114,8 @@ class SympathyTableViewController: UITableViewController {
                 print("indexPathForSelectedRow")
                 return }
             let post = PostManager.shared.myHeartPosts[indexPath.row] // myHeartsPosts = PostManager 참고
-            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
-            postDetailTableViewController.post = post
+            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
+            postDetailViewController.post = post
         }
     }
 

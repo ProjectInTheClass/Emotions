@@ -5,6 +5,8 @@
 //  Created by Jungsang Lim on 2021/04/22.
 //
 
+/*
+
 import UIKit
 
 class PostDetailTableViewController: UITableViewController {
@@ -12,19 +14,19 @@ class PostDetailTableViewController: UITableViewController {
     // 넘겨 받은 데이터
     var post: Post?
   
-    @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet weak var commentPushButton: UIButton!
-    
-    
-    @IBOutlet weak var detailView: UIView!
-    
-    @IBOutlet weak var firstCardBgColorView: UIView!
-    
-    @IBOutlet weak var firstCardLabel: UILabel!
-    @IBOutlet weak var secondCardLabel: UILabel!
-    @IBOutlet weak var thirdCardLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
+//    @IBOutlet weak var commentTextField: UITextField!
+//    @IBOutlet weak var commentPushButton: UIButton!
+//
+//
+//    @IBOutlet weak var detailView: UIView!
+//
+//    @IBOutlet weak var firstCardBgColorView: UIView!
+//
+//    @IBOutlet weak var firstCardLabel: UILabel!
+//    @IBOutlet weak var secondCardLabel: UILabel!
+//    @IBOutlet weak var thirdCardLabel: UILabel!
+//    @IBOutlet weak var dateLabel: UILabel!
+//    @IBOutlet weak var contentLabel: UILabel!
     
     
 
@@ -217,3 +219,5 @@ class PostDetailTableViewController: UITableViewController {
     */
 
 }
+
+ */

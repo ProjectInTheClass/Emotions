@@ -115,8 +115,8 @@ class MyPostTableViewController: UITableViewController {
                 print("indexPathForSelectedRow")
                 return }
             let post = PostManager.shared.userPosts[indexPath.row] //userPosts = PostManager 참고
-            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
-            postDetailTableViewController.post = post
+            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
+            postDetailViewController.post = post
         }
     }
 
