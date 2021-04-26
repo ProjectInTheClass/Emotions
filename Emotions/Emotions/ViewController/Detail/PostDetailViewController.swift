@@ -7,11 +7,12 @@
 
 import UIKit
 
-class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PostDetailViewController: UIViewController {
 
     var post: Post?
     var comment: Comment?
     
+    var detailCompletionHandler: (()->Void)?
     
     // post details
     @IBOutlet weak var firstCardBackgroundColorView: UIView!
@@ -31,6 +32,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         if let post = post {
             postContentTextView.text = post.content
             
@@ -42,6 +46,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             
             firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
+        
+        
+        
         
         updateUI()
         navigationConfigureUI()
@@ -59,6 +66,11 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             firstCardBackgroundColorView.isHidden = true
         }
         
+    }
+    
+    // navigation title 설정
+    func navigationConfigureUI() {
+        title = "Post Detail Test"
     }
     
     
@@ -83,6 +95,30 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         CommentManager.uploadComment(dictionary: reviewDictionary)
     }
     
+    // 텍스트필드 키보드 제어 함수 (작동 안함)
+    private func addKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            commentBackgroundColorView.frame.origin.y -= keyboardHeight
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            commentBackgroundColorView.frame.origin.y += keyboardHeight
+        }
+    }
+    
+    
     
 //    func reloadRows(at indexPaths: [IndexPath],
 //                    with animation: UITableView.RowAnimation) {
@@ -94,10 +130,12 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     // 코멘트 정보 가져오기
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         guard let post = post else { return }
         CommentManager.shared.downloadComment(post: post) { success in
             if success {
                 print("코멘트 리로드 성공")
+                
                 // 리로드 방법?
                 // self.tableview.reloadData() 와 같은 메소드를 넣을 수 없음
             } else {
@@ -106,72 +144,36 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    // navigation title 설정
-    func navigationConfigureUI() {
-        title = "Post Detail"
-    }
-    
-    
-    // 섹션의 개수 (기본 1개)
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    // 해당 글의 코멘트 수에 따라 셀 리턴
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CommentManager.shared.comments.count
-    }
-    
-    // 셀 재활용
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            // reuseID 대입, 커스텀셀 캐스팅
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        
-            // 유저네임, 날짜, 댓글내용 대입
-            let comment = CommentManager.shared.comments[indexPath.row]
-            cell.commentUserNameLabel.text = comment.userName
-            cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
-            cell.commentContentLabel.text = comment.content
-            cell.updateUI(comment: comment)
-        
-            return cell
-    }
-    
-
-
 }
 
- // MARK:- Comment Extention
 
-/*
-// 댓글 리스트 커스텀셀 익스텐션
-
+// 코멘트 테이블뷰 익스텐션
 extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    // 섹션의 개수 (기본 1개)
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    // 해당 글의 코멘트 수에 따라 셀 리턴
+        
+    // 해당 글의 코멘트 수에 따라 셀 리턴 (섹션 내부의 셀 개수)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CommentManager.shared.comments.count
     }
     
     // 셀 재활용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            // reuseID 대입, 커스텀셀 캐스팅
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
+        // reuseID 대입, 커스텀셀 캐스팅
+        let comments = CommentManager.shared.comments[indexPath.row]
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell") as? CommentTableViewCell else { return UITableViewCell() }
+    
+        // update custom cell UI
         
-            // 유저네임, 날짜, 댓글내용 대입
-            let comment = CommentManager.shared.comments[indexPath.row]
-            cell.commentUserNameLabel.text = comment.userName
-            cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
-            cell.commentContentLabel.text = comment.content
-            cell.updateUI(comment: comment)
-        
-            return cell
+        cell.comment?.content = comments.content
+        cell.comment?.date = comments.date
+        cell.comment?.userName = comments.userName
+    
+//        let comment = CommentManager.shared.comments[indexPath.row]
+//        cell.updateUI(comment: comment)
+    
+        return cell
     }
     
-    // 셀 밀어서 삭제하기 구현
+    
 }
-*/
+ 

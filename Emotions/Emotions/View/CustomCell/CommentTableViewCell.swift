@@ -29,7 +29,12 @@ class CommentTableViewCell: UITableViewCell {
         commentUserNameLabel.text = comment.userName
         commentDateLabel.text = dateToDday(post: post!)
         commentContentLabel.text = comment.content
-//        textLabel?.text = comment.content
-//        detailTextLabel?.text = "\(comment.date)"
+        
+        textLabel?.text = comment.content
+        detailTextLabel?.text = "\(comment.date)"
+        
+        //            cell.commentUserNameLabel.text = comment.userName
+        //            cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
+        //            cell.commentContentLabel.text = comment.content
     }
 }

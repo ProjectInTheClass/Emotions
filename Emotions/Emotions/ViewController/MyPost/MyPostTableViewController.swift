@@ -119,6 +119,4 @@ class MyPostTableViewController: UITableViewController {
             postDetailViewController.post = post
         }
     }
-
-
 }
