@@ -222,8 +222,8 @@ class LatestPostsTableViewController: UITableViewController {
                 print("indexPathForSelectedRow")
                 return }
             let post = DataManager.shared.latestposts[indexPath.row] // DataManager 참고
-            guard let postDetailTableViewController = segue.destination as? PostDetailTableViewController else { return }
-            postDetailTableViewController.post = post
+            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
+            postDetailViewController.post = post
         }
     }
    
