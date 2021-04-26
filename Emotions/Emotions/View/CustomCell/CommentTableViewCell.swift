@@ -9,7 +9,8 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
 
-
+    var post: Post?
+    var comment: Comment?
     
     // comment detail cells
     @IBOutlet weak var commentUserNameLabel: UILabel!
@@ -25,8 +26,10 @@ class CommentTableViewCell: UITableViewCell {
     
     // 여기 수정은?
     func updateUI(comment: Comment) {
-        textLabel?.text = comment.content
-        detailTextLabel?.text = "\(comment.date)"
+        commentUserNameLabel.text = comment.userName
+        commentDateLabel.text = dateToDday(post: post!)
+        commentContentLabel.text = comment.content
+//        textLabel?.text = comment.content
+//        detailTextLabel?.text = "\(comment.date)"
     }
-
 }
