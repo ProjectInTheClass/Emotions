@@ -35,41 +35,51 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-OG-F7Z" userLabel="firstCardBackgroundView">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#1번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1N-p7-aZE">
-                                                    <rect key="frame" x="8" y="8" width="100" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#1번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1N-p7-aZE">
+                                                    <rect key="frame" x="20" y="15" width="59" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#3번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBY-Sl-bez">
-                                                    <rect key="frame" x="224" y="7" width="100" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#2번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjw-5J-daf">
+                                                    <rect key="frame" x="89" y="15" width="58.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E4-gU-jkD">
-                                                    <rect key="frame" x="349.5" y="48" width="54.5" height="22"/>
+                                                    <rect key="frame" x="345.5" y="48" width="48.5" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="ibB-2l-6pC"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="15"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#2번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjw-5J-daf">
-                                                    <rect key="frame" x="116" y="7" width="100" height="23.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#3번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBY-Sl-bez">
+                                                    <rect key="frame" x="157.5" y="13" width="100" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="0CE-ve-WEc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="9E4-gU-jkD" secondAttribute="trailing" constant="10" id="3QU-AQ-GLp"/>
+                                                <constraint firstAttribute="trailing" secondItem="9E4-gU-jkD" secondAttribute="trailing" constant="20" id="3QU-AQ-GLp"/>
                                                 <constraint firstAttribute="bottom" secondItem="9E4-gU-jkD" secondAttribute="bottom" constant="10" id="4OG-71-v6d"/>
+                                                <constraint firstItem="j1N-p7-aZE" firstAttribute="leading" secondItem="hhh-OG-F7Z" secondAttribute="leading" constant="20" id="9gj-Dx-AwQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="WBY-Sl-bez" secondAttribute="bottom" constant="43" id="Kwo-mc-wI8"/>
+                                                <constraint firstItem="bjw-5J-daf" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="15" id="Sv6-Tp-G3v"/>
+                                                <constraint firstItem="bjw-5J-daf" firstAttribute="leading" secondItem="j1N-p7-aZE" secondAttribute="trailing" constant="10" id="VP9-vV-UKX"/>
+                                                <constraint firstAttribute="bottom" secondItem="j1N-p7-aZE" secondAttribute="bottom" constant="39.5" id="Zro-4D-cfb"/>
+                                                <constraint firstItem="WBY-Sl-bez" firstAttribute="leading" secondItem="bjw-5J-daf" secondAttribute="trailing" constant="10" id="bJ4-yX-Y6L"/>
+                                                <constraint firstItem="j1N-p7-aZE" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="15" id="fS2-JE-O0H"/>
+                                                <constraint firstItem="WBY-Sl-bez" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="13" id="m2p-Eo-fft"/>
+                                                <constraint firstAttribute="bottom" secondItem="bjw-5J-daf" secondAttribute="bottom" constant="41.5" id="nr6-hG-QXH"/>
+                                                <constraint firstItem="bjw-5J-daf" firstAttribute="height" secondItem="j1N-p7-aZE" secondAttribute="height" multiplier="0.921569" id="w04-Wc-4x3"/>
                                                 <constraint firstAttribute="height" constant="80" id="xTh-0n-aj4"/>
                                             </constraints>
                                         </view>
