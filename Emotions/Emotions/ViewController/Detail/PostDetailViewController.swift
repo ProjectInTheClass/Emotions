@@ -56,7 +56,21 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //UI configure
         firstCardBackgroundColorView.layer.cornerRadius = 30
-        //commentTextField.layer.cornerRadius = 60
+        
+        // textField 왼쪽(시작점)에 공백 주기
+        commentTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        
+        commentTextField.layer.cornerRadius = 15
+        commentTextField.layer.borderWidth = 0.25
+        commentTextField.layer.borderColor = UIColor.white.cgColor
+        commentTextField.layer.shadowOpacity = 0.5
+        commentTextField.layer.shadowRadius = 1.5
+        commentTextField.layer.shadowOffset = CGSize.zero
+        commentTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+//        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: commentTextField.frame.height))
+//        commentTextField.leftView = paddingView
+        
         
         //dismiss keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -79,6 +93,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             postDdayLabel.text = dateToDday(post: post)
             
             firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
+            commentBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
         
         updateUI()
