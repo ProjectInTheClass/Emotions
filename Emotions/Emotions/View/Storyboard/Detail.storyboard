@@ -158,28 +158,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-qM-JOY" userLabel="CommentView">
                                 <rect key="frame" x="0.0" y="762" width="414" height="51"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="댓글을 입력하세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-Z8-0Sm">
-                                        <rect key="frame" x="8" y="8" width="360" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력해 주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-Z8-0Sm">
+                                        <rect key="frame" x="15" y="8" width="349" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQi-r1-Uo2">
-                                        <rect key="frame" x="376" y="8" width="30" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="게시"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQi-r1-Uo2">
+                                        <rect key="frame" x="378" y="8" width="21" height="33"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="paperplane.fill" catalog="system"/>
                                         <connections>
                                             <action selector="commentPost:" destination="oaB-8i-V3L" eventType="touchUpInside" id="AfB-Ke-Bco"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.70293039083480835" green="0.93140101432800293" blue="0.78355288505554199" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="iQa-Z8-0Sm" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" constant="8" id="4cn-yC-yNf"/>
                                     <constraint firstItem="pQi-r1-Uo2" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" constant="8" id="EL1-4y-fkS"/>
-                                    <constraint firstItem="iQa-Z8-0Sm" firstAttribute="leading" secondItem="V4x-qM-JOY" secondAttribute="leading" constant="8" id="Lae-eU-LKo"/>
-                                    <constraint firstAttribute="trailing" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="46" id="anl-qT-LOT"/>
+                                    <constraint firstItem="iQa-Z8-0Sm" firstAttribute="leading" secondItem="V4x-qM-JOY" secondAttribute="leading" constant="15" id="Lae-eU-LKo"/>
+                                    <constraint firstAttribute="trailing" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="50" id="anl-qT-LOT"/>
                                     <constraint firstAttribute="bottom" secondItem="iQa-Z8-0Sm" secondAttribute="bottom" constant="9" id="fH4-h0-bVJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="pQi-r1-Uo2" secondAttribute="trailing" constant="8" id="iQ1-ee-fHg"/>
+                                    <constraint firstAttribute="trailing" secondItem="pQi-r1-Uo2" secondAttribute="trailing" constant="15" id="iQ1-ee-fHg"/>
                                     <constraint firstAttribute="bottom" secondItem="pQi-r1-Uo2" secondAttribute="bottom" constant="10" id="q3i-KU-m9j"/>
                                     <constraint firstAttribute="height" constant="51" id="vvn-Ox-KCX"/>
                                 </constraints>
@@ -219,6 +220,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
