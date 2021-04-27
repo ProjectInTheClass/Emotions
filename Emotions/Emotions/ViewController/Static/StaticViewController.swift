@@ -9,8 +9,8 @@ import UIKit
 import FirebaseAuth
 import Charts
 
-class StaticViewController: UIViewController {
-   
+class StaticViewController: UIViewController, ChartViewDelegate {
+    
     var myPostsCardTypes = [CARDTYPE]()
     var sadnessCards = [CARDTYPE]()
     var joyCards = [CARDTYPE]()
@@ -25,34 +25,102 @@ class StaticViewController: UIViewController {
     }()
     
     @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var userNicknameLabel: UILabel!
+    @IBOutlet weak var bestEmotionDescription: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
-        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+       
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let currentUser = Auth.auth().currentUser else { return }
+        self.userNicknameLabel.text = "\(currentUser.displayName ?? "비회원")님의"
         PostManager.shared.userPosts = []
-        PostManager.shared.laodUserPosts(currentUserUID: currentUserUID) { (success) in
+        PostManager.shared.laodUserPosts(currentUserUID: currentUser.uid) { [weak self] success in
+            guard let self = self else { return }
+            let userPosts = PostManager.shared.userPosts
             if success {
-                self.myPostToCardtype()
-                self.updateUI()
+                self.myPostsCardTypes = []
+                self.sadnessCards = []
+                self.joyCards = []
+                self.angerCards = []
+                self.disgustCards = []
+                self.fearCards = []
+                let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
+                let userEmotionCount =  self.myPostToStatic(posts: userPosts)
+                let bestCardType = self.searchBestEmotion()
+                self.view.backgroundColor = bestCardType.typeBackground
+                self.bestEmotionDescription.text = bestCardType.typeString
+                self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
             } else {
                 
             }
         }
-
     }
     
-    func configureUI(){
+    func searchBestEmotion() -> CARDTYPE {
+        var typeDictionary: [Int:CARDTYPE] = [:]
+        typeDictionary[joyCards.count] = .joy
+        typeDictionary[sadnessCards.count] = .sadness
+        typeDictionary[angerCards.count] = .anger
+        typeDictionary[disgustCards.count] = .disgust
+        typeDictionary[fearCards.count] = .fear
+        let sortedDictionary = typeDictionary.sorted { $0.key > $1.key }
+        let bestType = sortedDictionary.first?.value ?? .joy
+        return bestType
+    }
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        pieChart.delegate = self
         pieChart.backgroundColor = .clear
+        var pieChartsDatas = [PieChartDataEntry]()
+        for (index, value) in values.enumerated() {
+            let pieChartData = PieChartDataEntry()
+            if value == 0 {
+                continue
+            } else {
+                pieChartData.y = value
+                pieChartData.label = dataPoints[index]
+                pieChartsDatas.append(pieChartData)
+                let pieChartDataSet = PieChartDataSet(entries: pieChartsDatas, label: nil)
+                let pieChartData = PieChartData(dataSet: pieChartDataSet)
+                pieChartDataSet.colors = colorsOfCharts(values: values)
+                pieChart.data = pieChartData
+                
+                let format = NumberFormatter()
+                format.numberStyle = .none
+                let formatter = DefaultValueFormatter(formatter: format)
+                pieChartData.setValueFormatter(formatter)
+            }
+        }
+        pieChart.isUserInteractionEnabled = true
+        pieChart.noDataText = "데이터가 없습니다."
+        pieChart.holeRadiusPercent = 0.4
+        pieChart.transparentCircleColor = UIColor.clear
     }
     
-    func updateUI(){
-//        let myCount = myPostsCardTypes.count
-//        let joyCount = joyCards.count
-//        let sadnessCount = sadnessCards.count
-//        let angerCount = angerCards.count
-//        let disgustCount = disgustCards.count
-//        let fearCount = fearCards.count
+    func colorsOfCharts(values: [Double]) -> [UIColor] {
+        let userEmotionColor: [UIColor] = [
+            UIColor(named: joyColor)!,
+            UIColor(named: sadnessColor)!,
+            UIColor(named: angerColor)!,
+            UIColor(named: disgustColor)!,
+            UIColor(named: fearColor)!
+        ]
+        var colorArray = [UIColor]()
+        for index in 0..<values.count {
+            if values[index] != 0 {
+                colorArray.append(userEmotionColor[index])
+            } else {
+                continue
+            }
+        }
+        return colorArray
     }
     
     func navigationConfigureUI() {
@@ -63,8 +131,9 @@ class StaticViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    func myPostToCardtype() {
-        for post in PostManager.shared.userPosts {
+    func myPostToStatic(posts: [Post]) -> [Double] {
+        
+        for post in posts {
             if let firstCard = post.firstCard {
                 myPostsCardTypes += [firstCard.cardType]
             }
@@ -90,5 +159,12 @@ class StaticViewController: UIViewController {
                 fearCards += [type]
             }
         }
+        let myCount = myPostsCardTypes.count
+        let joyCount = Double(100 * joyCards.count / myCount)
+        let sadnessCount = Double(100 * sadnessCards.count / myCount)
+        let angerCount = Double(100 * angerCards.count / myCount)
+        let disgustCount = Double(100 * disgustCards.count / myCount)
+        let fearCount = Double(100 * fearCards.count / myCount)
+        return [joyCount, sadnessCount, angerCount, disgustCount, fearCount]
     }
 }
