@@ -13,11 +13,11 @@
         </array>
     </customFonts>
     <scenes>
-        <!--프로필-->
+        <!--내 정보-->
         <scene sceneID="Wh0-4O-jbb">
             <objects>
                 <navigationController id="CVW-5E-jHF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="프로필" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="WYQ-kH-fHO"/>
+                    <tabBarItem key="tabBarItem" title="내 정보" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="WYQ-kH-fHO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cy2-uT-Z1F">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

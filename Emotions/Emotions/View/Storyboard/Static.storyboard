@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4bK-xW-5Qk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q1v-E7-Swj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Static View Controller-->
+        <!--내 감정-->
         <scene sceneID="2xB-HD-Hqk">
             <objects>
                 <viewController id="Q1v-E7-Swj" customClass="StaticViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1x-d7-lCy" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="107" y="108" width="200" height="200"/>
+                                <rect key="frame" x="107" y="64" width="200" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="q1x-d7-lCy" secondAttribute="height" multiplier="1:1" id="CBl-oM-LfO"/>
@@ -34,6 +34,7 @@
                             <constraint firstItem="q1x-d7-lCy" firstAttribute="top" secondItem="Xsg-IN-yg8" secondAttribute="top" constant="20" id="RMI-O7-Cm8"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="내 감정" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="C5Y-wL-KWk"/>
                     <navigationItem key="navigationItem" id="P3k-Xv-SNP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -42,27 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbl-8W-MvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113.0434782608697" y="116.51785714285714"/>
-        </scene>
-        <!--내 감정-->
-        <scene sceneID="zaj-Wb-cAO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4bK-xW-5Qk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="내 감정" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="Vzf-kh-hZx"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qr0-xp-2tL">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Q1v-E7-Swj" kind="relationship" relationship="rootViewController" id="HA9-gu-mu3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mvG-4i-nEN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="202.89855072463769" y="116.51785714285714"/>
+            <point key="canvasLocation" x="855" y="114"/>
         </scene>
     </scenes>
     <resources>
