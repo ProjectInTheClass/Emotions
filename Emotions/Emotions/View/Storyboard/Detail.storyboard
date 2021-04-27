@@ -36,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#1번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1N-p7-aZE">
-                                                    <rect key="frame" x="20" y="15" width="59" height="25.5"/>
+                                                    <rect key="frame" x="20" y="17" width="59" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -71,16 +71,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="9E4-gU-jkD" secondAttribute="trailing" constant="20" id="3QU-AQ-GLp"/>
                                                 <constraint firstAttribute="bottom" secondItem="9E4-gU-jkD" secondAttribute="bottom" constant="10" id="4OG-71-v6d"/>
                                                 <constraint firstItem="j1N-p7-aZE" firstAttribute="leading" secondItem="hhh-OG-F7Z" secondAttribute="leading" constant="20" id="9gj-Dx-AwQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="bjw-5J-daf" secondAttribute="bottom" constant="41.5" id="AqO-3Q-FcZ"/>
+                                                <constraint firstItem="j1N-p7-aZE" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="17" id="IkU-zZ-CB8"/>
                                                 <constraint firstAttribute="bottom" secondItem="WBY-Sl-bez" secondAttribute="bottom" constant="43" id="Kwo-mc-wI8"/>
-                                                <constraint firstItem="bjw-5J-daf" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="15" id="Sv6-Tp-G3v"/>
+                                                <constraint firstAttribute="bottom" secondItem="j1N-p7-aZE" secondAttribute="bottom" constant="39.5" id="Qgd-2T-kM5"/>
+                                                <constraint firstItem="bjw-5J-daf" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="15" id="TWi-ak-V2R"/>
                                                 <constraint firstItem="bjw-5J-daf" firstAttribute="leading" secondItem="j1N-p7-aZE" secondAttribute="trailing" constant="10" id="VP9-vV-UKX"/>
-                                                <constraint firstAttribute="bottom" secondItem="j1N-p7-aZE" secondAttribute="bottom" constant="39.5" id="Zro-4D-cfb"/>
                                                 <constraint firstItem="WBY-Sl-bez" firstAttribute="leading" secondItem="bjw-5J-daf" secondAttribute="trailing" constant="10" id="bJ4-yX-Y6L"/>
-                                                <constraint firstItem="j1N-p7-aZE" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="15" id="fS2-JE-O0H"/>
                                                 <constraint firstItem="WBY-Sl-bez" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="13" id="m2p-Eo-fft"/>
-                                                <constraint firstAttribute="bottom" secondItem="bjw-5J-daf" secondAttribute="bottom" constant="41.5" id="nr6-hG-QXH"/>
-                                                <constraint firstItem="bjw-5J-daf" firstAttribute="height" secondItem="j1N-p7-aZE" secondAttribute="height" multiplier="0.921569" id="w04-Wc-4x3"/>
-                                                <constraint firstAttribute="height" constant="80" id="xTh-0n-aj4"/>
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fB-18-Unk">

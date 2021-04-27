@@ -20,21 +20,23 @@ class CommentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
     }
 
     
     // 여기 수정은?
     func updateUI(comment: Comment) {
-        commentUserNameLabel.text = comment.userName
-        commentDateLabel.text = dateToDday(post: post!)
+//        commentUserNameLabel.text = comment.userName
+//        commentDateLabel.text = dateToDday(post: post!)
+//        commentContentLabel.text = comment.content
+        commentUserNameLabel.text = "이름입니다"
+        commentDateLabel.text = "\(comment.date)"
         commentContentLabel.text = comment.content
         
-        textLabel?.text = comment.content
-        detailTextLabel?.text = "\(comment.date)"
         
-        //            cell.commentUserNameLabel.text = comment.userName
-        //            cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
-        //            cell.commentContentLabel.text = comment.content
+//        textLabel?.text = comment.content
+//        detailTextLabel?.text = "\(comment.date)"
+        
+
     }
 }
