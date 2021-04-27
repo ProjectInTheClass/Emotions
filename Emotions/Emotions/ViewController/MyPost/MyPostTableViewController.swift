@@ -110,6 +110,7 @@ class MyPostTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("mypostSegue")
         if segue.identifier == "mypostSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else {
                 print("indexPathForSelectedRow")

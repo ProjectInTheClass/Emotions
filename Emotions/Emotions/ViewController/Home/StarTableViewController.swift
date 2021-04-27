@@ -68,7 +68,7 @@ class StarTableViewController: UITableViewController {
             let postKey = post.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData  in
                 if var post = currentData.value as? [String:Any],
-                   let uid = AuthManager.shared.currentUser?.uid {
+                   let uid = Auth.auth().currentUser?.uid {
                     var heart = post["heartUser"] as? [String:Bool] ?? [:]
                     if !currentHeartState {
                         heart[uid] = true
@@ -88,7 +88,7 @@ class StarTableViewController: UITableViewController {
             let postKey = post.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData -> TransactionResult in
                 if var post = currentData.value as? [String:Any],
-                   let uid = AuthManager.shared.currentUser?.uid {
+                   let uid = Auth.auth().currentUser?.uid {
                     var star = post["starUser"] as? [String:Bool] ?? [:]
                     var starPoint = post["starPoint"] as? Int ?? 0
                     if !currentStarState {

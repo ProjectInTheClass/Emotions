@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PostDetailViewController: UIViewController, UITextFieldDelegate {
 
@@ -122,7 +123,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         print("comment Upload Complete")
         
         guard let post = post,
-              let userName = AuthManager.shared.currentUser?.displayName,
+              let userName = Auth.auth().currentUser?.displayName,
               let content = commentTextField?.text else {
             print("내용을 입력해 주세요.")
             return }

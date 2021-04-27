@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Emotions/Pods-Emotions-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework
 ${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework

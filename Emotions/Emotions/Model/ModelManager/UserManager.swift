@@ -41,10 +41,7 @@ class UserManager {
                 return }
             
             Auth.auth().addStateDidChangeListener { (auth, user) in
-                AuthManager.shared.currentUser = auth.currentUser
-                
                 guard let currentUser = auth.currentUser else { return }
-                
                 let changeRequest = currentUser.createProfileChangeRequest()
                 changeRequest.displayName = nickName
                 changeRequest.commitChanges { error in
@@ -89,7 +86,7 @@ class UserManager {
     
     public func uploadUserImage(userImage: UIImage, email: String, completion: @escaping (Bool)->Void) {
         let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
-        guard let uploadData = userImage.jpegData(compressionQuality: 0.9) else {
+        guard let uploadData = userImage.jpegData(compressionQuality: 0.5) else {
             print("ConvertImageToData Error")
             return
         }
@@ -119,7 +116,7 @@ class UserManager {
     
     
     public func userImageDelete() {
-        guard let currentUserEmail = AuthManager.shared.currentUser?.email else {
+        guard let currentUserEmail = Auth.auth().currentUser?.email else {
             print("사용자가 없습니다")
             return
         }
@@ -136,7 +133,7 @@ class UserManager {
     // 일단 우리 앱에서는 현재 사용하지 않는 것으로
     public func deleteUser(password: String) {
         
-        guard let currentUser = AuthManager.shared.currentUser else {
+        guard let currentUser = Auth.auth().currentUser else {
             print("사용자가 없습니다")
             return
         }

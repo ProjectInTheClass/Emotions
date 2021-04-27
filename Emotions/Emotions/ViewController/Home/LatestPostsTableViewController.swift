@@ -137,7 +137,7 @@ class LatestPostsTableViewController: UITableViewController {
             let postKey = post.postID
             postsRef.child(postKey).runTransactionBlock { currentData  in
                 if var post = currentData.value as? [String:Any],
-                   let uid = AuthManager.shared.currentUser?.uid {
+                   let uid = Auth.auth().currentUser?.uid {
                     var heart = post["heartUser"] as? [String:Bool] ?? [:]
                     if !currentHeartState {
                         heart[uid] = true
@@ -157,7 +157,7 @@ class LatestPostsTableViewController: UITableViewController {
             let postKey = post.postID
             postsRef.child(postKey).runTransactionBlock { currentData -> TransactionResult in
                 if var post = currentData.value as? [String:Any],
-                   let uid = AuthManager.shared.currentUser?.uid {
+                   let uid = Auth.auth().currentUser?.uid {
                     var star = post["starUser"] as? [String:Bool] ?? [:]
                     var starPoint = post["starPoint"] as? Int ?? 0
                     if !currentStarState {
@@ -194,7 +194,7 @@ class LatestPostsTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 postsRef.child(post.postID).runTransactionBlock { currentData -> TransactionResult in
                     if var currentPost = currentData.value as? [String:Any],
-                       let uid = AuthManager.shared.currentUser?.uid {
+                       let uid = Auth.auth().currentUser?.uid {
                         var report = currentPost["reportedUser"] as? [String:Bool] ?? [:]
                         report[uid] = true
                         currentPost["reportedUser"] = report

@@ -15,4 +15,5 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'TransitionButton'
 pod 'BulletinBoard'
+pod 'Charts'
 end
