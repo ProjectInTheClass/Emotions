@@ -7,14 +7,24 @@
 
 import UIKit
 
+protocol MyPostCellDelegate: AnyObject {
+    func detailButtonTapped(cell: MyPostTableViewCell)
+}
+
 class MyPostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var firstCardImage: UIImageView!
     @IBOutlet weak var secondCardImage: UIImageView!
     @IBOutlet weak var thirdCardImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var detailButton: UIButton! //자세히보기 버튼
     @IBOutlet weak var containerView: UIView!
+    
+    weak var delegate: MyPostCellDelegate?
+    
+    @IBAction func detailButtonTapped(_ sender: Any) {
+        delegate?.detailButtonTapped(cell: self)
+    }
     
     
     override func awakeFromNib() {

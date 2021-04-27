@@ -10,6 +10,9 @@ import FirebaseAuth
 
 class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+
+    
+    
     //MARK:- let & var
     
     //인스턴스 받아오기
@@ -39,14 +42,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentPostButton: UIButton!
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        commentTextField.resignFirstResponder()
-        return true
-    }
+
     
     //MARK:- viewDidLoad & UI configure
 
@@ -91,9 +87,15 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
         
         //keyboard notification center
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //옵저버 등록
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+            
+        //옵저버 해제
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
         
 
     //MARK:- viewWillAppear - comment info download
@@ -177,13 +179,26 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //MARK:- Keyboard control
     
+    //코멘트 뷰 하단 레이아웃 제약 아울렛
     @IBOutlet weak var commentBottonConstraints: NSLayoutConstraint!
+    
+    //뷰 터치하면 키보드 내려가기
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    //리턴 버튼 누르면 키보드 내려가기
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        commentTextField.resignFirstResponder()
+        return true
+    }
+    
     
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            commentBackgroundColorView.frame.origin.y = keyboardHeight
+            commentBackgroundColorView.frame.origin.y -= keyboardHeight
         }
     }
     
@@ -194,7 +209,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             commentBackgroundColorView.frame.origin.y += keyboardHeight
         }
     }
-        
+
         
 
     //MARK:- Table View Data Source
@@ -210,6 +225,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         let review = CommentManager.shared.comments[indexPath.row]
         cell.updateUI(comment: review)
+
         return cell
     }
 }

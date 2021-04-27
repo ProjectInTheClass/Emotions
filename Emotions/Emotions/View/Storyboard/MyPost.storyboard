@@ -38,7 +38,7 @@
         <scene sceneID="HqY-8B-1Ov">
             <objects>
                 <tableViewController id="rAe-3C-G8S" customClass="MyPostTableViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sfo-Ug-hyu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sfo-Ug-hyu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -145,6 +145,7 @@
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="detailButtonTapped:" destination="0eN-7y-HOD" eventType="touchUpInside" id="AdD-Dn-3hG"/>
                                                         <segue destination="mPY-y7-L0K" kind="show" identifier="mypostSegue" id="slt-Y9-7M1"/>
                                                     </connections>
                                                 </button>
