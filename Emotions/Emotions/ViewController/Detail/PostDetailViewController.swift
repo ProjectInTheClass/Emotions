@@ -10,15 +10,23 @@ import FirebaseAuth
 
 class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
- 
+    //MARK:- let & var
+    
+    //인스턴스 받아오기
     var post: Post?
     var comment: Comment?
-    //var detail: CommentTableViewCell
     
+    //컴플리션핸들러 : 현재 미사용
     var detailCompletionHandler: (()->Void)?
     
-    // post details
+    
+    
+    //MARK:- Outlets
+    
+    //table view
     @IBOutlet weak var tableView: UITableView!
+    
+    //post details - header view
     @IBOutlet weak var firstCardBackgroundColorView: UIView!
     @IBOutlet weak var firstCardTitleLabel: UILabel!
     @IBOutlet weak var secondCardTitleLabel: UILabel?
@@ -26,18 +34,45 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var postDdayLabel: UILabel!
     @IBOutlet weak var postContentTextView: UITextView!
     
-    // comment post outlet and action
+    //comment post view - outlet (댓글게시 액션은 하단에)
     @IBOutlet weak var commentBackgroundColorView: UIView!
-    @IBOutlet weak var commentTextField: UITextField?
+    @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentPostButton: UIButton!
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        commentTextField.resignFirstResponder()
+        return true
+    }
+    
+    //MARK:- viewDidLoad & UI configure
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //tableview, textField declare
         tableView.delegate = self
         tableView.dataSource = self
-        //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        commentTextField?.delegate = self
         
+        //UI configure
+        firstCardBackgroundColorView.layer.cornerRadius = 30
+        //commentTextField.layer.cornerRadius = 60
+        
+        //dismiss keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        //keyboard returnKey Change -> done key
+        commentTextField.returnKeyType = .done
+        
+        
+        //if let shadowing, optional unwarpping
+        //넘겨받은 post를 풀고, 그 post에 데이터가 있으면 아래를 수행
+        //타입에 해당하는 인스턴스를 넣어준다
         if let post = post {
             postContentTextView.text = post.content
             
@@ -53,51 +88,36 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         updateUI()
         navigationConfigureUI()
         
-        commentTextField?.returnKeyType = .done
+
         
-        commentTextField?.delegate = self
-        
+        //keyboard notification center
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        
-        
-        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
-        
-      
-            
-            
         }
-        
-        //commentBackgroundColorView.delegate = self
-        
-    @IBOutlet weak var commentBottonConstraints: NSLayoutConstraint!
-    
-    
-    
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            commentBackgroundColorView.frame.origin.y = keyboardHeight
-        }
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            commentBackgroundColorView.frame.origin.y += keyboardHeight
-        }
-    }
         
 
-    func endEditing() {
+    //MARK:- viewWillAppear - comment info download
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //코멘트 정보 다운로드
+        guard let post = post else { return }
+        CommentManager.shared.downloadComment(post: post) { success in
+            if success {
+                print("코멘트 다운로드 성공")
+                self.tableView.reloadData()
+                print("코멘트 리로드 성공")
+            } else {
+                print("코멘트 다운로드 실패")
+            }
+        }
     }
     
     
-    // update UI func
+    
+    //MARK:- Update UI func
+
     func updateUI() {
         guard let post = post else { return }
         if let firstCard = post.firstCard {
@@ -121,16 +141,18 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             thirdCardTitleLabel?.isHidden = true
         }
-        
     }
     
-    // navigation title 설정
+    //MARK:- navigation title 설정
+    
     func navigationConfigureUI() {
-        title = "Post Detail Test"
+        title = "자세히보기"
     }
     
     
-    // 댓글쓰기 버튼 함수
+    
+    //MARK:- 댓글게시 btn func
+
     @IBAction func commentPost(_ sender: UIButton) {
         print("comment Upload Complete")
         
@@ -151,6 +173,30 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         CommentManager.uploadComment(dictionary: reviewDictionary)
     }
     
+    
+    
+    //MARK:- Keyboard control
+    
+    @IBOutlet weak var commentBottonConstraints: NSLayoutConstraint!
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            commentBackgroundColorView.frame.origin.y = keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            commentBackgroundColorView.frame.origin.y += keyboardHeight
+        }
+    }
+        
+        
+
     //MARK:- Table View Data Source
     
     // 코멘트 테이블뷰 필수 메소드
@@ -158,66 +204,12 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CommentManager.shared.comments.count
     }
+    
     // 셀 재활용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let comments = CommentManager.shared.comments[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        
         let review = CommentManager.shared.comments[indexPath.row]
         cell.updateUI(comment: review)
-        
-        
-        //let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        
-        //cell.textLabel?.text = comment?.userName
-    
-        // update custom cell UI
-        
-//        cell.commentUserNameLabel.text = comments.userName
-//        cell.commentDateLabel.text = "\(dateToMakeDay(comment: comments))"
-//        cell.commentContentLabel.text = comments.content
-
-    
-//        let comment = CommentManager.shared.comments[indexPath.row]
-//        cell.updateUI(comment: comment)
-    
         return cell
-    }
-    
-    // 텍스트필드 키보드 제어 함수 (작동 안함)
-    /*
-    private func addKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { self.view.endEditing(true) }
-    */
-    
-    
-//    func reloadRows(at indexPaths: [IndexPath],
-//                    with animation: UITableView.RowAnimation) {
-//       // cell.commentDateLabel.text = "\(dateToMakeDay(comment: comment))"
-//       // cell.commentContentLabel.text = comment.content
-//       // cell.updateUI(comment: comment)
-//    }
-    
-    // 코멘트 정보 가져오기
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let post = post else { return }
-        CommentManager.shared.downloadComment(post: post) { success in
-            if success {
-                print("코멘트 다운로드 성공")
-                self.tableView.reloadData()
-                print("코멘트 리로드 성공")
-            } else {
-                print("코멘트 다운로드 실패")
-        }
-    }
     }
 }

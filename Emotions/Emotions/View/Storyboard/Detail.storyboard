@@ -33,7 +33,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-OG-F7Z" userLabel="firstCardBackgroundView">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <rect key="frame" x="10" y="0.0" width="394" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#1번카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1N-p7-aZE">
                                                     <rect key="frame" x="20" y="17" width="59" height="23.5"/>
@@ -48,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E4-gU-jkD">
-                                                    <rect key="frame" x="345.5" y="48" width="48.5" height="22"/>
+                                                    <rect key="frame" x="325.5" y="48" width="48.5" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="ibB-2l-6pC"/>
                                                     </constraints>
@@ -92,10 +92,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="4fB-18-Unk" secondAttribute="bottom" constant="10" id="GPI-ws-bec"/>
-                                        <constraint firstItem="hhh-OG-F7Z" firstAttribute="leading" secondItem="Mi2-hg-rrG" secondAttribute="leading" id="Hmz-gS-OxE"/>
+                                        <constraint firstItem="hhh-OG-F7Z" firstAttribute="leading" secondItem="Mi2-hg-rrG" secondAttribute="leading" constant="10" id="Hmz-gS-OxE"/>
                                         <constraint firstAttribute="trailing" secondItem="4fB-18-Unk" secondAttribute="trailing" constant="25" id="MeP-Qm-E1U"/>
                                         <constraint firstItem="hhh-OG-F7Z" firstAttribute="top" secondItem="Mi2-hg-rrG" secondAttribute="top" id="QZm-C0-sev"/>
-                                        <constraint firstAttribute="trailing" secondItem="hhh-OG-F7Z" secondAttribute="trailing" id="XKX-GP-x9x"/>
+                                        <constraint firstAttribute="trailing" secondItem="hhh-OG-F7Z" secondAttribute="trailing" constant="10" id="XKX-GP-x9x"/>
                                         <constraint firstItem="4fB-18-Unk" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="bottom" constant="8" id="dxL-vu-dJQ"/>
                                         <constraint firstItem="4fB-18-Unk" firstAttribute="leading" secondItem="Mi2-hg-rrG" secondAttribute="leading" constant="25" id="lce-Wq-c2i"/>
                                     </constraints>
