@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     lazy var updateProfileButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "addPost"), for: .normal)
+        button.setImage(UIImage(systemName: "person.circle"), for: .normal)
         button.addTarget(self, action: #selector(updateProfileButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -61,13 +61,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - update UI
     
     func updateUI(user: User?) {
+        self.userImageView.image = nil
         self.userEmailLabel.text = user?.email ?? "Email"
         self.userNickNameLabel.text = user?.displayName ?? "Nickname"
         if let photoURL = user?.photoURL,
            let data = try? Data(contentsOf: photoURL) {
-            guard let image = UIImage(data: data) else {
-                self.userImageView.image = UIImage(systemName: "person.circle")!
-                return }
+            let image = UIImage(data: data)!
             self.userImageView.image = image
         } else {
             print("Error convert URL to Data")
@@ -122,10 +121,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         guard let selectedImage = info[.originalImage] as? UIImage else { print("사진 없어")
             return }
         if let currentUser = Auth.auth().currentUser {
-            print("imagePickerController - currentUserEmail")
-            UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUser.email!) { success in
+            UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUser.email!) {  [weak self] success in
+                guard let self = self else { return }
+                self.userImageView.image = nil
                 if success {
-                    UserManager.shared.downloadUserImage(email: currentUser.email!) { (url) in
+                    UserManager.shared.downloadUserImage(email: currentUser.email!) { [weak self] (url) in
+                        guard let self = self else { return }
                         if let data = try? Data(contentsOf: url!) {
                             guard let image = UIImage(data: data) else { return }
                             self.userImageView.image = image

@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class DataManager {
     static let shared = DataManager()
@@ -35,7 +36,7 @@ class DataManager {
                 if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
                     for isReportUser in isReportedDic {
                         let user = isReportUser.key
-                        if AuthManager.shared.currentUser?.uid == user {
+                        if Auth.auth().currentUser?.uid == user {
                         } else {
                             let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                             if let firstCardID = dicDatum["firstCardID"] as? String {

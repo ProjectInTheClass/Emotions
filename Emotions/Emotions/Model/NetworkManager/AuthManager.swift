@@ -11,27 +11,7 @@ import AuthenticationServices
 import CryptoKit
 
 class AuthManager {
-    
     static let shared = AuthManager()
-    
-    var currentUser = Auth.auth().currentUser
-    
-    // 애플 로그인 구현
-    func appleLogin(completion: @escaping (Bool)->Void) {
-        
-    }
-    
-    // 현재 유저있는지 체크하기
-    public func checkLogin(completion: @escaping (Bool)->Void) {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if auth.currentUser == nil {
-                completion(false)
-            } else {
-                completion(true)
-                
-            }
-        }
-    }
     
     // 로그아웃
     public func logoutUser(completion: (Bool)->Void) {

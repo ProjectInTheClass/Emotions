@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 import FirebaseDatabase
 import UIKit
 
@@ -49,7 +50,7 @@ class PostManager {
     func laodUserPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
         PostManager.shared.userPosts = []
-        orderedQuery = postsRef.queryOrdered(byChild: "userID").queryEqual(toValue: AuthManager.shared.currentUser?.uid)
+        orderedQuery = postsRef.queryOrdered(byChild: "userID").queryEqual(toValue: Auth.auth().currentUser?.uid)
         orderedQuery?.observe(.childAdded, with: { snapshot in
             let postDic = snapshot.value as! [String:Any]
             let post = Post(currentUserUID: currentUserUID, dictionary: postDic)
@@ -78,7 +79,7 @@ class PostManager {
             for postData in dictionary.values {
                 let dicDatum = postData as! [String:AnyObject]
                 for heartUser in dicDatum["heartUser"] as! [String:Bool] {
-                    if AuthManager.shared.currentUser?.uid == heartUser.key {
+                    if Auth.auth().currentUser?.uid == heartUser.key {
                         let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                         if let firstCardID = dicDatum["firstCardID"] as? String {
                             post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Charts
 
 class StaticViewController: UIViewController {
    
@@ -23,17 +24,7 @@ class StaticViewController: UIViewController {
         return imageView
     }()
     
-    @IBOutlet weak var joyLabel: UILabel!
-    @IBOutlet weak var sadnessLabel: UILabel!
-    @IBOutlet weak var angerLabel: UILabel!
-    @IBOutlet weak var disgustLabel: UILabel!
-    @IBOutlet weak var fearLabel: UILabel!
-    
-    @IBOutlet weak var joyViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var sadnessViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var angerViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var disgustViewLabel: NSLayoutConstraint!
-    @IBOutlet weak var fearViewLabel: NSLayoutConstraint!
+    @IBOutlet weak var pieChart: PieChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,27 +42,17 @@ class StaticViewController: UIViewController {
 
     }
     
+    func configureUI(){
+        pieChart.backgroundColor = .clear
+    }
+    
     func updateUI(){
-        let myCount = myPostsCardTypes.count
-        let joyCount = joyCards.count
-        joyLabel.text = "\(Int(100 * joyCount / myCount))%"
-        joyViewHeight.constant = CGFloat(200 * joyCount / myCount)
-        
-        let sadnessCount = sadnessCards.count
-        sadnessLabel.text = "\(Int(100 * sadnessCount / myCount))%"
-        sadnessViewHeight.constant = CGFloat(200 * sadnessCount / myCount)
-        
-        let angerCount = angerCards.count
-        angerLabel.text = "\(Int(100 * angerCount / myCount))%"
-        angerViewHeight.constant = CGFloat(200 * angerCount / myCount)
-        
-        let disgustCount = disgustCards.count
-        disgustLabel.text = "\(Int(100 * disgustCount / myCount))%"
-        disgustViewLabel.constant = CGFloat(200 * disgustCount / myCount)
-        
-        let fearCount = fearCards.count
-        fearLabel.text = "\(Int(100 * fearCount / myCount))%"
-        fearViewLabel.constant = CGFloat(200 * fearCount / myCount)
+//        let myCount = myPostsCardTypes.count
+//        let joyCount = joyCards.count
+//        let sadnessCount = sadnessCards.count
+//        let angerCount = angerCards.count
+//        let disgustCount = disgustCards.count
+//        let fearCount = fearCards.count
     }
     
     func navigationConfigureUI() {
