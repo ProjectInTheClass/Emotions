@@ -13,6 +13,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
  
     var post: Post?
     var comment: Comment?
+    //var detail: CommentTableViewCell
     
     var detailCompletionHandler: (()->Void)?
     
@@ -153,19 +154,25 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         CommentManager.uploadComment(dictionary: reviewDictionary)
     }
     
+    //MARK:- Table View Data Source
     
     // 코멘트 테이블뷰 필수 메소드
     // 해당 글의 코멘트 수에 따라 셀 리턴 (섹션 내부의 셀 개수)
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CommentManager.shared.comments.count
     }
     // 셀 재활용
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let comments = CommentManager.shared.comments[indexPath.row]
-        //guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell") as? CommentTableViewCell else { return UITableViewCell() }
-        let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         
-        cell.textLabel?.text = comment?.userName
+        let review = CommentManager.shared.comments[indexPath.row]
+        cell.updateUI(comment: review)
+        
+        
+        //let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        
+        //cell.textLabel?.text = comment?.userName
     
         // update custom cell UI
         
