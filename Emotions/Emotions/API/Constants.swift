@@ -14,6 +14,13 @@ let commentRef = database.child("comments")
 let blackList = database.child("blackList")
 
 let joyBGColor = "joyBG"
+
+let joyColor = "joy"
+let sadnessColor = "sadness"
+let angerColor = "anger"
+let disgustColor = "disgust"
+let fearColor = "fear"
+
 let logoImage = "logoImage"
 let InfoCircle = "Info Circle"
 let emotionDeepGreen = "emotionDeepGreen"
