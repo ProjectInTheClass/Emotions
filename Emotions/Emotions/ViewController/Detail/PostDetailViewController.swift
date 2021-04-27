@@ -31,9 +31,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var commentTextField: UITextField?
     @IBOutlet weak var commentPostButton: UIButton!
     
-    let cellIdentifier = "CommentDetailCell"
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -216,10 +213,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         CommentManager.shared.downloadComment(post: post) { success in
             if success {
                 print("코멘트 다운로드 성공")
-                
-                // 리로드 방법?
-                // self.tableview.reloadData() 와 같은 메소드를 넣을 수 없음
-                //print("코멘트 리로드 성공")
+                self.tableView.reloadData()
+                print("코멘트 리로드 성공")
             } else {
                 print("코멘트 다운로드 실패")
         }

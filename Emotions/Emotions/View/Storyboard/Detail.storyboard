@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ba-8u-MdO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ba-8u-MdO">
                                 <rect key="frame" x="0.0" y="44" width="414" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Mi2-hg-rrG" userLabel="PostDetailView">
@@ -102,10 +102,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentDetailCell" id="Acp-CK-bp4" customClass="CommentTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="278" width="414" height="148.5"/>
+                                        <rect key="frame" x="0.0" y="278" width="414" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Acp-CK-bp4" id="KWO-Kx-98G">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="148.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="148"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hj-5p-V0E">
@@ -124,7 +124,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pL-HK-hTU">
-                                                    <rect key="frame" x="20" y="39" width="374" height="98.5"/>
+                                                    <rect key="frame" x="20" y="39" width="374" height="98"/>
                                                     <string key="text">이것은 댓글 예시입니다. 우리 모두 고운말 바른말로 서로를 보듬어 줍시다. 오는 말이 고와야 가는 말이 곱다. 이것은 댓글 예시입니다. 우리 모두 고운말 바른말로 서로를 보듬어 줍시다. 오는 말이 고와야 가는 말이 곱다. 이것은 댓글 예시입니다. 우리 모두 고운말 바른말로 서로를 보듬어 줍시다. 오는 말이 고와야 가는 말이 곱다. END!</string>
                                                     <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="17"/>
                                                     <nil key="textColor"/>
