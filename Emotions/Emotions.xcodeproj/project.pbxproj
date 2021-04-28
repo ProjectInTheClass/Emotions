@@ -37,6 +37,7 @@
 		039878742628930000ED9EB8 /* SympathyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878732628930000ED9EB8 /* SympathyTableViewController.swift */; };
 		039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878772628932700ED9EB8 /* StarTableViewController.swift */; };
 		0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */; };
+		03AA60802639BC140032B66E /* 28759-angry-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 03AA607F2639BC140032B66E /* 28759-angry-emoji.json */; };
 		03C610DC262518E000284FD5 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DB262518E000284FD5 /* functions.swift */; };
 		03C610DF26255D9B00284FD5 /* (exit)PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DE26255D9B00284FD5 /* (exit)PostDetailViewController.swift */; };
 		03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */; };
@@ -99,6 +100,7 @@
 		039878732628930000ED9EB8 /* SympathyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympathyTableViewController.swift; sourceTree = "<group>"; };
 		039878772628932700ED9EB8 /* StarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTableViewController.swift; sourceTree = "<group>"; };
 		0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewController.swift; sourceTree = "<group>"; };
+		03AA607F2639BC140032B66E /* 28759-angry-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "28759-angry-emoji.json"; sourceTree = "<group>"; };
 		03C610DB262518E000284FD5 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		03C610DE26255D9B00284FD5 /* (exit)PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "(exit)PostDetailViewController.swift"; sourceTree = "<group>"; };
 		03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				031E9A622623D5AA0054C840 /* 21930-selectdavid.json */,
+				03AA607F2639BC140032B66E /* 28759-angry-emoji.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */,
 				03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */,
 				0389E130262ED6D00077C20F /* NanumSquareExtraBold.ttf in Resources */,
+				03AA60802639BC140032B66E /* 28759-angry-emoji.json in Resources */,
 				03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */,
 				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,

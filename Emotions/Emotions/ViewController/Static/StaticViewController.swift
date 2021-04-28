@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Charts
+import Lottie
 
 class StaticViewController: UIViewController, ChartViewDelegate {
     
@@ -24,16 +25,24 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         return imageView
     }()
     
+    var emotionAnimationView: AnimationView = {
+       let lottieView = AnimationView(name: "28759-angry-emoji")
+        lottieView.contentMode = .scaleAspectFill
+        lottieView.animationSpeed = 0.5
+        lottieView.backgroundColor = .clear
+        lottieView.loopMode = .loop
+        lottieView.play()
+        return lottieView
+    }()
+    
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var userNicknameLabel: UILabel!
-    @IBOutlet weak var bestEmotionDescription: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
-       
-
+        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +64,6 @@ class StaticViewController: UIViewController, ChartViewDelegate {
                 let userEmotionCount =  self.myPostToStatic(posts: userPosts)
                 let bestCardType = self.searchBestEmotion()
                 self.view.backgroundColor = bestCardType.typeBackground
-                self.bestEmotionDescription.text = bestCardType.typeString
                 self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
             } else {
                 
@@ -63,7 +71,20 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    func searchBestEmotion() -> CARDTYPE {
+    func configureUI() {
+        view.addSubview(emotionAnimationView)
+        emotionAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        emotionAnimationView.topAnchor.constraint(equalTo: pieChart.bottomAnchor, constant: 10).isActive = true
+        emotionAnimationView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        emotionAnimationView.heightAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
+        emotionAnimationView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
+    }
+    
+    func lottieImageUpdateUI(){
+        
+    }
+    
+    private func searchBestEmotion() -> CARDTYPE {
         var typeDictionary: [Int:CARDTYPE] = [:]
         typeDictionary[joyCards.count] = .joy
         typeDictionary[sadnessCards.count] = .sadness
@@ -75,12 +96,15 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         return bestType
     }
     
-    func setChart(dataPoints: [String], values: [Double]) {
+    private func setChart(dataPoints: [String], values: [Double]) {
         pieChart.delegate = self
         pieChart.backgroundColor = .clear
+        
         var pieChartsDatas = [PieChartDataEntry]()
+        
         for (index, value) in values.enumerated() {
             let pieChartData = PieChartDataEntry()
+            
             if value == 0 {
                 continue
             } else {
@@ -101,10 +125,11 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         pieChart.isUserInteractionEnabled = true
         pieChart.noDataText = "데이터가 없습니다."
         pieChart.holeRadiusPercent = 0.4
+        pieChart.holeColor = .clear
         pieChart.transparentCircleColor = UIColor.clear
     }
     
-    func colorsOfCharts(values: [Double]) -> [UIColor] {
+    private func colorsOfCharts(values: [Double]) -> [UIColor] {
         let userEmotionColor: [UIColor] = [
             UIColor(named: joyColor)!,
             UIColor(named: sadnessColor)!,
@@ -123,7 +148,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         return colorArray
     }
     
-    func navigationConfigureUI() {
+    private func navigationConfigureUI() {
         navigationItem.title = ""
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: emotionsTitle)
         navigationController?.navigationBar.isTranslucent = false
@@ -131,7 +156,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    func myPostToStatic(posts: [Post]) -> [Double] {
+    private func myPostToStatic(posts: [Post]) -> [Double] {
         
         for post in posts {
             if let firstCard = post.firstCard {

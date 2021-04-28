@@ -13,6 +13,9 @@ let postsRef = database.child("posts")
 let commentRef = database.child("comments")
 let blackList = database.child("blackList")
 
+let joyLottie = "21930-selectdavid"
+let angerLottie = "28759-angry-emoji"
+
 let joyBGColor = "joyBG"
 
 let joyColor = "joy"
