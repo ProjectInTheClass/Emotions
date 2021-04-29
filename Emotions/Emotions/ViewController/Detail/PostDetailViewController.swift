@@ -201,6 +201,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // 댓글 게시 후 텍스트필드 클리어
         commentTextField.text = ""
+        commentTextField.resignFirstResponder() // 키보드를 치우자.
+        
+        tableView.scrollToRow(at: IndexPath(row: CommentManager.shared.comments.count - 1, section: 0)   , at: .bottom, animated: true)
     }
     
     
@@ -229,7 +232,11 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            commentViewBottonConstraints.constant = keyboardHeight
+            /// safe area bottom margin.
+            
+            let bottom = UIApplication.shared.windows.first!.safeAreaInsets.bottom
+            
+            commentViewBottonConstraints.constant = keyboardHeight - bottom
             //commentBackgroundColorView.frame.origin.y -= keyboardHeight
             
             // 텍스트필드가 터치만 되면 키보드가 위로 가도록 하는 코드?
