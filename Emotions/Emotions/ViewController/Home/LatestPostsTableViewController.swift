@@ -61,6 +61,7 @@ class LatestPostsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if auth.currentUser == nil {
+                self.bulletinManager.showBulletin(above: self)
                 DataManager.shared.latestposts = []
                 DataManager.shared.loadedPosts = []
                 DataManager.shared.loadPosts(currentUserUID: ""){ success in
@@ -70,7 +71,6 @@ class LatestPostsTableViewController: UITableViewController {
                         }
                     }
                 }
-                self.bulletinManager.showBulletin(above: self)
             } else {
                 guard let currentUserUID = auth.currentUser?.uid else { return }
                 DataManager.shared.latestposts = []

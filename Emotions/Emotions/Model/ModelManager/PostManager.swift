@@ -39,7 +39,12 @@ class PostManager {
                     post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
                 }
                 
-                self.starPosts += [post]
+                let todaySecond = Int(Date().timeIntervalSince1970)
+                if post.endDate - todaySecond <= 0 {
+                    
+                } else {
+                    self.starPosts += [post]
+                }
             }
             completion(true)
         })
@@ -90,7 +95,12 @@ class PostManager {
                         if let thirdCardID = dicDatum["thirdCardID"] as? String {
                             post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
                         }
-                        self.myHeartPosts += [post]
+                        
+                        let todaySecond = Int(Date().timeIntervalSince1970)
+                        if post.endDate - todaySecond <= 0 {
+                        } else {
+                            self.myHeartPosts += [post]
+                        }
                     }
                 }
             }

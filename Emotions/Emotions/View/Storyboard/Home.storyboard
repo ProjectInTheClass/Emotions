@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BoV-cI-SaR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BoV-cI-SaR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,12 +14,12 @@
         <array key="RIDIBatang.otf">
             <string>RIDIBatang</string>
         </array>
-        <array key="ShareTechMono.ttf">
-            <string>ShareTechMono-Regular</string>
-        </array>
         <array key="Sora-VariableFont_wght.ttf">
             <string>Sora-Regular</string>
             <string>Sora-Regular_SemiBold</string>
+        </array>
+        <array key="TextMeOne-Regular.ttf">
+            <string>TextMeOne-Regular</string>
         </array>
         <array key="나눔손글씨 가람연꽃.ttf">
             <string>NanumGaRamYeonGgoc</string>
@@ -138,12 +138,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="fdd-Q5-B1Z">
-                            <rect key="frame" x="0.0" y="443.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="436.50000034679067" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="CKZ-IM-2GH" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="387.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="387.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CKZ-IM-2GH" id="hYu-qG-hWb">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="387.5"/>
@@ -303,7 +303,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="0VC-Vg-Oh7" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="391"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="391"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0VC-Vg-Oh7" id="8Rz-Zu-NJ5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="391"/>
@@ -442,7 +442,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="48D-6m-eds" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="391"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="391"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="48D-6m-eds" id="UMA-ns-CdF">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="391"/>
@@ -593,11 +593,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csD-d6-h1m">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="505"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="555.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eff-VD-3yb">
                                                 <rect key="frame" x="25" y="5" width="105" height="20"/>
-                                                <fontDescription key="fontDescription" name="ShareTechMono-Regular" family="Share Tech Mono" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="TextMeOne-Regular" family="Text Me One" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -608,7 +608,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qfL-zX-pO0">
-                                                <rect key="frame" x="25" y="61.5" width="320" height="100"/>
+                                                <rect key="frame" x="25" y="61" width="320" height="100"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gt9-vm-FnT">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -640,7 +640,7 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuy-GS-SeE">
-                                                <rect key="frame" x="25" y="237.5" width="364" height="242.5"/>
+                                                <rect key="frame" x="25" y="237" width="364" height="242.5"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fes-0V-CmE">
                                                         <rect key="frame" x="20" y="42.5" width="324" height="180"/>
@@ -670,34 +670,52 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion Diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7N-f5-Xkv">
-                                                <rect key="frame" x="25" y="181.5" width="107" height="20"/>
-                                                <fontDescription key="fontDescription" name="ShareTechMono-Regular" family="Share Tech Mono" pointSize="17"/>
+                                                <rect key="frame" x="25" y="181" width="107" height="20"/>
+                                                <fontDescription key="fontDescription" name="TextMeOne-Regular" family="Text Me One" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정카드에 대한 이야기를 남겨주세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDn-8q-UiI">
-                                                <rect key="frame" x="25" y="208.5" width="199.5" height="16"/>
+                                                <rect key="frame" x="25" y="208" width="199.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YCz-Rx-LJE">
+                                                <rect key="frame" x="25" y="499.5" width="364" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharing Community" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01n-Ku-pof">
+                                                        <rect key="frame" x="0.0" y="0.0" width="305" height="31"/>
+                                                        <fontDescription key="fontDescription" name="TextMeOne-Regular" family="Text Me One" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8K-jW-Dw8">
+                                                        <rect key="frame" x="315" y="0.0" width="51" height="31"/>
+                                                        <color key="onTintColor" name="joy"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Eff-VD-3yb" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="2Gm-bS-xyB"/>
+                                            <constraint firstItem="YCz-Rx-LJE" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="4v3-6K-MRT"/>
+                                            <constraint firstAttribute="trailing" secondItem="YCz-Rx-LJE" secondAttribute="trailing" constant="25" id="B0U-za-Zbf"/>
                                             <constraint firstItem="qfL-zX-pO0" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="BCp-CY-qu4"/>
                                             <constraint firstItem="Iuy-GS-SeE" firstAttribute="top" secondItem="SDn-8q-UiI" secondAttribute="bottom" constant="13" id="F7s-fS-F4E"/>
                                             <constraint firstAttribute="trailing" secondItem="Iuy-GS-SeE" secondAttribute="trailing" constant="25" id="K03-n7-P5u"/>
                                             <constraint firstItem="Y7N-f5-Xkv" firstAttribute="top" secondItem="qfL-zX-pO0" secondAttribute="bottom" constant="20" id="NTD-hs-Nav"/>
                                             <constraint firstItem="SDn-8q-UiI" firstAttribute="top" secondItem="Y7N-f5-Xkv" secondAttribute="bottom" constant="7" id="OZH-1W-7Md"/>
-                                            <constraint firstItem="qfL-zX-pO0" firstAttribute="top" secondItem="1rL-dg-Acy" secondAttribute="bottom" constant="13.5" id="Pc6-lV-TzF"/>
+                                            <constraint firstItem="qfL-zX-pO0" firstAttribute="top" secondItem="1rL-dg-Acy" secondAttribute="bottom" constant="13" id="Pc6-lV-TzF"/>
                                             <constraint firstItem="Iuy-GS-SeE" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="S8Z-mg-GAu"/>
                                             <constraint firstItem="1rL-dg-Acy" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="SPT-Df-XgT"/>
                                             <constraint firstItem="1rL-dg-Acy" firstAttribute="top" secondItem="Eff-VD-3yb" secondAttribute="bottom" constant="7" id="TQ1-4i-hI0"/>
                                             <constraint firstItem="SDn-8q-UiI" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="gGm-sX-6vF"/>
+                                            <constraint firstItem="YCz-Rx-LJE" firstAttribute="top" secondItem="Iuy-GS-SeE" secondAttribute="bottom" constant="20" id="gj4-cG-n9M"/>
                                             <constraint firstItem="Y7N-f5-Xkv" firstAttribute="leading" secondItem="csD-d6-h1m" secondAttribute="leading" constant="25" id="iCh-ah-d74"/>
                                             <constraint firstItem="Eff-VD-3yb" firstAttribute="top" secondItem="csD-d6-h1m" secondAttribute="top" constant="5" id="luE-lJ-ykv"/>
-                                            <constraint firstAttribute="bottom" secondItem="Iuy-GS-SeE" secondAttribute="bottom" constant="25" id="sg2-gU-btr"/>
+                                            <constraint firstAttribute="bottom" secondItem="YCz-Rx-LJE" secondAttribute="bottom" constant="25" id="svE-n3-orw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -734,6 +752,7 @@
                         <outlet property="scrollView" destination="w9X-p1-H4r" id="xUA-d8-ZPP"/>
                         <outlet property="secondCardImage" destination="BUg-mK-5hz" id="2W5-yN-YRO"/>
                         <outlet property="selectCardButton" destination="Gt9-vm-FnT" id="Ty1-HT-UWY"/>
+                        <outlet property="sharingCommunitySwitch" destination="z8K-jW-Dw8" id="pKf-av-7lm"/>
                         <outlet property="thirdCardImage" destination="qz5-TJ-aCz" id="d1s-K8-588"/>
                         <outlet property="uploadButton" destination="IW4-7y-aMe" id="itO-H1-97g"/>
                     </connections>
@@ -1084,6 +1103,9 @@
         <image name="xmark.icloud.fill" catalog="system" width="128" height="88"/>
         <namedColor name="emotionDeepPink">
             <color red="1" green="0.71372549019607845" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="joy">
+            <color red="1" green="0.76078431372549016" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="sadnessBG">
             <color red="0.87699997425079346" green="0.93900001049041748" blue="0.99800002574920654" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

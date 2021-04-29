@@ -30,13 +30,13 @@ class DataManager {
             
             for anyDatum in snapshotData {
                 let snapshotDatum = anyDatum as! DataSnapshot
-//                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
-                
+                let postkey = snapshotDatum.key
                 if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
                     for isReportUser in isReportedDic {
                         let user = isReportUser.key
                         if Auth.auth().currentUser?.uid == user {
+                            print("isReported")
                         } else {
                             let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                             if let firstCardID = dicDatum["firstCardID"] as? String {
@@ -48,7 +48,13 @@ class DataManager {
                             if let thirdCardID = dicDatum["thirdCardID"] as? String {
                                 post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
                             }
-                            self.loadedPosts += [post]
+                          
+                            let todaySecond = Int(Date().timeIntervalSince1970)
+                            if post.endDate - todaySecond <= 0 {
+                                postsRef.child(postkey).removeValue()
+                            } else {
+                                self.loadedPosts += [post]
+                            }
                         }
                     }
                 } else {
@@ -62,10 +68,14 @@ class DataManager {
                     if let thirdCardID = dicDatum["thirdCardID"] as? String {
                         post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
                     }
-                    print("post heart and star state -----> \(post.isHeart) and \(post.isStar)")
-                    self.loadedPosts += [post]
+                    
+                    let todaySecond = Int(Date().timeIntervalSince1970)
+                    if post.endDate - todaySecond <= 0 {
+                        postsRef.child(postkey).removeValue()
+                    } else {
+                        self.loadedPosts += [post]
+                    }
                 }
-                
             }
             self.latestposts += self.loadedPosts.prefix(self.numberOfOneLoad)
             completion(true)

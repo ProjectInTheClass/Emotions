@@ -8,16 +8,6 @@
 import Foundation
 import UIKit
 
-func deletePostAtEndDate(post: Post) {
-    let nowSecond = Int(Date().timeIntervalSince1970)
-    let postSecond = post.endDate
-    if postSecond - nowSecond <= 0 {
-        
-    } else {
-        
-    }
-}
-
 // 포스트의 dateLabel 용
 func dateToDday(post: Post) -> String {
     let endDate = Date(timeIntervalSince1970: Double(post.endDate))

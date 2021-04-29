@@ -27,23 +27,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1x-d7-lCy" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="10" y="143" width="394" height="394"/>
+                                <rect key="frame" x="10" y="145" width="394" height="394"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="q1x-d7-lCy" secondAttribute="height" multiplier="1:1" id="CBl-oM-LfO"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wfu-Zs-7nl">
-                                <rect key="frame" x="20" y="64" width="193" height="59"/>
+                                <rect key="frame" x="20" y="64" width="186.5" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName님의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vZ-oS-LRp">
-                                        <rect key="frame" x="0.0" y="0.0" width="158" height="27"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지난 한 달 감정통계" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMZ-zW-3bc">
-                                        <rect key="frame" x="0.0" y="32" width="193" height="27"/>
+                                        <rect key="frame" x="0.0" y="33" width="186.5" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
