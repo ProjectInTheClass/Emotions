@@ -230,6 +230,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             let keyboardHeight = keyboardRectangle.height
             commentViewBottonConstraints.constant = -keyboardHeight
             //commentBackgroundColorView.frame.origin.y -= keyboardHeight
+            
+            // 텍스트필드가 터치만 되면 키보드가 위로 가도록 하는 코드?
         }
     }
     
