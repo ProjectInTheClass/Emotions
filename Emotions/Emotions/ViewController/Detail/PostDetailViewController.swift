@@ -42,8 +42,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentPostButton: UIButton!
     
-
-    
     //MARK:- viewDidLoad & UI configure
 
     override func viewDidLoad() {
@@ -105,12 +103,19 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //옵저버 등록
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        print("keyboard observer added")
             
+
+    }
+    
+    //MARK:- viewDidDisappear - keyboard observer remove
+    
+    override func viewDidDisappear(_ animated: Bool) {
         //옵저버 해제
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        print("keyboard observer removed")
     }
-    
         
 
     //MARK:- viewWillAppear - comment info download
@@ -168,7 +173,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     
-    //MARK:- 댓글게시 btn func
+    //MARK:- 댓글게시 button func
 
     @IBAction func commentPost(_ sender: UIButton) {
         print("comment Upload Complete")
@@ -186,8 +191,16 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             "content": content,
             "date": Int(Date().timeIntervalSince1970)
         ]
-        
         CommentManager.uploadComment(dictionary: reviewDictionary)
+        
+        // 댓글을 푸쉬하고 나면 그 댓글이 생긴 하단으로 스크롤
+        // 새로운 댓글이 보이게끔까지 스크롤되지는 않고 있다
+        // tableView.contentSize.height -
+        let bottomOffset = CGPoint(x: 0, y: tableView.bounds.size.height)
+        tableView.setContentOffset(bottomOffset, animated: true)
+
+        // 댓글 게시 후 텍스트필드 클리어
+        commentTextField.text = ""
     }
     
     
@@ -195,7 +208,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //MARK:- Keyboard control
     
     //코멘트 뷰 하단 레이아웃 제약 아울렛
-    @IBOutlet weak var commentBottonConstraints: NSLayoutConstraint!
+    @IBOutlet weak var commentViewBottonConstraints: NSLayoutConstraint!
     
     //뷰 터치하면 키보드 내려가기
     @objc func dismissKeyboard() {
@@ -210,17 +223,23 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     @objc func keyboardWillShow(_ notification: Notification) {
+        //self.commentBackgroundColorView.frame.origin.y = -150
+        
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            commentBackgroundColorView.frame.origin.y -= keyboardHeight
+            commentViewBottonConstraints.constant = -keyboardHeight
+            //commentBackgroundColorView.frame.origin.y -= keyboardHeight
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
+        //self.commentBackgroundColorView.frame.origin.y = +150
+        
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
+            //commentViewBottonConstraints.constant += keyboardHeight
             commentBackgroundColorView.frame.origin.y += keyboardHeight
         }
     }

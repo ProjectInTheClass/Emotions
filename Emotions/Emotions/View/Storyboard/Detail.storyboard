@@ -202,9 +202,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentBackgroundColorView" destination="V4x-qM-JOY" id="2Ib-Lu-V9i"/>
-                        <outlet property="commentBottonConstraints" destination="fH4-h0-bVJ" id="HEC-pT-c1a"/>
                         <outlet property="commentPostButton" destination="pQi-r1-Uo2" id="7dy-vw-FfG"/>
                         <outlet property="commentTextField" destination="iQa-Z8-0Sm" id="JAI-j3-LfO"/>
+                        <outlet property="commentViewBottonConstraints" destination="9g3-hZ-qwl" id="LAb-1N-pPF"/>
                         <outlet property="firstCardBackgroundColorView" destination="hhh-OG-F7Z" id="Y26-y2-Xzx"/>
                         <outlet property="firstCardTitleLabel" destination="j1N-p7-aZE" id="3H5-Zr-CIL"/>
                         <outlet property="postContentTextView" destination="4fB-18-Unk" id="DZB-vm-GKi"/>
