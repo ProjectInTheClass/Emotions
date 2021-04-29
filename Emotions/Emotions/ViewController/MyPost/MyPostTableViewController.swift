@@ -112,12 +112,24 @@ class MyPostTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("mypostSegue")
         if segue.identifier == "mypostSegue" {
-            guard let indexPath = tableView.indexPathForSelectedRow else {
-                print("indexPathForSelectedRow")
-                return }
-            let post = PostManager.shared.userPosts[indexPath.row] //userPosts = PostManager 참고
-            guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
-            postDetailViewController.post = post
+            var post: Post! = nil
+            var rowIndex = 0
+            
+            /// 버튼을 누른 경우..
+            if let cell = (sender as! UIView).superview?.superview?.superview as? UITableViewCell {
+                let indexPath = tableView.indexPath(for: cell)!
+                
+                rowIndex = indexPath.row
+            }
+            else if let indexPath = tableView.indexPathForSelectedRow { // 셀 자체 선택?
+                rowIndex = indexPath.row
+            }
+            
+            post = PostManager.shared.userPosts[rowIndex]
+            
+            let vcDetail = segue.destination as! PostDetailViewController
+            
+            vcDetail.post = post
         }
     }
 }

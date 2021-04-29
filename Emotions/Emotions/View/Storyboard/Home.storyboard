@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BoV-cI-SaR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BoV-cI-SaR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -138,12 +138,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="fdd-Q5-B1Z">
-                            <rect key="frame" x="0.0" y="443.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="436.50000034679067" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="CKZ-IM-2GH" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="387.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="387.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CKZ-IM-2GH" id="hYu-qG-hWb">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="387.5"/>
@@ -303,7 +303,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="0VC-Vg-Oh7" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="391"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="391"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0VC-Vg-Oh7" id="8Rz-Zu-NJ5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="391"/>
@@ -442,7 +442,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="48D-6m-eds" customClass="PostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="391"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="391"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="48D-6m-eds" id="UMA-ns-CdF">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="391"/>
@@ -1062,12 +1062,18 @@
         <designable name="05b-Bj-4lj">
             <size key="intrinsicContentSize" width="72" height="32"/>
         </designable>
+        <designable name="HQY-6o-PTh">
+            <size key="intrinsicContentSize" width="195" height="32"/>
+        </designable>
         <designable name="JbK-75-Xev">
             <size key="intrinsicContentSize" width="72" height="32"/>
         </designable>
+        <designable name="TXt-2k-yIy">
+            <size key="intrinsicContentSize" width="195" height="32"/>
+        </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="vQI-po-121"/>
+        <segue reference="DUt-q7-x17"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Info Circle" width="24" height="24"/>

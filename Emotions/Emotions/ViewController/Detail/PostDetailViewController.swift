@@ -101,7 +101,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //keyboard notification center
         //옵저버 등록
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         print("keyboard observer added")
             
@@ -112,7 +112,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidDisappear(_ animated: Bool) {
         //옵저버 해제
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         print("keyboard observer removed")
     }
@@ -228,7 +228,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            commentViewBottonConstraints.constant = -keyboardHeight
+            
+            commentViewBottonConstraints.constant = keyboardHeight
             //commentBackgroundColorView.frame.origin.y -= keyboardHeight
             
             // 텍스트필드가 터치만 되면 키보드가 위로 가도록 하는 코드?
@@ -241,8 +242,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            //commentViewBottonConstraints.constant += keyboardHeight
-            commentBackgroundColorView.frame.origin.y += keyboardHeight
+            commentViewBottonConstraints.constant = 0
+//            commentBackgroundColorView.frame.origin.y += keyboardHeight
         }
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oaB-8i-V3L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oaB-8i-V3L">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +17,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Item-->
+        <!--Post Detail View Controller-->
         <scene sceneID="ty0-6I-1Ny">
             <objects>
                 <viewController id="oaB-8i-V3L" customClass="PostDetailViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,7 +102,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentDetailCell" id="Acp-CK-bp4" customClass="CommentTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="278" width="414" height="148"/>
+                                        <rect key="frame" x="0.0" y="274.5" width="414" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Acp-CK-bp4" id="KWO-Kx-98G">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="148"/>
@@ -191,20 +191,19 @@
                         <constraints>
                             <constraint firstItem="5ba-8u-MdO" firstAttribute="trailing" secondItem="nH0-DU-Vce" secondAttribute="trailing" id="2FR-qa-kBT"/>
                             <constraint firstItem="V4x-qM-JOY" firstAttribute="trailing" secondItem="nH0-DU-Vce" secondAttribute="trailing" id="8b0-fG-4ND"/>
-                            <constraint firstItem="V4x-qM-JOY" firstAttribute="bottom" secondItem="nH0-DU-Vce" secondAttribute="bottom" id="9g3-hZ-qwl"/>
+                            <constraint firstItem="nH0-DU-Vce" firstAttribute="bottom" secondItem="V4x-qM-JOY" secondAttribute="bottom" id="EAF-CU-MDD"/>
                             <constraint firstItem="V4x-qM-JOY" firstAttribute="top" secondItem="5ba-8u-MdO" secondAttribute="bottom" constant="8" symbolic="YES" id="EWI-1b-lD4"/>
                             <constraint firstItem="5ba-8u-MdO" firstAttribute="top" secondItem="nH0-DU-Vce" secondAttribute="top" id="UTk-JC-pdS"/>
                             <constraint firstItem="V4x-qM-JOY" firstAttribute="leading" secondItem="nH0-DU-Vce" secondAttribute="leading" id="WYG-Av-4rh"/>
                             <constraint firstItem="5ba-8u-MdO" firstAttribute="leading" secondItem="nH0-DU-Vce" secondAttribute="leading" id="gNZ-OX-0YW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="kWY-Th-ItD"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentBackgroundColorView" destination="V4x-qM-JOY" id="2Ib-Lu-V9i"/>
                         <outlet property="commentPostButton" destination="pQi-r1-Uo2" id="7dy-vw-FfG"/>
                         <outlet property="commentTextField" destination="iQa-Z8-0Sm" id="JAI-j3-LfO"/>
-                        <outlet property="commentViewBottonConstraints" destination="9g3-hZ-qwl" id="LAb-1N-pPF"/>
+                        <outlet property="commentViewBottonConstraints" destination="EAF-CU-MDD" id="fSA-h8-hQy"/>
                         <outlet property="firstCardBackgroundColorView" destination="hhh-OG-F7Z" id="Y26-y2-Xzx"/>
                         <outlet property="firstCardTitleLabel" destination="j1N-p7-aZE" id="3H5-Zr-CIL"/>
                         <outlet property="postContentTextView" destination="4fB-18-Unk" id="DZB-vm-GKi"/>
