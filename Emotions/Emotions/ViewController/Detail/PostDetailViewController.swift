@@ -164,6 +164,18 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     
+    //MARK:- Scroll to Bottom Func
+    func scrollToBottom() {
+        guard CommentManager.shared.comments.count > 0 else { return }
+        let lastRowInLastSection = CommentManager.shared.comments.count - 1
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: lastRowInLastSection, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+    
+    
+    
     //MARK:- 댓글게시 button func
 
     @IBAction func commentPost(_ sender: UIButton) {
@@ -188,14 +200,16 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         commentTextField.text = ""
         commentTextField.resignFirstResponder()
         
+        // 하단 스크롤 함수
+        scrollToBottom()
+        
         // 댓글을 푸쉬하고 나면 그 댓글이 생긴 하단으로 스크롤
-        // 코멘트가 없는 글에 첫 번째 코멘트를 달고자 게시 버튼을 누르면 앱이 죽음
-        // 어떤 코드를 추가해야 하는가?
-        self.tableView.scrollToRow(at: IndexPath(row: CommentManager.shared.comments.count - 1, section: 0), at: .bottom, animated: true) //하단으로 스크롤링 코드
+        // 아래 코드는 코멘트가 없는 글에 첫 번째 코멘트를 달고자 게시 버튼을 누르면 앱이 죽음
+        // self.tableView.scrollToRow(at: IndexPath(row: CommentManager.shared.comments.count - 1, section: 0), at: .bottom, animated: true)
     }
-    
-    
 
+    
+    
     //MARK:- Keyboard control
     
     //코멘트 뷰 하단 레이아웃 제약 아울렛
