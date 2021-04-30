@@ -10,9 +10,6 @@ import FirebaseAuth
 
 class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-
-    
-    
     //MARK:- let & var
     
     //인스턴스 받아오기
@@ -89,7 +86,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         updateUI()
         navigationConfigureUI()
         
-
         //keyboard notification center
         //옵저버 등록
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -156,7 +152,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    //MARK:- navigation title 설정
+    
+    
+    //MARK:- navigation UI 설정
     
     func navigationConfigureUI() {
         title = "Post Detail"
@@ -186,22 +184,18 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         ]
         CommentManager.uploadComment(dictionary: reviewDictionary)
         
-        // 댓글 게시 후 텍스트필드 클리어
+        // 댓글 게시 후 텍스트필드 클리어, 키보드 dismiss
         commentTextField.text = ""
-        commentTextField.resignFirstResponder() // 키보드를 치우자.
-        
+        commentTextField.resignFirstResponder()
         
         // 댓글을 푸쉬하고 나면 그 댓글이 생긴 하단으로 스크롤
         // 코멘트가 없는 글에 첫 번째 코멘트를 달고자 게시 버튼을 누르면 앱이 죽음
         // 어떤 코드를 추가해야 하는가?
         self.tableView.scrollToRow(at: IndexPath(row: CommentManager.shared.comments.count - 1, section: 0), at: .bottom, animated: true) //하단으로 스크롤링 코드
-      
-
-
     }
     
     
-    
+
     //MARK:- Keyboard control
     
     //코멘트 뷰 하단 레이아웃 제약 아울렛
@@ -218,7 +212,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         return true
     }
     
-    
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardEndFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardHeight = keyboardEndFrame.cgRectValue.height
@@ -229,16 +222,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         UIView.animate(withDuration: keyboardAnimationDuration) {
             self.commentViewBottonConstraints.constant = margin - keyboardHeight
             self.view.layoutIfNeeded()
-            
-        //        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-        //            let keyboardRectangle = keyboardFrame.cgRectValue
-        //            let keyboardHeight = keyboardRectangle.height
-        //            commentViewBottonConstraints.constant = -keyboardHeight
-        //            //commentBackgroundColorView.frame.origin.y -= keyboardHeight
         }
     }
 
-    
     @objc func keyboardWillHide(_ notification: Notification) {
         guard let keyboardEndFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardHeight = keyboardEndFrame.cgRectValue.height
@@ -249,13 +235,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         UIView.animate(withDuration: keyboardAnimationDuration) {
             self.commentViewBottonConstraints.constant = 0
             self.view.layoutIfNeeded()
-        
-
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            //commentViewBottonConstraints.constant += keyboardHeight
-//            commentBackgroundColorView.frame.origin.y += keyboardHeight
         }
     }
 
