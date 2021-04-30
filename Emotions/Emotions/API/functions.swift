@@ -19,7 +19,7 @@ func dateToDday(post: Post) -> String {
 func dateToDdayForMyPost(post: Post) -> String {
     let endDate = Date(timeIntervalSince1970: Double(post.endDate))
     let dateToInt = Int(endDate.timeIntervalSinceNow / 24 / 60 / 60)
-    let dateToDday = "\(dateToInt)일 남은 감정"
+    let dateToDday = "\(dateToInt)일 후 정리"
     return dateToDday
 }
 

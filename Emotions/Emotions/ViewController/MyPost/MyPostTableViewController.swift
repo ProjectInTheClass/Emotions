@@ -43,7 +43,7 @@ class MyPostTableViewController: UITableViewController {
                     if success {
                         DispatchQueue.main.async {
                             if let name = auth.currentUser?.displayName {
-                                self.nicknameLabel.text = "\(name)님,"
+                                self.nicknameLabel.text = "\(name)님의"
                                 self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
                             } else {
                                 self.nicknameLabel.text = "회원님,"

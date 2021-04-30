@@ -19,7 +19,6 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var uploadButton: UIBarButtonItem!
-    @IBOutlet weak var sharingCommunitySwitch: UISwitch!
     
     
     var selectedCards: [Card]? {
