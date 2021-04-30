@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let logoutIndexPath = IndexPath(row: 2, section: 1)
-    let deleteUser = IndexPath(row: 3, section: 1)
+    let logoutIndexPath = IndexPath(row: 3, section: 1)
+    let profileImage = IndexPath(row: 0, section: 1)
+    
+    var profileImageSelectCompletionhandler: ((UIImage)->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,24 +39,59 @@ class ProfileTableViewController: UITableViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
             
-        } else if indexPath == deleteUser {
+        } else if indexPath == profileImage {
             
-            let alert = UIAlertController(title: "회원탈퇴", message: "탈퇴하시겠습니까?\n관련된 모든 정보가 삭제됩니다.", preferredStyle: .alert)
-            alert.addTextField { (textField) in
-                textField.layer.masksToBounds = true
-                textField.layer.cornerRadius = CornerRadius.myValue
-                textField.placeholder = "등록하셨던 비밀번호를 적어주세요."
-            }
-          
-            let okAction = UIAlertAction(title: "확인", style: .destructive) {  [unowned alert] _ in
-                guard let password = alert.textFields![0].text else { return }
-                UserManager.shared.deleteUser(password: password)
-                UserManager.shared.userImageDelete()
-            }
-            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+             let imagePickerViewController = UIImagePickerController()
+             imagePickerViewController.delegate = self
+             let actionSheet = UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)
+             if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                 let cameraAction = UIAlertAction(title: "카메라", style: .default) { action in
+                     imagePickerViewController.sourceType = .camera
+                     self.present(imagePickerViewController, animated: true, completion: nil)
+                 }
+                 actionSheet.addAction(cameraAction)
+             }
+             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                 let photoAction = UIAlertAction(title: "사진첩", style: .default) { action in
+                     imagePickerViewController.sourceType = .photoLibrary
+                     self.present(imagePickerViewController, animated: true, completion: nil)
+                 }
+                 actionSheet.addAction(photoAction)
+             }
+             let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
+                 self.dismiss(animated: true, completion: nil)
+             }
+             actionSheet.addAction(cancelAction)
+             present(actionSheet, animated: true, completion: nil)
         }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("imagePickerController")
+        guard let selectedImage = info[.originalImage] as? UIImage else { print("사진 없어")
+            return }
+        if let currentUser = Auth.auth().currentUser {
+            UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUser.email!) {  [weak self] success in
+                guard let self = self else { return }
+                if success {
+                    UserManager.shared.downloadUserImage(email: currentUser.email!) { [weak self] (url) in
+                        guard let self = self else { return }
+                        if let data = try? Data(contentsOf: url!) {
+                            guard let image = UIImage(data: data) else { return }
+                            if let profileImageSelectCompletionhandler = self.profileImageSelectCompletionhandler {
+                                profileImageSelectCompletionhandler(image)
+                            }
+                        } else {
+                            print("Error convert URL to Data")
+                        }
+                    }
+                } else {
+                    print("실파이")
+                }
+            }
+        } else {
+            print("유저 없음")
+        }
+        dismiss(animated: true, completion: nil)
     }
 }

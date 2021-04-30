@@ -20,6 +20,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var uploadButton: UIBarButtonItem!
     
+    
     var selectedCards: [Card]? {
         didSet {
             if let selectedCards = selectedCards {

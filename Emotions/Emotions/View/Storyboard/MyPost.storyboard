@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ppw-bU-My6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ppw-bU-My6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,9 @@
         </array>
         <array key="NanumSquareRegular.ttf">
             <string>NanumSquareR</string>
+        </array>
+        <array key="Sora-VariableFont_wght.ttf">
+            <string>Sora-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -38,46 +41,57 @@
         <scene sceneID="HqY-8B-1Ov">
             <objects>
                 <tableViewController id="rAe-3C-G8S" customClass="MyPostTableViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sfo-Ug-hyu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sfo-Ug-hyu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="nEU-Rx-Aoy">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="GU1-ZV-ZLD">
-                                    <rect key="frame" x="20" y="10" width="264.5" height="108"/>
+                                    <rect key="frame" x="20" y="10" width="267.5" height="107"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUA-Qx-RUe">
-                                            <rect key="frame" x="0.0" y="0.0" width="143" height="41.5"/>
-                                            <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지난 한 달간 정리되지 않은" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8X-nu-xob">
-                                            <rect key="frame" x="0.0" y="33.5" width="264.5" height="41"/>
-                                            <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ioL-5H-SK7">
-                                            <rect key="frame" x="0.0" y="66.5" width="228.5" height="41.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OQw-dP-6jH">
+                                            <rect key="frame" x="0.0" y="0.0" width="240.5" height="41"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3가지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5na-NG-Lu5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="41.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 달간," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJZ-DQ-22h">
+                                                    <rect key="frame" x="0.0" y="0.0" width="77.5" height="41"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName님의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUA-Qx-RUe">
+                                                    <rect key="frame" x="82.5" y="0.0" width="158" height="41"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정이 있습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baU-tG-Hl0">
-                                                    <rect key="frame" x="63.5" y="0.0" width="165" height="41.5"/>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yQZ-TB-3Ni">
+                                            <rect key="frame" x="0.0" y="33" width="200.5" height="41"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3가지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5na-NG-Lu5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="41"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정들입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8X-nu-xob">
+                                                    <rect key="frame" x="63.5" y="0.0" width="137" height="41"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지난 시간을 정리해보세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baU-tG-Hl0">
+                                            <rect key="frame" x="0.0" y="66" width="267.5" height="41"/>
+                                            <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </stackView>
                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-qG-Khj">
@@ -90,8 +104,8 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="GU1-ZV-ZLD" secondAttribute="bottom" constant="10" id="T41-RY-Vij"/>
-                                <constraint firstAttribute="bottom" secondItem="r4l-qG-Khj" secondAttribute="bottom" id="VJY-bd-ykb"/>
+                                <constraint firstItem="r4l-qG-Khj" firstAttribute="top" secondItem="GU1-ZV-ZLD" secondAttribute="bottom" constant="10" id="OTI-kJ-xf3"/>
+                                <constraint firstAttribute="bottom" secondItem="r4l-qG-Khj" secondAttribute="bottom" constant="10" id="VJY-bd-ykb"/>
                                 <constraint firstItem="r4l-qG-Khj" firstAttribute="leading" secondItem="nEU-Rx-Aoy" secondAttribute="leading" id="mlo-Mg-HiL"/>
                                 <constraint firstAttribute="trailing" secondItem="r4l-qG-Khj" secondAttribute="trailing" id="qfR-JE-70J"/>
                                 <constraint firstItem="GU1-ZV-ZLD" firstAttribute="top" secondItem="nEU-Rx-Aoy" secondAttribute="top" constant="10" id="s9v-wL-TdD"/>
@@ -99,15 +113,15 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myPostCell" id="0eN-7y-HOD" customClass="MyPostTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="156" width="414" height="85"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myPostCell" id="0eN-7y-HOD" customClass="MyPostTableViewCell" customModule="Emotions" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="162.5" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0eN-7y-HOD" id="vwl-bC-kOB">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lJz-BK-MNP">
-                                            <rect key="frame" x="20" y="20" width="215" height="65"/>
+                                            <rect key="frame" x="20" y="10" width="215" height="65"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5XL-yd-MGj">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
@@ -130,32 +144,29 @@
                                                 </imageView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="VC9-en-0xD">
-                                            <rect key="frame" x="283.5" y="25" width="110.5" height="55"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="VC9-en-0xD">
+                                            <rect key="frame" x="255" y="15.5" width="109.5" height="54"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31일 남은 감정," textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-ru-dPH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="110.5" height="30"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘은 여동생이 우리집에 오는 날이다. 이리저리 청소를 하는데 후.. 보통 힘든 일이 아니다." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="PRs-Hg-x4o">
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="33.5"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bt4-HF-wck">
-                                                    <rect key="frame" x="41.5" y="25" width="69" height="30"/>
-                                                    <state key="normal" title="자세히 보기">
-                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="detailButtonTapped:" destination="0eN-7y-HOD" eventType="touchUpInside" id="AdD-Dn-3hG"/>
-                                                        <segue destination="mPY-y7-L0K" kind="show" identifier="mypostSegue" id="slt-Y9-7M1"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31일 남은 감정," textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-ru-dPH">
+                                                    <rect key="frame" x="0.0" y="37.5" width="109.5" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="VC9-en-0xD" firstAttribute="centerY" secondItem="lJz-BK-MNP" secondAttribute="centerY" id="3TK-68-V9f"/>
-                                        <constraint firstItem="lJz-BK-MNP" firstAttribute="top" secondItem="vwl-bC-kOB" secondAttribute="top" constant="20" id="VhJ-xw-57H"/>
-                                        <constraint firstAttribute="bottom" secondItem="lJz-BK-MNP" secondAttribute="bottom" id="ana-eO-dNm"/>
+                                        <constraint firstItem="VC9-en-0xD" firstAttribute="leading" secondItem="lJz-BK-MNP" secondAttribute="trailing" constant="20" id="KAk-z7-zzo"/>
+                                        <constraint firstItem="lJz-BK-MNP" firstAttribute="top" secondItem="vwl-bC-kOB" secondAttribute="top" constant="10" id="VhJ-xw-57H"/>
+                                        <constraint firstAttribute="bottom" secondItem="lJz-BK-MNP" secondAttribute="bottom" constant="10" id="ana-eO-dNm"/>
                                         <constraint firstItem="lJz-BK-MNP" firstAttribute="leading" secondItem="vwl-bC-kOB" secondAttribute="leading" constant="20" id="fma-G5-f6Z"/>
                                         <constraint firstAttribute="trailing" secondItem="VC9-en-0xD" secondAttribute="trailing" constant="20" id="wOv-lr-E3H"/>
                                     </constraints>
@@ -163,10 +174,11 @@
                                 <connections>
                                     <outlet property="containerView" destination="vwl-bC-kOB" id="XBm-df-O02"/>
                                     <outlet property="dateLabel" destination="mO9-ru-dPH" id="aFq-6U-lfY"/>
-                                    <outlet property="detailButton" destination="Bt4-HF-wck" id="ygw-Xm-GN0"/>
                                     <outlet property="firstCardImage" destination="5XL-yd-MGj" id="YVe-ZZ-3fl"/>
+                                    <outlet property="myPostContent" destination="PRs-Hg-x4o" id="GHV-Vh-su4"/>
                                     <outlet property="secondCardImage" destination="xRu-ur-hZt" id="mS4-Zr-8lT"/>
                                     <outlet property="thirdCardImage" destination="vYS-G8-WNA" id="WzK-L9-RS4"/>
+                                    <segue destination="mPY-y7-L0K" kind="show" identifier="mypostSegue" id="0tY-RP-2S1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

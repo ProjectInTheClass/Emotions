@@ -20,6 +20,7 @@ class SympathyTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("SympathyTableViewController - viewWillAppear")
         handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
             if auth.currentUser == nil {
                 print("SympathyTableViewController - viewWillAppear - 현재 유저 없음")

@@ -20,6 +20,7 @@ class StarTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("StarTableViewController - viewWillAppear")
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if auth.currentUser == nil {
                 PostManager.shared.starPosts = []
