@@ -58,11 +58,11 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E4-gU-jkD">
-                                                    <rect key="frame" x="349" y="110" width="55" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E4-gU-jkD">
+                                                    <rect key="frame" x="349" y="105" width="50" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="55" id="9aV-GI-zmX"/>
-                                                        <constraint firstAttribute="height" constant="20" id="ibB-2l-6pC"/>
+                                                        <constraint firstAttribute="height" constant="20" id="P6e-ZH-kRf"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Xbz-pW-4vT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,13 +71,11 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="9E4-gU-jkD" secondAttribute="bottom" constant="15" id="Dco-nf-ePi"/>
-                                                <constraint firstItem="9E4-gU-jkD" firstAttribute="leading" secondItem="hhh-OG-F7Z" secondAttribute="leading" constant="349" id="E7O-py-fEr"/>
+                                                <constraint firstAttribute="trailing" secondItem="9E4-gU-jkD" secondAttribute="trailing" constant="15" id="5gh-QM-Vzr"/>
                                                 <constraint firstItem="TNs-yl-wcP" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="20" symbolic="YES" id="JLp-CC-AE9"/>
+                                                <constraint firstAttribute="bottom" secondItem="9E4-gU-jkD" secondAttribute="bottom" constant="15" id="VeZ-jL-Gjz"/>
                                                 <constraint firstItem="TNs-yl-wcP" firstAttribute="leading" secondItem="hhh-OG-F7Z" secondAttribute="leading" constant="28" id="afK-c3-cMM"/>
-                                                <constraint firstAttribute="trailing" secondItem="9E4-gU-jkD" secondAttribute="trailing" constant="10" id="kXw-Rv-G09"/>
                                                 <constraint firstAttribute="bottom" secondItem="TNs-yl-wcP" secondAttribute="bottom" constant="96.5" id="mXg-65-fNM"/>
-                                                <constraint firstItem="9E4-gU-jkD" firstAttribute="top" secondItem="hhh-OG-F7Z" secondAttribute="top" constant="110" id="wfQ-T1-OBF"/>
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fB-18-Unk">
