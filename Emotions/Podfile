@@ -16,4 +16,5 @@ pod 'Firebase/Storage'
 pod 'TransitionButton'
 pod 'BulletinBoard'
 pod 'Charts'
+pod 'Google-Mobile-Ads-SDK'
 end

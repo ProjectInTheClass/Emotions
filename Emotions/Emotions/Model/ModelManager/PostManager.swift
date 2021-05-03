@@ -54,7 +54,6 @@ class PostManager {
     
     func laodUserPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
-        PostManager.shared.userPosts = []
         orderedQuery = postsRef.queryOrdered(byChild: "userID").queryEqual(toValue: Auth.auth().currentUser?.uid)
         orderedQuery?.observe(.childAdded, with: { snapshot in
             let postDic = snapshot.value as! [String:Any]

@@ -28,7 +28,8 @@ class MyPostTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
+        handle = Auth.auth().addStateDidChangeListener { [weak self]  auth, user in
+            guard let self = self else { return }
             if auth.currentUser == nil {
                 DispatchQueue.main.async {
                     PostManager.shared.userPosts = []
@@ -37,20 +38,12 @@ class MyPostTableViewController: UITableViewController {
                     self.userPostCount.text = "0가지"
                 }
             } else {
-                guard let currentUserUID = auth.currentUser?.uid else { return }
                 PostManager.shared.userPosts = []
+                self.updateUI(auth: auth)
+                guard let currentUserUID = auth.currentUser?.uid else { return }
                 PostManager.shared.laodUserPosts(currentUserUID: currentUserUID) { (success) in
                     if success {
-                        DispatchQueue.main.async {
-                            if let name = auth.currentUser?.displayName {
-                                self.nicknameLabel.text = "\(name)님의"
-                                self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
-                            } else {
-                                self.nicknameLabel.text = "회원님,"
-                                self.userPostCount.text = "0가지"
-                            }
-                            self.tableView.reloadData()
-                        }
+                        self.updateUI(auth: auth)
                     } else {
                         print("viewWillAppear - laodUserPosts failed")
                     }
@@ -73,6 +66,19 @@ class MyPostTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    private func updateUI(auth: Auth) {
+        DispatchQueue.main.async {
+            if let name = auth.currentUser?.displayName {
+                self.nicknameLabel.text = name
+                self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
+            } else {
+                self.nicknameLabel.text = "회원님,"
+                self.userPostCount.text = "0가지"
+            }
+            self.tableView.reloadData()
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PostManager.shared.userPosts.count

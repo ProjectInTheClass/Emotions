@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q1v-E7-Swj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OsP-qg-TVt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--내 감정-->
+        <!--Static View Controller-->
         <scene sceneID="2xB-HD-Hqk">
             <objects>
                 <viewController id="Q1v-E7-Swj" customClass="StaticViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,85 +25,167 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FJ-8n-4aF" customClass="GADBannerView">
+                                <rect key="frame" x="47" y="763" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Map-K9-8uU"/>
+                                    <constraint firstAttribute="width" constant="320" id="Upb-Tq-fDX"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1x-d7-lCy" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="10" y="145" width="394" height="394"/>
+                                <rect key="frame" x="10" y="226" width="394" height="394"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3K-xE-bPY" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="108.5" y="90.5" width="177" height="177.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="k3K-xE-bPY" secondAttribute="height" multiplier="1:1" id="i47-ct-Mok"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="q1x-d7-lCy" secondAttribute="height" multiplier="1:1" id="CBl-oM-LfO"/>
+                                    <constraint firstItem="k3K-xE-bPY" firstAttribute="centerX" secondItem="q1x-d7-lCy" secondAttribute="centerX" id="DAL-bM-sMG"/>
+                                    <constraint firstItem="k3K-xE-bPY" firstAttribute="width" secondItem="q1x-d7-lCy" secondAttribute="width" multiplier="0.45" id="iiv-AW-UeG"/>
+                                    <constraint firstItem="k3K-xE-bPY" firstAttribute="centerY" secondItem="q1x-d7-lCy" secondAttribute="centerY" constant="-17.699999999999999" id="jzb-Pq-k4V"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wfu-Zs-7nl">
-                                <rect key="frame" x="20" y="64" width="153.5" height="61"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaL-my-MBD">
+                                <rect key="frame" x="0.0" y="88" width="414" height="138"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName님의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vZ-oS-LRp">
-                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="28"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정센터" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMZ-zW-3bc">
-                                        <rect key="frame" x="0.0" y="33" width="83.5" height="28"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="rgN-cd-D2n">
+                                        <rect key="frame" x="20" y="10" width="295" height="107"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-TK-iOo">
+                                                <rect key="frame" x="0.0" y="0.0" width="245.5" height="42.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 달간," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyJ-Ip-chW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="42.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gf4-VA-HDX">
+                                                        <rect key="frame" x="82.5" y="0.0" width="114" height="42.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="님의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJh-67-2eA">
+                                                        <rect key="frame" x="201.5" y="0.0" width="44" height="42.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TDE-W2-fa9">
+                                                <rect key="frame" x="0.0" y="32.5" width="252" height="42"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주된 감정은" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q3-n5-kik">
+                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="42"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'슬픔'" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrY-t6-Pcg">
+                                                        <rect key="frame" x="120.5" y="0.0" width="55" height="42"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFW-pe-mZW">
+                                                        <rect key="frame" x="180.5" y="0.0" width="71.5" height="42"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정을 나누고 정리해 보세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0T7-6S-lKu">
+                                                <rect key="frame" x="0.0" y="64.5" width="295" height="42.5"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOL-oY-Rge">
+                                        <rect key="frame" x="0.0" y="127" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="rXx-3Q-hvj"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3K-xE-bPY" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="10" y="545" width="203" height="196"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="rgN-cd-D2n" firstAttribute="leading" secondItem="gaL-my-MBD" secondAttribute="leading" constant="20" id="1e5-uq-VYm"/>
+                                    <constraint firstAttribute="height" constant="138" id="4IL-de-eYW"/>
+                                    <constraint firstAttribute="trailing" secondItem="OOL-oY-Rge" secondAttribute="trailing" id="5lR-Jv-WA5"/>
+                                    <constraint firstItem="OOL-oY-Rge" firstAttribute="leading" secondItem="gaL-my-MBD" secondAttribute="leading" id="Ny6-kc-QBs"/>
+                                    <constraint firstItem="OOL-oY-Rge" firstAttribute="top" secondItem="rgN-cd-D2n" secondAttribute="bottom" constant="10" id="R8r-S0-NiA"/>
+                                    <constraint firstItem="rgN-cd-D2n" firstAttribute="top" secondItem="gaL-my-MBD" secondAttribute="top" constant="10" id="UNj-xl-Gk6"/>
+                                    <constraint firstAttribute="bottom" secondItem="OOL-oY-Rge" secondAttribute="bottom" constant="10" id="utb-Rq-yeG"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3S-gj-htM">
-                                <rect key="frame" x="237" y="550" width="75" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdx-rS-7E5">
-                                <rect key="frame" x="237" y="630" width="75" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVc-vh-sLG">
-                                <rect key="frame" x="329" y="590" width="75" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-Mp-y6T">
-                                <rect key="frame" x="329" y="672" width="75" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xsg-IN-yg8"/>
-                        <color key="backgroundColor" name="angerBG"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q1x-d7-lCy" firstAttribute="leading" secondItem="Xsg-IN-yg8" secondAttribute="leading" constant="10" id="0J8-wp-VM4"/>
-                            <constraint firstItem="q1x-d7-lCy" firstAttribute="top" secondItem="wfu-Zs-7nl" secondAttribute="bottom" constant="20" id="UR8-wE-DvZ"/>
+                            <constraint firstItem="gaL-my-MBD" firstAttribute="top" secondItem="Xsg-IN-yg8" secondAttribute="top" id="NC6-3n-ivy"/>
+                            <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="gaL-my-MBD" secondAttribute="trailing" id="Qdw-5R-hQf"/>
+                            <constraint firstItem="Xsg-IN-yg8" firstAttribute="bottom" secondItem="1FJ-8n-4aF" secondAttribute="bottom" id="SAw-7C-bz6"/>
                             <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="q1x-d7-lCy" secondAttribute="trailing" constant="10" id="VOx-yI-epo"/>
-                            <constraint firstItem="wfu-Zs-7nl" firstAttribute="leading" secondItem="Xsg-IN-yg8" secondAttribute="leading" constant="20" id="YQd-rE-WiW"/>
-                            <constraint firstItem="wfu-Zs-7nl" firstAttribute="top" secondItem="Xsg-IN-yg8" secondAttribute="top" constant="20" id="x0c-Ut-TWj"/>
+                            <constraint firstItem="1FJ-8n-4aF" firstAttribute="centerX" secondItem="iUn-Lo-sKM" secondAttribute="centerX" id="cx4-Pc-0MZ"/>
+                            <constraint firstItem="gaL-my-MBD" firstAttribute="leading" secondItem="iUn-Lo-sKM" secondAttribute="leading" id="pPE-uX-IQR"/>
+                            <constraint firstItem="q1x-d7-lCy" firstAttribute="top" secondItem="gaL-my-MBD" secondAttribute="bottom" id="zCe-hM-KNi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="내 감정" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="C5Y-wL-KWk"/>
                     <navigationItem key="navigationItem" id="P3k-Xv-SNP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bannerView" destination="1FJ-8n-4aF" id="aHA-mG-dal"/>
+                        <outlet property="emotionLottiView" destination="k3K-xE-bPY" id="evh-rC-FSp"/>
                         <outlet property="pieChart" destination="q1x-d7-lCy" id="qRI-bR-lGT"/>
-                        <outlet property="userNicknameLabel" destination="1vZ-oS-LRp" id="d24-rI-WAL"/>
+                        <outlet property="userEmotionLabel" destination="IrY-t6-Pcg" id="ePJ-V6-Q6G"/>
+                        <outlet property="userNicknameLabel" destination="Gf4-VA-HDX" id="jz5-UW-cju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbl-8W-MvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="853.62318840579712" y="113.83928571428571"/>
+            <point key="canvasLocation" x="1760.8695652173915" y="113.31521739130436"/>
+        </scene>
+        <!--내 감정-->
+        <scene sceneID="K9X-YQ-knA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OsP-qg-TVt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="내 감정" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="C5Y-wL-KWk"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E2y-v2-mNB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q1v-E7-Swj" kind="relationship" relationship="rootViewController" id="4Hz-mz-DMM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3A2-aH-XjK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853.62318840579712" y="113.31521739130436"/>
         </scene>
     </scenes>
     <resources>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
-        <namedColor name="angerBG">
-            <color red="0.99800002574920654" green="0.89099997282028198" blue="0.86500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

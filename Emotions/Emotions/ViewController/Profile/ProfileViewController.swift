@@ -60,8 +60,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func updateUI(user: User?) {
         self.userImageView.image = nil
-        self.userEmailLabel.text = user?.email ?? "Email"
-        self.userNickNameLabel.text = user?.displayName ?? "Nickname"
+        self.userEmailLabel.text = user?.email ?? nil
+        self.userNickNameLabel.text = user?.displayName ?? nil
         if let photoURL = user?.photoURL,
            let data = try? Data(contentsOf: photoURL) {
             let image = UIImage(data: data)!
