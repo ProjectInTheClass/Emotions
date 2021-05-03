@@ -33,7 +33,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var userNicknameLabel: UILabel!
     @IBOutlet weak var userEmotionLabel: UILabel!
     
-    
+    var handle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,28 +46,47 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let currentUser = Auth.auth().currentUser else { return }
-        PostManager.shared.userPosts = []
-        PostManager.shared.laodUserPosts(currentUserUID: currentUser.uid) { [weak self] success in
+        handle = Auth.auth().addStateDidChangeListener { [weak self]  auth, user in
             guard let self = self else { return }
-            
-            let userPosts = PostManager.shared.userPosts
-            
-            self.myPostsCardTypes = []
-            self.sadnessCards = []
-            self.joyCards = []
-            self.angerCards = []
-            self.disgustCards = []
-            self.fearCards = []
-            
-            let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
-            let userEmotionCount =  self.myPostToStatic(posts: userPosts)
-            let bestCardType = self.searchBestEmotion()
-            self.updateLottieUI(emoji: bestCardType.typeEmoji)
-            self.userNicknameLabel.text = currentUser.displayName
-            self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
-            self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
+            if auth.currentUser == nil {
+                DispatchQueue.main.async {
+                    PostManager.shared.userPosts = []
+                    self.userNicknameLabel.text = "비회원님,"
+                    self.userEmotionLabel.text = "-"
+                    self.pieChart = nil
+                }
+            } else {
+                guard let currentUser = auth.currentUser else { return }
+                PostManager.shared.userPosts = []
+                PostManager.shared.loadUserPosts(currentUserUID: currentUser.uid) { [weak self] success in
+                    guard let self = self else { return }
+                    
+                    let userPosts = PostManager.shared.userPosts
+                    
+                    self.myPostsCardTypes = []
+                    self.sadnessCards = []
+                    self.joyCards = []
+                    self.angerCards = []
+                    self.disgustCards = []
+                    self.fearCards = []
+                    
+                    let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
+                    let userEmotionCount =  self.myPostToStatic(posts: userPosts)
+                    let bestCardType = self.searchBestEmotion()
+                    self.updateLottieUI(emoji: bestCardType.typeEmoji)
+                    self.userNicknameLabel.text = currentUser.displayName
+                    self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
+                    self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
+                }
+            }
         }
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     func updateLottieUI(emoji: String) {
