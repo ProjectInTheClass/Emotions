@@ -21,11 +21,13 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var middleConstraint: NSLayoutConstraint!
     @IBOutlet weak var stackview: UIStackView!
     
+    @IBOutlet weak var registrationErrorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         updateTransitionUI()
+        registrationErrorLabel.isHidden = true
         
     }
     
@@ -100,18 +102,17 @@ class RegistrationViewController: UIViewController {
               let passwordCheck = registrationPasswordCheckTextField.text, !passwordCheck.isEmpty, password == passwordCheck else {
             
             // 비밀번호 오류시 AlertController
-            let alert = UIAlertController(title: "알림", message: "비밀번호는 8자리 이상입니다. 다시 확인해주세요.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .cancel)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
+            self.registrationErrorLabel.isHidden = false
+            self.registrationErrorLabel.text = "비밀번호는 8자리 이상입니다.\n동일한 비밀번호를 입력하셨는지 확인해 주세요."
             return
         }
         
         button.startAnimation()
-        UserManager.shared.registrationUser(email: email, password: password, nickName: nickName) { success in
+        UserManager.shared.registrationUser(email: email, password: password, nickName: nickName) {[weak self] success in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 if success {
-                    DispatchQueue.main.async {
+                        self.registrationErrorLabel.isHidden = true
                         button.stopAnimation(animationStyle: .normal) {
                             // 버튼 컴플리션 핸들러
                             self.view.window?.rootViewController?.dismiss(animated: false, completion: {
@@ -123,15 +124,11 @@ class RegistrationViewController: UIViewController {
                                 appDelegate.window?.rootViewController?.present(naviVC, animated: true, completion: nil)
                             })
                         }
-                    }
                 } else {
                     button.stopAnimation(animationStyle: .shake, revertAfterDelay: 1.0) {
-                        let alert = UIAlertController(title: "회원가입오류", message: "데이터베이스, 회원가입에 오류!", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "확인", style: .cancel)
-                        alert.addAction(okAction)
-                        self.present(alert, animated: true, completion: nil)
+                        self.registrationErrorLabel.isHidden = false
+                        self.registrationErrorLabel.text = "적절한 이메일 형식을 사용해 주세요."
                     }
-                    
                 }
             }
         }

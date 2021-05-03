@@ -61,12 +61,12 @@ class LatestPostsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if auth.currentUser == nil {
-                self.bulletinManager.showBulletin(above: self)
                 DataManager.shared.latestposts = []
                 DataManager.shared.loadedPosts = []
                 DataManager.shared.loadPosts(currentUserUID: ""){ success in
                     if success {
                         DispatchQueue.main.async {
+                            self.bulletinManager.showBulletin(above: self)
                             self.tableView.reloadData()
                         }
                     }
@@ -94,18 +94,23 @@ class LatestPostsTableViewController: UITableViewController {
     
     private func initRefresh() {
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "최신 글 가져오기")
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
     
     @objc func handleRefreshControl() {
-        guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+            self.tableView.refreshControl?.endRefreshing()
+            return }
         DataManager.shared.loadFreshPosts(currentUserUID: currentUserUID) { success in
             if success {
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                   
+                }
             }
         }
-        tableView.refreshControl?.endRefreshing()
+       
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -113,10 +118,12 @@ class LatestPostsTableViewController: UITableViewController {
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height + self.loadingLabel.frame.height - contentYoffset
         if distanceFromBottom < height {
-            print(" you reached end of the table")
+            print("you reached end of the table")
             DataManager.shared.loadPastPosts { success in
                 if success {
-                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
