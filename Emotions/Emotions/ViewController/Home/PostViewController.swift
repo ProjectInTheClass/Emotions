@@ -59,7 +59,6 @@ class PostViewController: CustomTransitionViewController {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-    
     // MARK: - UI Functions
     
     func segmentedControlConfigureUI() {
