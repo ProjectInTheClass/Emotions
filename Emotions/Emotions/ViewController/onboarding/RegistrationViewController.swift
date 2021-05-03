@@ -18,6 +18,10 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var registrationPasswordCheckTextField: UITextField!
     @IBOutlet weak var signUpButton: TransitionButton!
     
+    @IBOutlet weak var middleConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stackview: UIStackView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -25,9 +29,32 @@ class RegistrationViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registrationEmailTextField.becomeFirstResponder()
+        NotificationCenter.default.addObserver(self, selector: #selector(willShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     //MARK: - UI Update
     
     private func updateUI() {
+        registrationEmailTextField.delegate = self
+        registrationNickNameTextField.delegate = self
+        registrationPasswordTextField.delegate = self
+        registrationPasswordCheckTextField.delegate = self
+        
         registrationEmailTextField.layer.masksToBounds = true
         registrationEmailTextField.layer.cornerRadius = CornerRadius.myValue
         registrationEmailTextField.attributedPlaceholder = NSAttributedString(text: "이메일", aligment: .left, color: .lightGray)
@@ -56,6 +83,7 @@ class RegistrationViewController: UIViewController {
     }
 
     @objc func buttonAction(_ button: TransitionButton) {
+        registrationPasswordCheckTextField.resignFirstResponder()
         
         guard let email = registrationEmailTextField.text, !email.isEmpty,
               let nickName = registrationNickNameTextField.text, !nickName.isEmpty else {
@@ -108,5 +136,56 @@ class RegistrationViewController: UIViewController {
             }
         }
     }
+    
+    @objc func willShow(_ notification: NSNotification) {
+        guard let keyboardEndFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardHeight = keyboardEndFrame.cgRectValue.height
+        let keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        
+        let margin: CGFloat = 60
+        let loginComponentsHeight = view.frame.height - stackview.frame.height - stackview.frame.origin.y
+        
+        UIView.animate(withDuration: keyboardAnimationDuration) {
+            if loginComponentsHeight - keyboardHeight >= 0 {
+
+            } else {
+                self.middleConstraint.constant = loginComponentsHeight - keyboardHeight - margin - 15
+                print(self.middleConstraint.constant)
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc func willHide(_ notification: Notification) {
+  
+        let keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        
+        let margin: CGFloat = 60
+        
+        UIView.animate(withDuration: keyboardAnimationDuration) {
+            self.middleConstraint.constant = -margin
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == registrationEmailTextField {
+            registrationNickNameTextField.becomeFirstResponder()
+            registrationEmailTextField.resignFirstResponder()
+        } else if textField == registrationNickNameTextField {
+            registrationPasswordTextField.becomeFirstResponder()
+            registrationNickNameTextField.resignFirstResponder()
+        } else if textField == registrationPasswordTextField {
+            registrationPasswordCheckTextField.becomeFirstResponder()
+            registrationPasswordTextField.resignFirstResponder()
+        } else if textField == registrationPasswordCheckTextField {
+            registrationPasswordCheckTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
 }
 

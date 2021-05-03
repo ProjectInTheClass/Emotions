@@ -41,7 +41,7 @@ class MyPostTableViewController: UITableViewController {
                 PostManager.shared.userPosts = []
                 self.updateUI(auth: auth)
                 guard let currentUserUID = auth.currentUser?.uid else { return }
-                PostManager.shared.laodUserPosts(currentUserUID: currentUserUID) { (success) in
+                PostManager.shared.loadUserPosts(currentUserUID: currentUserUID) { (success) in
                     if success {
                         self.updateUI(auth: auth)
                     } else {

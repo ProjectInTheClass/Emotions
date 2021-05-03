@@ -26,11 +26,32 @@ class LoginViewController: UIViewController {
     
     var afterLoginCompletion: (()->Void)?
     
+    @IBOutlet weak var stackview: UIStackView!
+    @IBOutlet weak var middleConstraint: NSLayoutConstraint!
+    
+    
     //MARK: - ViewLife Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         ButtonAddTarget()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(willShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        emailTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - UI Function
@@ -95,6 +116,33 @@ class LoginViewController: UIViewController {
     
     @objc func browseButtonTapped() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func willShow(_ notification: NSNotification) {
+        guard let keyboardEndFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardHeight = keyboardEndFrame.cgRectValue.height
+        let keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        let margin: CGFloat = 60
+        let loginComponentsHeight = view.frame.height - stackview.frame.height - stackview.frame.origin.y
+        
+        UIView.animate(withDuration: keyboardAnimationDuration) {
+            if loginComponentsHeight - keyboardHeight >= 0 {
+
+            } else {
+                self.middleConstraint.constant = loginComponentsHeight - keyboardHeight - margin - 15
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc func willHide(_ notification: Notification) {
+        let keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        let margin: CGFloat = 60
+        
+        UIView.animate(withDuration: keyboardAnimationDuration) {
+            self.middleConstraint.constant = -margin
+            self.view.layoutIfNeeded()
+        }
     }
 }
 

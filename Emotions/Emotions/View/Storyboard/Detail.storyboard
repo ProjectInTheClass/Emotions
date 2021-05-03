@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oaB-8i-V3L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oaB-8i-V3L">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,7 +81,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fB-18-Unk">
                                             <rect key="frame" x="25" y="148" width="364" height="211"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <string key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? . 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며.신과 있으랴 END!</string>
+                                            <mutableString key="text">만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? . 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며 만물은 인간이 뭇 풀이 가치를 불러 끓는다. 그들을 속에서 열락의 구할 청춘은 관현악이며, 자신과 있으랴? 시들어 가치를 기관과 있는 오아이스도 긴지라 듣는다. 풀이 이상의 그것을 일월과 우리 것이다. 그들은 인간이 청춘 같이 하였으며.신과 있으랴 END!</mutableString>
                                             <color key="textColor" systemColor="labelColor"/>
                                             <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -100,7 +100,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentDetailCell" id="Acp-CK-bp4" customClass="CommentTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="407" width="414" height="148"/>
+                                        <rect key="frame" x="0.0" y="403.5" width="414" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Acp-CK-bp4" id="KWO-Kx-98G">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="148"/>
@@ -157,6 +157,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-qM-JOY" userLabel="CommentView">
                                 <rect key="frame" x="0.0" y="762" width="414" height="51"/>
                                 <subviews>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJY-Iw-3Sq">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="feR-92-Le2"/>
+                                        </constraints>
+                                    </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력해 주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iQa-Z8-0Sm">
                                         <rect key="frame" x="15" y="8" width="349" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,7 +171,7 @@
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQi-r1-Uo2">
-                                        <rect key="frame" x="378" y="8" width="21" height="33"/>
+                                        <rect key="frame" x="378" y="16.5" width="21" height="22"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="paperplane.fill" catalog="system"/>
                                         <connections>
@@ -175,12 +182,14 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="iQa-Z8-0Sm" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" constant="8" id="4cn-yC-yNf"/>
-                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" constant="8" id="EL1-4y-fkS"/>
+                                    <constraint firstItem="fJY-Iw-3Sq" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" id="8Bb-1s-Zdc"/>
+                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="leading" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="14" id="Bvb-xk-WXm"/>
+                                    <constraint firstItem="fJY-Iw-3Sq" firstAttribute="leading" secondItem="V4x-qM-JOY" secondAttribute="leading" id="Fpm-tU-ncT"/>
                                     <constraint firstItem="iQa-Z8-0Sm" firstAttribute="leading" secondItem="V4x-qM-JOY" secondAttribute="leading" constant="15" id="Lae-eU-LKo"/>
                                     <constraint firstAttribute="trailing" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="50" id="anl-qT-LOT"/>
+                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="centerY" secondItem="V4x-qM-JOY" secondAttribute="centerY" constant="2" id="efF-cz-oKf"/>
                                     <constraint firstAttribute="bottom" secondItem="iQa-Z8-0Sm" secondAttribute="bottom" constant="8" id="fH4-h0-bVJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="pQi-r1-Uo2" secondAttribute="trailing" constant="15" id="iQ1-ee-fHg"/>
-                                    <constraint firstAttribute="bottom" secondItem="pQi-r1-Uo2" secondAttribute="bottom" constant="10" id="q3i-KU-m9j"/>
+                                    <constraint firstAttribute="trailing" secondItem="fJY-Iw-3Sq" secondAttribute="trailing" id="pK9-9g-PBB"/>
                                     <constraint firstAttribute="height" constant="51" id="vvn-Ox-KCX"/>
                                 </constraints>
                             </view>
@@ -222,6 +231,9 @@
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
