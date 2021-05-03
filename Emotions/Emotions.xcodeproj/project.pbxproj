@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */ = {isa = PBXBuildFile; fileRef = 031E9A622623D5AA0054C840 /* 21930-selectdavid.json */; };
 		0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F19626169E25000A3F90 /* AppDelegate.swift */; };
 		0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F19826169E25000A3F90 /* SceneDelegate.swift */; };
 		0321F19E26169E25000A3F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0321F19C26169E25000A3F90 /* Main.storyboard */; };
@@ -23,6 +22,10 @@
 		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
 		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
 		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
+		0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */; };
+		0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */; };
+		0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563A263F9CBB00998DAE /* 10110-sad.json */; };
+		0366563F263F9CBB00998DAE /* 10109-haha.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563B263F9CBB00998DAE /* 10109-haha.json */; };
 		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
 		0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */; };
 		0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */; };
@@ -73,7 +76,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		031E9A622623D5AA0054C840 /* 21930-selectdavid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "21930-selectdavid.json"; sourceTree = "<group>"; };
 		0321F19326169E25000A3F90 /* Emotions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emotions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0321F19626169E25000A3F90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0321F19826169E25000A3F90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,10 @@
 		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "38856-emoji-sorprendido.json"; sourceTree = "<group>"; };
+		03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1924-emotion-icon-smile.json"; sourceTree = "<group>"; };
+		0366563A263F9CBB00998DAE /* 10110-sad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10110-sad.json"; sourceTree = "<group>"; };
+		0366563B263F9CBB00998DAE /* 10109-haha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10109-haha.json"; sourceTree = "<group>"; };
 		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
 		0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
@@ -157,8 +163,11 @@
 		031E9A5B2623D3DD0054C840 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				031E9A622623D5AA0054C840 /* 21930-selectdavid.json */,
 				03AA607F2639BC140032B66E /* 28759-angry-emoji.json */,
+				03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */,
+				0366563B263F9CBB00998DAE /* 10109-haha.json */,
+				0366563A263F9CBB00998DAE /* 10110-sad.json */,
+				03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -473,20 +482,23 @@
 				0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */,
 				03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */,
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
+				0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
 				0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */,
-				031E9A632623D5AA0054C840 /* 21930-selectdavid.json in Resources */,
 				03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */,
 				0389E130262ED6D00077C20F /* NanumSquareExtraBold.ttf in Resources */,
+				0366563F263F9CBB00998DAE /* 10109-haha.json in Resources */,
 				03AA60802639BC140032B66E /* 28759-angry-emoji.json in Resources */,
 				03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */,
 				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,
 				0337C64B261EAAC700E1F765 /* Home.storyboard in Resources */,
 				0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */,
+				0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */,
 				0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */,
 				0398786A2628140000ED9EB8 /* Detail.storyboard in Resources */,
 				0337C657261EADAD00E1F765 /* MyPost.storyboard in Resources */,
+				0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */,
 				0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */,
 				03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */,
 				0389E131262ED6D00077C20F /* NanumSquareRegular.ttf in Resources */,

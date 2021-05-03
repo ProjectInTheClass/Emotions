@@ -38,7 +38,6 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
-        configureUI()
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -46,7 +45,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        emotionLottiView.play()
+        
         guard let currentUser = Auth.auth().currentUser else { return }
         PostManager.shared.userPosts = []
         PostManager.shared.laodUserPosts(currentUserUID: currentUser.uid) { [weak self] success in
@@ -64,23 +63,21 @@ class StaticViewController: UIViewController, ChartViewDelegate {
             let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
             let userEmotionCount =  self.myPostToStatic(posts: userPosts)
             let bestCardType = self.searchBestEmotion()
+            self.updateLottieUI(emoji: bestCardType.typeEmoji)
             self.userNicknameLabel.text = currentUser.displayName
             self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
             self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
         }
     }
     
-    func configureUI() {
-        let animation = Animation.named("28759-angry-emoji")
+    func updateLottieUI(emoji: String) {
+        let animation = Animation.named(emoji)
         emotionLottiView.animation = animation
+        emotionLottiView.play()
         emotionLottiView.loopMode = .loop
         emotionLottiView.animationSpeed = 0.5
         emotionLottiView.backgroundColor = .clear
         emotionLottiView.contentMode = .scaleAspectFill
-    }
-    
-    func lottieImageUpdateUI(){
-        
     }
     
     private func searchBestEmotion() -> CARDTYPE {
