@@ -72,13 +72,13 @@ enum CARDTYPE : String {
 //        }
 //    }
     
-    var typeString: String {
+    var typeEmoji: String {
         switch self {
-        case .joy: return "지난 한 달간 기쁜 일이 많으셨군요!\n기쁜 감정들을 나눠주세요!"
-        case .sadness: return "지난 한 달간 슬픈 일이 많으셨군요ㅠ\n슬픈 감정들을 돌아보며 정리해보는건 어떨까요?"
-        case .anger: return "지난 한 달간 화가나는 일이 많으셨군요.\n분노의 감정을 차근차근 돌아보며 정리해봐요"
-        case .disgust: return "지난 한 달간 불쾌한 일이 많으셨군요.\n무슨 일이셨나요? 함께 나눠주세요."
-        case .fear: return "지난 한 달간 두려운 일이 많으셨군요.\n두려웠던 이야기를 나눠주세요."
+        case .joy: return "1924-emotion-icon-smile"
+        case .sadness: return "10110-sad"
+        case .anger: return "28759-angry-emoji"
+        case .disgust: return "10109-haha"
+        case .fear: return "38856-emoji-sorprendido"
         }
     }
     
