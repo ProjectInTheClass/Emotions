@@ -29,12 +29,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var stackview: UIStackView!
     @IBOutlet weak var middleConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    
+    
     
     //MARK: - ViewLife Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         ButtonAddTarget()
+        errorMessageLabel.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,20 +99,26 @@ class LoginViewController: UIViewController {
         }
         
         loginButton.startAnimation()
-        UserManager.shared.loginUser(email: email, password: password) { success in
+        UserManager.shared.loginUser(email: email, password: password) { [weak self] success in
+            guard let self = self else { return }
             if success {
                 DispatchQueue.main.async {
+                    self.errorMessageLabel.isHidden = true
                     self.loginButton.stopAnimation()
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
+                self.errorMessageLabel.isHidden = false
+                self.errorMessageLabel.text = "이메일과 패스워드를 확인해주세요."
                 self.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.2)
+                
             }
             
         }
     }
     
     @objc func registrationButtonTapped() {
+        self.errorMessageLabel.isHidden = true
         let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "registrationVC") as! RegistrationViewController
         present(vc, animated: true, completion: nil)

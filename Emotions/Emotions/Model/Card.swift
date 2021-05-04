@@ -61,17 +61,7 @@ enum CARDTYPE : String {
         case .fear: return UIColor(named: "fearBG")!
         }
     }
-    
-//    var typeLottieImage: LottieView {
-//        switch self {
-//        case .joy: return
-//        case .sadness: return
-//        case .anger: return
-//        case .disgust: return
-//        case .fear: return
-//        }
-//    }
-    
+   
     var typeEmoji: String {
         switch self {
         case .joy: return "1924-emotion-icon-smile"

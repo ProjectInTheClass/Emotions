@@ -8,18 +8,13 @@
 import UIKit
 import FirebaseAuth
 
-class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class PostDetailViewController: UIViewController, UITextFieldDelegate {
     
     //MARK:- let & var
     
     //인스턴스 받아오기
     var post: Post?
     var comment: Comment?
-    
-    //컴플리션핸들러 : 현재 미사용
-    var detailCompletionHandler: (()->Void)?
-    
-    
     
     //MARK:- Outlets
     
@@ -33,6 +28,10 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var thirdCardTitleLabel: UILabel?
     @IBOutlet weak var postDdayLabel: UILabel!
     @IBOutlet weak var postContentTextView: UITextView!
+    @IBOutlet weak var postHeaderview: UIView!
+    @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var starPointLabel: UILabel!
+    
     
     //comment post view - outlet (댓글게시 액션은 하단에)
     @IBOutlet weak var commentBackgroundColorView: UIView!
@@ -44,6 +43,10 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // tableView Header register
+        tableView.register(DetailHeaderView.self, forHeaderFooterViewReuseIdentifier: DetailHeaderView.reuseIdentifier)
+        tableView.estimatedSectionHeaderHeight = view.frame.height / 2
+        
         //tableview, textField declare
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,7 +54,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // textField 왼쪽(시작점)에 공백 주기
         commentTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        
         commentTextField.layer.cornerRadius = 15
         commentTextField.layer.borderWidth = 0.25
         commentTextField.layer.borderColor = UIColor.white.cgColor
@@ -71,39 +73,19 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //넘겨받은 post를 풀고, 그 post에 데이터가 있으면 아래를 수행
         //타입에 해당하는 인스턴스를 넣어준다
         if let post = post {
-            postContentTextView.text = post.content
-            
-            firstCardTitleLabel.text = post.firstCard?.title
-            secondCardTitleLabel?.text = post.secondCard?.title
-            thirdCardTitleLabel?.text = post.thirdCard?.title
-            
-            postDdayLabel.text = dateToDday(post: post)
-            
-            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
+//            postContentTextView.text = post.content
+//            firstCardTitleLabel.text = post.firstCard?.title
+//            secondCardTitleLabel?.text = post.secondCard?.title
+//            thirdCardTitleLabel?.text = post.thirdCard?.title
+//            postDdayLabel.text = dateToDday(post: post)
+//            starPointLabel.text = "\(post.starPoint)개"
+//            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeColor
             commentBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
-        
-        updateUI()
+//        updateUI()
         navigationConfigureUI()
-        
-        //keyboard notification center
-        //옵저버 등록
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        print("keyboard observer added")
-            
-
     }
-    
-    //MARK:- viewDidDisappear - keyboard observer remove
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        //옵저버 해제
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        print("keyboard observer removed")
-    }
-        
+ 
 
     //MARK:- viewWillAppear - comment info download
     
@@ -112,19 +94,36 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //코멘트 정보 다운로드
         guard let post = post else { return }
-        CommentManager.shared.downloadComment(post: post) { success in
+        CommentManager.shared.downloadComment(post: post) { [weak self] success in
+            guard let self = self else { return }
             if success {
                 print("코멘트 다운로드 성공")
+                
+                // 댓글 갯수 동기화
+//                self.commentCountLabel.text = "\(CommentManager.shared.comments.count)개"
+                
+                // 코멘트 테이블뷰 동기화
                 self.tableView.reloadData()
-                print("코멘트 리로드 성공")
+                
             } else {
                 print("코멘트 다운로드 실패")
             }
         }
+        
+        // keyboard NotificationCender add
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
-    
+    //MARK:- viewWillDisappear - keyboard observer remove
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
     //MARK:- Update UI func
 
     func updateUI() {
@@ -157,9 +156,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //MARK:- navigation UI 설정
     
     func navigationConfigureUI() {
-        title = "Post Detail"
+        title = "자세히 보기"
         navigationController?.navigationBar.tintColor = .darkGray
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "AppleColorEmoji", size: 21)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "NanumSquareR", size: 15)!]
     }
     
     
@@ -173,8 +172,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
-    
-    
     
     //MARK:- 댓글게시 button func
 
@@ -202,14 +199,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // 하단 스크롤 함수
         scrollToBottom()
-        
-        // 댓글을 푸쉬하고 나면 그 댓글이 생긴 하단으로 스크롤
-        // 아래 코드는 코멘트가 없는 글에 첫 번째 코멘트를 달고자 게시 버튼을 누르면 앱이 죽음
-        // self.tableView.scrollToRow(at: IndexPath(row: CommentManager.shared.comments.count - 1, section: 0), at: .bottom, animated: true)
     }
 
-    
-    
     //MARK:- Keyboard control
     
     //코멘트 뷰 하단 레이아웃 제약 아울렛
@@ -252,16 +243,29 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
-        
+   
+}
 
-    //MARK:- Table View Data Source
+extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.reuseIdentifier) as? DetailHeaderView
+        guard let post = post else { return nil }
+        let comments = CommentManager.shared.comments
+        header?.updateUI(post: post, comments: comments)
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     // 코멘트 테이블뷰 필수 메소드
     // 해당 글의 코멘트 수에 따라 셀 리턴 (섹션 내부의 셀 개수)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CommentManager.shared.comments.count
     }
-    
+   
     // 셀 재활용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }

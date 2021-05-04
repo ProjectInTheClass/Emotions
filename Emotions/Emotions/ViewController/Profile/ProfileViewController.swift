@@ -7,9 +7,10 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+   
     var handle: AuthStateDidChangeListenerHandle?
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -24,29 +25,40 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         return imageView
     }()
     
+    var pickerImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         navigationConfigureUI()
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "profileTableVC") as? ProfileTableViewController else { return }
-        vc.profileImageSelectCompletionhandler = { [weak self] image in
-            guard let self = self else { return }
-            self.userImageView.image = image
-        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("viewwilllayoutsubview")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
+        handle = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+            guard let self = self else { return }
             if let user = auth.currentUser {
                 self.profileContainerView.isHidden = true
                 self.profileContainerView.isHidden = false
-                self.updateUI(user: user)
+                DispatchQueue.main.async {
+                    self.updateUI(user: user)
+                }
             } else {
                 self.profileContainerView.isHidden = false
                 self.profileContainerView.isHidden = true
-                self.updateUI(user: user)
-                
+                DispatchQueue.main.async {
+                    self.updateUI(user: user)
+                }
             }
         }
     }
@@ -59,13 +71,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - update UI
     
     func updateUI(user: User?) {
-        self.userImageView.image = nil
-        self.userEmailLabel.text = user?.email ?? nil
-        self.userNickNameLabel.text = user?.displayName ?? nil
-        if let photoURL = user?.photoURL,
-           let data = try? Data(contentsOf: photoURL) {
-            let image = UIImage(data: data)!
-            self.userImageView.image = image
+        userEmailLabel.text = user?.email ?? nil
+        userNickNameLabel.text = user?.displayName ?? nil
+        if let photoURL = user?.photoURL {
+            self.userImageView.kf.setImage(with: photoURL, options: [.forceRefresh])
         } else {
             print("Error convert URL to Data")
         }
@@ -73,7 +82,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func configureUI(){
         userImageView.layer.masksToBounds = true
-        userImageView.layer.cornerRadius = userImageView.bounds.height / 2
+        userImageView.layer.cornerRadius = userImageView!.bounds.height / 2
     }
     
     func navigationConfigureUI() {
@@ -82,5 +91,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imageSegue" {
+            let vc = segue.destination as! ProfileTableViewController
+            vc.imageView = userImageView
+        }
     }
 }

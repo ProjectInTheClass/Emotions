@@ -86,7 +86,7 @@ class UserManager {
     
     public func uploadUserImage(userImage: UIImage, email: String, completion: @escaping (Bool)->Void) {
         let imageRef = storage.child(email.safetyDatabaseString() + ".jpg")
-        guard let uploadData = userImage.jpegData(compressionQuality: 0.5) else {
+        guard let uploadData = userImage.jpegData(compressionQuality: 0.1) else {
             print("ConvertImageToData Error")
             return
         }

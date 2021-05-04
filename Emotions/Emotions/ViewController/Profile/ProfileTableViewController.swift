@@ -7,13 +7,14 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 
 class ProfileTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let logoutIndexPath = IndexPath(row: 3, section: 1)
     let profileImage = IndexPath(row: 0, section: 1)
     
-    var profileImageSelectCompletionhandler: ((UIImage)->Void)?
+    var imageView: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,31 +68,10 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("imagePickerController")
-        guard let selectedImage = info[.originalImage] as? UIImage else { print("사진 없어")
-            return }
-        if let currentUser = Auth.auth().currentUser {
-            UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUser.email!) {  [weak self] success in
-                guard let self = self else { return }
-                if success {
-                    UserManager.shared.downloadUserImage(email: currentUser.email!) { [weak self] (url) in
-                        guard let self = self else { return }
-                        if let data = try? Data(contentsOf: url!) {
-                            guard let image = UIImage(data: data) else { return }
-                            if let profileImageSelectCompletionhandler = self.profileImageSelectCompletionhandler {
-                                profileImageSelectCompletionhandler(image)
-                            }
-                        } else {
-                            print("Error convert URL to Data")
-                        }
-                    }
-                } else {
-                    print("실파이")
-                }
-            }
-        } else {
-            print("유저 없음")
-        }
-        dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[.originalImage] as? UIImage else { return }
+        guard let currentUserEmail = Auth.auth().currentUser?.email else { return }
+        UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUserEmail) { success in }
+        imageView?.image = selectedImage
+        self.dismiss(animated: true)
     }
 }
