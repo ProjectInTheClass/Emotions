@@ -63,7 +63,7 @@ class PostViewController: CustomTransitionViewController {
     
     func segmentedControlConfigureUI() {
         homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
-        homeSegmenttedControl.cornerRadius = 20
+        homeSegmenttedControl.cornerRadius = 15
         homeSegmenttedControl.backgroundColor = .white
         homeSegmenttedControl.alwaysAnnouncesValue = true
         homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["최신 글", "공감 글", "별점 글"],

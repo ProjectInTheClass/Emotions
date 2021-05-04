@@ -19,8 +19,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //컴플리션핸들러 : 현재 미사용
     var detailCompletionHandler: (()->Void)?
     
-    
-    
     //MARK:- Outlets
     
     //table view
@@ -33,6 +31,10 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var thirdCardTitleLabel: UILabel?
     @IBOutlet weak var postDdayLabel: UILabel!
     @IBOutlet weak var postContentTextView: UITextView!
+    @IBOutlet weak var postHeaderview: UIView!
+    @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var starPointLabel: UILabel!
+    
     
     //comment post view - outlet (댓글게시 액션은 하단에)
     @IBOutlet weak var commentBackgroundColorView: UIView!
@@ -51,7 +53,6 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // textField 왼쪽(시작점)에 공백 주기
         commentTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
-        
         commentTextField.layer.cornerRadius = 15
         commentTextField.layer.borderWidth = 0.25
         commentTextField.layer.borderColor = UIColor.white.cgColor
@@ -72,38 +73,18 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //타입에 해당하는 인스턴스를 넣어준다
         if let post = post {
             postContentTextView.text = post.content
-            
             firstCardTitleLabel.text = post.firstCard?.title
             secondCardTitleLabel?.text = post.secondCard?.title
             thirdCardTitleLabel?.text = post.thirdCard?.title
-            
             postDdayLabel.text = dateToDday(post: post)
-            
-            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
+            starPointLabel.text = "\(post.starPoint)개"
+            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeColor
             commentBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
-        
         updateUI()
         navigationConfigureUI()
-        
-        //keyboard notification center
-        //옵저버 등록
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        print("keyboard observer added")
-            
-
     }
-    
-    //MARK:- viewDidDisappear - keyboard observer remove
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        //옵저버 해제
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        print("keyboard observer removed")
-    }
-        
+ 
 
     //MARK:- viewWillAppear - comment info download
     
@@ -112,19 +93,36 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //코멘트 정보 다운로드
         guard let post = post else { return }
-        CommentManager.shared.downloadComment(post: post) { success in
+        CommentManager.shared.downloadComment(post: post) { [weak self] success in
+            guard let self = self else { return }
             if success {
                 print("코멘트 다운로드 성공")
+                
+                // 댓글 갯수 동기화
+                self.commentCountLabel.text = "\(CommentManager.shared.comments.count)개"
+                
+                // 코멘트 테이블뷰 동기화
                 self.tableView.reloadData()
-                print("코멘트 리로드 성공")
+                
             } else {
                 print("코멘트 다운로드 실패")
             }
         }
+        
+        // keyboard NotificationCender add
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
-    
+    //MARK:- viewWillDisappear - keyboard observer remove
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
     //MARK:- Update UI func
 
     func updateUI() {
