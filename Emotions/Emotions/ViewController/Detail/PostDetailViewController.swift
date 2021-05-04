@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class PostDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class PostDetailViewController: UIViewController, UITextFieldDelegate {
     
     //MARK:- let & var
     
@@ -46,6 +46,11 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let headerNib = UINib.init(nibName: "DetailHeaderView", bundle: Bundle.main)
+        self.tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.reuseIdentifier)
+        
+        tableView.estimatedSectionHeaderHeight = view.frame.height
+        
         //tableview, textField declare
         tableView.delegate = self
         tableView.dataSource = self
@@ -72,16 +77,16 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //넘겨받은 post를 풀고, 그 post에 데이터가 있으면 아래를 수행
         //타입에 해당하는 인스턴스를 넣어준다
         if let post = post {
-            postContentTextView.text = post.content
-            firstCardTitleLabel.text = post.firstCard?.title
-            secondCardTitleLabel?.text = post.secondCard?.title
-            thirdCardTitleLabel?.text = post.thirdCard?.title
-            postDdayLabel.text = dateToDday(post: post)
-            starPointLabel.text = "\(post.starPoint)개"
-            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeColor
+//            postContentTextView.text = post.content
+//            firstCardTitleLabel.text = post.firstCard?.title
+//            secondCardTitleLabel?.text = post.secondCard?.title
+//            thirdCardTitleLabel?.text = post.thirdCard?.title
+//            postDdayLabel.text = dateToDday(post: post)
+//            starPointLabel.text = "\(post.starPoint)개"
+//            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeColor
             commentBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
-        updateUI()
+//        updateUI()
         navigationConfigureUI()
     }
  
@@ -99,7 +104,7 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 print("코멘트 다운로드 성공")
                 
                 // 댓글 갯수 동기화
-                self.commentCountLabel.text = "\(CommentManager.shared.comments.count)개"
+//                self.commentCountLabel.text = "\(CommentManager.shared.comments.count)개"
                 
                 // 코멘트 테이블뷰 동기화
                 self.tableView.reloadData()
@@ -250,16 +255,29 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
-        
+   
+}
 
-    //MARK:- Table View Data Source
+extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.reuseIdentifier) as? DetailHeaderView
+        guard let post = post else { return nil }
+        header?.updateUI(post: post)
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return UITableView.automaticDimension
+    }
     
     // 코멘트 테이블뷰 필수 메소드
     // 해당 글의 코멘트 수에 따라 셀 리턴 (섹션 내부의 셀 개수)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CommentManager.shared.comments.count
     }
-    
+   
     // 셀 재활용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }

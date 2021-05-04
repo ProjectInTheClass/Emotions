@@ -26,6 +26,7 @@
 		0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */; };
 		0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563A263F9CBB00998DAE /* 10110-sad.json */; };
 		0366563F263F9CBB00998DAE /* 10109-haha.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563B263F9CBB00998DAE /* 10109-haha.json */; };
+		03665645264136E600998DAE /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03665644264136E600998DAE /* DetailHeaderView.swift */; };
 		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
 		0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */; };
 		0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */; };
@@ -97,6 +98,7 @@
 		03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1924-emotion-icon-smile.json"; sourceTree = "<group>"; };
 		0366563A263F9CBB00998DAE /* 10110-sad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10110-sad.json"; sourceTree = "<group>"; };
 		0366563B263F9CBB00998DAE /* 10109-haha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10109-haha.json"; sourceTree = "<group>"; };
+		03665644264136E600998DAE /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
 		0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				03FDA9752620B571009E02F9 /* HeartButton.swift */,
 				03FDA9782620B577009E02F9 /* StarButton.swift */,
 				03FDA97B2620B702009E02F9 /* CommentButton.swift */,
+				03665644264136E600998DAE /* DetailHeaderView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				03FDA943262020B9009E02F9 /* Comment.swift in Sources */,
 				039878742628930000ED9EB8 /* SympathyTableViewController.swift in Sources */,
 				03FDA93B26200A2F009E02F9 /* UserManager.swift in Sources */,
+				03665645264136E600998DAE /* DetailHeaderView.swift in Sources */,
 				0398783E2626DA8200ED9EB8 /* RegistrationViewController.swift in Sources */,
 				03FDA92A261FEEA3009E02F9 /* PostManager.swift in Sources */,
 				03FDA94626202185009E02F9 /* CommentManager.swift in Sources */,
