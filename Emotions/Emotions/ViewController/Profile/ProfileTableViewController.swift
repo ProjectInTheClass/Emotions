@@ -14,6 +14,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     let logoutIndexPath = IndexPath(row: 3, section: 1)
     let profileImage = IndexPath(row: 0, section: 1)
     
+    var imageView: UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,10 +71,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         guard let selectedImage = info[.originalImage] as? UIImage else { return }
         guard let currentUserEmail = Auth.auth().currentUser?.email else { return }
         UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUserEmail) { success in }
-        self.dismiss(animated: true) {
-            let sb = UIStoryboard(name: "Profile", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "profileVC") as! ProfileViewController
-            vc.pickerImage = selectedImage
-        }
+        imageView?.image = selectedImage
+        self.dismiss(animated: true)
     }
 }

@@ -92,4 +92,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imageSegue" {
+            let vc = segue.destination as! ProfileTableViewController
+            vc.imageView = userImageView
+        }
+    }
 }

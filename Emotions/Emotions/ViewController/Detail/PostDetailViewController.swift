@@ -16,9 +16,6 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
     var post: Post?
     var comment: Comment?
     
-    //컴플리션핸들러 : 현재 미사용
-    var detailCompletionHandler: (()->Void)?
-    
     //MARK:- Outlets
     
     //table view
@@ -46,10 +43,9 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let headerNib = UINib.init(nibName: "DetailHeaderView", bundle: Bundle.main)
-        self.tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.reuseIdentifier)
-        
-        tableView.estimatedSectionHeaderHeight = view.frame.height
+        // tableView Header register
+        tableView.register(DetailHeaderView.self, forHeaderFooterViewReuseIdentifier: DetailHeaderView.reuseIdentifier)
+        tableView.estimatedSectionHeaderHeight = view.frame.height / 2
         
         //tableview, textField declare
         tableView.delegate = self
@@ -160,9 +156,9 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
     //MARK:- navigation UI 설정
     
     func navigationConfigureUI() {
-        title = "Post Detail"
+        title = "자세히 보기"
         navigationController?.navigationBar.tintColor = .darkGray
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "AppleColorEmoji", size: 21)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "NanumSquareR", size: 15)!]
     }
     
     
@@ -176,8 +172,6 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
-    
-    
     
     //MARK:- 댓글게시 button func
 
@@ -205,14 +199,8 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         
         // 하단 스크롤 함수
         scrollToBottom()
-        
-        // 댓글을 푸쉬하고 나면 그 댓글이 생긴 하단으로 스크롤
-        // 아래 코드는 코멘트가 없는 글에 첫 번째 코멘트를 달고자 게시 버튼을 누르면 앱이 죽음
-        // self.tableView.scrollToRow(at: IndexPath(row: CommentManager.shared.comments.count - 1, section: 0), at: .bottom, animated: true)
     }
 
-    
-    
     //MARK:- Keyboard control
     
     //코멘트 뷰 하단 레이아웃 제약 아울렛
@@ -263,12 +251,12 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.reuseIdentifier) as? DetailHeaderView
         guard let post = post else { return nil }
-        header?.updateUI(post: post)
+        let comments = CommentManager.shared.comments
+        header?.updateUI(post: post, comments: comments)
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         return UITableView.automaticDimension
     }
     

@@ -88,7 +88,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeY-tQ-y4W">
                                 <rect key="frame" x="0.0" y="183" width="414" height="630"/>
                                 <connections>
-                                    <segue destination="npO-Tk-LSy" kind="embed" id="Z2D-N1-Hcf"/>
+                                    <segue destination="npO-Tk-LSy" kind="embed" identifier="imageSegue" id="Z2D-N1-Hcf"/>
                                 </connections>
                             </containerView>
                         </subviews>

@@ -29,7 +29,7 @@ class LatestPostsTableViewController: UITableViewController {
         let page = BLTNPageItem(title: "감정들 함께하기")
         page.appearance.titleTextColor = .black
         page.appearance.titleFontSize = 22.0
-        page.appearance.titleFontDescriptor = UIFontDescriptor(name: "ridibatang", size: 24.0)
+        page.appearance.titleFontDescriptor = UIFontDescriptor(name: "NanumSquareR", size: 24.0)
         page.attributedDescriptionText = attributeString
         page.actionButtonTitle = "감정들 로그인 & 회원가입"
         page.alternativeButtonTitle = "조금 더 둘러볼래요"
