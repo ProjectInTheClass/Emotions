@@ -53,7 +53,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
                     PostManager.shared.userPosts = []
                     self.userNicknameLabel.text = "비회원님,"
                     self.userEmotionLabel.text = "-"
-                    self.pieChart = nil
+                    self.pieChart.isHidden = true
                 }
             } else {
                 guard let currentUser = auth.currentUser else { return }
@@ -73,6 +73,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
                     let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
                     let userEmotionCount =  self.myPostToStatic(posts: userPosts)
                     let bestCardType = self.searchBestEmotion()
+                    self.pieChart.isHidden = false
                     self.updateLottieUI(emoji: bestCardType.typeEmoji)
                     self.userNicknameLabel.text = currentUser.displayName
                     self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
