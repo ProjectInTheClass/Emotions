@@ -50,12 +50,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if let user = auth.currentUser {
                 self.profileContainerView.isHidden = true
                 self.profileContainerView.isHidden = false
+                self.userImageView.isHidden = false
                 DispatchQueue.main.async {
                     self.updateUI(user: user)
                 }
             } else {
                 self.profileContainerView.isHidden = false
                 self.profileContainerView.isHidden = true
+                self.userImageView.isHidden = true
                 DispatchQueue.main.async {
                     self.updateUI(user: user)
                 }

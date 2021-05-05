@@ -7,6 +7,7 @@
 
 import UIKit
 import TransitionButton
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -78,6 +79,30 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         registrationButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
         browseButton.addTarget(self, action: #selector(browseButtonTapped), for: .touchUpInside)
+        passwordFindingButton.addTarget(self, action: #selector(passwordFindingButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func passwordFindingButtonTapped() {
+        
+        let alert = UIAlertController(title: "비밀번호 재설정", message: "등록하신 이메일로 비밀번호를 재설정하실 수 있도록 연락드리겠습니다:)", preferredStyle: .alert)
+        alert.addTextField { textfield in
+            textfield.layer.cornerRadius = 8
+            textfield.placeholder = "이메일을 입력해 주세요."
+        }
+        let okAction = UIAlertAction(title: "보내기", style: .default) { action in
+            guard let email = alert.textFields?[0].text else { return }
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+              // ...
+            }
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+       
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+        
     }
   
     @objc func loginButtonTapped() {
