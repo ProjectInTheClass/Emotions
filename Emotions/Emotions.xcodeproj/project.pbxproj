@@ -68,7 +68,6 @@
 		CB1A5D033CB9B0767CAC850E /* Pods_Emotions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */; };
 		D444B35326362BEC00F90406 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444B35226362BEC00F90406 /* PostDetailViewController.swift */; };
 		D4E32FAF263D199E00DCF5EC /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FAE263D199E00DCF5EC /* NoticeViewController.swift */; };
-		D4E32FB2263D19E800DCF5EC /* AppIntroducingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FB1263D19E800DCF5EC /* AppIntroducingViewController.swift */; };
 		D4E32FB5263D1A1400DCF5EC /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FB4263D1A1400DCF5EC /* InfoTableViewController.swift */; };
 		D4E32FBA263D1A9A00DCF5EC /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FB9263D1A9A00DCF5EC /* ServiceViewController.swift */; };
 		D4E32FBD263D1AA800DCF5EC /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FBC263D1AA800DCF5EC /* OpenSourceViewController.swift */; };
@@ -141,7 +140,6 @@
 		AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emotions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D444B35226362BEC00F90406 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		D4E32FAE263D199E00DCF5EC /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
-		D4E32FB1263D19E800DCF5EC /* AppIntroducingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntroducingViewController.swift; sourceTree = "<group>"; };
 		D4E32FB4263D1A1400DCF5EC /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		D4E32FB9263D1A9A00DCF5EC /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 		D4E32FBC263D1AA800DCF5EC /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				0337C667261EAF5C00E1F765 /* ProfileViewController.swift */,
 				035B931F2632406F001D4F39 /* ProfileTableViewController.swift */,
 				D4E32FAE263D199E00DCF5EC /* NoticeViewController.swift */,
-				D4E32FB1263D19E800DCF5EC /* AppIntroducingViewController.swift */,
 				D4E32FB4263D1A1400DCF5EC /* InfoTableViewController.swift */,
 			);
 			path = Profile;
@@ -572,7 +569,6 @@
 				0398783E2626DA8200ED9EB8 /* RegistrationViewController.swift in Sources */,
 				03FDA92A261FEEA3009E02F9 /* PostManager.swift in Sources */,
 				03FDA94626202185009E02F9 /* CommentManager.swift in Sources */,
-				D4E32FB2263D19E800DCF5EC /* AppIntroducingViewController.swift in Sources */,
 				03FDA934261FF5BB009E02F9 /* Card.swift in Sources */,
 				D444B35326362BEC00F90406 /* PostDetailViewController.swift in Sources */,
 				03987871262892E300ED9EB8 /* LatestPostsTableViewController.swift in Sources */,
