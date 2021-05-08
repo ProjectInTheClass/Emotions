@@ -153,7 +153,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="VC9-en-0xD">
                                             <rect key="frame" x="255" y="24" width="109.5" height="37.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘은 여동생이 우리집에 오는 날이다. 이리저리 청소를 하는데 후.. 보통 힘든 일이 아니다." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="PRs-Hg-x4o">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘은 여동생이 우리집에 오는 날이다. 이리저리 청소를 하는데 후.. 보통 힘든 일이 아니다." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRs-Hg-x4o">
                                                     <rect key="frame" x="0.0" y="0.0" width="109.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="15"/>
                                                     <nil key="textColor"/>

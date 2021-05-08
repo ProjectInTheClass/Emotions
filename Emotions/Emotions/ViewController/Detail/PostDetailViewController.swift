@@ -158,7 +158,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
     func navigationConfigureUI() {
         title = "자세히 보기"
         navigationController?.navigationBar.tintColor = .darkGray
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "NanumSquareR", size: 15)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "NanumSquareR", size: 17)!]
     }
     
     

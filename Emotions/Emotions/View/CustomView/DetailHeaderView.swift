@@ -13,6 +13,9 @@ class DetailHeaderView: UITableViewHeaderFooterView {
     
     var postHeaderView: UIView = {
        let view = UIView()
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.47
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         return view
     }()
     
@@ -28,7 +31,7 @@ class DetailHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         let customFont = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.font = customFont
-        label.font = UIFont(name: "NanumSquareB", size: 18)
+        label.font = UIFont(name: "NanumSquareB", size: 20)
         label.textColor = .white
         return label
     }()
@@ -37,7 +40,7 @@ class DetailHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         let customFont = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.font = customFont
-        label.font = UIFont(name: "NanumSquareB", size: 18)
+        label.font = UIFont(name: "NanumSquareB", size: 20)
         label.textColor = .white
         return label
     }()
@@ -46,16 +49,17 @@ class DetailHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         let customFont = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.font = customFont
-        label.font = UIFont(name: "NanumSquareB", size: 18)
+        label.font = UIFont(name: "NanumSquareB", size: 20)
         label.textColor = .white
         return label
     }()
     
     var dateLabel: UILabel = {
        let label = UILabel()
-        let customFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        let customFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.textColor = .white
         label.font = customFont
-        label.font = UIFont(name: "Sora", size: 15)
+        label.font = UIFont(name: "Sora", size: 17)
         return label
     }()
     
@@ -168,13 +172,12 @@ class DetailHeaderView: UITableViewHeaderFooterView {
         starImage.anchor(width: 20, height: 20)
         commentImage.anchor(width: 20, height: 20)
         separatorView.anchor(height: 1)
-        postContent.heightAnchor.constraint(greaterThanOrEqualToConstant: 260).isActive = true
         
         cardStackView.anchor(left: postHeaderView.leftAnchor, bottom: postHeaderView.bottomAnchor, paddingLeft: 20, paddingBottom: 20)
-        dateLabel.anchor(top: postHeaderView.topAnchor, right: postHeaderView.rightAnchor, paddingTop: 20, paddingRight: 20)
-        postHeaderView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: postContent.topAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 0, height: 150)
+        dateLabel.anchor(left: postHeaderView.leftAnchor, bottom: cardStackView.topAnchor, paddingLeft: 20, paddingBottom: 10)
+        postHeaderView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: postContent.topAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 40, paddingRight: 0, height: 180)
         postContent.anchor(left: contentView.leftAnchor, right: contentView.rightAnchor, paddingLeft: 25, paddingRight: 25)
-        stateStackView.anchor(top: postContent.bottomAnchor, left: postContent.leftAnchor, bottom: contentView.bottomAnchor,  paddingTop: 30, paddingLeft: 0, paddingBottom: 20)
+        stateStackView.anchor(top: postContent.bottomAnchor, left: postContent.leftAnchor, bottom: contentView.bottomAnchor,  paddingTop: 40, paddingLeft: 0, paddingBottom: 20)
         separatorView.anchor(left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
     }
     

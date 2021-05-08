@@ -120,7 +120,8 @@ class UserManager {
             print("사용자가 없습니다")
             return
         }
-        let desertRef = DataManager.shared.storage.child(currentUserEmail.safetyDatabaseString() + ".jpg")
+        
+        let desertRef = storage.child(currentUserEmail.safetyDatabaseString() + ".jpg")
         desertRef.delete { error in
           if let error = error {
             print("사진 삭제 에러: \(error.localizedDescription)")

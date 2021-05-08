@@ -19,7 +19,6 @@
 		0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C659261EADBC00E1F765 /* Static.storyboard */; };
 		0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C65C261EADC700E1F765 /* Profile.storyboard */; };
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
-		0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C667261EAF5C00E1F765 /* ProfileViewController.swift */; };
 		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
 		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
 		0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */; };
@@ -33,7 +32,6 @@
 		0389E130262ED6D00077C20F /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12C262ED6D00077C20F /* NanumSquareExtraBold.ttf */; };
 		0389E131262ED6D00077C20F /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12D262ED6D00077C20F /* NanumSquareRegular.ttf */; };
 		0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398781E2626CC4500ED9EB8 /* AuthManager.swift */; };
-		039878222626CCE900ED9EB8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878212626CCE900ED9EB8 /* DataManager.swift */; };
 		0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398783A2626DA7800ED9EB8 /* LoginViewController.swift */; };
 		0398783E2626DA8200ED9EB8 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398783D2626DA8200ED9EB8 /* RegistrationViewController.swift */; };
 		0398786A2628140000ED9EB8 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039878692628140000ED9EB8 /* Detail.storyboard */; };
@@ -67,12 +65,6 @@
 		03FDA97C2620B702009E02F9 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA97B2620B702009E02F9 /* CommentButton.swift */; };
 		CB1A5D033CB9B0767CAC850E /* Pods_Emotions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */; };
 		D444B35326362BEC00F90406 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444B35226362BEC00F90406 /* PostDetailViewController.swift */; };
-		D4E32FAF263D199E00DCF5EC /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FAE263D199E00DCF5EC /* NoticeViewController.swift */; };
-		D4E32FB5263D1A1400DCF5EC /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FB4263D1A1400DCF5EC /* InfoTableViewController.swift */; };
-		D4E32FBA263D1A9A00DCF5EC /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FB9263D1A9A00DCF5EC /* ServiceViewController.swift */; };
-		D4E32FBD263D1AA800DCF5EC /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FBC263D1AA800DCF5EC /* OpenSourceViewController.swift */; };
-		D4E32FC0263D1AB200DCF5EC /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FBF263D1AB200DCF5EC /* PersonalViewController.swift */; };
-		D4E32FC3263D1ABC00DCF5EC /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E32FC2263D1ABC00DCF5EC /* DeveloperViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +82,6 @@
 		0337C659261EADBC00E1F765 /* Static.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Static.storyboard; sourceTree = "<group>"; };
 		0337C65C261EADC700E1F765 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
-		0337C667261EAF5C00E1F765 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "38856-emoji-sorprendido.json"; sourceTree = "<group>"; };
@@ -104,7 +95,6 @@
 		0389E12C262ED6D00077C20F /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareExtraBold.ttf; sourceTree = "<group>"; };
 		0389E12D262ED6D00077C20F /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
 		0398781E2626CC4500ED9EB8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		039878212626CCE900ED9EB8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0398783A2626DA7800ED9EB8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0398783D2626DA8200ED9EB8 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		039878692628140000ED9EB8 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -139,12 +129,6 @@
 		6312319D396F6CE6E8F07A44 /* Pods-Emotions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.release.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.release.xcconfig"; sourceTree = "<group>"; };
 		AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emotions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D444B35226362BEC00F90406 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
-		D4E32FAE263D199E00DCF5EC /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
-		D4E32FB4263D1A1400DCF5EC /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
-		D4E32FB9263D1A9A00DCF5EC /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
-		D4E32FBC263D1AA800DCF5EC /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
-		D4E32FBF263D1AB200DCF5EC /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
-		D4E32FC2263D1ABC00DCF5EC /* DeveloperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
 		E07BECAE4496C711C9FDA77D /* Pods-Emotions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.debug.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -267,11 +251,7 @@
 		0321F1C12616A02F000A3F90 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D4E32FB8263D1A7000DCF5EC /* AppInfoTableView */,
-				0337C667261EAF5C00E1F765 /* ProfileViewController.swift */,
 				035B931F2632406F001D4F39 /* ProfileTableViewController.swift */,
-				D4E32FAE263D199E00DCF5EC /* NoticeViewController.swift */,
-				D4E32FB4263D1A1400DCF5EC /* InfoTableViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -332,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				0398781E2626CC4500ED9EB8 /* AuthManager.swift */,
-				039878212626CCE900ED9EB8 /* DataManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -407,17 +386,6 @@
 				AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D4E32FB8263D1A7000DCF5EC /* AppInfoTableView */ = {
-			isa = PBXGroup;
-			children = (
-				D4E32FB9263D1A9A00DCF5EC /* ServiceViewController.swift */,
-				D4E32FBC263D1AA800DCF5EC /* OpenSourceViewController.swift */,
-				D4E32FBF263D1AB200DCF5EC /* PersonalViewController.swift */,
-				D4E32FC2263D1ABC00DCF5EC /* DeveloperViewController.swift */,
-			);
-			path = AppInfoTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,7 +526,6 @@
 				03C7740B262BA50F00D075B5 /* MyPostTableViewCell.swift in Sources */,
 				039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */,
 				0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */,
-				D4E32FB5263D1A1400DCF5EC /* InfoTableViewController.swift in Sources */,
 				03FDA937261FF647009E02F9 /* CardManager.swift in Sources */,
 				0337C654261EAC2F00E1F765 /* PostTableViewCell.swift in Sources */,
 				03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */,
@@ -576,26 +543,19 @@
 				03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */,
 				03C610DC262518E000284FD5 /* functions.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
-				039878222626CCE900ED9EB8 /* DataManager.swift in Sources */,
 				035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */,
-				0337C668261EAF5C00E1F765 /* ProfileViewController.swift in Sources */,
 				0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */,
 				0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */,
 				03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */,
 				0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */,
 				03FDA9792620B577009E02F9 /* StarButton.swift in Sources */,
-				D4E32FC0263D1AB200DCF5EC /* PersonalViewController.swift in Sources */,
 				03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */,
 				03FDA96326206B75009E02F9 /* NotificationCenter.swift in Sources */,
 				03FDA9762620B571009E02F9 /* HeartButton.swift in Sources */,
 				0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */,
 				03FDA97C2620B702009E02F9 /* CommentButton.swift in Sources */,
-				D4E32FBD263D1AA800DCF5EC /* OpenSourceViewController.swift in Sources */,
-				D4E32FBA263D1A9A00DCF5EC /* ServiceViewController.swift in Sources */,
 				0321F1AF26169E61000A3F90 /* Post.swift in Sources */,
-				D4E32FAF263D199E00DCF5EC /* NoticeViewController.swift in Sources */,
 				03E250E9262B1EBD00D5DEAA /* Constants.swift in Sources */,
-				D4E32FC3263D1ABC00DCF5EC /* DeveloperViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

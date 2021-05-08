@@ -34,7 +34,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1x-d7-lCy" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="10" y="226" width="394" height="394"/>
+                                <rect key="frame" x="10" y="252" width="394" height="394"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3K-xE-bPY" customClass="AnimationView" customModule="Lottie">
                                         <rect key="frame" x="108.5" y="90.5" width="177" height="177.5"/>
@@ -53,10 +53,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaL-my-MBD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="138"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="128"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="rgN-cd-D2n">
-                                        <rect key="frame" x="20" y="10" width="295" height="107"/>
+                                        <rect key="frame" x="20" y="10" width="265" height="107"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-TK-iOo">
                                                 <rect key="frame" x="0.0" y="0.0" width="245.5" height="42.5"/>
@@ -104,8 +104,8 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정을 나누고 정리해 보세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0T7-6S-lKu">
-                                                <rect key="frame" x="0.0" y="64.5" width="295" height="42.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정리할 감정이 남아있나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0T7-6S-lKu">
+                                                <rect key="frame" x="0.0" y="64.5" width="265" height="42.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -123,14 +123,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="rgN-cd-D2n" firstAttribute="leading" secondItem="gaL-my-MBD" secondAttribute="leading" constant="20" id="1e5-uq-VYm"/>
-                                    <constraint firstAttribute="height" constant="138" id="4IL-de-eYW"/>
+                                    <constraint firstAttribute="height" constant="128" id="4IL-de-eYW"/>
                                     <constraint firstAttribute="trailing" secondItem="OOL-oY-Rge" secondAttribute="trailing" id="5lR-Jv-WA5"/>
                                     <constraint firstItem="OOL-oY-Rge" firstAttribute="leading" secondItem="gaL-my-MBD" secondAttribute="leading" id="Ny6-kc-QBs"/>
                                     <constraint firstItem="OOL-oY-Rge" firstAttribute="top" secondItem="rgN-cd-D2n" secondAttribute="bottom" constant="10" id="R8r-S0-NiA"/>
                                     <constraint firstItem="rgN-cd-D2n" firstAttribute="top" secondItem="gaL-my-MBD" secondAttribute="top" constant="10" id="UNj-xl-Gk6"/>
-                                    <constraint firstAttribute="bottom" secondItem="OOL-oY-Rge" secondAttribute="bottom" constant="10" id="utb-Rq-yeG"/>
+                                    <constraint firstAttribute="bottom" secondItem="OOL-oY-Rge" secondAttribute="bottom" id="utb-Rq-yeG"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*사용자 활동 기반의 데이터입니다:)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epO-Tc-uUF">
+                                <rect key="frame" x="221" y="236" width="183" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xsg-IN-yg8"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -138,11 +144,13 @@
                             <constraint firstItem="q1x-d7-lCy" firstAttribute="leading" secondItem="Xsg-IN-yg8" secondAttribute="leading" constant="10" id="0J8-wp-VM4"/>
                             <constraint firstItem="gaL-my-MBD" firstAttribute="top" secondItem="Xsg-IN-yg8" secondAttribute="top" id="NC6-3n-ivy"/>
                             <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="gaL-my-MBD" secondAttribute="trailing" id="Qdw-5R-hQf"/>
+                            <constraint firstItem="q1x-d7-lCy" firstAttribute="top" secondItem="epO-Tc-uUF" secondAttribute="bottom" id="RP4-Am-DfY"/>
                             <constraint firstItem="Xsg-IN-yg8" firstAttribute="bottom" secondItem="1FJ-8n-4aF" secondAttribute="bottom" id="SAw-7C-bz6"/>
                             <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="q1x-d7-lCy" secondAttribute="trailing" constant="10" id="VOx-yI-epo"/>
+                            <constraint firstItem="epO-Tc-uUF" firstAttribute="top" secondItem="gaL-my-MBD" secondAttribute="bottom" constant="20" id="bYq-1H-qwP"/>
                             <constraint firstItem="1FJ-8n-4aF" firstAttribute="centerX" secondItem="iUn-Lo-sKM" secondAttribute="centerX" id="cx4-Pc-0MZ"/>
+                            <constraint firstItem="epO-Tc-uUF" firstAttribute="trailing" secondItem="q1x-d7-lCy" secondAttribute="trailing" id="myc-8R-ciL"/>
                             <constraint firstItem="gaL-my-MBD" firstAttribute="leading" secondItem="iUn-Lo-sKM" secondAttribute="leading" id="pPE-uX-IQR"/>
-                            <constraint firstItem="q1x-d7-lCy" firstAttribute="top" secondItem="gaL-my-MBD" secondAttribute="bottom" id="zCe-hM-KNi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P3k-Xv-SNP"/>
