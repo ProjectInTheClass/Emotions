@@ -10,51 +10,17 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class StarTableViewController: UITableViewController {
-    
-    var handle: AuthStateDidChangeListenerHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadStarTableView), name: NSNotification.Name("updateTableView"), object: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("StarTableViewController - viewWillAppear")
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            if auth.currentUser == nil {
-                PostManager.shared.starPosts = []
-                PostManager.shared.loadPostsByStarPoint(currentUserUID: "") { success in
-                    if success {
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            } else {
-                guard let currentUserUID = auth.currentUser?.uid else { return }
-                PostManager.shared.starPosts = []
-                PostManager.shared.loadPostsByStarPoint(currentUserUID: currentUserUID) { success in
-                    if success {
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
-    }
-    
-    // MARK: - Functions
-    
-    
 
     // MARK: - Table view data source
+    
+    @objc func reloadStarTableView() {
+        self.tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PostManager.shared.starPosts.count
@@ -62,18 +28,25 @@ class StarTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: postCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        let post = PostManager.shared.starPosts[indexPath.row]
-        cell.updateUI(post: post)
+        let realPost = PostManager.shared.starPosts[indexPath.row]
+        cell.updateUI(post: realPost)
         cell.heartButtonCompletion = { currentHeartState in
-            post.isHeart = !currentHeartState
-            let postKey = post.postID
+            realPost.isHeart = !currentHeartState
+            let postKey = realPost.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData  in
                 if var post = currentData.value as? [String:Any],
                    let uid = Auth.auth().currentUser?.uid {
                     var heart = post["heartUser"] as? [String:Bool] ?? [:]
                     if !currentHeartState {
+                        DispatchQueue.main.async {
+                            PostManager.shared.myHeartPosts.insert(realPost, at: 0)
+                        }
                         heart[uid] = true
                     } else {
+                        DispatchQueue.main.async {
+                            let index = PostManager.shared.myHeartPosts.firstIndex { $0.postID == realPost.postID }
+                            PostManager.shared.myHeartPosts.remove(at: index!)
+                        }
                         heart.removeValue(forKey: uid)
                     }
                     post["heartUser"] = heart
@@ -85,8 +58,8 @@ class StarTableViewController: UITableViewController {
         }
     
         cell.starButtonCompletion = { currentStarState in
-            post.isStar = !currentStarState
-            let postKey = post.postID
+            realPost.isStar = !currentStarState
+            let postKey = realPost.postID
             database.child("posts").child(postKey).runTransactionBlock { currentData -> TransactionResult in
                 if var post = currentData.value as? [String:Any],
                    let uid = Auth.auth().currentUser?.uid {

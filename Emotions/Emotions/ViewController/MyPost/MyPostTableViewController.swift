@@ -10,8 +10,6 @@ import FirebaseAuth
 
 class MyPostTableViewController: UITableViewController {
     
-    var handle: AuthStateDidChangeListenerHandle?
-    
     let emotionsTitle: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "mainLogo")
@@ -24,37 +22,25 @@ class MyPostTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name("updateTableView"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { [weak self]  auth, user in
-            guard let self = self else { return }
-            if auth.currentUser == nil {
-                DispatchQueue.main.async {
-                    PostManager.shared.userPosts = []
-                    self.tableView.reloadData()
-                    self.nicknameLabel.text = "비회원님,"
-                    self.userPostCount.text = "0가지"
-                }
-            } else {
-                PostManager.shared.userPosts = []
-                self.updateUI(auth: auth)
-                guard let currentUserUID = auth.currentUser?.uid else { return }
-                PostManager.shared.loadUserPosts(currentUserUID: currentUserUID) { (success) in
-                    if success {
-                        self.updateUI(auth: auth)
-                    } else {
-                        print("viewWillAppear - laodUserPosts failed")
-                    }
-                }
-            }
-        }
+        updateUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
+    @objc private func updateUI() {
+        if let currentUser = Auth.auth().currentUser {
+            self.updateHeaderView(currentUser: currentUser)
+        } else {
+            DispatchQueue.main.async {
+                PostManager.shared.userPosts = []
+                self.tableView.reloadData()
+                self.nicknameLabel.text = "비회원"
+                self.userPostCount.text = "0가지"
+            }
+        }
     }
     
     func navigationConfigureUI() {
@@ -67,9 +53,9 @@ class MyPostTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    private func updateUI(auth: Auth) {
+    private func updateHeaderView(currentUser: User) {
         DispatchQueue.main.async {
-            if let name = auth.currentUser?.displayName {
+            if let name = currentUser.displayName {
                 self.nicknameLabel.text = name
                 self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
             } else {
@@ -97,7 +83,11 @@ class MyPostTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "정리하기") { (_, indexPath) in
-            let alert = UIAlertController(title: "감정 정리하기", message: "정리한 감정은 다시 복구할 수 없습니다. \n정리하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "감정 정리하기", message: "흘러갈 감정들에게 한 마디 남겨주세요.\n*정리한 감정은 복구되지 않습니다.\n신중하게 결정해주세요:)", preferredStyle: .alert)
+            alert.addTextField { textfield in
+                textfield.layer.cornerRadius = 10
+                textfield.placeholder = "없으시다면 정리하기 버튼만 누르세요:)"
+            }
             let okAction = UIAlertAction(title: "정리하기", style: .destructive) { (action) in
                 postsRef.child(PostManager.shared.userPosts[indexPath.row].postID).removeValue()
                 PostManager.shared.userPosts.remove(at: indexPath.row)

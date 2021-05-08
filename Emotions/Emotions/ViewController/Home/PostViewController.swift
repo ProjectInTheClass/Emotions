@@ -33,7 +33,6 @@ class PostViewController: CustomTransitionViewController {
     
     @IBOutlet weak var homeSegmenttedControl: BetterSegmentedControl!
     @IBOutlet weak var latestContainerView: UIView!
-    @IBOutlet weak var sympathyContainerView: UIView!
     @IBOutlet weak var starContainerView: UIView!
     
     override func viewDidLoad() {
@@ -45,7 +44,7 @@ class PostViewController: CustomTransitionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if auth.currentUser == nil {
                 self.user = nil
             } else {
@@ -63,10 +62,10 @@ class PostViewController: CustomTransitionViewController {
     
     func segmentedControlConfigureUI() {
         homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
-        homeSegmenttedControl.cornerRadius = 15
+        homeSegmenttedControl.cornerRadius = 17
         homeSegmenttedControl.backgroundColor = .white
         homeSegmenttedControl.alwaysAnnouncesValue = true
-        homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["최신 글", "공감 글", "별점 글"],
+        homeSegmenttedControl.segments = LabelSegment.segments(withTitles: ["최신 글", "추천 글"],
                                                                normalTextColor: UIColor(red: 0.48, green: 0.48, blue: 0.51, alpha: 1.00))
         homeSegmenttedControl.addTarget(self, action: #selector(homeSegmenttedControlValueChanged(_:)), for: .valueChanged)
     }
@@ -83,7 +82,6 @@ class PostViewController: CustomTransitionViewController {
     
     func initialSegmentControl(){
         latestContainerView.isHidden = false
-        sympathyContainerView.isHidden = true
         starContainerView.isHidden = true
     }
     
@@ -96,28 +94,14 @@ class PostViewController: CustomTransitionViewController {
     }
     
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
+        
         if sender.index == 0 {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
             latestContainerView.isHidden = false
-            sympathyContainerView.isHidden = true
             starContainerView.isHidden = true
-        } else if sender.index == 1 {
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightPink)
-            if user == nil {
-                print("next1")
-                self.latestContainerView.isHidden = true
-                self.sympathyContainerView.isHidden = true
-                self.starContainerView.isHidden = true
-            } else {
-                print("next2")
-                self.latestContainerView.isHidden = true
-                self.sympathyContainerView.isHidden = false
-                self.starContainerView.isHidden = true
-            }
         } else {
             homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: joyBGColor)
             latestContainerView.isHidden = true
-            sympathyContainerView.isHidden = true
             starContainerView.isHidden = false
         }
     }

@@ -33,62 +33,91 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var userNicknameLabel: UILabel!
     @IBOutlet weak var userEmotionLabel: UILabel!
     
-    var handle: AuthStateDidChangeListenerHandle?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name("updateTableView"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        handle = Auth.auth().addStateDidChangeListener { [weak self]  auth, user in
-            guard let self = self else { return }
-            if auth.currentUser == nil {
-                DispatchQueue.main.async {
-                    PostManager.shared.userPosts = []
-                    self.userNicknameLabel.text = "비회원님,"
-                    self.userEmotionLabel.text = "-"
-                    self.pieChart.isHidden = true
-                }
-            } else {
-                guard let currentUser = auth.currentUser else { return }
-                PostManager.shared.userPosts = []
-                PostManager.shared.loadUserPosts(currentUserUID: currentUser.uid) { [weak self] success in
-                    guard let self = self else { return }
-                    
-                    let userPosts = PostManager.shared.userPosts
-                    
-                    self.myPostsCardTypes = []
-                    self.sadnessCards = []
-                    self.joyCards = []
-                    self.angerCards = []
-                    self.disgustCards = []
-                    self.fearCards = []
-                    
-                    let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
-                    let userEmotionCount =  self.myPostToStatic(posts: userPosts)
-                    let bestCardType = self.searchBestEmotion()
-                    self.pieChart.isHidden = false
-                    self.updateLottieUI(emoji: bestCardType.typeEmoji)
-                    self.userNicknameLabel.text = currentUser.displayName
-                    self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
-                    self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
-                }
-            }
-        }
-        
-        
+        emotionLottiView.play()
+        updateUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
+    @objc private func updateUI() {
+        if let currentUser = Auth.auth().currentUser {
+            let myheartPosts = PostManager.shared.myHeartPosts
+            let userPosts = PostManager.shared.userPosts
+            let staticPosts = myheartPosts + userPosts
+            
+            if self.myPostsCardTypes.count == 0 {
+                self.myPostsCardTypes = [.joy]
+            } else {
+                self.myPostsCardTypes = []
+            }
+            
+            self.sadnessCards = []
+            self.joyCards = []
+            self.angerCards = []
+            self.disgustCards = []
+            self.fearCards = []
+            
+            let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
+            let userEmotionCount =  self.myPostToStatic(posts: staticPosts)
+            let bestCardType = self.searchBestEmotion()
+            self.view.backgroundColor = bestCardType.typeBackground
+            self.pieChart.isHidden = false
+            self.updateLottieUI(emoji: bestCardType.typeEmoji)
+            self.userNicknameLabel.text = currentUser.displayName
+            self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
+            self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
+        } else {
+            DispatchQueue.main.async {
+                PostManager.shared.userPosts = []
+                self.view.backgroundColor = .white
+                self.userNicknameLabel.text = "비회원"
+                self.userEmotionLabel.text = " - "
+                self.pieChart.isHidden = true
+            }
+        }
     }
+    
+//    func updateUI() {
+//        Auth.auth().addStateDidChangeListener { [weak self]  auth, user in
+//            guard let self = self else { return }
+//            if auth.currentUser == nil {
+//                DispatchQueue.main.async {
+//                    PostManager.shared.userPosts = []
+//                    self.userNicknameLabel.text = "비회원님,"
+//                    self.userEmotionLabel.text = "-"
+//                    self.pieChart.isHidden = true
+//                }
+//            } else {
+//                guard let currentUser = auth.currentUser else { return }
+//                let staticPosts = self.myheartPosts + self.userPosts
+//                self.myPostsCardTypes = []
+//                self.sadnessCards = []
+//                self.joyCards = []
+//                self.angerCards = []
+//                self.disgustCards = []
+//                self.fearCards = []
+//
+//                let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
+//                let userEmotionCount =  self.myPostToStatic(posts: staticPosts)
+//                let bestCardType = self.searchBestEmotion()
+//                self.view.backgroundColor = bestCardType.typeBackground
+//                self.pieChart.isHidden = false
+//                self.updateLottieUI(emoji: bestCardType.typeEmoji)
+//                self.userNicknameLabel.text = currentUser.displayName
+//                self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
+//                self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
+//            }
+//        }
+//    }
     
     func updateLottieUI(emoji: String) {
         let animation = Animation.named(emoji)
@@ -140,7 +169,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         }
         pieChart.isUserInteractionEnabled = true
         pieChart.noDataText = "데이터가 없습니다."
-        pieChart.holeRadiusPercent = 0.4
+        pieChart.holeRadiusPercent = 0.3
         pieChart.holeColor = .clear
         pieChart.transparentCircleColor = UIColor.clear
     }

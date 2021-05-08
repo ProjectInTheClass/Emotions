@@ -43,7 +43,7 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = Auth.auth().addIDTokenDidChangeListener({ (auth, user) in
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if auth.currentUser == nil {
                 print("AddPostViewController - viewWillAppear - 현재 유저 없음")
                 self.user = nil

@@ -13,19 +13,92 @@ import UIKit
 class PostManager {
     static let shared = PostManager()
     private let numberOfOneLoad = 5
-    
-    var starPosts = [Post]() // 별 (추천) 많은 순 = 랭킹 10위까지 (2번째 세그먼티드는 없앴음 = 비슷한 감정)
 
-    func loadPostsByStarPoint(currentUserUID: String, completion: @escaping (Bool)->Void){
+    var myHeartPosts = [Post]()
+    var userPosts = [Post]()
+    var starPosts = [Post]()
+    var latestposts = [Post]()
+    var loadedPosts = [Post]()
+    
+    public func loadPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
-        orderedQuery = postsRef.queryOrdered(byChild: "starPoint").queryLimited(toLast: 10)
+        orderedQuery = postsRef.queryOrdered(byChild: "endDate")
         orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
             var snapshotData = snapshot.children.allObjects
             snapshotData.reverse()
             
             for anyDatum in snapshotData {
                 let snapshotDatum = anyDatum as! DataSnapshot
-                //                let postkey = snapshotDatum.key
+                let dicDatum = snapshotDatum.value as! [String:Any]
+                let postkey = snapshotDatum.key
+                if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
+                    for isReportUser in isReportedDic {
+                        let user = isReportUser.key
+                        if Auth.auth().currentUser?.uid == user {
+                            print("isReported")
+                        } else {
+                            let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+                            if let firstCardID = dicDatum["firstCardID"] as? String {
+                                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                            }
+                            if let secondCardID = dicDatum["secondCardID"] as? String {
+                                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                            }
+                            if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                            }
+                          
+                            let todaySecond = Int(Date().timeIntervalSince1970)
+                            if post.endDate - todaySecond <= 0 {
+                                postsRef.child(postkey).removeValue()
+                            } else {
+                                self.loadedPosts += [post]
+                            }
+                        }
+                    }
+                } else {
+                    let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+                    if let firstCardID = dicDatum["firstCardID"] as? String {
+                        post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                    }
+                    if let secondCardID = dicDatum["secondCardID"] as? String {
+                        post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                    }
+                    if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                        post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                    }
+                    
+                    let todaySecond = Int(Date().timeIntervalSince1970)
+                    if post.endDate - todaySecond <= 0 {
+                        postsRef.child(postkey).removeValue()
+                    } else {
+                        self.loadedPosts += [post]
+                    }
+                }
+            }
+            self.latestposts += self.loadedPosts.prefix(self.numberOfOneLoad)
+            completion(true)
+        })
+    }
+    
+    public func loadFreshPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
+        var filterQuery: DatabaseQuery?
+        
+        if let latestDate = self.latestposts.first?.endDate {
+            filterQuery = postsRef.queryOrdered(byChild: "endDate").queryStarting(afterValue: latestDate)
+        } else {
+            filterQuery = postsRef.queryOrdered(byChild: "endDate").queryStarting(atValue: 0)
+        }
+        
+        filterQuery?.observeSingleEvent(of: .value, with: { snapshot in
+            var snapshotData = snapshot.children.allObjects
+            snapshotData.reverse()
+            
+            var freshPostsChunk = [Post]()
+            
+            for anyDatum in snapshotData {
+                let snapshotDatum = anyDatum as! DataSnapshot
+//                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                 
@@ -39,18 +112,37 @@ class PostManager {
                     post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
                 }
                 
-                let todaySecond = Int(Date().timeIntervalSince1970)
-                if post.endDate - todaySecond <= 0 {
-                    
-                } else {
-                    self.starPosts += [post]
-                }
+                freshPostsChunk += [post]
             }
+            self.loadedPosts.insert(contentsOf: freshPostsChunk, at: 0)
+            self.latestposts.insert(contentsOf: freshPostsChunk, at: 0)
             completion(true)
         })
     }
     
-    var userPosts = [Post]() //나의 글 (2번째 탭)
+    public func loadPastPosts(completion: @escaping (Bool)->Void){
+        let pastPosts = self.loadedPosts.filter { $0.endDate < (self.latestposts.last?.endDate)! }
+        let pastChunkPosts = pastPosts.prefix(numberOfOneLoad)
+        
+        if pastChunkPosts.count > 0 {
+            self.latestposts += pastChunkPosts
+            completion(true)
+        }
+    }
+    
+    func loadPostsByStarPoint() {
+        starPosts = PostManager.shared.loadedPosts.sorted { $0.starPoint > $1.starPoint }
+    }
+    
+    func loadPostsByHeart(currentUserUID: String) {
+        for post in PostManager.shared.loadedPosts {
+            for userDic in post.heartUser {
+                if userDic.key == currentUserUID {
+                    myHeartPosts.append(post)
+                }
+            }
+        }
+    }
     
     func loadUserPosts(currentUserUID: String, completion: @escaping (Bool)->Void) {
         var orderedQuery: DatabaseQuery?
@@ -72,38 +164,68 @@ class PostManager {
         })
     }
     
-    var myHeartPosts = [Post]() // 하트 좋아요 누른거 (공감)
-
-    func loadPostsByHeart(currentUserUID: String, completion: @escaping (Bool)->Void){
-        var myPostQuery: DatabaseQuery?
-        myPostQuery = postsRef.queryOrdered(byChild: "heartUser").queryStarting(atValue: true)
-        myPostQuery?.observe(.value, with: { (snapshot) in
-            PostManager.shared.myHeartPosts = []
-            let dictionary = snapshot.value as! [String:AnyObject]
-            for postData in dictionary.values {
-                let dicDatum = postData as! [String:AnyObject]
-                for heartUser in dicDatum["heartUser"] as! [String:Bool] {
-                    if Auth.auth().currentUser?.uid == heartUser.key {
-                        let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
-                        if let firstCardID = dicDatum["firstCardID"] as? String {
-                            post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-                        }
-                        if let secondCardID = dicDatum["secondCardID"] as? String {
-                            post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                        }
-                        if let thirdCardID = dicDatum["thirdCardID"] as? String {
-                            post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                        }
-                        
-                        let todaySecond = Int(Date().timeIntervalSince1970)
-                        if post.endDate - todaySecond <= 0 {
-                        } else {
-                            self.myHeartPosts += [post]
-                        }
-                    }
-                }
-            }
-            completion(true)
-        })
-    }
+//    func loadPostsByStarPoint(currentUserUID: String){
+//        var orderedQuery: DatabaseQuery?
+//        orderedQuery = postsRef.queryOrdered(byChild: "starPoint").queryLimited(toLast: 10)
+//        orderedQuery?.observeSingleEvent(of: .value, with: { snapshot in
+//            var snapshotData = snapshot.children.allObjects
+//            snapshotData.reverse()
+//
+//            for anyDatum in snapshotData {
+//                let snapshotDatum = anyDatum as! DataSnapshot
+//                //                let postkey = snapshotDatum.key
+//                let dicDatum = snapshotDatum.value as! [String:Any]
+//                let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+//
+//                if let firstCardID = dicDatum["firstCardID"] as? String {
+//                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+//                }
+//                if let secondCardID = dicDatum["secondCardID"] as? String {
+//                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+//                }
+//                if let thirdCardID = dicDatum["thirdCardID"] as? String {
+//                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+//                }
+//
+//                let todaySecond = Int(Date().timeIntervalSince1970)
+//                if post.endDate - todaySecond <= 0 {
+//
+//                } else {
+//                    self.starPosts += [post]
+//                }
+//            }
+//        })
+//    }
+  
+//    func loadPostsByHeart(currentUserUID: String){
+//        var myPostQuery: DatabaseQuery?
+//        myPostQuery = postsRef.queryOrdered(byChild: "heartUser").queryStarting(atValue: true)
+//        myPostQuery?.observe(.value, with: { (snapshot) in
+//            PostManager.shared.myHeartPosts = []
+//            let dictionary = snapshot.value as! [String:AnyObject]
+//            for postData in dictionary.values {
+//                let dicDatum = postData as! [String:AnyObject]
+//                for heartUser in dicDatum["heartUser"] as! [String:Bool] {
+//                    if Auth.auth().currentUser?.uid == heartUser.key {
+//                        let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+//                        if let firstCardID = dicDatum["firstCardID"] as? String {
+//                            post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+//                        }
+//                        if let secondCardID = dicDatum["secondCardID"] as? String {
+//                            post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+//                        }
+//                        if let thirdCardID = dicDatum["thirdCardID"] as? String {
+//                            post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+//                        }
+//
+//                        let todaySecond = Int(Date().timeIntervalSince1970)
+//                        if post.endDate - todaySecond <= 0 {
+//                        } else {
+//                            self.myHeartPosts += [post]
+//                        }
+//                    }
+//                }
+//            }
+//        })
+//    }
 }

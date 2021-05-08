@@ -13,11 +13,49 @@ import GoogleMobileAds
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if auth.currentUser == nil {
+                PostManager.shared.latestposts = []
+                PostManager.shared.loadedPosts = []
+                PostManager.shared.starPosts = []
+                PostManager.shared.myHeartPosts = []
+                PostManager.shared.userPosts = []
+                PostManager.shared.loadPosts(currentUserUID: "") { success in
+                    if success {
+                        PostManager.shared.loadPostsByStarPoint()
+                        NotificationCenter.default.post(name: NSNotification.Name("updateTableView"), object: nil)
+                    }
+                }
+            } else {
+                guard let currentUserUID = auth.currentUser?.uid else { return }
+                PostManager.shared.latestposts = []
+                PostManager.shared.loadedPosts = []
+                PostManager.shared.starPosts = []
+                PostManager.shared.myHeartPosts = []
+                PostManager.shared.userPosts = []
+                PostManager.shared.loadUserPosts(currentUserUID: currentUserUID) { success in }
+                PostManager.shared.loadPosts(currentUserUID: currentUserUID) { success in
+                    if success {
+                        PostManager.shared.loadPostsByStarPoint()
+                        PostManager.shared.loadPostsByHeart(currentUserUID: currentUserUID)
+                        NotificationCenter.default.post(name: NSNotification.Name("updateTableView"), object: nil)
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("applicationDidBecomeActive")
     }
 
     // MARK: UISceneSession Lifecycle

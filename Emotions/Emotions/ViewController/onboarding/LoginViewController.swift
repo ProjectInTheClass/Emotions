@@ -100,9 +100,6 @@ class LoginViewController: UIViewController {
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-        
-        
-        
     }
   
     @objc func loginButtonTapped() {
