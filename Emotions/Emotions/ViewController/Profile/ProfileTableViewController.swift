@@ -46,14 +46,14 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         handle = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             guard let self = self else { return }
             if let user = auth.currentUser {
-                self.userImageView.isHidden = false
                 DispatchQueue.main.async {
                     self.updateUI(user: user)
+                    self.tableView.reloadData()
                 }
             } else {
-                self.userImageView.isHidden = true
                 DispatchQueue.main.async {
                     self.updateUI(user: user)
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -67,12 +67,12 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     //MARK: - Function UI
     
     func updateUI(user: User?) {
-        userEmailLabel.text = user?.email ?? nil
-        userNickNameLabel.text = user?.displayName ?? nil
+        userEmailLabel.text = user?.email ?? "email"
+        userNickNameLabel.text = user?.displayName ?? "username"
         if let photoURL = user?.photoURL {
-            self.userImageView.kf.setImage(with: photoURL, options: [.forceRefresh])
+            userImageView.kf.setImage(with: photoURL, options: [.forceRefresh])
         } else {
-            print("Error convert URL to Data")
+            userImageView.image = UIImage(systemName: "person.circle")
         }
     }
     
@@ -153,13 +153,16 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                 print("Cannot send Email")
                 return
             }
-            
             let mailComposeViewController = MFMailComposeViewController()
             mailComposeViewController.delegate = self
             mailComposeViewController.setToRecipients(["phs880623@gmail.com"])
             mailComposeViewController.setSubject("문의할게 있습니다!")
             mailComposeViewController.setMessageBody("좋아요@", isHTML: false)
             present(mailComposeViewController, animated: true, completion: nil)
+        } else if indexPath == loginIndexPath {
+            let sb = UIStoryboard(name: "Home", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            self.present(vc, animated: true, completion: nil)
         }
     }
     

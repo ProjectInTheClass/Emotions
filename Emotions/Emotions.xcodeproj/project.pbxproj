@@ -21,6 +21,9 @@
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
 		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
+		03654C0D2646C5AF00C932A1 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */; };
+		03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0E2646C5FB00C932A1 /* NoticeModel.swift */; };
+		03654C112646C6D700C932A1 /* NoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */; };
 		0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */; };
 		0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */; };
 		0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563A263F9CBB00998DAE /* 10110-sad.json */; };
@@ -84,6 +87,9 @@
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
+		03654C0E2646C5FB00C932A1 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
+		03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewController.swift; sourceTree = "<group>"; };
 		03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "38856-emoji-sorprendido.json"; sourceTree = "<group>"; };
 		03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1924-emotion-icon-smile.json"; sourceTree = "<group>"; };
 		0366563A263F9CBB00998DAE /* 10110-sad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10110-sad.json"; sourceTree = "<group>"; };
@@ -251,7 +257,10 @@
 		0321F1C12616A02F000A3F90 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				03654C0E2646C5FB00C932A1 /* NoticeModel.swift */,
 				035B931F2632406F001D4F39 /* ProfileTableViewController.swift */,
+				03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */,
+				03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -522,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03654C0D2646C5AF00C932A1 /* NoticeTableViewController.swift in Sources */,
 				03FDA91E261FE5F6009E02F9 /* PostViewController.swift in Sources */,
 				03C7740B262BA50F00D075B5 /* MyPostTableViewCell.swift in Sources */,
 				039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */,
@@ -548,7 +558,9 @@
 				0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */,
 				03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */,
 				0321F19926169E25000A3F90 /* SceneDelegate.swift in Sources */,
+				03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */,
 				03FDA9792620B577009E02F9 /* StarButton.swift in Sources */,
+				03654C112646C6D700C932A1 /* NoticeDetailViewController.swift in Sources */,
 				03DFA51326220DE5009139A9 /* CardCollectionViewCell.swift in Sources */,
 				03FDA96326206B75009E02F9 /* NotificationCenter.swift in Sources */,
 				03FDA9762620B571009E02F9 /* HeartButton.swift in Sources */,
