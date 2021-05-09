@@ -91,7 +91,7 @@ class MyPostTableViewController: UITableViewController {
             let okAction = UIAlertAction(title: "정리하기", style: .destructive) { (action) in
                 postsRef.child(PostManager.shared.userPosts[indexPath.row].postID).removeValue()
                 PostManager.shared.userPosts.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
             }
             let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)

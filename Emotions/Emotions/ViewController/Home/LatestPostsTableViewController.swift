@@ -58,6 +58,17 @@ class LatestPostsTableViewController: UITableViewController {
     
     // MARK: - Functions
     
+    @IBAction func commentDetailButtonTapped(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview?.superview?.superview as? PostTableViewCell else { return }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let post = PostManager.shared.starPosts[indexPath.row]
+        let sb = UIStoryboard(name: "Detail", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "detailVC") as? PostDetailViewController else { return }
+        vc.post = post
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     @objc func reloadLatestTableView() {
         if Auth.auth().currentUser == nil {
             bulletinManager.showBulletin(above: self)
@@ -163,14 +174,6 @@ class LatestPostsTableViewController: UITableViewController {
             }
         }
         
-        cell.commentButtonCompletion = {
-//            guard let self = self else { return }
-//            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-//            guard let postDetailViewController = homeStoryboard.instantiateViewController(withIdentifier: "postDetailVC") as? PostDetailViewController else { return }
-//            postDetailViewController.post = post
-//            self.navigationController?.pushViewController(postDetailViewController, animated: true)
-        }
-        
         cell.reportButtonCompletion = { [weak self] in
             guard let self = self else { return }
             let alert = UIAlertController(title: "신고하기", message: "\n이 게시물을 신고하고 삭제합니다.\n 신고가 누적된 사용자는 사용이 제한됩니다. 좋은 커뮤니티 문화를 함께 만들어 주세요.", preferredStyle: .alert)
@@ -201,17 +204,13 @@ class LatestPostsTableViewController: UITableViewController {
         return cell
     }
     
-    // '최근글' 탭으로 데이터 전달 -> 셀 선택시 Detail로 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetailSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else {
-                print("indexPathForSelectedRow")
                 return }
             let post = PostManager.shared.latestposts[indexPath.row] // DataManager 참고
             guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
             postDetailViewController.post = post
         }
     }
-   
-
 }

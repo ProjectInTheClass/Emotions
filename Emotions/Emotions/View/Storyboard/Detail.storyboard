@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
         <!--Item-->
         <scene sceneID="ty0-6I-1Ny">
             <objects>
-                <viewController id="oaB-8i-V3L" customClass="PostDetailViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailVC" id="oaB-8i-V3L" customClass="PostDetailViewController" customModule="Emotions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="thO-eU-o69">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +31,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="따뜻한 댓글을 남겨주세요:)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h1u-Vf-S3p">
-                                    <rect key="frame" x="0.0" y="231" width="414" height="62"/>
+                                    <rect key="frame" x="0.0" y="120.5" width="414" height="62"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,57 +39,86 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentDetailCell" id="Acp-CK-bp4" customClass="CommentTableViewCell" customModule="Emotions" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="414" height="180.5"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Acp-CK-bp4" id="KWO-Kx-98G">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="180.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hj-5p-V0E">
-                                                    <rect key="frame" x="25" y="15" width="73" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZN-CR-Y42">
-                                                    <rect key="frame" x="333.5" y="16.5" width="55.5" height="15.5"/>
-                                                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="12"/>
-                                                    <color key="textColor" systemColor="systemGrayColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pL-HK-hTU">
-                                                    <rect key="frame" x="25" y="41" width="364" height="124.5"/>
-                                                    <string key="text">이것은 댓글 예시입니다. 우리 모두 고운말 바른말로 서로를 보듬어 줍시다. 오는 말이 고와야 가는 말이 곱다. 이것은 댓글 예시입니다. 우리 모두 고운말 바른말로 서로를 보듬어 줍시다. 오는 말이 고와야 가는 말이 곱다. 이것은 댓글 예시입니다. 우리 모두 고운말 바른말로 서로를 보듬어 줍시다. 오는 말이 고와야 가는 말이 곱다. END!</string>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sZ5-XU-CY5">
+                                                    <rect key="frame" x="20" y="10" width="170.5" height="24"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a5u-Aa-aaj">
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="326-KQ-8Gc"/>
+                                                                <constraint firstAttribute="width" constant="24" id="QWF-T9-D4u"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hj-5p-V0E">
+                                                            <rect key="frame" x="29" y="3" width="73" height="18"/>
+                                                            <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRl-7W-DIT">
+                                                            <rect key="frame" x="107" y="6" width="3" height="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZN-CR-Y42">
+                                                            <rect key="frame" x="115" y="4.5" width="55.5" height="15.5"/>
+                                                            <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="이것은 댓글 예시입니다. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pL-HK-hTU">
+                                                    <rect key="frame" x="25" y="39" width="364" height="21"/>
                                                     <fontDescription key="fontDescription" name="NanumGaRamYeonGgoc" family="나눔손글씨 가람연꽃" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjA-ef-Z10">
-                                                    <rect key="frame" x="25" y="179.5" width="364" height="1"/>
+                                                    <rect key="frame" x="25" y="69" width="364" height="1"/>
                                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="s01-6z-Xtc"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8w-6D-qfo">
+                                                    <rect key="frame" x="373" y="11" width="16" height="22"/>
+                                                    <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="trash.fill" catalog="system" symbolScale="small"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteCommentButton:" destination="Acp-CK-bp4" eventType="touchUpInside" id="MxM-Ss-Jeh"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lZN-CR-Y42" firstAttribute="trailing" secondItem="4pL-HK-hTU" secondAttribute="trailing" id="7lb-Re-URa"/>
+                                                <constraint firstItem="4pL-HK-hTU" firstAttribute="top" secondItem="sZ5-XU-CY5" secondAttribute="bottom" constant="5" id="4cm-5c-S7z"/>
                                                 <constraint firstAttribute="trailing" secondItem="4pL-HK-hTU" secondAttribute="trailing" constant="25" id="8WD-uj-QEc"/>
+                                                <constraint firstItem="B8w-6D-qfo" firstAttribute="centerY" secondItem="sZ5-XU-CY5" secondAttribute="centerY" id="BMm-YL-9qy"/>
                                                 <constraint firstItem="4pL-HK-hTU" firstAttribute="leading" secondItem="KWO-Kx-98G" secondAttribute="leading" constant="25" id="DUb-ID-nyn"/>
-                                                <constraint firstItem="2Hj-5p-V0E" firstAttribute="top" secondItem="KWO-Kx-98G" secondAttribute="top" constant="15" id="Oep-fz-Dsb"/>
-                                                <constraint firstItem="2Hj-5p-V0E" firstAttribute="centerY" secondItem="lZN-CR-Y42" secondAttribute="centerY" id="W3j-SR-N2B"/>
-                                                <constraint firstAttribute="bottom" secondItem="4pL-HK-hTU" secondAttribute="bottom" constant="15" id="Y8e-rI-U0W"/>
-                                                <constraint firstItem="2Hj-5p-V0E" firstAttribute="leading" secondItem="4pL-HK-hTU" secondAttribute="leading" id="ajH-AR-y23"/>
-                                                <constraint firstItem="4pL-HK-hTU" firstAttribute="top" secondItem="2Hj-5p-V0E" secondAttribute="bottom" constant="8" symbolic="YES" id="ffL-nq-lj7"/>
+                                                <constraint firstItem="B8w-6D-qfo" firstAttribute="trailing" secondItem="4pL-HK-hTU" secondAttribute="trailing" id="Szb-Kx-6nU"/>
+                                                <constraint firstItem="sZ5-XU-CY5" firstAttribute="top" secondItem="KWO-Kx-98G" secondAttribute="top" constant="10" id="Wxs-Yx-W33"/>
+                                                <constraint firstAttribute="bottom" secondItem="4pL-HK-hTU" secondAttribute="bottom" constant="10" id="Y8e-rI-U0W"/>
                                                 <constraint firstAttribute="bottom" secondItem="GjA-ef-Z10" secondAttribute="bottom" id="kIa-na-Q1t"/>
                                                 <constraint firstItem="GjA-ef-Z10" firstAttribute="leading" secondItem="KWO-Kx-98G" secondAttribute="leading" constant="25" id="m53-fS-4GS"/>
+                                                <constraint firstItem="sZ5-XU-CY5" firstAttribute="leading" secondItem="4pL-HK-hTU" secondAttribute="leading" constant="-5" id="pmv-mR-wwv"/>
                                                 <constraint firstAttribute="trailing" secondItem="GjA-ef-Z10" secondAttribute="trailing" constant="25" id="wZv-X4-Oc0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentContentLabel" destination="4pL-HK-hTU" id="ggm-cV-QMY"/>
                                             <outlet property="commentDateLabel" destination="lZN-CR-Y42" id="2VZ-cL-lta"/>
+                                            <outlet property="commentUserImage" destination="a5u-Aa-aaj" id="eth-bM-X90"/>
                                             <outlet property="commentUserNameLabel" destination="2Hj-5p-V0E" id="RgA-2F-AAy"/>
+                                            <outlet property="deleteCommentButton" destination="B8w-6D-qfo" id="rwg-cp-oiC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -111,12 +141,14 @@
                                         <rect key="frame" x="15" y="8" width="349" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQi-r1-Uo2">
-                                        <rect key="frame" x="378" y="16.5" width="21" height="22"/>
-                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="paperplane.fill" catalog="system"/>
+                                        <rect key="frame" x="374" y="13.5" width="25" height="24"/>
+                                        <color key="tintColor" red="0.32060186178595929" green="0.32060186178595929" blue="0.32060186178595929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="paperplane.circle.fill" catalog="system" symbolScale="large"/>
+                                        </state>
                                         <connections>
                                             <action selector="commentPost:" destination="oaB-8i-V3L" eventType="touchUpInside" id="AfB-Ke-Bco"/>
                                         </connections>
@@ -126,11 +158,11 @@
                                 <constraints>
                                     <constraint firstItem="iQa-Z8-0Sm" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" constant="8" id="4cn-yC-yNf"/>
                                     <constraint firstItem="fJY-Iw-3Sq" firstAttribute="top" secondItem="V4x-qM-JOY" secondAttribute="top" id="8Bb-1s-Zdc"/>
-                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="leading" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="14" id="Bvb-xk-WXm"/>
+                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="leading" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="10" id="Bvb-xk-WXm"/>
                                     <constraint firstItem="fJY-Iw-3Sq" firstAttribute="leading" secondItem="V4x-qM-JOY" secondAttribute="leading" id="Fpm-tU-ncT"/>
                                     <constraint firstItem="iQa-Z8-0Sm" firstAttribute="leading" secondItem="V4x-qM-JOY" secondAttribute="leading" constant="15" id="Lae-eU-LKo"/>
                                     <constraint firstAttribute="trailing" secondItem="iQa-Z8-0Sm" secondAttribute="trailing" constant="50" id="anl-qT-LOT"/>
-                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="centerY" secondItem="V4x-qM-JOY" secondAttribute="centerY" constant="2" id="efF-cz-oKf"/>
+                                    <constraint firstItem="pQi-r1-Uo2" firstAttribute="centerY" secondItem="V4x-qM-JOY" secondAttribute="centerY" id="efF-cz-oKf"/>
                                     <constraint firstAttribute="bottom" secondItem="iQa-Z8-0Sm" secondAttribute="bottom" constant="8" id="fH4-h0-bVJ"/>
                                     <constraint firstAttribute="trailing" secondItem="fJY-Iw-3Sq" secondAttribute="trailing" id="pK9-9g-PBB"/>
                                     <constraint firstAttribute="height" constant="51" id="vvn-Ox-KCX"/>
@@ -165,15 +197,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
+        <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
