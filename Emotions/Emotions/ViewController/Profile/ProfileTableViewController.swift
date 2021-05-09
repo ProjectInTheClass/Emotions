@@ -26,8 +26,6 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         return imageView
     }()
     
-    var handle: AuthStateDidChangeListenerHandle?
-    
     let logoutIndexPath = IndexPath(row: 2, section: 1)
     let loginIndexPath = IndexPath(row: 1, section: 1)
     let profileImageIndexPath = IndexPath(row: 0, section: 1)
@@ -37,42 +35,25 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     //MARK: - View Life Cyle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         configureUI()
         navigationConfigureUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
-            guard let self = self else { return }
-            if let user = auth.currentUser {
-                DispatchQueue.main.async {
-                    self.updateUI(user: user)
-                    self.tableView.reloadData()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.updateUI(user: user)
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name("updateTableView"), object: nil)
     }
     
     //MARK: - Function UI
     
-    func updateUI(user: User?) {
-        userEmailLabel.text = user?.email ?? "email"
-        userNickNameLabel.text = user?.displayName ?? "username"
-        if let photoURL = user?.photoURL {
-            userImageView.kf.setImage(with: photoURL, options: [.forceRefresh])
+    @objc func updateUI() {
+        if let user = Auth.auth().currentUser {
+            userEmailLabel.text = user.email
+            userNickNameLabel.text = user.displayName
+            userImageView.kf.setImage(with: user.photoURL, options: [.forceRefresh])
+            tableView.reloadData()
         } else {
+            userEmailLabel.text = "email"
+            userNickNameLabel.text = "username"
             userImageView.image = UIImage(systemName: "person.circle")
+            tableView.reloadData()
         }
     }
     
@@ -95,6 +76,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == loginIndexPath {
             return Auth.auth().currentUser == nil ? 44 : 0
+        } else if indexPath == logoutIndexPath {
+            return Auth.auth().currentUser == nil ? 0 : 44
         } else {
             return 44
         }
@@ -120,7 +103,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             self.present(alert, animated: true, completion: nil)
             
         } else if indexPath == profileImageIndexPath {
-            
+            guard let currenUser = Auth.auth().currentUser else { return }
              let imagePickerViewController = UIImagePickerController()
              imagePickerViewController.delegate = self
              let actionSheet = UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)

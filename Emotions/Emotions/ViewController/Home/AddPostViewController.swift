@@ -168,9 +168,9 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     }
     
     func navigationConfigureUI() {
-        title = "Post"
+        title = "글 올리기"
         navigationController?.navigationBar.tintColor = .darkGray
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "AppleColorEmoji", size: 21)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "NanumSquareR", size: 17)!]
     }
     
     func registerForNotifications() {

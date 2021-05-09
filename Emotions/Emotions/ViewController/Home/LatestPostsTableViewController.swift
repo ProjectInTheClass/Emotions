@@ -54,7 +54,6 @@ class LatestPostsTableViewController: UITableViewController {
         super.viewDidLoad()
         initRefresh()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadLatestTableView), name: NSNotification.Name("updateTableView"), object: nil)
-       
     }
     
     // MARK: - Functions
