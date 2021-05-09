@@ -20,20 +20,6 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
     
     //table view
     @IBOutlet weak var tableView: UITableView!
-    
-    //post details - header view
-    @IBOutlet weak var firstCardBackgroundColorView: UIView!
-    @IBOutlet weak var firstCardTitleLabel: UILabel!
-    @IBOutlet weak var secondCardTitleLabel: UILabel?
-    @IBOutlet weak var thirdCardTitleLabel: UILabel?
-    @IBOutlet weak var postDdayLabel: UILabel!
-    @IBOutlet weak var postContentTextView: UITextView!
-    @IBOutlet weak var postHeaderview: UIView!
-    @IBOutlet weak var commentCountLabel: UILabel!
-    @IBOutlet weak var starPointLabel: UILabel!
-    
-    
-    //comment post view - outlet (댓글게시 액션은 하단에)
     @IBOutlet weak var commentBackgroundColorView: UIView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentPostButton: UIButton!
@@ -73,13 +59,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         //넘겨받은 post를 풀고, 그 post에 데이터가 있으면 아래를 수행
         //타입에 해당하는 인스턴스를 넣어준다
         if let post = post {
-//            postContentTextView.text = post.content
-//            firstCardTitleLabel.text = post.firstCard?.title
-//            secondCardTitleLabel?.text = post.secondCard?.title
-//            thirdCardTitleLabel?.text = post.thirdCard?.title
-//            postDdayLabel.text = dateToDday(post: post)
-//            starPointLabel.text = "\(post.starPoint)개"
-//            firstCardBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeColor
+            commentPostButton.tintColor = post.firstCard?.cardType.typeColor
             commentBackgroundColorView.backgroundColor = post.firstCard?.cardType.typeBackground
         }
 //        updateUI()
@@ -98,13 +78,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
             guard let self = self else { return }
             if success {
                 print("코멘트 다운로드 성공")
-                
-                // 댓글 갯수 동기화
-//                self.commentCountLabel.text = "\(CommentManager.shared.comments.count)개"
-                
-                // 코멘트 테이블뷰 동기화
                 self.tableView.reloadData()
-                
             } else {
                 print("코멘트 다운로드 실패")
             }
@@ -123,35 +97,6 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
-    //MARK:- Update UI func
-
-    func updateUI() {
-        guard let post = post else { return }
-        if let firstCard = post.firstCard {
-            firstCardTitleLabel.text = "#\(firstCard.title)"
-            firstCardBackgroundColorView.backgroundColor = firstCard.cardType.typeBackground
-        } else {
-            firstCardTitleLabel.isHidden = true
-            firstCardBackgroundColorView.isHidden = true
-        }
-        
-        //2번 카드
-        if let secondCard = post.secondCard {
-            secondCardTitleLabel?.text = "#\(secondCard.title)"
-        } else {
-            secondCardTitleLabel?.isHidden = false
-        }
-        
-        //3번 카드
-        if let thirdCard = post.thirdCard {
-            thirdCardTitleLabel?.text = "#\(thirdCard.title)"
-        } else {
-            thirdCardTitleLabel?.isHidden = false
-        }
-    }
-    
-    
     
     //MARK:- navigation UI 설정
     
@@ -160,8 +105,6 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.tintColor = .darkGray
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "NanumSquareR", size: 17)!]
     }
-    
-    
     
     //MARK:- Scroll to Bottom Func
     func scrollToBottom() {
@@ -176,22 +119,30 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
     //MARK:- 댓글게시 button func
 
     @IBAction func commentPost(_ sender: UIButton) {
-        print("comment Upload Complete")
+        
+        let commentID = UUID().uuidString
         
         guard let post = post,
               let userName = Auth.auth().currentUser?.displayName,
+              let photoURL = Auth.auth().currentUser?.photoURL,
               let content = commentTextField?.text else {
             print("내용을 입력해 주세요.")
             return }
         
-        let reviewDictionary:[String:Any] = [
+        let commentDictionary: [String:Any] = [
+            "commentID": commentID,
             "postID": post.postID,
             "userName": userName,
             "userEmail": post.userEmail,
             "content": content,
-            "date": Int(Date().timeIntervalSince1970)
+            "date": Int(Date().timeIntervalSince1970),
+            "imageURL": photoURL.absoluteString
         ]
-        CommentManager.uploadComment(dictionary: reviewDictionary)
+        
+        commentRef.child(commentID).setValue(commentDictionary)
+        let newComment = Comment(dictionary: commentDictionary)
+        CommentManager.shared.comments.append(newComment)
+        self.tableView.reloadData()
         
         // 댓글 게시 후 텍스트필드 클리어, 키보드 dismiss
         commentTextField.text = ""
@@ -269,8 +220,15 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     // 셀 재활용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentDetailCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        let review = CommentManager.shared.comments[indexPath.row]
-        cell.updateUI(comment: review)
+        let comment = CommentManager.shared.comments[indexPath.row]
+        cell.updateUI(comment: comment)
+        cell.deleteComment = { [weak self] in
+            guard let self = self else { return }
+            CommentManager.shared.comments.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            commentRef.child(comment.commentID).removeValue()
+            self.tableView.reloadData()
+        }
 
         return cell
     }

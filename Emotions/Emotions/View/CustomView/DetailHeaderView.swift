@@ -148,7 +148,7 @@ class DetailHeaderView: UITableViewHeaderFooterView {
     
     func configurationUI() {
         
-        contentView.backgroundColor = #colorLiteral(red: 0.9758804563, green: 0.9758804563, blue: 0.9758804563, alpha: 1)
+        contentView.backgroundColor = #colorLiteral(red: 0.9870721726, green: 0.9870721726, blue: 0.9870721726, alpha: 1)
         
         let cardStackView = UIStackView(arrangedSubviews: [firstCardLabel, secondCardLabel, thirdCardLabel])
         cardStackView.alignment = .fill

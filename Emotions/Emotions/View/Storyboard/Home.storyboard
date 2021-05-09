@@ -158,6 +158,9 @@
                                                                 <constraint firstAttribute="width" constant="40" id="iHE-9n-bNT"/>
                                                             </constraints>
                                                             <state key="normal" image="comment"/>
+                                                            <connections>
+                                                                <action selector="commentDetailButtonTapped:" destination="fQr-uF-A6U" eventType="touchUpInside" id="8Zm-fK-kIa"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -318,6 +321,9 @@
                                                                 <constraint firstAttribute="height" constant="40" id="EUr-Em-976"/>
                                                             </constraints>
                                                             <state key="normal" image="comment"/>
+                                                            <connections>
+                                                                <action selector="commentDetailButtonTapped:" destination="OHy-Wy-djY" eventType="touchUpInside" id="x7d-6B-pzK"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

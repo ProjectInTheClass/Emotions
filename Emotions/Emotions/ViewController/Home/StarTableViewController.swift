@@ -22,6 +22,17 @@ class StarTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    @IBAction func commentDetailButtonTapped(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview?.superview?.superview as? PostTableViewCell else { return }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let post = PostManager.shared.starPosts[indexPath.row]
+        let sb = UIStoryboard(name: "Detail", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "detailVC") as? PostDetailViewController else { return }
+        vc.post = post
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PostManager.shared.starPosts.count
     }
@@ -81,14 +92,6 @@ class StarTableViewController: UITableViewController {
                 return TransactionResult.success(withValue: currentData)
             }
         }
-        
-        cell.commentButtonCompletion = {
-//            guard let self = self else { return }
-//            let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-//            guard let postDetailViewController = homeStoryboard.instantiateViewController(withIdentifier: "postDetailVC") as? PostDetailViewController else { return }
-//            postDetailViewController.post = post
-//            self.navigationController?.pushViewController(postDetailViewController, animated: true)
-        }
         return cell
     }
     
@@ -97,7 +100,7 @@ class StarTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else {
                 print("indexPathForSelectedRow")
                 return }
-            let post = PostManager.shared.starPosts[indexPath.row] //starPosts = PostManager 참고
+            let post = PostManager.shared.starPosts[indexPath.row]
             guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
             postDetailViewController.post = post
         }

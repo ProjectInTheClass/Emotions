@@ -371,6 +371,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kE-hd-WdK">
                                 <rect key="frame" x="0.0" y="88" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ioK-7z-2dC"/>
                                 </constraints>
@@ -632,14 +633,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVz-Eu-tbC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="3773"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2977.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5H-dN-ADZ">
-                                                <rect key="frame" x="20" y="20" width="374" height="3733"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5H-dN-ADZ">
+                                                <rect key="frame" x="30" y="30" width="354" height="2917.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <mutableString key="text">&lt;감정들&gt; ('https://projectintheclass.github.io/Emotions/'이하 '감정들')은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+                                                <mutableString key="text">&lt;감정들&gt; (이하 '감정들')은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 
-○ 이 개인정보처리방침은 2021년 5월 5부터 적용됩니다.
+○ 이 개인정보처리방침은 2021년 5월 5일부터 적용됩니다.
 
 
 제1조(개인정보의 처리 목적)
@@ -743,17 +744,17 @@
 「개인정보보호법」제35조(개인정보의 열람), 제36조(개인정보의 정정·삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대 하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.
 
 ※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.</mutableString>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="z5H-dN-ADZ" secondAttribute="bottom" constant="20" id="5Xf-0l-uw4"/>
-                                            <constraint firstItem="z5H-dN-ADZ" firstAttribute="leading" secondItem="iVz-Eu-tbC" secondAttribute="leading" constant="20" id="obI-lP-6eN"/>
-                                            <constraint firstItem="z5H-dN-ADZ" firstAttribute="top" secondItem="iVz-Eu-tbC" secondAttribute="top" constant="20" id="rlP-oH-DRt"/>
-                                            <constraint firstAttribute="trailing" secondItem="z5H-dN-ADZ" secondAttribute="trailing" constant="20" id="zTL-pt-w3u"/>
+                                            <constraint firstAttribute="bottom" secondItem="z5H-dN-ADZ" secondAttribute="bottom" constant="30" id="5Xf-0l-uw4"/>
+                                            <constraint firstItem="z5H-dN-ADZ" firstAttribute="leading" secondItem="iVz-Eu-tbC" secondAttribute="leading" constant="30" id="obI-lP-6eN"/>
+                                            <constraint firstItem="z5H-dN-ADZ" firstAttribute="top" secondItem="iVz-Eu-tbC" secondAttribute="top" constant="30" id="rlP-oH-DRt"/>
+                                            <constraint firstAttribute="trailing" secondItem="z5H-dN-ADZ" secondAttribute="trailing" constant="30" id="zTL-pt-w3u"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -783,45 +784,11 @@
             </objects>
             <point key="canvasLocation" x="1009" y="-17"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="iJ2-ft-8l6">
-            <objects>
-                <viewController id="g55-52-aNY" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jC2-sN-hIo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="서비스 이용 약관 넣어야 함" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcE-59-PnJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="w9m-kB-HJ4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="w9m-kB-HJ4" firstAttribute="trailing" secondItem="UcE-59-PnJ" secondAttribute="trailing" id="ED8-5x-HbU"/>
-                            <constraint firstItem="UcE-59-PnJ" firstAttribute="leading" secondItem="w9m-kB-HJ4" secondAttribute="leading" id="HGs-Fw-A4x"/>
-                            <constraint firstItem="w9m-kB-HJ4" firstAttribute="bottom" secondItem="UcE-59-PnJ" secondAttribute="bottom" id="Lfn-ab-vld"/>
-                            <constraint firstItem="UcE-59-PnJ" firstAttribute="top" secondItem="w9m-kB-HJ4" secondAttribute="top" id="cVZ-dj-j9u"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nkw-qJ-C8d"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bxU-2O-z4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2720" y="-17"/>
-        </scene>
     </scenes>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

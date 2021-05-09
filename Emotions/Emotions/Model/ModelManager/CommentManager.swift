@@ -17,16 +17,16 @@ class CommentManager {
         self.comments = []
         var commentsDataQuery: DatabaseQuery?
         commentsDataQuery = commentRef.queryOrdered(byChild: "postID").queryEqual(toValue: post.postID)
-        print(post.postID)
-        commentsDataQuery?.observe(.childAdded, with: { (snapshot) in
-            let snapshotValue = snapshot.value as? [String:Any] ?? [:]
-            let newComment = Comment(dictionary: snapshotValue)
-            self.comments.append(newComment)
+        commentsDataQuery?.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            guard let self = self else { return }
+            guard let snapshotValue = snapshot.value as? [String:Any] else { return }
+            for data in snapshotValue.values {
+                let comment = data as! [String:Any]
+                let newComment = Comment(dictionary: comment)
+                self.comments.append(newComment)
+            }
+            self.comments.sort { $0.date < $1.date }
             completion(true)
         })
-    }
-    
-    static func uploadComment(dictionary: [String:Any]) {
-        commentRef.childByAutoId().setValue(dictionary)
     }
 }

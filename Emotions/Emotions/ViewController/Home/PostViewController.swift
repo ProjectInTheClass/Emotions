@@ -18,6 +18,7 @@ class PostViewController: CustomTransitionViewController {
     let emotionsTitle: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "mainLogo")
+        imageView.alpha = 0.8
         return imageView
     }()
     
@@ -61,7 +62,7 @@ class PostViewController: CustomTransitionViewController {
     // MARK: - UI Functions
     
     func segmentedControlConfigureUI() {
-        homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
+        homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: sadnessBGColor)
         homeSegmenttedControl.cornerRadius = 17
         homeSegmenttedControl.backgroundColor = .white
         homeSegmenttedControl.alwaysAnnouncesValue = true
@@ -96,7 +97,7 @@ class PostViewController: CustomTransitionViewController {
     @objc func homeSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
         
         if sender.index == 0 {
-            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: emotionLightGreen)
+            homeSegmenttedControl.indicatorViewBackgroundColor = UIColor(named: sadnessBGColor)
             latestContainerView.isHidden = false
             starContainerView.isHidden = true
         } else {

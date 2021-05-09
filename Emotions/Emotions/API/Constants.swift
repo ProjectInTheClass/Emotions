@@ -17,6 +17,7 @@ let joyLottie = "21930-selectdavid"
 let angerLottie = "28759-angry-emoji"
 
 let joyBGColor = "joyBG"
+let sadnessBGColor = "sadnessBG"
 
 let joyColor = "joy"
 let sadnessColor = "sadness"
