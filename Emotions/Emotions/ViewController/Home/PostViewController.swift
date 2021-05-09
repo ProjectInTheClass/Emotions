@@ -18,6 +18,7 @@ class PostViewController: CustomTransitionViewController {
     let emotionsTitle: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "mainLogo")
+        imageView.alpha = 0.8
         return imageView
     }()
     

@@ -371,6 +371,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kE-hd-WdK">
                                 <rect key="frame" x="0.0" y="88" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ioK-7z-2dC"/>
                                 </constraints>
@@ -632,12 +633,12 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVz-Eu-tbC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2994"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2977.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5H-dN-ADZ">
-                                                <rect key="frame" x="30" y="30" width="354" height="2934"/>
+                                                <rect key="frame" x="30" y="30" width="354" height="2917.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <mutableString key="text">&lt;감정들&gt; ('https://projectintheclass.github.io/Emotions/'이하 '감정들')은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+                                                <mutableString key="text">&lt;감정들&gt; (이하 '감정들')은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 
 ○ 이 개인정보처리방침은 2021년 5월 5일부터 적용됩니다.
 
