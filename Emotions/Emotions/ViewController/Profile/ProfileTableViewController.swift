@@ -104,7 +104,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             self.present(alert, animated: true, completion: nil)
             
         } else if indexPath == profileImageIndexPath {
-            guard let currenUser = Auth.auth().currentUser else { return }
+//            guard let currenUser = Auth.auth().currentUser else { return }
              let imagePickerViewController = UIImagePickerController()
              imagePickerViewController.delegate = self
              let actionSheet = UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)

@@ -70,7 +70,6 @@ class StaticViewController: UIViewController, ChartViewDelegate {
             let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
             let userEmotionCount =  self.myPostToStatic(posts: staticPosts)
             let bestCardType = self.searchBestEmotion()
-            self.view.backgroundColor = bestCardType.typeBackground
             self.pieChart.isHidden = false
             self.updateLottieUI(emoji: bestCardType.typeEmoji)
             self.userNicknameLabel.text = currentUser.displayName
@@ -87,45 +86,12 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-//    func updateUI() {
-//        Auth.auth().addStateDidChangeListener { [weak self]  auth, user in
-//            guard let self = self else { return }
-//            if auth.currentUser == nil {
-//                DispatchQueue.main.async {
-//                    PostManager.shared.userPosts = []
-//                    self.userNicknameLabel.text = "비회원님,"
-//                    self.userEmotionLabel.text = "-"
-//                    self.pieChart.isHidden = true
-//                }
-//            } else {
-//                guard let currentUser = auth.currentUser else { return }
-//                let staticPosts = self.myheartPosts + self.userPosts
-//                self.myPostsCardTypes = []
-//                self.sadnessCards = []
-//                self.joyCards = []
-//                self.angerCards = []
-//                self.disgustCards = []
-//                self.fearCards = []
-//
-//                let userEmotionName = ["Joy", "Sadness", "Anger", "Disgust", "Fear"]
-//                let userEmotionCount =  self.myPostToStatic(posts: staticPosts)
-//                let bestCardType = self.searchBestEmotion()
-//                self.view.backgroundColor = bestCardType.typeBackground
-//                self.pieChart.isHidden = false
-//                self.updateLottieUI(emoji: bestCardType.typeEmoji)
-//                self.userNicknameLabel.text = currentUser.displayName
-//                self.userEmotionLabel.text = "'\(bestCardType.typeTitle)'"
-//                self.setChart(dataPoints: userEmotionName, values: userEmotionCount)
-//            }
-//        }
-//    }
-    
     func updateLottieUI(emoji: String) {
         let animation = Animation.named(emoji)
         emotionLottiView.animation = animation
         emotionLottiView.play()
         emotionLottiView.loopMode = .loop
-        emotionLottiView.animationSpeed = 0.5
+        emotionLottiView.animationSpeed = 0.6
         emotionLottiView.backgroundColor = .clear
         emotionLottiView.contentMode = .scaleAspectFill
     }
@@ -170,7 +136,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
         }
         pieChart.isUserInteractionEnabled = true
         pieChart.noDataText = "데이터가 없습니다."
-        pieChart.holeRadiusPercent = 0.3
+        pieChart.holeRadiusPercent = 0.43
         pieChart.holeColor = .clear
         pieChart.transparentCircleColor = UIColor.clear
     }

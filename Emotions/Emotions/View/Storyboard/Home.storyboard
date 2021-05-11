@@ -164,7 +164,7 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x76-vi-70X">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x76-vi-70X">
                                                     <rect key="frame" x="100.5" y="25" width="193" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#기뻐하는" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAc-2G-fs3">
@@ -327,7 +327,7 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UHC-0n-GIi">
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UHC-0n-GIi">
                                                     <rect key="frame" x="100.5" y="35" width="193" height="23.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#기뻐하는" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GN-yP-dRU">
@@ -917,7 +917,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="D6Y-A6-Fdo"/>
+        <segue reference="vQI-po-121"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Info Circle" width="24" height="24"/>

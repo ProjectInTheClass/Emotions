@@ -64,11 +64,11 @@ enum CARDTYPE : String {
    
     var typeEmoji: String {
         switch self {
-        case .joy: return "1924-emotion-icon-smile"
-        case .sadness: return "10110-sad"
-        case .anger: return "28759-angry-emoji"
-        case .disgust: return "10109-haha"
-        case .fear: return "38856-emoji-sorprendido"
+        case .joy: return "joy"
+        case .sadness: return "sad"
+        case .anger: return "anger"
+        case .disgust: return "disgust"
+        case .fear: return "fear"
         }
     }
     
