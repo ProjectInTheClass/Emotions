@@ -20,7 +20,6 @@
 		0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C65C261EADC700E1F765 /* Profile.storyboard */; };
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
-		03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */; };
 		03654C0D2646C5AF00C932A1 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */; };
 		03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0E2646C5FB00C932A1 /* NoticeModel.swift */; };
 		03654C112646C6D700C932A1 /* NoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */; };
@@ -29,6 +28,7 @@
 		0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563A263F9CBB00998DAE /* 10110-sad.json */; };
 		0366563F263F9CBB00998DAE /* 10109-haha.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563B263F9CBB00998DAE /* 10109-haha.json */; };
 		03665645264136E600998DAE /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03665644264136E600998DAE /* DetailHeaderView.swift */; };
+		03702D92264AB3A5009F545C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03702D91264AB3A5009F545C /* GoogleService-Info.plist */; };
 		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
 		0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */; };
 		0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */; };
@@ -86,7 +86,6 @@
 		0337C65C261EADC700E1F765 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		03654C0E2646C5FB00C932A1 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
 		03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		0366563A263F9CBB00998DAE /* 10110-sad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10110-sad.json"; sourceTree = "<group>"; };
 		0366563B263F9CBB00998DAE /* 10109-haha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10109-haha.json"; sourceTree = "<group>"; };
 		03665644264136E600998DAE /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
+		03702D91264AB3A5009F545C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
 		0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				0321F1AC26169E3B000A3F90 /* ViewController */,
 				0321F1AB26169E35000A3F90 /* Model */,
 				0321F1A426169E26000A3F90 /* Info.plist */,
-				03612EA52626CA9A00CD68B7 /* GoogleService-Info.plist */,
+				03702D91264AB3A5009F545C /* GoogleService-Info.plist */,
 			);
 			path = Emotions;
 			sourceTree = "<group>";
@@ -409,6 +409,7 @@
 				0321F19026169E25000A3F90 /* Frameworks */,
 				0321F19126169E25000A3F90 /* Resources */,
 				A32808566AD4ACB621A2EF4E /* [CP] Embed Pods Frameworks */,
+				03702D90264AA7F3009F545C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -457,7 +458,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */,
-				03612EA62626CA9A00CD68B7 /* GoogleService-Info.plist in Resources */,
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
 				0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
@@ -471,6 +471,7 @@
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,
 				0337C64B261EAAC700E1F765 /* Home.storyboard in Resources */,
 				0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */,
+				03702D92264AB3A5009F545C /* GoogleService-Info.plist in Resources */,
 				0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */,
 				0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */,
 				0398786A2628140000ED9EB8 /* Detail.storyboard in Resources */,
@@ -485,6 +486,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03702D90264AA7F3009F545C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		1A2CBBA1A2DB26E672F004C5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -716,6 +734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = MBAJ2NCPU9;
 				INFOPLIST_FILE = Emotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

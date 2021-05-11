@@ -48,6 +48,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             PostManager.shared.loadedPosts = []
             PostManager.shared.starPosts = []
             PostManager.shared.myHeartPosts = []
+            PostManager.shared.userPosts = []
+            PostManager.shared.loadUserPosts(currentUserUID: currentUserUID) { success in }
             PostManager.shared.loadPosts(currentUserUID: currentUserUID) { success in
                 if success {
                     PostManager.shared.loadPostsByStarPoint()
@@ -60,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             PostManager.shared.loadedPosts = []
             PostManager.shared.starPosts = []
             PostManager.shared.myHeartPosts = []
+            PostManager.shared.userPosts = []
             PostManager.shared.loadPosts(currentUserUID: "") { success in
                 if success {
                     PostManager.shared.loadPostsByStarPoint()
