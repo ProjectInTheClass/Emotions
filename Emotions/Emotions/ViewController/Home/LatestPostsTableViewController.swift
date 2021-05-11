@@ -160,10 +160,12 @@ class LatestPostsTableViewController: UITableViewController {
                     if !currentStarState {
                         star[uid] = true
                         starPoint += 1
+                        realPost.starPoint += 1
                     } else {
                         star[uid] = false
                         star.removeValue(forKey: uid)
                         starPoint -= 1
+                        realPost.starPoint -= 1
                     }
                     post["starUser"] = star
                     post["starPoint"] = starPoint

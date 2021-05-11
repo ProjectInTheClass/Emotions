@@ -45,7 +45,6 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if auth.currentUser == nil {
-                print("AddPostViewController - viewWillAppear - 현재 유저 없음")
                 self.user = nil
             } else {
                 self.user = auth.currentUser
@@ -145,6 +144,17 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             "userID":user.uid
         ]
         
+        let myPost = Post(currentUserUID: user.uid, dictionary: dataDictionary)
+        if let firstCardID = dataDictionary["firstCardID"] as? String {
+            myPost.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+        }
+        if let secondCardID = dataDictionary["secondCardID"] as? String {
+            myPost.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+        }
+        if let thirdCardID = dataDictionary["thirdCardID"] as? String {
+            myPost.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+        }
+        PostManager.shared.userPosts.append(myPost)
         postsRef.child(postkey).setValue(dataDictionary)
         self.navigationController?.popViewController(animated: true)
     }
@@ -204,7 +214,6 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        
         if textView.text == "" {
             textView.text = "고른 감정에 대해 이야기해주세요:)"
             textView.textColor = UIColor.darkGray

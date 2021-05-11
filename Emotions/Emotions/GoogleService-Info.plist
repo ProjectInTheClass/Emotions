@@ -30,5 +30,9 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:931680290680:ios:98b8d6d853ac207f666a8d</string>
+	<key>DATABASE_URL</key>
+	<string>https://emotions-b18e6-default-rtdb.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-2117316593969279~7480431741</string>
 </dict>
 </plist>
