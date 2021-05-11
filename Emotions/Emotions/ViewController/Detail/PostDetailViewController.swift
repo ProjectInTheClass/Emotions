@@ -124,10 +124,12 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         
         guard let post = post,
               let userName = Auth.auth().currentUser?.displayName,
-              let photoURL = Auth.auth().currentUser?.photoURL,
-              let content = commentTextField?.text else {
+              let photoURL = Auth.auth().currentUser?.photoURL else {
             print("내용을 입력해 주세요.")
             return }
+    
+        guard let content = commentTextField?.text,
+              content != "" else { return }
         
         let commentDictionary: [String:Any] = [
             "commentID": commentID,

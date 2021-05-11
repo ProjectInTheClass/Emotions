@@ -23,10 +23,6 @@
 		03654C0D2646C5AF00C932A1 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */; };
 		03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0E2646C5FB00C932A1 /* NoticeModel.swift */; };
 		03654C112646C6D700C932A1 /* NoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */; };
-		0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */; };
-		0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */ = {isa = PBXBuildFile; fileRef = 03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */; };
-		0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563A263F9CBB00998DAE /* 10110-sad.json */; };
-		0366563F263F9CBB00998DAE /* 10109-haha.json in Resources */ = {isa = PBXBuildFile; fileRef = 0366563B263F9CBB00998DAE /* 10109-haha.json */; };
 		03665645264136E600998DAE /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03665644264136E600998DAE /* DetailHeaderView.swift */; };
 		03702D92264AB3A5009F545C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03702D91264AB3A5009F545C /* GoogleService-Info.plist */; };
 		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
@@ -42,10 +38,14 @@
 		039878742628930000ED9EB8 /* SympathyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878732628930000ED9EB8 /* SympathyTableViewController.swift */; };
 		039878782628932700ED9EB8 /* StarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039878772628932700ED9EB8 /* StarTableViewController.swift */; };
 		0398789326289CB000ED9EB8 /* MyPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */; };
-		03AA60802639BC140032B66E /* 28759-angry-emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 03AA607F2639BC140032B66E /* 28759-angry-emoji.json */; };
 		03C610DC262518E000284FD5 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610DB262518E000284FD5 /* functions.swift */; };
 		03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */; };
 		03C7740B262BA50F00D075B5 /* MyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7740A262BA50F00D075B5 /* MyPostTableViewCell.swift */; };
+		03CC7D83264AE07600C37FA1 /* disgust.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D7E264AE07600C37FA1 /* disgust.json */; };
+		03CC7D84264AE07600C37FA1 /* anger.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D7F264AE07600C37FA1 /* anger.json */; };
+		03CC7D85264AE07600C37FA1 /* fear.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D80264AE07600C37FA1 /* fear.json */; };
+		03CC7D86264AE07600C37FA1 /* joy.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D81264AE07600C37FA1 /* joy.json */; };
+		03CC7D87264AE07600C37FA1 /* sadness.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D82264AE07600C37FA1 /* sadness.json */; };
 		03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA5002621D769009139A9 /* AddPostViewController.swift */; };
 		03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */; };
 		03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */; };
@@ -89,10 +89,6 @@
 		03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		03654C0E2646C5FB00C932A1 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
 		03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewController.swift; sourceTree = "<group>"; };
-		03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "38856-emoji-sorprendido.json"; sourceTree = "<group>"; };
-		03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1924-emotion-icon-smile.json"; sourceTree = "<group>"; };
-		0366563A263F9CBB00998DAE /* 10110-sad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10110-sad.json"; sourceTree = "<group>"; };
-		0366563B263F9CBB00998DAE /* 10109-haha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10109-haha.json"; sourceTree = "<group>"; };
 		03665644264136E600998DAE /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		03702D91264AB3A5009F545C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
@@ -108,10 +104,14 @@
 		039878732628930000ED9EB8 /* SympathyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympathyTableViewController.swift; sourceTree = "<group>"; };
 		039878772628932700ED9EB8 /* StarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTableViewController.swift; sourceTree = "<group>"; };
 		0398789226289CB000ED9EB8 /* MyPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewController.swift; sourceTree = "<group>"; };
-		03AA607F2639BC140032B66E /* 28759-angry-emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "28759-angry-emoji.json"; sourceTree = "<group>"; };
 		03C610DB262518E000284FD5 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		03C610E1262598BF00284FD5 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		03C7740A262BA50F00D075B5 /* MyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewCell.swift; sourceTree = "<group>"; };
+		03CC7D7E264AE07600C37FA1 /* disgust.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disgust.json; sourceTree = "<group>"; };
+		03CC7D7F264AE07600C37FA1 /* anger.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = anger.json; sourceTree = "<group>"; };
+		03CC7D80264AE07600C37FA1 /* fear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fear.json; sourceTree = "<group>"; };
+		03CC7D81264AE07600C37FA1 /* joy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = joy.json; sourceTree = "<group>"; };
+		03CC7D82264AE07600C37FA1 /* sadness.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sadness.json; sourceTree = "<group>"; };
 		03DFA5002621D769009139A9 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShareTechMono.ttf; sourceTree = "<group>"; };
 		03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
@@ -153,11 +153,11 @@
 		031E9A5B2623D3DD0054C840 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				03AA607F2639BC140032B66E /* 28759-angry-emoji.json */,
-				03665639263F9CBB00998DAE /* 1924-emotion-icon-smile.json */,
-				0366563B263F9CBB00998DAE /* 10109-haha.json */,
-				0366563A263F9CBB00998DAE /* 10110-sad.json */,
-				03665638263F9CBB00998DAE /* 38856-emoji-sorprendido.json */,
+				03CC7D7F264AE07600C37FA1 /* anger.json */,
+				03CC7D7E264AE07600C37FA1 /* disgust.json */,
+				03CC7D80264AE07600C37FA1 /* fear.json */,
+				03CC7D81264AE07600C37FA1 /* joy.json */,
+				03CC7D82264AE07600C37FA1 /* sadness.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -457,26 +457,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CC7D86264AE07600C37FA1 /* joy.json in Resources */,
 				0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */,
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
-				0366563D263F9CBB00998DAE /* 1924-emotion-icon-smile.json in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
+				03CC7D85264AE07600C37FA1 /* fear.json in Resources */,
 				0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */,
+				03CC7D87264AE07600C37FA1 /* sadness.json in Resources */,
 				03FDA9512620509C009E02F9 /* 나눔손글씨 가람연꽃.ttf in Resources */,
 				0389E130262ED6D00077C20F /* NanumSquareExtraBold.ttf in Resources */,
-				0366563F263F9CBB00998DAE /* 10109-haha.json in Resources */,
-				03AA60802639BC140032B66E /* 28759-angry-emoji.json in Resources */,
 				03FDA94E26204B94009E02F9 /* RIDIBatang.otf in Resources */,
+				03CC7D84264AE07600C37FA1 /* anger.json in Resources */,
 				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,
 				0337C64B261EAAC700E1F765 /* Home.storyboard in Resources */,
+				03CC7D83264AE07600C37FA1 /* disgust.json in Resources */,
 				0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */,
 				03702D92264AB3A5009F545C /* GoogleService-Info.plist in Resources */,
-				0366563C263F9CBB00998DAE /* 38856-emoji-sorprendido.json in Resources */,
 				0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */,
 				0398786A2628140000ED9EB8 /* Detail.storyboard in Resources */,
 				0337C657261EADAD00E1F765 /* MyPost.storyboard in Resources */,
-				0366563E263F9CBB00998DAE /* 10110-sad.json in Resources */,
 				0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */,
 				03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */,
 				0389E131262ED6D00077C20F /* NanumSquareRegular.ttf in Resources */,

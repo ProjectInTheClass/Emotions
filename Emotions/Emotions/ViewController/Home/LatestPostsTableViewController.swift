@@ -61,7 +61,7 @@ class LatestPostsTableViewController: UITableViewController {
     @IBAction func commentDetailButtonTapped(_ sender: UIButton) {
         guard let cell = sender.superview?.superview?.superview?.superview as? PostTableViewCell else { return }
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let post = PostManager.shared.starPosts[indexPath.row]
+        let post = PostManager.shared.latestposts[indexPath.row]
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "detailVC") as? PostDetailViewController else { return }
         vc.post = post
