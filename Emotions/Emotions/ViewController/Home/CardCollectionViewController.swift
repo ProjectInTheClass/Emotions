@@ -61,10 +61,12 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         segmentedControlConfigureUI()
         buttonUI()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        cards.map { $0.isSelected = false }
+   
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        for card in CardManager.shared.cards {
+            card.isSelected = false
+        }
     }
 
     // MARK: - UICollectionViewDataSource
@@ -99,10 +101,12 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         let item = collectionView.cellForItem(at: indexPath)
         if item?.isSelected ?? false {
             collectionView.deselectItem(at: indexPath, animated: true)
+            collectionView.reloadItems(at: [indexPath])
         } else {
             if selectedCardsDic.count < 3 {
                 collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
                 let selectedCard = cards[indexPath.item]
+                
                 selectedCard.isSelected = true
                 selectedCardsDic[selectedCard.id] = selectedCard
                 collectionView.reloadItems(at: [indexPath])
@@ -159,32 +163,34 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     @objc func cardSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
+        
         let wholeCards = CardManager.shared.cards
+        
         switch sender.index {
         case 0:
             completeButton.backgroundColor = UIColor(named: "emotionLightGreen")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-            self.cards = wholeCards
+            cards = wholeCards
         case 1:
             completeButton.backgroundColor = UIColor(named: "joy")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "joy")
-            self.cards = CardManager.shared.fetchJoyCards(cards: wholeCards)
+            cards = CardManager.shared.fetchJoyCards(cards: wholeCards)
         case 2:
             completeButton.backgroundColor = UIColor(named: "sadness")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "sadness")
-            self.cards = CardManager.shared.fetchSadnessCards(cards: wholeCards)
+            cards = CardManager.shared.fetchSadnessCards(cards: wholeCards)
         case 3:
             completeButton.backgroundColor = UIColor(named: "anger")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "anger")
-            self.cards = CardManager.shared.fetchAngerCards(cards: wholeCards)
+            cards = CardManager.shared.fetchAngerCards(cards: wholeCards)
         case 4:
             completeButton.backgroundColor = UIColor(named: "disgust")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "disgust")
-            self.cards = CardManager.shared.fetchDisgustCards(cards: wholeCards)
+            cards = CardManager.shared.fetchDisgustCards(cards: wholeCards)
         case 5:
             completeButton.backgroundColor = UIColor(named: "fear")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "fear")
-            self.cards = CardManager.shared.fetchFearCards(cards: wholeCards)
+            cards = CardManager.shared.fetchFearCards(cards: wholeCards)
         default:
             break
         }
