@@ -560,6 +560,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundView" destination="Iuy-GS-SeE" id="soK-Rn-VKO"/>
+                        <outlet property="cardDescription" destination="1rL-dg-Acy" id="2IB-mU-NaQ"/>
+                        <outlet property="contentDescription" destination="SDn-8q-UiI" id="td2-36-gdO"/>
                         <outlet property="contentTextView" destination="Fes-0V-CmE" id="nQm-jp-68c"/>
                         <outlet property="dateLabel" destination="AsK-uI-P9V" id="v9r-no-XL3"/>
                         <outlet property="scrollView" destination="w9X-p1-H4r" id="xUA-d8-ZPP"/>

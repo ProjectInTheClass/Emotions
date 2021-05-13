@@ -7,8 +7,8 @@ target 'Emotions' do
 
   # Pods for Emotions
 pod 'BetterSegmentedControl', '~> 2.0'
-pod 'PanModal'
 pod 'lottie-ios'
+pod 'PanModal'
 pod 'Firebase/Analytics'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
@@ -19,6 +19,5 @@ pod 'Firebase/Performance'
 pod 'TransitionButton'
 pod 'BulletinBoard'
 pod 'Charts'
-pod 'Google-Mobile-Ads-SDK'
 pod 'Kingfisher', '~> 6.0'
 end

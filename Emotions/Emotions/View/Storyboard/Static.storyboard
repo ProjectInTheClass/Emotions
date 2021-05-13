@@ -25,14 +25,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FJ-8n-4aF" customClass="GADBannerView">
-                                <rect key="frame" x="47" y="763" width="320" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Map-K9-8uU"/>
-                                    <constraint firstAttribute="width" constant="320" id="Upb-Tq-fDX"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1x-d7-lCy" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="10" y="252" width="394" height="394"/>
                                 <subviews>
@@ -133,10 +125,8 @@
                             <constraint firstItem="gaL-my-MBD" firstAttribute="top" secondItem="Xsg-IN-yg8" secondAttribute="top" id="NC6-3n-ivy"/>
                             <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="gaL-my-MBD" secondAttribute="trailing" id="Qdw-5R-hQf"/>
                             <constraint firstItem="q1x-d7-lCy" firstAttribute="top" secondItem="epO-Tc-uUF" secondAttribute="bottom" id="RP4-Am-DfY"/>
-                            <constraint firstItem="Xsg-IN-yg8" firstAttribute="bottom" secondItem="1FJ-8n-4aF" secondAttribute="bottom" id="SAw-7C-bz6"/>
                             <constraint firstItem="Xsg-IN-yg8" firstAttribute="trailing" secondItem="q1x-d7-lCy" secondAttribute="trailing" constant="10" id="VOx-yI-epo"/>
                             <constraint firstItem="epO-Tc-uUF" firstAttribute="top" secondItem="gaL-my-MBD" secondAttribute="bottom" constant="20" id="bYq-1H-qwP"/>
-                            <constraint firstItem="1FJ-8n-4aF" firstAttribute="centerX" secondItem="iUn-Lo-sKM" secondAttribute="centerX" id="cx4-Pc-0MZ"/>
                             <constraint firstItem="epO-Tc-uUF" firstAttribute="trailing" secondItem="q1x-d7-lCy" secondAttribute="trailing" id="myc-8R-ciL"/>
                             <constraint firstItem="gaL-my-MBD" firstAttribute="leading" secondItem="iUn-Lo-sKM" secondAttribute="leading" id="pPE-uX-IQR"/>
                         </constraints>
@@ -144,7 +134,6 @@
                     <navigationItem key="navigationItem" id="P3k-Xv-SNP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="bannerView" destination="1FJ-8n-4aF" id="aHA-mG-dal"/>
                         <outlet property="emotionLottiView" destination="k3K-xE-bPY" id="evh-rC-FSp"/>
                         <outlet property="pieChart" destination="q1x-d7-lCy" id="qRI-bR-lGT"/>
                         <outlet property="userEmotionLabel" destination="IrY-t6-Pcg" id="ePJ-V6-Q6G"/>

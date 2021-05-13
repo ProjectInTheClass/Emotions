@@ -19,12 +19,15 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var uploadButton: UIBarButtonItem!
-    
+    @IBOutlet weak var cardDescription: UILabel!
+    @IBOutlet weak var contentDescription: UILabel!
     
     var selectedCards: [Card]? {
         didSet {
             if let selectedCards = selectedCards {
                 backgroundView.backgroundColor = selectedCards[0].cardType.typeBackground
+                cardDescription.text = "카드가 선택되었습니다."
+                cardDescription.textColor = .lightGray
             }
         }
     }
@@ -117,13 +120,16 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
                 thirdCard = selectedCards[2]
             }
         } else {
-            print("카드를 선택해주세요.")
+            cardDescription.text = "선택된 카드가 없습니다."
+            cardDescription.textColor = .red
             return
         }
         
         guard let content = self.contentTextView.text,
-              content != "고른 감정에 대해 이야기해주세요:)" else {
-            print("내용을 적어주세요.")
+              content != "고른 감정에 대해 이야기해주세요:)",
+              content.count >= 12 else {
+            contentDescription.text = "너무 짧은 글입니다. 12자 이상의 글을 작성해 보세요."
+            contentDescription.textColor = .red
             return
         }
         

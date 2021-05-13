@@ -122,6 +122,7 @@ class RegistrationViewController: UIViewController {
                                 naviVC.modalPresentationStyle = .fullScreen
                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                                 appDelegate.window?.rootViewController?.present(naviVC, animated: true, completion: nil)
+                                NotificationCenter.default.post(name: NSNotification.Name("updateTableView"), object: nil)
                             })
                         }
                 } else {

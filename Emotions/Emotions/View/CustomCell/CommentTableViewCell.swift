@@ -38,7 +38,7 @@ class CommentTableViewCell: UITableViewCell {
         commentUserNameLabel.text = comment.userName
         commentDateLabel.text = dateToMakeDay(comment: comment) //코멘트용 함수 -> functions.swift 참고
         commentContentLabel.text = comment.content
-        commentUserImage.kf.setImage(with: URL(string: comment.imageURL), placeholder: UIImage(systemName: "person.circle"))
+        commentUserImage.kf.setImage(with: URL(string: comment.imageURL), options: [.forceRefresh])
     }
     
     @IBAction func deleteCommentButton(_ sender: UIButton) {

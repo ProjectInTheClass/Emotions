@@ -9,7 +9,6 @@ import UIKit
 import FirebaseAuth
 import Charts
 import Lottie
-import GoogleMobileAds
 
 class StaticViewController: UIViewController, ChartViewDelegate {
     
@@ -29,7 +28,6 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var emotionLottiView: AnimationView!
-    @IBOutlet weak var bannerView: GADBannerView!
     
     @IBOutlet weak var userNicknameLabel: UILabel!
     @IBOutlet weak var userEmotionLabel: UILabel!
@@ -37,9 +35,6 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationConfigureUI()
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name("updateTableView"), object: nil)
     }
     
@@ -55,12 +50,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
             let userPosts = PostManager.shared.userPosts
             let staticPosts = myheartPosts + userPosts
             
-            if self.myPostsCardTypes.count == 0 {
-                self.myPostsCardTypes = [.joy]
-            } else {
-                self.myPostsCardTypes = []
-            }
-            
+            self.myPostsCardTypes = []
             self.sadnessCards = []
             self.joyCards = []
             self.angerCards = []
@@ -98,11 +88,11 @@ class StaticViewController: UIViewController, ChartViewDelegate {
     
     private func searchBestEmotion() -> CARDTYPE {
         var typeDictionary: [Int:CARDTYPE] = [:]
-        typeDictionary[joyCards.count] = .joy
+        typeDictionary[fearCards.count] = .fear
         typeDictionary[sadnessCards.count] = .sadness
         typeDictionary[angerCards.count] = .anger
         typeDictionary[disgustCards.count] = .disgust
-        typeDictionary[fearCards.count] = .fear
+        typeDictionary[joyCards.count] = .joy
         let sortedDictionary = typeDictionary.sorted { $0.key > $1.key }
         let bestType = sortedDictionary.first?.value ?? .joy
         return bestType
@@ -135,7 +125,7 @@ class StaticViewController: UIViewController, ChartViewDelegate {
             }
         }
         pieChart.isUserInteractionEnabled = true
-        pieChart.noDataText = "데이터가 없습니다."
+        pieChart.noDataText = "사용자 데이터가 필요한 항목입니다."
         pieChart.holeRadiusPercent = 0.43
         pieChart.holeColor = .clear
         pieChart.transparentCircleColor = UIColor.clear
@@ -196,12 +186,20 @@ class StaticViewController: UIViewController, ChartViewDelegate {
                 fearCards += [type]
             }
         }
+        
         let myCount = myPostsCardTypes.count
-        let joyCount = Double(100 * joyCards.count / myCount)
-        let sadnessCount = Double(100 * sadnessCards.count / myCount)
-        let angerCount = Double(100 * angerCards.count / myCount)
-        let disgustCount = Double(100 * disgustCards.count / myCount)
-        let fearCount = Double(100 * fearCards.count / myCount)
-        return [joyCount, sadnessCount, angerCount, disgustCount, fearCount]
+        
+        if myCount == 0 {
+            emotionLottiView.isHidden = true
+            return []
+        } else {
+            emotionLottiView.isHidden = false
+            let joyCount = Double(100 * joyCards.count / myCount)
+            let sadnessCount = Double(100 * sadnessCards.count / myCount)
+            let angerCount = Double(100 * angerCards.count / myCount)
+            let disgustCount = Double(100 * disgustCards.count / myCount)
+            let fearCount = Double(100 * fearCards.count / myCount)
+            return [joyCount, sadnessCount, angerCount, disgustCount, fearCount]
+        }
     }
 }
