@@ -61,21 +61,21 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         segmentedControlConfigureUI()
         buttonUI()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        cards.map { $0.isSelected = false }
+   
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        for card in CardManager.shared.cards {
+            card.isSelected = false
+        }
     }
 
     // MARK: - UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return cards.count
     }
 
@@ -92,35 +92,25 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return cellSize
     }
     
-    // 선택 후에 다시 복귀했을 때, 바로 취소할 수가 없음. 한번 더 누르거나, 4장 선택으로 인식해서 deselect로 가지 않음. 예상으로는 처음 CardVC에 들어갔을 때, 선택된게 없기 때문에 당연히 deselect가 안먹을 듯. 그럼... else 구문에도 deselect 넣어주면 안되나? 그럼 3이하에서는 더블클릭, 3이상에서는 실행될듯함. 준비하고 실행
-    // => 관련해서 수정은 해놨는데, 다시 해보니 일단은 문제가 없다... 혹시 문제 생기면 다시 수정
-    
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let item = collectionView.cellForItem(at: indexPath)
-        if item?.isSelected ?? false {
-            collectionView.deselectItem(at: indexPath, animated: true)
+        let selectedCard = cards[indexPath.item]
+        
+        if selectedCardsDic.count < 3 {
+            selectedCard.isSelected = true
+            selectedCardsDic[selectedCard.id] = selectedCard
+            collectionView.reloadItems(at: [indexPath])
+            return true
         } else {
-            if selectedCardsDic.count < 3 {
-                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-                let selectedCard = cards[indexPath.item]
-                selectedCard.isSelected = true
-                selectedCardsDic[selectedCard.id] = selectedCard
-                collectionView.reloadItems(at: [indexPath])
-                return true
-            } else {
-                collectionView.deselectItem(at: indexPath, animated: true)
-                print("3장의 카드만 선택해 주세요.")
-                return false
-            }
+            return true
         }
-        return false
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         let selectedCard = cards[indexPath.item]
         selectedCard.isSelected = false
         selectedCardsDic[selectedCard.id] = nil
         collectionView.reloadItems(at: [indexPath])
+        return false
     }
     
     // MARK: - UI Fucntions
@@ -159,32 +149,34 @@ class CardCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     @objc func cardSegmenttedControlValueChanged(_ sender: BetterSegmentedControl) {
+        
         let wholeCards = CardManager.shared.cards
+        
         switch sender.index {
         case 0:
             completeButton.backgroundColor = UIColor(named: "emotionLightGreen")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "emotionLightGreen")
-            self.cards = wholeCards
+            cards = wholeCards
         case 1:
             completeButton.backgroundColor = UIColor(named: "joy")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "joy")
-            self.cards = CardManager.shared.fetchJoyCards(cards: wholeCards)
+            cards = CardManager.shared.fetchJoyCards(cards: wholeCards)
         case 2:
             completeButton.backgroundColor = UIColor(named: "sadness")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "sadness")
-            self.cards = CardManager.shared.fetchSadnessCards(cards: wholeCards)
+            cards = CardManager.shared.fetchSadnessCards(cards: wholeCards)
         case 3:
             completeButton.backgroundColor = UIColor(named: "anger")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "anger")
-            self.cards = CardManager.shared.fetchAngerCards(cards: wholeCards)
+            cards = CardManager.shared.fetchAngerCards(cards: wholeCards)
         case 4:
             completeButton.backgroundColor = UIColor(named: "disgust")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "disgust")
-            self.cards = CardManager.shared.fetchDisgustCards(cards: wholeCards)
+            cards = CardManager.shared.fetchDisgustCards(cards: wholeCards)
         case 5:
             completeButton.backgroundColor = UIColor(named: "fear")
             cardTypeSegmentControl.indicatorViewBackgroundColor = UIColor(named: "fear")
-            self.cards = CardManager.shared.fetchFearCards(cards: wholeCards)
+            cards = CardManager.shared.fetchFearCards(cards: wholeCards)
         default:
             break
         }

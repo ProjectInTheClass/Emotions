@@ -910,14 +910,6 @@
             <point key="canvasLocation" x="293" y="709"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="05b-Bj-4lj">
-            <size key="intrinsicContentSize" width="72" height="32"/>
-        </designable>
-        <designable name="JbK-75-Xev">
-            <size key="intrinsicContentSize" width="72" height="32"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="vQI-po-121"/>
     </inferredMetricsTieBreakers>

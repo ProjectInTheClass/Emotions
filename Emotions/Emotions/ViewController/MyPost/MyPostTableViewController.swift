@@ -60,7 +60,7 @@ class MyPostTableViewController: UITableViewController {
                 self.nicknameLabel.text = name
                 self.userPostCount.text = "\(PostManager.shared.userPosts.count)가지"
             } else {
-                self.nicknameLabel.text = "회원님,"
+                self.nicknameLabel.text = "회원"
                 self.userPostCount.text = "0가지"
             }
             self.tableView.reloadData()
@@ -107,12 +107,9 @@ class MyPostTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("mypostSegue")
         if segue.identifier == "mypostSegue" {
-            guard let indexPath = tableView.indexPathForSelectedRow else {
-                print("indexPathForSelectedRow")
-                return }
-            let post = PostManager.shared.userPosts[indexPath.row] //userPosts = PostManager 참고
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let post = PostManager.shared.userPosts[indexPath.row]
             guard let postDetailViewController = segue.destination as? PostDetailViewController else { return }
             postDetailViewController.post = post
         }
