@@ -144,11 +144,8 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQi-r1-Uo2">
-                                        <rect key="frame" x="374" y="13.5" width="25" height="24"/>
+                                        <rect key="frame" x="374" y="8.5" width="30" height="34"/>
                                         <color key="tintColor" red="0.32060186178595929" green="0.32060186178595929" blue="0.32060186178595929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="paperplane.circle.fill" catalog="system" symbolScale="large"/>
-                                        </state>
                                         <connections>
                                             <action selector="commentPost:" destination="oaB-8i-V3L" eventType="touchUpInside" id="AfB-Ke-Bco"/>
                                         </connections>
@@ -197,7 +194,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
