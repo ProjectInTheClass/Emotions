@@ -101,7 +101,7 @@ class LatestPostsTableViewController: UITableViewController {
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height + self.loadingLabel.frame.height - contentYoffset
         if distanceFromBottom < height {
-            print("you reached end of the table")
+//            print("you reached end of the table")
             PostManager.shared.loadPastPosts { success in
                 if success {
                     DispatchQueue.main.async {
