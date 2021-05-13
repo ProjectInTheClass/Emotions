@@ -48,7 +48,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         if let user = Auth.auth().currentUser {
             userEmailLabel.text = user.email
             userNickNameLabel.text = user.displayName
-            userImageView.kf.setImage(with: user.photoURL, options: [.forceRefresh])
+            userImageView.kf.setImage(with: user.photoURL, placeholder: UIImage(systemName: "person.circle"), options: [.forceRefresh])
             tableView.reloadData()
         } else {
             userEmailLabel.text = "email"
@@ -79,6 +79,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             return Auth.auth().currentUser == nil ? 44 : 0
         } else if indexPath == logoutIndexPath {
             return Auth.auth().currentUser == nil ? 0 : 44
+        } else if indexPath == profileImageIndexPath {
+            return Auth.auth().currentUser == nil ? 0 : 44
         } else {
             return 44
         }
@@ -108,13 +110,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
              let imagePickerViewController = UIImagePickerController()
              imagePickerViewController.delegate = self
              let actionSheet = UIAlertController(title: "사진 추가하기", message: nil, preferredStyle: .actionSheet)
-             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                 let cameraAction = UIAlertAction(title: "카메라", style: .default) { action in
-                     imagePickerViewController.sourceType = .camera
-                     self.present(imagePickerViewController, animated: true, completion: nil)
-                 }
-                 actionSheet.addAction(cameraAction)
-             }
+        
              if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                  let photoAction = UIAlertAction(title: "사진첩", style: .default) { action in
                      imagePickerViewController.sourceType = .photoLibrary
@@ -122,9 +118,11 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                  }
                  actionSheet.addAction(photoAction)
              }
+            
              let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
                  self.dismiss(animated: true, completion: nil)
              }
+            
              actionSheet.addAction(cancelAction)
              present(actionSheet, animated: true, completion: nil)
         } else if indexPath == appIntroduceIndexPath {
@@ -141,7 +139,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             mailComposeViewController.delegate = self
             mailComposeViewController.setToRecipients(["phs880623@gmail.com"])
             mailComposeViewController.setSubject("문의할게 있습니다!")
-            mailComposeViewController.setMessageBody("좋아요@", isHTML: false)
+            mailComposeViewController.setMessageBody("문의사항을 기록해 주세요.", isHTML: false)
             present(mailComposeViewController, animated: true, completion: nil)
         } else if indexPath == loginIndexPath {
             let sb = UIStoryboard(name: "Home", bundle: nil)

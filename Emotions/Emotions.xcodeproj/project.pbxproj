@@ -24,7 +24,6 @@
 		03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0E2646C5FB00C932A1 /* NoticeModel.swift */; };
 		03654C112646C6D700C932A1 /* NoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */; };
 		03665645264136E600998DAE /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03665644264136E600998DAE /* DetailHeaderView.swift */; };
-		03702D92264AB3A5009F545C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03702D91264AB3A5009F545C /* GoogleService-Info.plist */; };
 		0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */; };
 		0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */; };
 		0389E12F262ED6D00077C20F /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */; };
@@ -46,6 +45,7 @@
 		03CC7D85264AE07600C37FA1 /* fear.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D80264AE07600C37FA1 /* fear.json */; };
 		03CC7D86264AE07600C37FA1 /* joy.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D81264AE07600C37FA1 /* joy.json */; };
 		03CC7D87264AE07600C37FA1 /* sadness.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D82264AE07600C37FA1 /* sadness.json */; };
+		03CC7D89264BCFCF00C37FA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03CC7D88264BCFCF00C37FA1 /* GoogleService-Info.plist */; };
 		03DFA5012621D769009139A9 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA5002621D769009139A9 /* AddPostViewController.swift */; };
 		03DFA50D2621E1A1009139A9 /* ShareTechMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */; };
 		03DFA51026220DD2009139A9 /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */; };
@@ -66,8 +66,8 @@
 		03FDA9762620B571009E02F9 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA9752620B571009E02F9 /* HeartButton.swift */; };
 		03FDA9792620B577009E02F9 /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA9782620B577009E02F9 /* StarButton.swift */; };
 		03FDA97C2620B702009E02F9 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA97B2620B702009E02F9 /* CommentButton.swift */; };
-		CB1A5D033CB9B0767CAC850E /* Pods_Emotions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */; };
 		D444B35326362BEC00F90406 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444B35226362BEC00F90406 /* PostDetailViewController.swift */; };
+		D6A5D2AE902C5A1AE8DDCAB4 /* Pods_Emotions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84C89E4592346EA49A5FC00 /* Pods_Emotions.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +90,6 @@
 		03654C0E2646C5FB00C932A1 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
 		03654C102646C6D700C932A1 /* NoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewController.swift; sourceTree = "<group>"; };
 		03665644264136E600998DAE /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
-		03702D91264AB3A5009F545C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0389E127262ED5C80077C20F /* TextMeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TextMeOne-Regular.ttf"; sourceTree = "<group>"; };
 		0389E12A262ED6D00077C20F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		0389E12B262ED6D00077C20F /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
@@ -112,6 +111,7 @@
 		03CC7D80264AE07600C37FA1 /* fear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fear.json; sourceTree = "<group>"; };
 		03CC7D81264AE07600C37FA1 /* joy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = joy.json; sourceTree = "<group>"; };
 		03CC7D82264AE07600C37FA1 /* sadness.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sadness.json; sourceTree = "<group>"; };
+		03CC7D88264BCFCF00C37FA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03DFA5002621D769009139A9 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		03DFA50C2621E1A1009139A9 /* ShareTechMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShareTechMono.ttf; sourceTree = "<group>"; };
 		03DFA50F26220DD2009139A9 /* CardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
@@ -132,10 +132,10 @@
 		03FDA9752620B571009E02F9 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		03FDA9782620B577009E02F9 /* StarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButton.swift; sourceTree = "<group>"; };
 		03FDA97B2620B702009E02F9 /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButton.swift; sourceTree = "<group>"; };
-		6312319D396F6CE6E8F07A44 /* Pods-Emotions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.release.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.release.xcconfig"; sourceTree = "<group>"; };
-		AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emotions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9571CCD76F57DEFAEE22493 /* Pods-Emotions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.release.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.release.xcconfig"; sourceTree = "<group>"; };
 		D444B35226362BEC00F90406 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
-		E07BECAE4496C711C9FDA77D /* Pods-Emotions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.debug.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.debug.xcconfig"; sourceTree = "<group>"; };
+		E84C89E4592346EA49A5FC00 /* Pods_Emotions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emotions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCE3EADD7D4F573DE75FD7E0 /* Pods-Emotions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emotions.debug.xcconfig"; path = "Target Support Files/Pods-Emotions/Pods-Emotions.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB1A5D033CB9B0767CAC850E /* Pods_Emotions.framework in Frameworks */,
+				D6A5D2AE902C5A1AE8DDCAB4 /* Pods_Emotions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +168,7 @@
 				0321F19526169E25000A3F90 /* Emotions */,
 				0321F19426169E25000A3F90 /* Products */,
 				4E95AF5F196BF0310D025A06 /* Pods */,
-				741AF62EDF89678B0AB174CC /* Frameworks */,
+				65B81038C11B3FF7EA9951D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,7 +189,7 @@
 				0321F1AC26169E3B000A3F90 /* ViewController */,
 				0321F1AB26169E35000A3F90 /* Model */,
 				0321F1A426169E26000A3F90 /* Info.plist */,
-				03702D91264AB3A5009F545C /* GoogleService-Info.plist */,
+				03CC7D88264BCFCF00C37FA1 /* GoogleService-Info.plist */,
 			);
 			path = Emotions;
 			sourceTree = "<group>";
@@ -383,16 +383,16 @@
 		4E95AF5F196BF0310D025A06 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E07BECAE4496C711C9FDA77D /* Pods-Emotions.debug.xcconfig */,
-				6312319D396F6CE6E8F07A44 /* Pods-Emotions.release.xcconfig */,
+				FCE3EADD7D4F573DE75FD7E0 /* Pods-Emotions.debug.xcconfig */,
+				C9571CCD76F57DEFAEE22493 /* Pods-Emotions.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		741AF62EDF89678B0AB174CC /* Frameworks */ = {
+		65B81038C11B3FF7EA9951D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AEA66529830F6CA16BD5FC9E /* Pods_Emotions.framework */,
+				E84C89E4592346EA49A5FC00 /* Pods_Emotions.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -404,12 +404,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0321F1A726169E26000A3F90 /* Build configuration list for PBXNativeTarget "Emotions" */;
 			buildPhases = (
-				1A2CBBA1A2DB26E672F004C5 /* [CP] Check Pods Manifest.lock */,
+				519E1D236B5E28FCFB9D6E04 /* [CP] Check Pods Manifest.lock */,
 				0321F18F26169E25000A3F90 /* Sources */,
 				0321F19026169E25000A3F90 /* Frameworks */,
 				0321F19126169E25000A3F90 /* Resources */,
-				A32808566AD4ACB621A2EF4E /* [CP] Embed Pods Frameworks */,
 				03702D90264AA7F3009F545C /* ShellScript */,
+				5D8C2B96FE5F64283853D570 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -471,9 +471,9 @@
 				03FDA95426205A49009E02F9 /* Sora-VariableFont_wght.ttf in Resources */,
 				0321F19E26169E25000A3F90 /* Main.storyboard in Resources */,
 				0337C64B261EAAC700E1F765 /* Home.storyboard in Resources */,
+				03CC7D89264BCFCF00C37FA1 /* GoogleService-Info.plist in Resources */,
 				03CC7D83264AE07600C37FA1 /* disgust.json in Resources */,
 				0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */,
-				03702D92264AB3A5009F545C /* GoogleService-Info.plist in Resources */,
 				0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */,
 				0398786A2628140000ED9EB8 /* Detail.storyboard in Resources */,
 				0337C657261EADAD00E1F765 /* MyPost.storyboard in Resources */,
@@ -503,7 +503,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
-		1A2CBBA1A2DB26E672F004C5 /* [CP] Check Pods Manifest.lock */ = {
+		519E1D236B5E28FCFB9D6E04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -525,7 +525,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A32808566AD4ACB621A2EF4E /* [CP] Embed Pods Frameworks */ = {
+		5D8C2B96FE5F64283853D570 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -662,10 +662,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -717,9 +718,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -729,19 +731,20 @@
 		};
 		0321F1A826169E26000A3F90 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E07BECAE4496C711C9FDA77D /* Pods-Emotions.debug.xcconfig */;
+			baseConfigurationReference = FCE3EADD7D4F573DE75FD7E0 /* Pods-Emotions.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = MBAJ2NCPU9;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = Emotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DeveloperPaul.Emotions;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.Emotions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -750,18 +753,19 @@
 		};
 		0321F1A926169E26000A3F90 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6312319D396F6CE6E8F07A44 /* Pods-Emotions.release.xcconfig */;
+			baseConfigurationReference = C9571CCD76F57DEFAEE22493 /* Pods-Emotions.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MBAJ2NCPU9;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = Emotions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DeveloperPaul.Emotions;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.Emotions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

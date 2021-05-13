@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>931680290680-6onbjnqabeff89uml9ljbdu78vkt9226.apps.googleusercontent.com</string>
+	<string>931680290680-nk5h49v7ip43gqso03ha0khoe7ntfu80.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.931680290680-6onbjnqabeff89uml9ljbdu78vkt9226</string>
+	<string>com.googleusercontent.apps.931680290680-nk5h49v7ip43gqso03ha0khoe7ntfu80</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDUVxlTqLBlnMa_ueTBLf635dblSionIdw</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.DeveloperPaul.Emotions</string>
+	<string>com.codershigh.Emotions</string>
 	<key>PROJECT_ID</key>
 	<string>emotions-b18e6</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,10 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:931680290680:ios:98b8d6d853ac207f666a8d</string>
+	<string>1:931680290680:ios:7448ed1ee70920e0666a8d</string>
 	<key>DATABASE_URL</key>
 	<string>https://emotions-b18e6-default-rtdb.firebaseio.com</string>
-	<key>ADMOB_APP_ID</key>
-	<string>ca-app-pub-2117316593969279~7480431741</string>
 </dict>
 </plist>

@@ -12,6 +12,7 @@ import BetterSegmentedControl
 import TransitionButton
 import FirebaseDatabase
 import FirebaseAuth
+import Kingfisher
 
 class PostViewController: CustomTransitionViewController {
     
@@ -26,6 +27,7 @@ class PostViewController: CustomTransitionViewController {
         let button = UIButton()
         button.setImage(UIImage(named: "addPost"), for: .normal)
         button.addTarget(self, action: #selector(addPostButtonTapped), for: .touchUpInside)
+     
         return button
     }()
     

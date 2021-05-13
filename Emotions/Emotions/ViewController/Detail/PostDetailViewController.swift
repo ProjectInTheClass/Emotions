@@ -77,10 +77,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         CommentManager.shared.downloadComment(post: post) { [weak self] success in
             guard let self = self else { return }
             if success {
-                print("코멘트 다운로드 성공")
                 self.tableView.reloadData()
-            } else {
-                print("코멘트 다운로드 실패")
             }
         }
         
@@ -124,6 +121,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
         
         guard let post = post,
               let userName = Auth.auth().currentUser?.displayName,
+              let userEmail = Auth.auth().currentUser?.email,
               let photoURL = Auth.auth().currentUser?.photoURL else {
             print("내용을 입력해 주세요.")
             return }
@@ -135,7 +133,7 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
             "commentID": commentID,
             "postID": post.postID,
             "userName": userName,
-            "userEmail": post.userEmail,
+            "userEmail": userEmail,
             "content": content,
             "date": Int(Date().timeIntervalSince1970),
             "imageURL": photoURL.absoluteString
@@ -195,8 +193,6 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
             self.view.layoutIfNeeded()
         }
     }
-
-   
 }
 
 extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {

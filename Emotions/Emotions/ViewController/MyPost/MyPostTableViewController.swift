@@ -84,7 +84,7 @@ class MyPostTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "정리하기") { (_, indexPath) in
-            let alert = UIAlertController(title: "감정 정리하기", message: "흘러갈 감정들에게 한 마디 남겨주세요.\n*정리한 감정은 복구되지 않습니다.\n신중하게 결정해주세요:)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "감정 정리하기", message: "흘러갈 감정들에게 한 마디 남겨주세요.\n*정리한 감정은 복구되지 않습니다.", preferredStyle: .alert)
             alert.addTextField { textfield in
                 textfield.layer.cornerRadius = 10
                 textfield.placeholder = "없으시다면 정리하기 버튼만 누르세요:)"
