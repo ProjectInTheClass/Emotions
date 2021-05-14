@@ -48,7 +48,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         if let user = Auth.auth().currentUser {
             userEmailLabel.text = user.email
             userNickNameLabel.text = user.displayName
-            userImageView.kf.setImage(with: user.photoURL, placeholder: UIImage(systemName: "person.circle"), options: [.forceRefresh])
+            userImageView.kf.setImage(with: user.photoURL, placeholder: UIImage(systemName: "person.circle"), options: [.forceTransition])
             tableView.reloadData()
         } else {
             userEmailLabel.text = "email"
@@ -155,8 +155,10 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else { return }
         guard let currentUserEmail = Auth.auth().currentUser?.email else { return }
+        guard let currentUserPhotoURL = Auth.auth().currentUser?.photoURL else { return }
         UserManager.shared.uploadUserImage(userImage: selectedImage, email: currentUserEmail) { success in }
         userImageView.image = selectedImage
+        ImageCache.default.clearCache()
         self.dismiss(animated: true)
     }
 }

@@ -14,20 +14,12 @@ PODS:
     - FirebaseAnalytics (~> 8.0.0)
   - Firebase/CoreOnly (8.0.0):
     - FirebaseCore (= 8.0.0)
-  - Firebase/Crashlytics (8.0.0):
-    - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 8.0.0)
   - Firebase/Database (8.0.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 8.0.0)
-  - Firebase/Performance (8.0.0):
-    - Firebase/CoreOnly
-    - FirebasePerformance (~> 8.0.0)
   - Firebase/Storage (8.0.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 8.0.0)
-  - FirebaseABTesting (8.0.0):
-    - FirebaseCore (~> 8.0)
   - FirebaseAnalytics (8.0.0):
     - FirebaseAnalytics/AdIdSupport (= 8.0.0)
     - FirebaseCore (~> 8.0)
@@ -69,12 +61,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
-  - FirebaseCrashlytics (8.0.0):
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleDataTransport (~> 9.0)
-    - nanopb (~> 2.30908.0)
-    - PromisesObjC (~> 1.2)
   - FirebaseDatabase (8.0.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
@@ -83,21 +69,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (~> 1.2)
-  - FirebasePerformance (8.0.0):
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - FirebaseRemoteConfig (~> 8.0)
-    - GoogleDataTransport (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/ISASwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - Protobuf (~> 3.15)
-  - FirebaseRemoteConfig (8.0.0):
-    - FirebaseABTesting (~> 8.0)
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
   - FirebaseStorage (8.0.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
@@ -124,7 +95,6 @@ PODS:
     - GoogleUtilities/Network
   - GoogleUtilities/Environment (7.4.1):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/ISASwizzler (7.4.1)
   - GoogleUtilities/Logger (7.4.1):
     - GoogleUtilities/Environment
   - GoogleUtilities/MethodSwizzler (7.4.1):
@@ -149,7 +119,6 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PanModal (1.2.7)
   - PromisesObjC (1.2.12)
-  - Protobuf (3.16.0)
   - TransitionButton (0.5.3)
 
 DEPENDENCIES:
@@ -158,10 +127,7 @@ DEPENDENCIES:
   - Charts
   - Firebase/Analytics
   - Firebase/Auth
-  - Firebase/Core
-  - Firebase/Crashlytics
   - Firebase/Database
-  - Firebase/Performance
   - Firebase/Storage
   - Kingfisher (~> 6.0)
   - lottie-ios
@@ -174,16 +140,12 @@ SPEC REPOS:
     - BulletinBoard
     - Charts
     - Firebase
-    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
-    - FirebaseCrashlytics
     - FirebaseDatabase
     - FirebaseInstallations
-    - FirebasePerformance
-    - FirebaseRemoteConfig
     - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -195,7 +157,6 @@ SPEC REPOS:
     - nanopb
     - PanModal
     - PromisesObjC
-    - Protobuf
     - TransitionButton
 
 SPEC CHECKSUMS:
@@ -203,16 +164,12 @@ SPEC CHECKSUMS:
   BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Firebase: 73c3e3b216ec1ecbc54d2ffdd4670c65c749edb1
-  FirebaseABTesting: daebc95ec8829607d07dfe5e92dc3285aca29bc4
   FirebaseAnalytics: dcb92c7c9ef4fa7ffac276e8f87bd4fc8c97f1b8
   FirebaseAuth: b8cd992fca5b53dc6eec09e873a3f375f000c5a1
   FirebaseCore: 3f09591d51292843e2a46f18358d60bf4e996255
   FirebaseCoreDiagnostics: a31d987ba0fe16d59886a5dbadc2f1de871f88c8
-  FirebaseCrashlytics: 69cddb6bfa7656c5346e603bc85b029392252ee6
   FirebaseDatabase: 363961e25451425be8b14bb8801a592515ec58f2
   FirebaseInstallations: c4aab1005d6547b00a7529777fe52f5d4d45165b
-  FirebasePerformance: d89e4529f8ab0837cfe3697506262fb2759ca69e
-  FirebaseRemoteConfig: 055f6b5ba1751547596ded5032c4d5c6054ca501
   FirebaseStorage: 61bcd27880fa17362f68be67d3683d04bfd7b1c7
   GoogleAppMeasurement: c6bbc9753d046b5456dd4f940057fbad2c28419e
   GoogleDataTransport: 11e3a5f2c190327df1a4a5d7e7ae3d4d5b9c9e4c
@@ -224,9 +181,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  Protobuf: 8e78b4aabb47d17f379fb10b0d22ed5439e69b95
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 33d2faef62d395a7d85711d20c3c4e8dfc6ed6a8
+PODFILE CHECKSUM: 842f44849442e76b6d8fe2543d696ec7175c5bb4
 
 COCOAPODS: 1.10.1
