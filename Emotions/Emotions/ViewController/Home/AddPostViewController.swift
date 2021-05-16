@@ -133,6 +133,13 @@ class AddPostViewController: UIViewController, UITextViewDelegate {
             return
         }
         
+        if checkBadWords(content: content) {
+            contentDescription.text = "욕설과 비방을 자제해 주세요."
+            contentDescription.textColor = .red
+            return
+        }
+        
+        
         guard let afterAMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date()) else { return }
         let endDate = Int(afterAMonth.timeIntervalSince1970)
         let postkey = UUID().uuidString

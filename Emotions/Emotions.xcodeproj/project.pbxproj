@@ -19,6 +19,7 @@
 		0337C65A261EADBC00E1F765 /* Static.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C659261EADBC00E1F765 /* Static.storyboard */; };
 		0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C65C261EADC700E1F765 /* Profile.storyboard */; };
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
+		0343BC4726514A3700771965 /* badwords.json in Resources */ = {isa = PBXBuildFile; fileRef = 0343BC4626514A3700771965 /* badwords.json */; };
 		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
 		03654C0D2646C5AF00C932A1 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */; };
 		03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0E2646C5FB00C932A1 /* NoticeModel.swift */; };
@@ -85,6 +86,7 @@
 		0337C659261EADBC00E1F765 /* Static.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Static.storyboard; sourceTree = "<group>"; };
 		0337C65C261EADC700E1F765 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
+		0343BC4626514A3700771965 /* badwords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badwords.json; sourceTree = "<group>"; };
 		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		03654C0E2646C5FB00C932A1 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				031E9A5B2623D3DD0054C840 /* Lottie */,
 				03FDA94C26204B42009E02F9 /* Font */,
 				0321F19F26169E26000A3F90 /* Assets.xcassets */,
+				0343BC4626514A3700771965 /* badwords.json */,
 				0321F19626169E25000A3F90 /* AppDelegate.swift */,
 				0321F19826169E25000A3F90 /* SceneDelegate.swift */,
 			);
@@ -460,6 +463,7 @@
 				03CC7D86264AE07600C37FA1 /* joy.json in Resources */,
 				0389E12E262ED6D00077C20F /* NanumSquareBold.ttf in Resources */,
 				0321F1A326169E26000A3F90 /* LaunchScreen.storyboard in Resources */,
+				0343BC4726514A3700771965 /* badwords.json in Resources */,
 				0321F1A026169E26000A3F90 /* Assets.xcassets in Resources */,
 				03CC7D85264AE07600C37FA1 /* fear.json in Resources */,
 				0389E128262ED5C80077C20F /* TextMeOne-Regular.ttf in Resources */,
@@ -744,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.Emotions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -765,7 +769,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.Emotions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -123,11 +123,19 @@ class PostDetailViewController: UIViewController, UITextFieldDelegate {
               let userName = Auth.auth().currentUser?.displayName,
               let userEmail = Auth.auth().currentUser?.email,
               let photoURL = Auth.auth().currentUser?.photoURL else {
-            print("내용을 입력해 주세요.")
             return }
     
         guard let content = commentTextField?.text,
-              content != "" else { return }
+              content != "" else {
+            commentTextField.text = ""
+            commentTextField.placeholder = "내용을 입력해 주세요."
+            return }
+        
+        if checkBadWords(content: content) {
+            commentTextField.text = ""
+            commentTextField.placeholder = "욕설과 비방을 자제해 주세요."
+            return
+        }
         
         let commentDictionary: [String:Any] = [
             "commentID": commentID,

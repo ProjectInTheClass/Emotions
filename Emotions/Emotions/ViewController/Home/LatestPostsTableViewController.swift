@@ -190,6 +190,7 @@ class LatestPostsTableViewController: UITableViewController {
                         report[uid] = true
                         currentPost["reportedUser"] = report
                         if report.count >= 5 {
+                            postsRef.child(realPost.postID).removeValue()
                             blackList.child(realPost.userID).setValue(realPost.postID)
                         }
                         currentData.value = currentPost
