@@ -10,8 +10,10 @@ import UIKit
 
 // 포스트의 dateLabel 용
 func dateToDday(post: Post) -> String {
-    let endDate = Date(timeIntervalSince1970: Double(post.endDate))
-    let dateToInt = Int(endDate.timeIntervalSinceNow / 24 / 60 / 60)
+    let endDate = post.endDate
+    let today = Int(Date().timeIntervalSince1970)
+    let leftDate = endDate - today
+    let dateToInt = Int(leftDate / 24 / 60 / 60)
     let dateToDday = "D-\(dateToInt)"
     return dateToDday
 }
@@ -45,3 +47,39 @@ func stringToDate(date: Date) -> String {
    return formatter.string(from: date)
 }
 
+struct BadWords: Codable {
+    var badwords: [String]
+}
+
+func loadBadWordsFromJson() -> [String] {
+    if let path = Bundle.main.path(forResource: "badwords", ofType: "json") {
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            do {
+                let badwordsModel = try JSONDecoder().decode(BadWords.self, from: data)
+                return badwordsModel.badwords
+            }
+            catch {
+                print("decode error")
+                return []
+            }
+        }
+        catch {
+            print("path error")
+            return []
+        }
+    } else {
+        print("path nil")
+        return []
+    }
+}
+
+func checkBadWords(content: String) -> Bool {
+    let badwords = loadBadWordsFromJson()
+    for badword in badwords {
+        if content.contains(badword) {
+            return true
+        }
+    }
+    return false
+}

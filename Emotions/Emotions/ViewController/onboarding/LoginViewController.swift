@@ -176,6 +176,16 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    @IBAction func informationButtonTapped(_ sender: UIButton) {
+        
+        let sb = UIStoryboard(name: "Profile", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "noticeVC") as? NoticeTableViewController else { return }
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true, completion: nil)
+    
+    }
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {

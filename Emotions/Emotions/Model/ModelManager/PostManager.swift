@@ -100,19 +100,41 @@ class PostManager {
                 let snapshotDatum = anyDatum as! DataSnapshot
 //                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
-                let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
                 
-                if let firstCardID = dicDatum["firstCardID"] as? String {
-                    post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
+                    for isReportUser in isReportedDic {
+                        let user = isReportUser.key
+                        if Auth.auth().currentUser?.uid == user {
+                            print("isReported")
+                        } else {
+                            let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+                            
+                            if let firstCardID = dicDatum["firstCardID"] as? String {
+                                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                            }
+                            if let secondCardID = dicDatum["secondCardID"] as? String {
+                                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                            }
+                            if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                            }
+                            freshPostsChunk += [post]
+                        }
+                    }
+                } else {
+                    let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+                    
+                    if let firstCardID = dicDatum["firstCardID"] as? String {
+                        post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                    }
+                    if let secondCardID = dicDatum["secondCardID"] as? String {
+                        post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                    }
+                    if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                        post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                    }
+                    freshPostsChunk += [post]
                 }
-                if let secondCardID = dicDatum["secondCardID"] as? String {
-                    post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                }
-                if let thirdCardID = dicDatum["thirdCardID"] as? String {
-                    post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                }
-                
-                freshPostsChunk += [post]
             }
             self.loadedPosts.insert(contentsOf: freshPostsChunk, at: 0)
             self.latestposts.insert(contentsOf: freshPostsChunk, at: 0)
