@@ -20,6 +20,7 @@
 		0337C65D261EADC700E1F765 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0337C65C261EADC700E1F765 /* Profile.storyboard */; };
 		0337C665261EAF4C00E1F765 /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337C664261EAF4C00E1F765 /* StaticViewController.swift */; };
 		0343BC4726514A3700771965 /* badwords.json in Resources */ = {isa = PBXBuildFile; fileRef = 0343BC4626514A3700771965 /* badwords.json */; };
+		0343BC4926534A0000771965 /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343BC4826534A0000771965 /* EULAViewController.swift */; };
 		035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B931F2632406F001D4F39 /* ProfileTableViewController.swift */; };
 		03654C0D2646C5AF00C932A1 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */; };
 		03654C0F2646C5FB00C932A1 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03654C0E2646C5FB00C932A1 /* NoticeModel.swift */; };
@@ -87,6 +88,7 @@
 		0337C65C261EADC700E1F765 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0337C664261EAF4C00E1F765 /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		0343BC4626514A3700771965 /* badwords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badwords.json; sourceTree = "<group>"; };
+		0343BC4826534A0000771965 /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
 		035B931F2632406F001D4F39 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		03654C0C2646C5AF00C932A1 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		03654C0E2646C5FB00C932A1 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			children = (
 				0398783A2626DA7800ED9EB8 /* LoginViewController.swift */,
 				0398783D2626DA8200ED9EB8 /* RegistrationViewController.swift */,
+				0343BC4826534A0000771965 /* EULAViewController.swift */,
 			);
 			path = onboarding;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				03C610DC262518E000284FD5 /* functions.swift in Sources */,
 				0321F19726169E25000A3F90 /* AppDelegate.swift in Sources */,
 				035B93202632406F001D4F39 /* ProfileTableViewController.swift in Sources */,
+				0343BC4926534A0000771965 /* EULAViewController.swift in Sources */,
 				0398783B2626DA7800ED9EB8 /* LoginViewController.swift in Sources */,
 				0398781F2626CC4500ED9EB8 /* AuthManager.swift in Sources */,
 				03C610E2262598BF00284FD5 /* CommentTableViewCell.swift in Sources */,

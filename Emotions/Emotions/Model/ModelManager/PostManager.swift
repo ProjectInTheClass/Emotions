@@ -13,7 +13,7 @@ import UIKit
 class PostManager {
     static let shared = PostManager()
     private let numberOfOneLoad = 5
-
+    
     var myHeartPosts = [Post]()
     var userPosts = [Post]()
     var starPosts = [Post]()
@@ -32,28 +32,25 @@ class PostManager {
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 let postkey = snapshotDatum.key
                 if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
-                    for isReportUser in isReportedDic {
-                        let user = isReportUser.key
-                        if Auth.auth().currentUser?.uid == user {
-                            print("isReported")
+                    if checkAbusiveUser(reportedUser: isReportedDic) {
+                        print("isReport")
+                    } else {
+                        let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+                        if let firstCardID = dicDatum["firstCardID"] as? String {
+                            post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
+                        }
+                        if let secondCardID = dicDatum["secondCardID"] as? String {
+                            post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                        }
+                        if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                            post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                        }
+                        
+                        let todaySecond = Int(Date().timeIntervalSince1970)
+                        if post.endDate - todaySecond <= 0 {
+                            postsRef.child(postkey).removeValue()
                         } else {
-                            let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
-                            if let firstCardID = dicDatum["firstCardID"] as? String {
-                                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-                            }
-                            if let secondCardID = dicDatum["secondCardID"] as? String {
-                                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                            }
-                            if let thirdCardID = dicDatum["thirdCardID"] as? String {
-                                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                            }
-                          
-                            let todaySecond = Int(Date().timeIntervalSince1970)
-                            if post.endDate - todaySecond <= 0 {
-                                postsRef.child(postkey).removeValue()
-                            } else {
-                                self.loadedPosts += [post]
-                            }
+                            self.loadedPosts += [post]
                         }
                     }
                 } else {
@@ -98,28 +95,24 @@ class PostManager {
             
             for anyDatum in snapshotData {
                 let snapshotDatum = anyDatum as! DataSnapshot
-//                let postkey = snapshotDatum.key
                 let dicDatum = snapshotDatum.value as! [String:Any]
                 
                 if let isReportedDic = dicDatum["reportedUser"] as? [String:Bool] {
-                    for isReportUser in isReportedDic {
-                        let user = isReportUser.key
-                        if Auth.auth().currentUser?.uid == user {
-                            print("isReported")
-                        } else {
-                            let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
-                            
-                            if let firstCardID = dicDatum["firstCardID"] as? String {
-                                post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
-                            }
-                            if let secondCardID = dicDatum["secondCardID"] as? String {
-                                post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
-                            }
-                            if let thirdCardID = dicDatum["thirdCardID"] as? String {
-                                post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
-                            }
-                            freshPostsChunk += [post]
+                    if checkAbusiveUser(reportedUser: isReportedDic) {
+                        print("isReport")
+                    } else {
+                        let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)
+                        
+                        if let firstCardID = dicDatum["firstCardID"] as? String {
+                            post.firstCard = CardManager.shared.searchCardByID(cardID: firstCardID)
                         }
+                        if let secondCardID = dicDatum["secondCardID"] as? String {
+                            post.secondCard = CardManager.shared.searchCardByID(cardID: secondCardID)
+                        }
+                        if let thirdCardID = dicDatum["thirdCardID"] as? String {
+                            post.thirdCard = CardManager.shared.searchCardByID(cardID: thirdCardID)
+                        }
+                        freshPostsChunk += [post]
                     }
                 } else {
                     let post = Post(currentUserUID: currentUserUID, dictionary: dicDatum)

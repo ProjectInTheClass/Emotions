@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 // 포스트의 dateLabel 용
 func dateToDday(post: Post) -> String {
@@ -78,6 +79,16 @@ func checkBadWords(content: String) -> Bool {
     let badwords = loadBadWordsFromJson()
     for badword in badwords {
         if content.contains(badword) {
+            return true
+        }
+    }
+    return false
+}
+
+func checkAbusiveUser(reportedUser: [String:Bool]) -> Bool {
+    for isReportUser in reportedUser {
+        let user = isReportUser.key
+        if Auth.auth().currentUser?.uid == user {
             return true
         }
     }
