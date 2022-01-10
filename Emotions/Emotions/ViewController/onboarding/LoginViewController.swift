@@ -141,9 +141,6 @@ class LoginViewController: UIViewController {
     
     @objc func registrationButtonTapped() {
         self.errorMessageLabel.isHidden = true
-        let sb = UIStoryboard(name: "Home", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "registrationVC") as! RegistrationViewController
-        present(vc, animated: true, completion: nil)
     }
     
     @objc func browseButtonTapped() {
